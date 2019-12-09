@@ -5,6 +5,21 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def clearsigninlabel(self):
         self.sign_empty_error_label.setText("")
+
+    def clearsignuplabels(self):
+        self.repass_error_label.setText("")                
+        self.username_error_label.setText("")
+
+    def clearsignuppage(self):
+        self.signup_fname_edit.setText("")
+        self.signup_lname_edit.setText("")
+        self.signup_username_edit.setText("")
+        self.signup_password_edit.setText("")
+        self.signup_repassword_edit.setText("")
+        self.signup_year_edit.setText("")
+        self.signup_month_edit.setText("")
+        self.signup_day_edit.setText("")
+
         
     def logout(self):
         self.stackedWidget.setCurrentIndex(2)
@@ -16,16 +31,18 @@ class Ui_MainWindow(object):
         self.stackedWidget.setCurrentIndex(0)
         MainWindow.setWindowTitle("Smartward")
         self.clearsigninlabel()
+        self.clearsignuppage()
         
     def refertologin(self):###refers to login page
         self.stackedWidget.setCurrentIndex(2)
         MainWindow.setWindowTitle("Smartward-Login")
+        self.clearsignuppage()
         
     def refertosignup(self):###refers to signup page
         self.stackedWidget.setCurrentIndex(1)
         MainWindow.setWindowTitle("Smartward-Signup")
         self.clearsigninlabel()
-
+        
     def exitwindow():
         Mainwindow.close
 
@@ -35,18 +52,37 @@ class Ui_MainWindow(object):
     def hide_password(self):
         self.password_edit.setEchoMode(QtWidgets.QLineEdit.Password)
 
-    ####for signup########################some bugs in signup##########################################
-    def signupfxn(self):
-        print("Signed Up.")
-        fname_su=self.signup_fname_edit.text()
-        lname_su=self.signup_lname_edit.text()
+    ####for signup#####################################################################
+    def signupfxn(self):        
+        fname_su= self.signup_fname_edit.text().title()
+        lname_su= self.signup_lname_edit.text().title()
         username_su=self.signup_username_edit.text()
         password_su=self.signup_password_edit.text()
         repassword_su=self.signup_repassword_edit.text()
-        dob_su=str(self.signup_year_edit.text())+"/"+str(self.signup_month_edit.text())+"/"+str(self.signup_date_edit.text())
-        #debug
-        print (fname_su,lname_su,username_su,password_su,repassword_su)
-        #loginfxn(fname_su,lname_su,username_su,password_su,repassword_su,dob_su)
+        year_su=self.signup_year_edit.text()
+        month_su=self.signup_month_edit.text()
+        date_su=self.signup_day_edit.text()
+        dob_su=str(year_su)+"/"+str(month_su)+"/"+str(date_su)
+        if ((fname_su!="" or lname_su!="") and (password_su!="") and (repassword_su!="") and (year_su!="") and (month_su!="") and (date_su!="") and (username_su!="")):
+            if ((username_su=="admin") or (username_su=="smartward")):              
+                self.signup_username_edit.setText("")
+                self.username_error_label.setText("Username taken.")
+            else:
+                if (password_su==repassword_su):
+                    print ("First Name: ",fname_su)
+                    print ("Last Name: ",lname_su)
+                    print ("Username: ",username_su)
+                    print ("Date of Birth: ",dob_su)
+                    self.clearsignuplabels()
+                    self.refertologin()
+                    
+                else:
+                    self.signup_password_edit.setText("")
+                    self.signup_repassword_edit.setText("")
+                    self.repass_error_label.setText("Password do not match.")
+        else:
+            self.repass_error_label.setText("Empty field.")             
+        
     ####################################################################################################
 
     ####for signin#####################################################################################
@@ -59,7 +95,7 @@ class Ui_MainWindow(object):
                 self.stackedWidget.setCurrentIndex(3)
                 print('Logged in.:'+ str(uname_login))
                 MainWindow.setWindowTitle("SmartWard- Welcome "+str(uname_login))
-                password_login=self.password_edit.setText("")
+                password_login=self.password_edit.setText("")                
             else:
                 self.sign_empty_error_label.setText("Not allowed.")
                 password_login=self.password_edit.setText("")
@@ -132,12 +168,7 @@ class Ui_MainWindow(object):
         self.signup_label.setAlignment(QtCore.Qt.AlignCenter)
         self.signup_label.setObjectName("signup_label")
         self.signup_fname_edit = QtWidgets.QLineEdit(self.signup_box)
-        self.signup_fname_edit.setGeometry(QtCore.QRect(30, 60, 241, 41))
-        font = QtGui.QFont()
-        font.setFamily("Consolas")
-        font.setPointSize(-1)
-        font.setItalic(False)
-        self.signup_fname_edit.setFont(font)
+        self.signup_fname_edit.setGeometry(QtCore.QRect(30, 60, 241, 41))        
         self.signup_fname_edit.setStyleSheet("border-radius:20px;\n"
 "color:blue;\n"
 "background:yellow;\n"
@@ -590,11 +621,9 @@ class Ui_MainWindow(object):
         self.signup_pushbutton.setText(_translate("MainWindow", "Sign up"))
         self.fname_label_signup.setText(_translate("MainWindow", "First Name"))
         self.lname_label_signup.setText(_translate("MainWindow", "Last Name"))
-        self.uname_label_signup.setText(_translate("MainWindow", "Username"))
-        self.username_error_label.setText(_translate("MainWindow", "Username already taken."))
+        self.uname_label_signup.setText(_translate("MainWindow", "Username"))        
         self.password_label_signup.setText(_translate("MainWindow", "Password"))
         self.repass_label_signup.setText(_translate("MainWindow", "Re-password"))
-        self.repass_error_label.setText(_translate("MainWindow", "Passwords do not match."))
         self.year_label_signup.setText(_translate("MainWindow", "Year"))
         self.month_label_signup.setText(_translate("MainWindow", "Month"))
         self.date_label_signup.setText(_translate("MainWindow", "Date"))
