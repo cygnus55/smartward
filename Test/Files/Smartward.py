@@ -3,6 +3,27 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 class Ui_MainWindow(object):
+    def adminPageAccess(self):
+        self.stackedWidget.setCurrentIndex(4)
+        print('Logged in as Admin.')
+               
+    def userPageAccess(self):
+        self.stackedWidget.setCurrentIndex(3)
+        print('Logged in as User.')
+        
+    def linkPageAccess(self):
+        self.stackedWidget.setCurrentIndex(5)
+        print('Choose:.')    
+            
+    def birth_registration(self):
+        print("birth_registration_button_pushed")
+
+    def death_registration(self):
+        print("death_registration_button_pushed")
+
+    def marriage_registration(self):
+        print("marriage_registration_button_pushed")
+        
     def clearsigninlabel(self):
         self.sign_empty_error_label.setText("")
 
@@ -103,17 +124,17 @@ class Ui_MainWindow(object):
         password_login=self.password_edit.text()
         if ((uname_login!="")and(password_login!="")):
             self.sign_empty_error_label.setText("")
-            if ((uname_login=="admin" and password_login=="admin") or (uname_login=="smartward" and password_login=="smartward")or (uname_login=="shreyam" and password_login=="shreyam")):
-                if (uname_login=="admin" and password_login=="admin"):
-                    self.stackedWidget.setCurrentIndex(4)
-                    self.statusbar.showMessage("Logged In.(Admin)"+"           "+"admin-username="+str(uname_login)+"           "+"© Smartward")
-                    print('Logged in as admin :'+ str(uname_login))
-                    MainWindow.setWindowTitle("SmartWard-Admin - Welcome "+str(uname_login))
+            if ((uname_login=="admin" and password_login=="admin")or(uname_login=="developer" and password_login=="developer") or (uname_login=="smartward" and password_login=="smartward")or (uname_login=="shreyam" and password_login=="shreyam")):
+                if ((uname_login=="admin" and password_login=="admin")or(uname_login=="shreyam" and password_login=="shreyam")):
+                    self.stackedWidget.setCurrentIndex(5)
+                    self.statusbar.showMessage("Logged In.(Admin):"+str(uname_login)+"                          "+"© Smartward")
+                    print('Logged in as Admin.:'+str(uname_login))
+                    MainWindow.setWindowTitle("SmartWard-Admin- Welcome "+str(uname_login))
                     password_login=self.password_edit.setText("")
-                else:                    
+                else:
                     self.stackedWidget.setCurrentIndex(3)
-                    self.statusbar.showMessage("Logged In.(User)"+"           "+"username="+str(uname_login)+"           "+"© Smartward")
-                    print('Logged in as user :'+ str(uname_login))
+                    self.statusbar.showMessage("Logged In.(User):"+str(uname_login)+"                          "+"© Smartward")
+                    print('Logged in as User.:'+str(uname_login))
                     MainWindow.setWindowTitle("SmartWard-User- Welcome "+str(uname_login))
                     password_login=self.password_edit.setText("")
             else:
@@ -602,7 +623,53 @@ class Ui_MainWindow(object):
         self.Welcome_label.setStyleSheet("background:yellow;\n"
 "color:black;\n""border-radius:20px;")
         self.Welcome_label.setAlignment(QtCore.Qt.AlignCenter)
-        self.Welcome_label.setObjectName("Welcome_label")       
+        self.Welcome_label.setObjectName("Welcome_label")
+
+
+        ######open######################birth_registration###################################
+        self.birth_registration_button = QtWidgets.QPushButton(self.userpage)
+        self.birth_registration_button.setGeometry(QtCore.QRect(200, 130, 400, 80))
+        self.birth_registration_button.setStyleSheet("color:black;\n"
+"background:red;\n"
+"font-family:Consolas;\n"
+"font-size:20px;\n"
+"font-style:normal;\n"
+"")
+        self.birth_registration_button.setObjectName("birth_registration_button")
+           ###birth registration fxn###################################################
+        self.birth_registration_button.clicked.connect(self.birth_registration)
+           ###########################################################################
+        ######closed##################################################################
+
+        ######open##########################death_registration###################################
+        self.death_registration_button = QtWidgets.QPushButton(self.userpage)
+        self.death_registration_button.setGeometry(QtCore.QRect(200, 230, 400, 80))
+        self.death_registration_button.setStyleSheet("color:black;\n"
+"background:red;\n"                                                    
+"font-family:Consolas;\n"
+"font-size:20px;\n"
+"font-style:normal;\n"
+"")
+        self.death_registration_button.setObjectName("death_registration_button")
+           ###death registration fxn###################################################
+        self.death_registration_button.clicked.connect(self.death_registration)
+           ###########################################################################
+        ######closed##################################################################
+
+         ######open##########################death_registration###################################
+        self.marriage_registration_button = QtWidgets.QPushButton(self.userpage)
+        self.marriage_registration_button.setGeometry(QtCore.QRect(200, 330, 400, 80))
+        self.marriage_registration_button.setStyleSheet("color:black;\n"
+"background:red;\n"                                                    
+"font-family:Consolas;\n"
+"font-size:20px;\n"
+"font-style:normal;\n"
+"")
+        self.marriage_registration_button.setObjectName("marriage_registration_button")
+           ###death registration fxn###################################################
+        self.marriage_registration_button.clicked.connect(self.marriage_registration)
+           ###########################################################################
+        ######closed##################################################################
 
         ######open#############################################################
         self.logout_from_loggedinpage = QtWidgets.QPushButton(self.userpage)
@@ -618,7 +685,8 @@ class Ui_MainWindow(object):
            ####logout from loggedin###################################################
         self.logout_from_loggedinpage.clicked.connect(self.logout)
            ###########################################################################
-        ######closed##################################################################
+        ######closed##################################################################       
+
 
         ######open####################################################################
         self.exit_from_loggedinpage = QtWidgets.QPushButton(self.userpage)
@@ -652,6 +720,20 @@ class Ui_MainWindow(object):
 "color:black;\n""border-radius:20px;")
         self.Welcome_label_admin.setAlignment(QtCore.Qt.AlignCenter)
         self.Welcome_label_admin.setObjectName("Welcome_label_admin")
+         ######open#############################################################
+        self.back_from_adminpage = QtWidgets.QPushButton(self.adminpage)
+        self.back_from_adminpage.setGeometry(QtCore.QRect(430, 490, 101, 41))
+        self.back_from_adminpage.setStyleSheet("border-radius:20px;\n"
+"color:black;\n"
+"background:red;\n"
+"font-family:Consolas;\n"
+"font-size:20px;\n"
+"font-style:normal;\n"
+"")
+        self.back_from_adminpage.setObjectName("back_from_adminpage")
+           ####linkpage from admin#############################################################
+        self.back_from_adminpage.clicked.connect(self.linkPageAccess)
+           #################################################################################
 
          ######open#############################################################
         self.logout_from_adminpage = QtWidgets.QPushButton(self.adminpage)
@@ -664,7 +746,7 @@ class Ui_MainWindow(object):
 "font-style:normal;\n"
 "")
         self.logout_from_adminpage.setObjectName("logout_from_adminpage")
-           ####logout from loggedin#############################################################
+           ####logout from admin#############################################################
         self.logout_from_adminpage.clicked.connect(self.logout)
            #################################################################################
         ######closed###########################################################################
@@ -688,8 +770,93 @@ class Ui_MainWindow(object):
        
         #########end of admin page######################################################
 
-        self.stackedWidget.addWidget(self.adminpage)
 
+        ###########################start of link page################################
+
+        self.stackedWidget.addWidget(self.adminpage)
+        self.link_page = QtWidgets.QWidget()
+        self.link_page.setObjectName("link_page")
+        self.link_page_label = QtWidgets.QLabel(self.link_page)
+        self.link_page_label.setGeometry(QtCore.QRect(200, 50, 380, 61))
+        font = QtGui.QFont()
+        font.setFamily("Consolas")
+        font.setPointSize(18)
+        self.link_page_label.setFont(font)
+        self.link_page_label.setStyleSheet("background:yellow;\n"
+"color:black;\n""border-radius:20px;")
+        self.link_page_label.setAlignment(QtCore.Qt.AlignCenter)
+        self.link_page_label.setObjectName("link_page_label")
+
+
+
+         ######open######################continue_as_admin##############################
+        self.continue_as_admin = QtWidgets.QPushButton(self.link_page)
+        self.continue_as_admin.setGeometry(QtCore.QRect(200, 130, 400, 80))
+        self.continue_as_admin.setStyleSheet("color:black;\n"
+"background:red;\n"
+"font-family:Consolas;\n"
+"font-size:20px;\n"
+"font-style:normal;\n"
+"")
+        self.continue_as_admin.setObjectName("continue_as_admin")
+           ###continue_as_admin fxn###################################################
+        self.continue_as_admin.clicked.connect(self.adminPageAccess)
+           ###########################################################################
+        ######closed##################################################################
+
+        ######open##########################continue_as_user###################################
+        self.continue_as_user = QtWidgets.QPushButton(self.link_page)
+        self.continue_as_user.setGeometry(QtCore.QRect(200, 230, 400, 80))
+        self.continue_as_user.setStyleSheet("color:black;\n"
+"background:red;\n"                                                    
+"font-family:Consolas;\n"
+"font-size:20px;\n"
+"font-style:normal;\n"
+"")
+        self.continue_as_user.setObjectName("continue_as_user")
+           ###continue_as_user fxn###################################################
+        self.continue_as_user.clicked.connect(self.userPageAccess)
+           ###########################################################################
+        ######closed##################################################################
+
+
+         ######open#############################################################
+        self.logout_from_linkpage = QtWidgets.QPushButton(self.link_page)
+        self.logout_from_linkpage.setGeometry(QtCore.QRect(535, 490, 101, 41))
+        self.logout_from_linkpage.setStyleSheet("border-radius:20px;\n"
+"color:black;\n"
+"background:red;\n"
+"font-family:Consolas;\n"
+"font-size:20px;\n"
+"font-style:normal;\n"
+"")
+        self.logout_from_linkpage.setObjectName("logout_from_adminpage")
+           ####logout from loggedin#############################################################
+        self.logout_from_linkpage.clicked.connect(self.logout)
+           #################################################################################
+        ######closed###########################################################################
+
+         #open########################################################################
+        self.exit_from_linkpage = QtWidgets.QPushButton(self.link_page)
+        self.exit_from_linkpage.setGeometry(QtCore.QRect(640, 490, 101, 41))
+        self.exit_from_linkpage.setStyleSheet("border-radius:20px;\n"
+"color:black;\n"
+"background:red;\n"
+"font-family:Consolas;\n"
+"font-size:20px;\n"
+"font-style:normal;\n"
+"")
+        self.exit_from_linkpage.setObjectName("exit_from_adminpage")
+               ####Exit from loggedin################################################
+        self.exit_from_linkpage.clicked.connect(self.exitwindow)
+               #######################################################################
+        ###close######################################################################
+
+        ####################################end of link page##########################
+        
+        ###############################################################################
+        self.stackedWidget.addWidget(self.link_page)
+        
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 21))
@@ -734,11 +901,21 @@ class Ui_MainWindow(object):
         self.home_from_signin.setText(_translate("MainWindow", "Home"))
         self.exit_from_signinpage.setText(_translate("MainWindow", "Exit"))
         self.Welcome_label.setText(_translate("MainWindow", "Welcome to your user page!!!"))
+        self.birth_registration_button.setText(_translate("MainWindow", "Birth Registration"))
+        self.death_registration_button.setText(_translate("MainWindow", "Death Registration"))
+        self.marriage_registration_button.setText(_translate("MainWindow", "Marriage Registration"))
         self.logout_from_loggedinpage.setText(_translate("MainWindow", "Log out"))
         self.exit_from_loggedinpage.setText(_translate("MainWindow", "Exit"))
         self.Welcome_label_admin.setText(_translate("MainWindow", "Welcome to your admin page!!!"))
+        self.back_from_adminpage.setText(_translate("MainWindow", "Back"))
         self.logout_from_adminpage.setText(_translate("MainWindow", "Log out"))
         self.exit_from_adminpage.setText(_translate("MainWindow", "Exit"))
+        self.link_page_label.setText(_translate("MainWindow", "I would like to:"))
+        self.logout_from_linkpage.setText(_translate("MainWindow", "Log out"))
+        self.exit_from_linkpage.setText(_translate("MainWindow", "Exit"))
+        self.continue_as_admin.setText(_translate("MainWindow", "Continue as admin"))
+        self.continue_as_user.setText(_translate("MainWindow", "Continue as user"))
+               
 
 
 if __name__ == "__main__":
