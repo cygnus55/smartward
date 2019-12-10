@@ -26,7 +26,9 @@ class Ui_MainWindow(object):
         self.statusbar.showMessage("© Smartward")
         MainWindow.setWindowTitle("Smartward-Login")
         print("Logged out.")
+        self.password_edit.setEchoMode(QtWidgets.QLineEdit.Password)
         self.sign_empty_error_label.setText("Logged Out.")
+      
         
     def refertohome(self):###refers to home page
         self.stackedWidget.setCurrentIndex(0)
