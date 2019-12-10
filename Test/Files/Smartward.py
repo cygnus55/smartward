@@ -37,18 +37,21 @@ class Ui_MainWindow(object):
         self.clearsignuppage()
         self.clearsignuplabels()
         self.password_edit.setText("")
+        self.password_edit.setEchoMode(QtWidgets.QLineEdit.Password)
         
     def refertologin(self):###refers to login page
         self.stackedWidget.setCurrentIndex(2)
         MainWindow.setWindowTitle("Smartward-Login")
         self.clearsignuppage()
         self.clearsignuplabels()
+        self.password_edit.setEchoMode(QtWidgets.QLineEdit.Password)
         
     def refertosignup(self):###refers to signup page
         self.stackedWidget.setCurrentIndex(1)
         MainWindow.setWindowTitle("Smartward-Signup")
         self.clearsigninlabel()
         self.password_edit.setText("")
+        self.password_edit.setEchoMode(QtWidgets.QLineEdit.Password)
         
     def exitwindow():
         Mainwindow.close
@@ -73,7 +76,7 @@ class Ui_MainWindow(object):
         date_su=self.signup_day_edit.text()
         dob_su=str(year_su)+"/"+str(month_su)+"/"+str(date_su)
         if ((fname_su!="" or lname_su!="") and (password_su!="") and (repassword_su!="") and (year_su!="") and (month_su!="") and (date_su!="") and (username_su!="")):
-            if ((username_su=="admin") or (username_su=="smartward")):              
+            if ((username_su=="admin") or (username_su=="smartward") or (username_su=="shreyam")):              
                 self.signup_username_edit.setText("")
                 self.username_error_label.setText("Username taken.")
             else:
@@ -100,7 +103,7 @@ class Ui_MainWindow(object):
         password_login=self.password_edit.text()
         if ((uname_login!="")and(password_login!="")):
             self.sign_empty_error_label.setText("")
-            if ((uname_login=="admin" and password_login=="admin") or (uname_login=="smartward" and password_login=="smartward")):
+            if ((uname_login=="admin" and password_login=="admin") or (uname_login=="smartward" and password_login=="smartward")or (uname_login=="shreyam" and password_login=="shreyam")):
                 if (uname_login=="admin" and password_login=="admin"):
                     self.stackedWidget.setCurrentIndex(4)
                     self.statusbar.showMessage("Logged In.(Admin)"+"           "+"admin-username="+str(uname_login)+"           "+"© Smartward")
@@ -115,14 +118,15 @@ class Ui_MainWindow(object):
                     password_login=self.password_edit.setText("")
             else:
                 self.sign_empty_error_label.setText("Not allowed.")
+                self.password_edit.setEchoMode(QtWidgets.QLineEdit.Password)
                 password_login=self.password_edit.setText("")
         else:
             self.sign_empty_error_label.setText("Username or password empty.")
     ####################################################################################################
 
     def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(800, 600)
+        MainWindow.setObjectName("MainWindow")        
+        MainWindow.setFixedSize(800, 600)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("logo.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         MainWindow.setWindowIcon(icon)
@@ -596,7 +600,7 @@ class Ui_MainWindow(object):
         font.setPointSize(18)
         self.Welcome_label.setFont(font)
         self.Welcome_label.setStyleSheet("background:yellow;\n"
-"color:black;")
+"color:black;\n""border-radius:20px;")
         self.Welcome_label.setAlignment(QtCore.Qt.AlignCenter)
         self.Welcome_label.setObjectName("Welcome_label")       
 
@@ -645,7 +649,7 @@ class Ui_MainWindow(object):
         font.setPointSize(18)
         self.Welcome_label_admin.setFont(font)
         self.Welcome_label_admin.setStyleSheet("background:yellow;\n"
-"color:black;")
+"color:black;\n""border-radius:20px;")
         self.Welcome_label_admin.setAlignment(QtCore.Qt.AlignCenter)
         self.Welcome_label_admin.setObjectName("Welcome_label_admin")
 
