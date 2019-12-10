@@ -279,7 +279,7 @@ class Ui_MainWindow(object):
         self.signup_year_edit.setText("")
         self.signup_year_edit.setObjectName("signup_year_edit")
         self.signup_month_edit = QtWidgets.QLineEdit(self.signup_box)
-        self.signup_month_edit.setGeometry(QtCore.QRect(120, 300, 91, 41))
+        self.signup_month_edit.setGeometry(QtCore.QRect(125, 300, 91, 41))
         self.signup_month_edit.setStyleSheet("border-radius:20px;\n"
 "color:blue;\n"
 "background:yellow;\n"
@@ -291,7 +291,7 @@ class Ui_MainWindow(object):
         self.signup_month_edit.setText("")
         self.signup_month_edit.setObjectName("signup_month_edit")
         self.signup_day_edit = QtWidgets.QLineEdit(self.signup_box)
-        self.signup_day_edit.setGeometry(QtCore.QRect(210, 300, 91, 41))
+        self.signup_day_edit.setGeometry(QtCore.QRect(220, 300, 91, 41))
         self.signup_day_edit.setStyleSheet("border-radius:20px;\n"
 "color:blue;\n"
 "background:yellow;\n"
@@ -394,7 +394,7 @@ class Ui_MainWindow(object):
         self.date_label_signup.setStyleSheet("color:white;")
         self.date_label_signup.setObjectName("date_label_signup")
         self.signin_refer_pushbutton = QtWidgets.QPushButton(self.signup)
-        self.signin_refer_pushbutton.setGeometry(QtCore.QRect(210, 470, 261, 41))
+        self.signin_refer_pushbutton.setGeometry(QtCore.QRect(100, 470, 261, 41))
         self.signin_refer_pushbutton.setStyleSheet("border-radius:20px;\n"
 "color:black;\n"
 "background:red;\n"
@@ -407,7 +407,7 @@ class Ui_MainWindow(object):
         self.signin_refer_pushbutton.clicked.connect(self.refertologin)
         ########################################################################        
         self.exit_from_signuppage = QtWidgets.QPushButton(self.signup)
-        self.exit_from_signuppage.setGeometry(QtCore.QRect(570, 470, 101, 41))
+        self.exit_from_signuppage.setGeometry(QtCore.QRect(615, 470, 101, 41))
         self.exit_from_signuppage.setStyleSheet("border-radius:20px;\n"
 "color:black;\n"
 "background:red;\n"
@@ -532,7 +532,7 @@ class Ui_MainWindow(object):
         self.signin_pushbutton.clicked.connect(self.loginfxn)
         ###########################################################################
         self.signup_refer_pushbutton = QtWidgets.QPushButton(self.login)
-        self.signup_refer_pushbutton.setGeometry(QtCore.QRect(120, 460, 451, 41))
+        self.signup_refer_pushbutton.setGeometry(QtCore.QRect(140, 450, 251, 41))
         self.signup_refer_pushbutton.setStyleSheet("border-radius:20px;\n"
 "color:black;\n"
 "background:red;\n"
@@ -568,7 +568,7 @@ class Ui_MainWindow(object):
         self.signin_username_label.setObjectName("signin_username_label")  
                     
         self.exit_from_signinpage = QtWidgets.QPushButton(self.login)
-        self.exit_from_signinpage.setGeometry(QtCore.QRect(580, 460, 101, 41))
+        self.exit_from_signinpage.setGeometry(QtCore.QRect(555, 450, 101, 41))
         self.exit_from_signinpage.setStyleSheet("border-radius:20px;\n"
 "color:black;\n"
 "background:red;\n"
@@ -724,7 +724,7 @@ class Ui_MainWindow(object):
         self.signin_username_label.setText(_translate("MainWindow", "Username"))
         self.hide_password_pushbutton.setText(_translate("MainWindow", "Hide"))
         self.show_password_pushbutton.setText(_translate("MainWindow", "Show"))
-        self.signup_refer_pushbutton.setText(_translate("MainWindow", "Don\'t have an account!! Sign up instead!"))
+        self.signup_refer_pushbutton.setText(_translate("MainWindow", "Create an account"))
         self.home_from_signin.setText(_translate("MainWindow", "Home"))
         self.exit_from_signinpage.setText(_translate("MainWindow", "Exit"))
         self.Welcome_label.setText(_translate("MainWindow", "Welcome to your user page!!!"))
