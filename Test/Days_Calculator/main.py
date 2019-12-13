@@ -4,7 +4,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 #from PyQt5.QDate import *
 from ui_dayscalculator import *
-import days_calculator
+from days_calculator import*
 	
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
@@ -16,6 +16,7 @@ if __name__ == "__main__":
     ui.label_initialDate.setText("Initial Date :-")
     ui.label_finalDate.setText("Final Date :-")
     ui.pushButton_calculate.setText("Calculate")
+    #ui.pushbutton_calculate.setAutoDefault(True)
     ui.pushButton_quit.setText("Quit")
     ui.label_totalDays.setText("")
     minDate=QDate(1900,1,1)
@@ -28,6 +29,7 @@ if __name__ == "__main__":
     ui.dateEdit_finalDate.setDate(minDate)
     ui.dateEdit_finalDate.setMinimumDate(minDate)
     ui.dateEdit_finalDate.setMaximumDate(maxDate)
+    
     
     def on_pushButton_calculate_clicked():
     	initial_date=QDate(ui.dateEdit_initialDate.date())
@@ -42,7 +44,9 @@ if __name__ == "__main__":
     def on_pushButton_quit_clicked():
     	sys.exit(app.exec_())
     	
+    ui.pushButton_calculate.setAutoDefault(True)	
     ui.pushButton_calculate.clicked.connect(on_pushButton_calculate_clicked)
+    ui.pushButton_quit.setAutoDefault(True)
     ui.pushButton_quit.clicked.connect(on_pushButton_quit_clicked)
     
     sys.exit(app.exec_())
