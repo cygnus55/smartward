@@ -157,5 +157,5 @@ class DaysCalc ():
                 d2=n+y2
                 #print(d1,d2)
                 #print('Test 5b completed')
-            return str(d2-d1+1)
+            return str(d2-d1)
 
