@@ -99,7 +99,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>Home</string>
+      <string>Birth</string>
      </property>
     </widget>
     <widget class="QPushButton" name="pushButton_intro">
@@ -112,7 +112,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>Introducion</string>
+      <string>Death</string>
      </property>
     </widget>
     <widget class="QPushButton" name="pushButton_2">
@@ -125,7 +125,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>PushButton</string>
+      <string>Marriage</string>
      </property>
     </widget>
     <widget class="QPushButton" name="pushButton_3">
@@ -138,7 +138,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>PushButton</string>
+      <string>Divorce</string>
      </property>
     </widget>
    </widget>
