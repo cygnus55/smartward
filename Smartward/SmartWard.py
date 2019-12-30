@@ -31,7 +31,6 @@ class Ui_MainWindow(object):
         self.back_from_userpage.setStyleSheet("border-radius:20px;\n""color:black;\n""background:red;\n""font-family:Consolas;\n""font-size:20px;\n""font-style:normal;\n""")
         self.back_from_userpage.setObjectName("back_from_userpage")
         self.back_from_userpage.setText("Back")
-        ###Signup function#####################################################
         self.back_from_userpage.setAutoDefault(True)
         self.back_from_userpage.clicked.connect(self.linkPageAccess)
         
@@ -108,8 +107,8 @@ class Ui_MainWindow(object):
         self.password_edit.setEchoMode(QtWidgets.QLineEdit.Password)
         self.statusbar.showMessage("© Smartward")
         
-    def exitwindow():
-        Mainwindow.close
+    def exitwindow(self):
+        Mainwindow.close()
 
     def show_password(self):
         self.password_edit.setEchoMode(QtWidgets.QLineEdit.Normal)
@@ -174,27 +173,22 @@ class Ui_MainWindow(object):
             self.sign_empty_error_label.setText("Username or password empty.")          
         else:            
             self.sign_empty_error_label.setText("")
-            if ((uname_login=="admin" and password_login=="admin") or (uname_login==usernamefromdb and password_login==passwordfromdb)):    
-                if (uname_login==usernamefromdb and password_login==passwordfromdb):
-                    if (uname_login=="admin" and password_login=="admin"):
-                        self.stackedWidget.setCurrentIndex(5)
-                        self.statusbar.showMessage("Logged In.(Admin):"+str(uname_login)+"                          "+"© Smartward")
-                        print('Logged in as Admin.:'+str(uname_login))
-                        MainWindow.setWindowTitle("SmartWard-Admin- Welcome "+str(uname_login))
-                        password_login=self.password_edit.setText("")
-                    else:
-                        self.stackedWidget.setCurrentIndex(3)
-                        self.statusbar.showMessage("Logged In.(User):"+str(uname_login)+"                          "+"© Smartward")
-                        print('Logged in as User.:'+str(uname_login))
-                        MainWindow.setWindowTitle("SmartWard-User- Welcome "+str(uname_login))
-                        password_login=self.password_edit.setText("")
-                        '''elif ((uname_login not in username)):
-                        self.sign_empty_error_label.setText("Not allowed.")
-                        self.password_edit.setEchoMode(QtWidgets.QLineEdit.Password)
-                        password_login=self.password_edit.setText("")'''
+            if (uname_login not in username):
+                self.sign_empty_error_label.setText("Not allowed.")
+                self.password_edit.setEchoMode(QtWidgets.QLineEdit.Password)
+                password_login=self.password_edit.setText("")              
+            elif (uname_login==usernamefromdb and password_login==passwordfromdb):
+                if (uname_login=="admin" and password_login=="admin"):
+                    self.stackedWidget.setCurrentIndex(5)
+                    self.statusbar.showMessage("Logged In.(Admin):"+str(uname_login)+"                          "+"© Smartward")
+                    print('Logged in as Admin.:'+str(uname_login))
+                    MainWindow.setWindowTitle("SmartWard-Admin- Welcome "+str(uname_login))
+                    password_login=self.password_edit.setText("")
                 else:
-                    self.sign_empty_error_label.setText("Not allowed.")
-                    self.password_edit.setEchoMode(QtWidgets.QLineEdit.Password)
+                    self.stackedWidget.setCurrentIndex(3)
+                    self.statusbar.showMessage("Logged In.(User):"+str(uname_login)+"                          "+"© Smartward")
+                    print('Logged in as User.:'+str(uname_login))
+                    MainWindow.setWindowTitle("SmartWard-User- Welcome "+str(uname_login))
                     password_login=self.password_edit.setText("")
             else:
                 self.sign_empty_error_label.setText("Not allowed.")
@@ -829,6 +823,7 @@ class Ui_MainWindow(object):
 "font-style:normal;\n"
 "")
         self.logout_from_adminpage.setObjectName("logout_from_adminpage")
+        self.logout_from_adminpage.setToolTip("Logout")
            ####logout from admin#############################################################
         self.logout_from_adminpage.setAutoDefault(True)
         self.logout_from_adminpage.clicked.connect(self.logout)
@@ -1004,6 +999,7 @@ class Ui_MainWindow(object):
         self.exit_from_linkpage.setText(_translate("MainWindow", "Exit"))
         self.continue_as_admin.setText(_translate("MainWindow", "Continue as admin"))
         self.continue_as_user.setText(_translate("MainWindow", "Continue as user"))
+        #self.back_from_userpage.setText(_translate("MainWindow", "Back"))
         
                
 
