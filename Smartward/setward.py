@@ -2,7 +2,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 import mysql.connector
 mydb=mysql.connector.connect(
     host="localhost",
-    username="user",
+    username="root",
     password="",
     database="smartward"
     )
