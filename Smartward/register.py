@@ -1,11 +1,6 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-import mysql.connector
-mydb=mysql.connector.connect(
-    host="localhost",
-    username="root",
-    password="",
-    database="smartward"    
-    )
+from dbconnect import database
+db=database("localhost","root","smartward")
 #mycursor=mydb.cursor()
 
 
@@ -14,13 +9,7 @@ class Ui_Dialog(object):
         name="Ward no. "+self.wada_name.text().strip()
         address=self.wada_address.text().title().strip()
         about=self.wada_info.toPlainText().strip()
-        mycursor=mydb.cursor()
-        sql="INSERT INTO wada(wada_name,wada_address,wada_info) VALUES (%s,%s,%s)"
-        val=(name,address,about)  
-        mycursor.execute(sql,val)        
-        mydb.commit()
-        print("Registration successful.")
-        mycursor.close()
+        db.insertintowadatable(name,address,about)
         
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
