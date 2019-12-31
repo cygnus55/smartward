@@ -1,0 +1,9 @@
+Week 1: 
+Tried to visit ward office to collect certain ideas for our project and also started finding out tools for our project in the presence of all the groupmenbers
+Week 2:
+Started learning basic classes and functions of python to get basic idea to use it in our project and identified PyQt as a tool for working on our project
+Week 3:
+Started creating some basic interfaces and simple mini projects(simple signup and login interface) in order to get familiar with the tools(PyQt)
+Week 4: 
+Learnt how to connect python with database using Xampp server and started designing the pages of our interface in presence of all the groupmembers 
+ 

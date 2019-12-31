@@ -4,6 +4,9 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from ui_signinwindow import *
+from dbconnect import *
+import mysql.connector
+#(for database connection)### connection=database("localhost","root","smartward")
 
 if __name__ == "__main__":
 	app = QtWidgets.QApplication(sys.argv)
@@ -68,5 +71,7 @@ if __name__ == "__main__":
 	ui.signup_2.clicked.connect(on_signup_2_clicked)
 	ui.forgetPassword.setAutoDefault(True)
 	ui.forgetPassword.clicked.connect(on_forgetPassword_clicked)
+	##
+	ui.login_password.returnPressed.connect(on_signin_clicked)
     
 	sys.exit(app.exec_())
