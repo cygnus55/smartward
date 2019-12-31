@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="pic">
     <file>sw_logo.png</file>
+    <file>browse.png</file>
   </qresource>
 </RCC>
