@@ -4,9 +4,6 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from ui_signinwindow import *
-from dbconnect import *
-import mysql.connector
-#(for database connection)### connection=database("localhost","root","smartward")
 
 if __name__ == "__main__":
 	app = QtWidgets.QApplication(sys.argv)
@@ -18,7 +15,7 @@ if __name__ == "__main__":
     
 	#definition of signinwindow functions
 	def on_signup_clicked():
-		print("signin clicked")
+		print("signup clicked")
 		"""
 		-get values from line edits
 		--check if all fields are filled(except logo)
@@ -30,9 +27,16 @@ if __name__ == "__main__":
 		--------create new table for that ward
 		---------send mail to client to give id and other info
 		"""
+	
+	def on_browse_clicked():
+		print("browse clicked")
+		"""
+		-set browse file for images
+		"""
+	
 	def on_signin_2_clicked():
 		#go to signinPage
-		ui.signStack.setCurrentIndex(1)
+		ui.signStack.setCurrentIndex(2)
 		
 	def on_signin_clicked():
 		print("signin clicked")
@@ -51,16 +55,34 @@ if __name__ == "__main__":
 		ui.signStack.setCurrentIndex(0)
 		
 	def on_forgetPassword_clicked():
-		print("forget password")
-		#left to work on
-		#not created any page for this function
+		#go to forget password page
+		ui.signStack.setCurrentIndex(1)
+		ui.forgetPasswordStack.setCurrentIndex(0)
     
+	def on_changePassword_clicked():
+		print("change password clicked")
+		"""
+		-connect to database
+		--replace old password with new one
+		"""
+    
+	def on_sendEmail_clicked():
+		print("send email clicked")
+		"""
+		-connect to database
+		--check if that email exists
+		---import gmail module
+		----send email to required ward
+		"""
+	
 	#set to sign up page
 	ui.signStack.setCurrentIndex(0)
      
 	#sign up page functions
 	ui.signup.setAutoDefault(True)
 	ui.signup.clicked.connect(on_signup_clicked)
+	ui.browse.setAutoDefault(True)
+	ui.browse.clicked.connect(on_browse_clicked)
 	ui.signin_2.setAutoDefault(True)
 	ui.signin_2.clicked.connect(on_signin_2_clicked)
     
@@ -71,7 +93,13 @@ if __name__ == "__main__":
 	ui.signup_2.clicked.connect(on_signup_2_clicked)
 	ui.forgetPassword.setAutoDefault(True)
 	ui.forgetPassword.clicked.connect(on_forgetPassword_clicked)
-	##
-	ui.login_password.returnPressed.connect(on_signin_clicked)
-    
+	
+	#forget password functions
+	ui.changePassword.setAutoDefault(True)
+	ui.changePassword.clicked.connect(on_changePassword_clicked)
+	ui.signin_3.setAutoDefault(True)
+	ui.signin_3.clicked.connect(on_signin_2_clicked)
+	ui.sendEmail.setAutoDefault(True)
+	ui.sendEmail.clicked.connect(on_sendEmail_clicked)
+	
 	sys.exit(app.exec_())
