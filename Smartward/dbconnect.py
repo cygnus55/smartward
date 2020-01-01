@@ -1,12 +1,15 @@
 import mysql.connector
 class database:
     def __init__(self,hostname,user,dbase,pword=""):
-        self.mydb=mysql.connector.connect(
-            host=hostname,
-            username=user,
-            password=pword,
-            database=dbase    
-            )
+        try:
+            self.mydb=mysql.connector.connect(
+                host=hostname,
+                username=user,
+                password=pword,
+                database=dbase    
+                )
+        except Exception as e:
+            print("Not connected to database.")
 
     def insertintowadatable(self,name,address,about):
         mycursor=self.mydb.cursor()
