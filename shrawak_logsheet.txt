@@ -19,5 +19,5 @@ Week 3
 	4.Learning python	
 Week 4
 	1.Learning Python
-	2.Connected database sucessfully in a small project on PyQt5 
+	2.Connected database sucessfully using XAMPP in a small project on PyQt5 
 	
