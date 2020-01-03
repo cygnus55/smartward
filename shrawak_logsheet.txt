@@ -1,0 +1,23 @@
+SmartWard
+Shrawak Bhattarai
+Log Sheet
+
+Week 1
+	1.Research on related works 
+	2.Tools for our project discussed and researched
+	3.Start of learning Python language
+	4.Learned basic about Github
+		
+Week 2
+	1.Field Visit to Ward No 4 of Dhulikhel municipality and got appointment for next week 
+	2.For FrontEnd we decided to use PyQt5
+	3.Learning Python	
+Week 3
+	1.Tested various tools
+	2.Mini projects to practice PyQt5 programming
+	3.Attempt to visit to the ward but couldn't meet Ward Chairman due to his field visit
+	4.Learning python	
+Week 4
+	1.Learning Python
+	2.Connected database sucessfully in a small project on PyQt5 
+	
