@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'signinwindow.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.2
+# Created by: PyQt5 UI code generator 5.13.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -57,7 +57,7 @@ class Ui_MainWindow(QWidget):
         self.municipality.setText("")
         self.municipality.setObjectName("municipality")
         self.address = QtWidgets.QLineEdit(self.signupPage)
-        self.address.setGeometry(QtCore.QRect(30, 110, 511, 31))
+        self.address.setGeometry(QtCore.QRect(30, 110, 351, 31))
         self.address.setStyleSheet("background:transparent")
         self.address.setObjectName("address")
         self.phoneNo = QtWidgets.QLineEdit(self.signupPage)
@@ -115,6 +115,9 @@ class Ui_MainWindow(QWidget):
 "color: rgb(223, 101, 21);\n"
 "    ")
         self.label_3.setObjectName("label_3")
+        self.state = QtWidgets.QLineEdit(self.signupPage)
+        self.state.setGeometry(QtCore.QRect(400, 110, 141, 31))
+        self.state.setObjectName("state")
         self.signStack.addWidget(self.signupPage)
         self.forgetPasswordPage = QtWidgets.QWidget()
         self.forgetPasswordPage.setObjectName("forgetPasswordPage")
@@ -124,59 +127,28 @@ class Ui_MainWindow(QWidget):
 "color: rgb(223, 101, 21);\n"
 "    ")
         self.label_2.setObjectName("label_2")
-        self.forgetPasswordStack = QtWidgets.QStackedWidget(self.forgetPasswordPage)
-        self.forgetPasswordStack.setGeometry(QtCore.QRect(10, 60, 551, 311))
-        self.forgetPasswordStack.setObjectName("forgetPasswordStack")
-        self.changePasswordPage = QtWidgets.QWidget()
-        self.changePasswordPage.setObjectName("changePasswordPage")
-        self.new_password = QtWidgets.QLineEdit(self.changePasswordPage)
-        self.new_password.setGeometry(QtCore.QRect(50, 60, 471, 41))
-        self.new_password.setStyleSheet("background:transparent;")
-        self.new_password.setEchoMode(QtWidgets.QLineEdit.Password)
-        self.new_password.setObjectName("new_password")
-        self.new_password_2 = QtWidgets.QLineEdit(self.changePasswordPage)
-        self.new_password_2.setGeometry(QtCore.QRect(50, 140, 471, 41))
-        self.new_password_2.setStyleSheet("background:transparent;")
-        self.new_password_2.setText("")
-        self.new_password_2.setEchoMode(QtWidgets.QLineEdit.Password)
-        self.new_password_2.setObjectName("new_password_2")
-        self.changePassword = QtWidgets.QPushButton(self.changePasswordPage)
-        self.changePassword.setGeometry(QtCore.QRect(190, 220, 171, 41))
-        self.changePassword.setStyleSheet("border: 2px solid #8f8f91;\n"
-"border-radius: 6px;\n"
-"background:blue;\n"
-"color:white;\n"
-"")
-        self.changePassword.setObjectName("changePassword")
-        self.forgetPasswordStack.addWidget(self.changePasswordPage)
-        self.emailPage = QtWidgets.QWidget()
-        self.emailPage.setObjectName("emailPage")
-        self.login_id_2 = QtWidgets.QLineEdit(self.emailPage)
-        self.login_id_2.setGeometry(QtCore.QRect(50, 130, 471, 41))
+        self.signin_3 = QtWidgets.QPushButton(self.forgetPasswordPage)
+        self.signin_3.setGeometry(QtCore.QRect(420, 390, 121, 25))
+        self.signin_3.setStyleSheet("border:none;")
+        self.signin_3.setObjectName("signin_3")
+        self.label = QtWidgets.QLabel(self.forgetPasswordPage)
+        self.label.setGeometry(QtCore.QRect(130, 70, 291, 61))
+        self.label.setStyleSheet("background:transparent;\n"
+"color: rgb(223, 101, 21);\n"
+"    ")
+        self.label.setObjectName("label")
+        self.login_id_2 = QtWidgets.QLineEdit(self.forgetPasswordPage)
+        self.login_id_2.setGeometry(QtCore.QRect(70, 160, 471, 41))
         self.login_id_2.setStyleSheet("background:transparent")
         self.login_id_2.setObjectName("login_id_2")
-        self.sendEmail = QtWidgets.QPushButton(self.emailPage)
-        self.sendEmail.setGeometry(QtCore.QRect(200, 210, 141, 41))
+        self.sendEmail = QtWidgets.QPushButton(self.forgetPasswordPage)
+        self.sendEmail.setGeometry(QtCore.QRect(230, 240, 141, 41))
         self.sendEmail.setStyleSheet("border: 2px solid #8f8f91;\n"
 "border-radius: 6px;\n"
 "background:blue;\n"
 "color:white;\n"
 "")
         self.sendEmail.setObjectName("sendEmail")
-        self.label = QtWidgets.QLabel(self.emailPage)
-        self.label.setGeometry(QtCore.QRect(50, 40, 401, 61))
-        self.label.setStyleSheet("background:transparent;\n"
-"color: rgb(223, 101, 21);\n"
-"    ")
-        self.label.setObjectName("label")
-        self.forgetPasswordStack.addWidget(self.emailPage)
-        self.signin_3 = QtWidgets.QPushButton(self.forgetPasswordPage)
-        self.signin_3.setGeometry(QtCore.QRect(420, 390, 121, 25))
-        self.signin_3.setStyleSheet("border:none;")
-        self.signin_3.setObjectName("signin_3")
-        self.forgetPasswordStack.raise_()
-        self.label_2.raise_()
-        self.signin_3.raise_()
         self.signStack.addWidget(self.forgetPasswordPage)
         self.signinPage = QtWidgets.QWidget()
         self.signinPage.setObjectName("signinPage")
@@ -218,15 +190,14 @@ class Ui_MainWindow(QWidget):
 
         self.retranslateUi(MainWindow)
         self.signStack.setCurrentIndex(1)
-        self.forgetPasswordStack.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Smartवडा"))
-        self.municipality.setPlaceholderText(_translate("MainWindow", "Municipality/VDC"))
+        self.municipality.setPlaceholderText(_translate("MainWindow", "(Rural) Municipality/(Sub) Metropolitan City"))
         self.address.setPlaceholderText(_translate("MainWindow", "Address"))
-        self.phoneNo.setPlaceholderText(_translate("MainWindow", "Phone No,"))
+        self.phoneNo.setPlaceholderText(_translate("MainWindow", "Phone No"))
         self.email.setPlaceholderText(_translate("MainWindow", "E-mail ID"))
         self.wardno.setPlaceholderText(_translate("MainWindow", "Ward No."))
         self.mun_logo.setPlaceholderText(_translate("MainWindow", "Municipality/VDC Logo"))
@@ -235,15 +206,13 @@ class Ui_MainWindow(QWidget):
         self.signup.setText(_translate("MainWindow", "Sign Up"))
         self.signin_2.setText(_translate("MainWindow", "Already have account,Sign In Instead"))
         self.label_3.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:12pt; font-weight:600;\">REGISTER NEW WARD</span></p></body></html>"))
+        self.state.setPlaceholderText(_translate("MainWindow", "State"))
         self.label_2.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:12pt; font-weight:600;\">FORGOTTEN YOUR PASSWORD</span></p></body></html>"))
-        self.new_password.setPlaceholderText(_translate("MainWindow", "New Password"))
-        self.new_password_2.setPlaceholderText(_translate("MainWindow", "Confirm New Password"))
-        self.changePassword.setText(_translate("MainWindow", "Change Password"))
+        self.signin_3.setText(_translate("MainWindow", "Sign In Instead"))
+        self.label.setText(_translate("MainWindow", "We would send email to your account to \n"
+"give your login details."))
         self.login_id_2.setPlaceholderText(_translate("MainWindow", "Enter email id for your account"))
         self.sendEmail.setText(_translate("MainWindow", "Send E-mail"))
-        self.label.setText(_translate("MainWindow", "We would send email to your account to authenicate you.\n"
-"Please do as you are said."))
-        self.signin_3.setText(_translate("MainWindow", "Sign In Instead"))
         self.login_id.setPlaceholderText(_translate("MainWindow", "Id or Gmail"))
         self.login_password.setPlaceholderText(_translate("MainWindow", "Password"))
         self.signin.setText(_translate("MainWindow", "Sign In"))

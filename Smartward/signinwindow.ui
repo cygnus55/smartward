@@ -129,7 +129,7 @@ background:transparent;
         <string/>
        </property>
        <property name="placeholderText">
-        <string>Municipality/VDC</string>
+        <string>(Rural) Municipality/(Sub) Metropolitan City</string>
        </property>
       </widget>
       <widget class="QLineEdit" name="address">
@@ -137,7 +137,7 @@ background:transparent;
         <rect>
          <x>30</x>
          <y>110</y>
-         <width>511</width>
+         <width>351</width>
          <height>31</height>
         </rect>
        </property>
@@ -164,7 +164,7 @@ background:transparent;
         <string/>
        </property>
        <property name="placeholderText">
-        <string>Phone No,</string>
+        <string>Phone No</string>
        </property>
       </widget>
       <widget class="QLineEdit" name="email">
@@ -330,6 +330,19 @@ color: rgb(223, 101, 21);
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;REGISTER NEW WARD&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
+      <widget class="QLineEdit" name="state">
+       <property name="geometry">
+        <rect>
+         <x>400</x>
+         <y>110</y>
+         <width>141</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="placeholderText">
+        <string>State</string>
+       </property>
+      </widget>
      </widget>
      <widget class="QWidget" name="forgetPasswordPage">
       <widget class="QLabel" name="label_2">
@@ -350,139 +363,6 @@ color: rgb(223, 101, 21);
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;FORGOTTEN YOUR PASSWORD&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
-      <widget class="QStackedWidget" name="forgetPasswordStack">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>60</y>
-         <width>551</width>
-         <height>311</height>
-        </rect>
-       </property>
-       <property name="currentIndex">
-        <number>0</number>
-       </property>
-       <widget class="QWidget" name="changePasswordPage">
-        <widget class="QLineEdit" name="new_password">
-         <property name="geometry">
-          <rect>
-           <x>50</x>
-           <y>60</y>
-           <width>471</width>
-           <height>41</height>
-          </rect>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background:transparent;</string>
-         </property>
-         <property name="echoMode">
-          <enum>QLineEdit::Password</enum>
-         </property>
-         <property name="placeholderText">
-          <string>New Password</string>
-         </property>
-        </widget>
-        <widget class="QLineEdit" name="new_password_2">
-         <property name="geometry">
-          <rect>
-           <x>50</x>
-           <y>140</y>
-           <width>471</width>
-           <height>41</height>
-          </rect>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background:transparent;</string>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="echoMode">
-          <enum>QLineEdit::Password</enum>
-         </property>
-         <property name="placeholderText">
-          <string>Confirm New Password</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="changePassword">
-         <property name="geometry">
-          <rect>
-           <x>190</x>
-           <y>220</y>
-           <width>171</width>
-           <height>41</height>
-          </rect>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">border: 2px solid #8f8f91;
-border-radius: 6px;
-background:blue;
-color:white;
-</string>
-         </property>
-         <property name="text">
-          <string>Change Password</string>
-         </property>
-        </widget>
-       </widget>
-       <widget class="QWidget" name="emailPage">
-        <widget class="QLineEdit" name="login_id_2">
-         <property name="geometry">
-          <rect>
-           <x>50</x>
-           <y>130</y>
-           <width>471</width>
-           <height>41</height>
-          </rect>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background:transparent</string>
-         </property>
-         <property name="placeholderText">
-          <string>Enter email id for your account</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="sendEmail">
-         <property name="geometry">
-          <rect>
-           <x>200</x>
-           <y>210</y>
-           <width>141</width>
-           <height>41</height>
-          </rect>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">border: 2px solid #8f8f91;
-border-radius: 6px;
-background:blue;
-color:white;
-</string>
-         </property>
-         <property name="text">
-          <string>Send E-mail</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label">
-         <property name="geometry">
-          <rect>
-           <x>50</x>
-           <y>40</y>
-           <width>401</width>
-           <height>61</height>
-          </rect>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background:transparent;
-color: rgb(223, 101, 21);
-    </string>
-         </property>
-         <property name="text">
-          <string>We would send email to your account to authenicate you.
-Please do as you are said.</string>
-         </property>
-        </widget>
-       </widget>
-      </widget>
       <widget class="QPushButton" name="signin_3">
        <property name="geometry">
         <rect>
@@ -499,9 +379,61 @@ Please do as you are said.</string>
         <string>Sign In Instead</string>
        </property>
       </widget>
-      <zorder>forgetPasswordStack</zorder>
-      <zorder>label_2</zorder>
-      <zorder>signin_3</zorder>
+      <widget class="QLabel" name="label">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>70</y>
+         <width>291</width>
+         <height>61</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background:transparent;
+color: rgb(223, 101, 21);
+    </string>
+       </property>
+       <property name="text">
+        <string>We would send email to your account to 
+give your login details.</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="login_id_2">
+       <property name="geometry">
+        <rect>
+         <x>70</x>
+         <y>160</y>
+         <width>471</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background:transparent</string>
+       </property>
+       <property name="placeholderText">
+        <string>Enter email id for your account</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="sendEmail">
+       <property name="geometry">
+        <rect>
+         <x>230</x>
+         <y>240</y>
+         <width>141</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border: 2px solid #8f8f91;
+border-radius: 6px;
+background:blue;
+color:white;
+</string>
+       </property>
+       <property name="text">
+        <string>Send E-mail</string>
+       </property>
+      </widget>
      </widget>
      <widget class="QWidget" name="signinPage">
       <widget class="QLineEdit" name="login_id">
