@@ -1,10 +1,17 @@
 import re
+import socket
 import sys
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
+from PyQt5.QtSql import *
 from ui_signinwindow import *
-from string import *
+from sw_string import *
+from dbconnect import *
+from swgmail import *
+
+db=database_signinwindow("localhost","root","smartward")
+mygmail=SWGmail()
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
@@ -20,9 +27,10 @@ if __name__ == "__main__":
     def on_signup_clicked():
         print("signup clicked")
         #get valuse from line edits
-        municipality=ui.municipality.text()
+        municipality=ui.municipality.text().title()
         wardno=ui.wardno.text()
-        address=ui.address.text()
+        address=ui.address.text().title()
+        state=ui.state.text()
         phone=ui.phoneNo.text()
         email=ui.email.text()
         mun_logo=ui.mun_logo.text()
@@ -31,18 +39,23 @@ if __name__ == "__main__":
 
         #check if all fields are filled
         if(isEmpty(municipality,wardno,address,phone,email,password,confirmpassword)):
-            QMessageBox.warning(ui,"Sign Up","All fields are not filled")
+            QMessageBox.warning(ui,"SignUp Failed","All fields are not filled!")
+        elif(not(password == confirmpassword)):
+            QMessageBox.warning(ui,"Password Confirmation Invalid","Password doesnot match!")
         else:
-            """
-            -connect to database
-            --check municipality and ward no.(if resemble to any other values)
-            ---check email (if resemble)
-            ----get system ip address
-            -----store to ward_info table
-            ------create new table for that ward
-            -------send mail to client to give id and other info
-            """
-
+            db.createWardTable()
+            if(not db.checkValid(municipality,wardno)):
+                QMessageBox.information(ui,"SignUp Failed","Ward Office already Registered!")
+            else:
+                if(not db.checkEmailValid(email)):
+                    QMessageBox.information(ui,"Signup Failed","Email Already in Use.Try another email.")
+                else:
+                    id=generateID(municipality.lower(),wardno,state)
+                    print(id)
+                    ip = socket.gethostbyname(socket.gethostname())
+                    if(db.InsertIntoward_registrationTable(id,municipality,wardno,state,address,phone,email,"****",mun_logo,password)):
+                        mygmail.sendRegistrationSuccessfulMail(id,municipality,wardno,state,address,phone,email,ip,password)
+                        QMessageBox.information(ui,"Registration Sucessful","We have sent mail to your email account.\nCheck the mail for login details.")
 
     def on_browse_clicked():
         print("browse clicked")
@@ -56,13 +69,24 @@ if __name__ == "__main__":
 
 
     def on_signin_clicked():
-        print("signin clicked")
         #get id or email and password from line edits
         login_id=ui.login_id.text()
         login_password=ui.login_password.text()
         if (isEmpty(login_id,login_password)):
-            QMessageBox.warning(ui,"Login Unsucessful","Email or Password is Missing!")
+            QMessageBox.warning(ui,"Login Unsucessful","Login ID or Password is Missing!")
         else:
+            ip,email,id=db.checkLoginValidity(login_id,login_password)
+            print(ip,email,id)
+            if(ip=="invalid" and email=="" and id==""):
+                QMessageBox.warning(ui,"Login Unsucessful","Login ID or Password Invalid")
+            else:
+                ip_add = socket.gethostbyname(socket.gethostname())
+                if not(ip==ip_add):
+                    db.updateIP(login_id,ip_add)
+                mygmail.sendLoginMail(email,ip)
+                #goto smartward main window
+
+
             """
             get id or email and password from line edits
             --connect to database
@@ -82,19 +106,18 @@ if __name__ == "__main__":
     def on_forgetPassword_clicked():
         # go to forget password page
         ui.signStack.setCurrentIndex(1)
-        ui.forgetPasswordStack.setCurrentIndex(0)
-
-
-    def on_changePassword_clicked():
-        print("change password clicked")
-        """
-        -connect to database
-        --replace old password with new one
-        """
 
 
     def on_sendEmail_clicked():
         print("send email clicked")
+        gmail=ui.login_id_2.text()
+        login_details = db.checkEmailValidity(gmail)
+        if not(login_details):
+            QMessageBox.warning(ui,"Forget Password","Invalid Email Id")
+        else:
+            id,email,pswd=login_details[0][0],login_details[0][6],login_details[0][-1]
+            mygmail.sendForgetPasswordMail(id,email,pswd)
+            QMessageBox.information(ui,"Forget Password","Email has been sent to you\nwith your login details")
         """
         -connect to database
         --check if that email exists
@@ -123,8 +146,6 @@ if __name__ == "__main__":
     ui.forgetPassword.clicked.connect(on_forgetPassword_clicked)
 
     # forget password functions
-    ui.changePassword.setAutoDefault(True)
-    ui.changePassword.clicked.connect(on_changePassword_clicked)
     ui.signin_3.setAutoDefault(True)
     ui.signin_3.clicked.connect(on_signin_2_clicked)
     ui.sendEmail.setAutoDefault(True)
