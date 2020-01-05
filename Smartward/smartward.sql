@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 05, 2020 at 02:39 AM
+-- Generation Time: Jan 05, 2020 at 02:46 AM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.3.12
 
@@ -46,6 +46,7 @@ CREATE TABLE `ward_registration` (
 --
 
 INSERT INTO `ward_registration` (`ID`, `Municipality`, `WardNo`, `State`, `Address`, `Phone`, `Email`, `IP_Address`, `LogoPath`, `Password`) VALUES
+('03koshirural04', 'Koshi Rural Municipality', '04', '03', 'Mangaltar', '3278326', 'pshreyam@gmail.com', '****', '', '54321'),
 ('03namobuddha04', 'Namobuddha Municipality', '04', '03', 'Khanalthok', '01231238', 'ch.ramraj35@gmail.com', '127.0.1.1', '', '123');
 
 --
