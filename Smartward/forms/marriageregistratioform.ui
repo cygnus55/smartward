@@ -233,10 +233,10 @@
           <item row="4" column="1">
            <layout class="QHBoxLayout" name="horizontalLayout_7">
             <item>
-             <widget class="QLineEdit" name="lineEdit_8"/>
+             <widget class="QDateEdit" name="dateEdit_4"/>
             </item>
             <item>
-             <widget class="QLineEdit" name="lineEdit_7"/>
+             <widget class="QDateEdit" name="dateEdit_3"/>
             </item>
            </layout>
           </item>
@@ -481,10 +481,10 @@
           <item row="19" column="1">
            <layout class="QHBoxLayout" name="horizontalLayout_32">
             <item>
-             <widget class="QLineEdit" name="lineEdit_36"/>
+             <widget class="QDateEdit" name="dateEdit_6"/>
             </item>
             <item>
-             <widget class="QLineEdit" name="lineEdit_35"/>
+             <widget class="QDateEdit" name="dateEdit_5"/>
             </item>
            </layout>
           </item>
