@@ -1,0 +1,642 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>824</width>
+    <height>812</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Divorce Registration</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QScrollArea" name="scrollArea">
+      <property name="widgetResizable">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="scrollAreaWidgetContents">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>-485</y>
+         <width>779</width>
+         <height>1273</height>
+        </rect>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_2">
+        <item row="0" column="0">
+         <widget class="QLabel" name="label">
+          <property name="text">
+           <string>Details Regarding The Separation</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="label_2">
+          <property name="text">
+           <string>Details Of Wife And Husband</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="0">
+         <layout class="QFormLayout" name="formLayout_2">
+          <item row="0" column="0">
+           <widget class="QLabel" name="Label">
+            <property name="text">
+             <string>.....</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_2">
+            <item>
+             <widget class="QLabel" name="label_4">
+              <property name="text">
+               <string>Husband Details</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_3">
+              <property name="text">
+               <string>Wife Details</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="nameLabel">
+            <property name="text">
+             <string>Name</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_3">
+            <item>
+             <widget class="QLineEdit" name="lineEdit_2"/>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="lineEdit"/>
+            </item>
+           </layout>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="lastnameLabel">
+            <property name="text">
+             <string>Lastname</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_4">
+            <item>
+             <widget class="QLineEdit" name="lineEdit_4"/>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="lineEdit_3"/>
+            </item>
+           </layout>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="fullNameLabel">
+            <property name="text">
+             <string>Full Name</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_5">
+            <item>
+             <widget class="QLineEdit" name="lineEdit_6"/>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="lineEdit_5"/>
+            </item>
+           </layout>
+          </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="dateOfBirthLabel">
+            <property name="text">
+             <string>Date Of Birth</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_6">
+            <item>
+             <widget class="QDateEdit" name="dateEdit_2"/>
+            </item>
+            <item>
+             <widget class="QDateEdit" name="dateEdit"/>
+            </item>
+           </layout>
+          </item>
+          <item row="5" column="0">
+           <widget class="QLabel" name="birthRegistrationNoLabel">
+            <property name="text">
+             <string>Birth Registration No</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_7">
+            <item>
+             <widget class="QLineEdit" name="lineEdit_8"/>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="lineEdit_7"/>
+            </item>
+           </layout>
+          </item>
+          <item row="6" column="0">
+           <widget class="QLabel" name="casteLabel">
+            <property name="text">
+             <string>Caste</string>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_8">
+            <item>
+             <widget class="QLineEdit" name="lineEdit_10"/>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="lineEdit_9"/>
+            </item>
+           </layout>
+          </item>
+          <item row="7" column="0">
+           <widget class="QLabel" name="countryWhereBornLabel">
+            <property name="text">
+             <string>Country Where Born</string>
+            </property>
+           </widget>
+          </item>
+          <item row="7" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_9">
+            <item>
+             <widget class="QLineEdit" name="lineEdit_12"/>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="lineEdit_11"/>
+            </item>
+           </layout>
+          </item>
+          <item row="8" column="0">
+           <widget class="QLabel" name="citizenshipNoLabel">
+            <property name="text">
+             <string>Citizenship No(if have)</string>
+            </property>
+           </widget>
+          </item>
+          <item row="8" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_10">
+            <item>
+             <widget class="QLineEdit" name="lineEdit_14"/>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="lineEdit_13"/>
+            </item>
+           </layout>
+          </item>
+          <item row="9" column="0">
+           <widget class="QLabel" name="issueDistrictLabel">
+            <property name="text">
+             <string>Issue District</string>
+            </property>
+           </widget>
+          </item>
+          <item row="9" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_11">
+            <item>
+             <widget class="QLineEdit" name="lineEdit_16"/>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="lineEdit_15"/>
+            </item>
+           </layout>
+          </item>
+          <item row="10" column="0">
+           <widget class="QLabel" name="issueDateLabel">
+            <property name="text">
+             <string>Issue Date</string>
+            </property>
+           </widget>
+          </item>
+          <item row="10" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_12">
+            <item>
+             <widget class="QDateEdit" name="dateEdit_4"/>
+            </item>
+            <item>
+             <widget class="QDateEdit" name="dateEdit_3"/>
+            </item>
+           </layout>
+          </item>
+          <item row="11" column="0">
+           <widget class="QLabel" name="passportNoIfFireignLabel">
+            <property name="text">
+             <string>Passport No(if Fireign)</string>
+            </property>
+           </widget>
+          </item>
+          <item row="11" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_13">
+            <item>
+             <widget class="QLineEdit" name="lineEdit_18"/>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="lineEdit_17"/>
+            </item>
+           </layout>
+          </item>
+          <item row="12" column="0">
+           <widget class="QLabel" name="issueDateLabel_2">
+            <property name="text">
+             <string>Issue Date</string>
+            </property>
+           </widget>
+          </item>
+          <item row="12" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_16">
+            <item>
+             <widget class="QDateEdit" name="dateEdit_8"/>
+            </item>
+            <item>
+             <widget class="QDateEdit" name="dateEdit_7"/>
+            </item>
+           </layout>
+          </item>
+          <item row="13" column="0">
+           <widget class="QLabel" name="adressBeforeRelationSeparationLabel">
+            <property name="text">
+             <string>Adress Before Relation Separation</string>
+            </property>
+           </widget>
+          </item>
+          <item row="14" column="0">
+           <widget class="QLabel" name="districtLabel_2">
+            <property name="text">
+             <string>District</string>
+            </property>
+           </widget>
+          </item>
+          <item row="14" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_17">
+            <item>
+             <widget class="QLineEdit" name="lineEdit_20"/>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="lineEdit_19"/>
+            </item>
+           </layout>
+          </item>
+          <item row="15" column="0">
+           <widget class="QLabel" name="municipalityLabel">
+            <property name="text">
+             <string>Municipality/Vdc</string>
+            </property>
+           </widget>
+          </item>
+          <item row="15" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_15">
+            <item>
+             <widget class="QLineEdit" name="lineEdit_21"/>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="lineEdit_22"/>
+            </item>
+           </layout>
+          </item>
+          <item row="16" column="0">
+           <widget class="QLabel" name="wardNoLabel">
+            <property name="text">
+             <string>Ward No</string>
+            </property>
+           </widget>
+          </item>
+          <item row="16" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_18">
+            <item>
+             <widget class="QLineEdit" name="lineEdit_24"/>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="lineEdit_23"/>
+            </item>
+           </layout>
+          </item>
+          <item row="17" column="0">
+           <widget class="QLabel" name="roadLabel">
+            <property name="text">
+             <string>Road/Street</string>
+            </property>
+           </widget>
+          </item>
+          <item row="17" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_19">
+            <item>
+             <widget class="QLineEdit" name="lineEdit_26"/>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="lineEdit_25"/>
+            </item>
+           </layout>
+          </item>
+          <item row="18" column="0">
+           <widget class="QLabel" name="villageCommunityLabel">
+            <property name="text">
+             <string>Village/Community</string>
+            </property>
+           </widget>
+          </item>
+          <item row="18" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_20">
+            <item>
+             <widget class="QLineEdit" name="lineEdit_28"/>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="lineEdit_27"/>
+            </item>
+           </layout>
+          </item>
+          <item row="19" column="0">
+           <widget class="QLabel" name="houseNoLabel">
+            <property name="text">
+             <string>House No</string>
+            </property>
+           </widget>
+          </item>
+          <item row="19" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_21">
+            <item>
+             <widget class="QLineEdit" name="lineEdit_30"/>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="lineEdit_29"/>
+            </item>
+           </layout>
+          </item>
+          <item row="20" column="0">
+           <widget class="QLabel" name="qualificationLabel">
+            <property name="text">
+             <string>Qualification</string>
+            </property>
+           </widget>
+          </item>
+          <item row="20" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_22">
+            <item>
+             <widget class="QLineEdit" name="lineEdit_33"/>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="lineEdit_31"/>
+            </item>
+           </layout>
+          </item>
+          <item row="21" column="0">
+           <widget class="QLabel" name="religionLabel">
+            <property name="text">
+             <string>Religion</string>
+            </property>
+           </widget>
+          </item>
+          <item row="21" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_23">
+            <item>
+             <widget class="QLineEdit" name="lineEdit_34"/>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="lineEdit_32"/>
+            </item>
+           </layout>
+          </item>
+          <item row="22" column="0">
+           <widget class="QLabel" name="motherTongueLabel">
+            <property name="text">
+             <string>Mother Tongue</string>
+            </property>
+           </widget>
+          </item>
+          <item row="22" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_24">
+            <item>
+             <widget class="QLineEdit" name="lineEdit_36"/>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="lineEdit_35"/>
+            </item>
+           </layout>
+          </item>
+          <item row="23" column="0">
+           <widget class="QLabel" name="grandFatherNameLabel">
+            <property name="text">
+             <string>Grandfather name</string>
+            </property>
+           </widget>
+          </item>
+          <item row="23" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_25">
+            <item>
+             <widget class="QLineEdit" name="lineEdit_38"/>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="lineEdit_37"/>
+            </item>
+           </layout>
+          </item>
+          <item row="24" column="0">
+           <widget class="QLabel" name="fatherNameLabel">
+            <property name="text">
+             <string>Father Name</string>
+            </property>
+           </widget>
+          </item>
+          <item row="24" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_26">
+            <item>
+             <widget class="QLineEdit" name="lineEdit_40"/>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="lineEdit_39"/>
+            </item>
+           </layout>
+          </item>
+          <item row="25" column="0">
+           <widget class="QLabel" name="motherNameLabel">
+            <property name="text">
+             <string>Mother Name</string>
+            </property>
+           </widget>
+          </item>
+          <item row="25" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_27">
+            <item>
+             <widget class="QLineEdit" name="lineEdit_42"/>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="lineEdit_41"/>
+            </item>
+           </layout>
+          </item>
+          <item row="26" column="0">
+           <widget class="QLabel" name="marriageDateLabel">
+            <property name="text">
+             <string>Marriage Date</string>
+            </property>
+           </widget>
+          </item>
+          <item row="27" column="0">
+           <widget class="QLabel" name="numberOfChildrenLabel">
+            <property name="text">
+             <string>Number of children</string>
+            </property>
+           </widget>
+          </item>
+          <item row="27" column="1">
+           <widget class="QLineEdit" name="numberOfChildrenLineEdit"/>
+          </item>
+          <item row="28" column="0">
+           <widget class="QLabel" name="totalAliveChildrenLabel">
+            <property name="text">
+             <string>Total Alive children</string>
+            </property>
+           </widget>
+          </item>
+          <item row="28" column="1">
+           <widget class="QLineEdit" name="totalAliveChildrenLineEdit"/>
+          </item>
+          <item row="29" column="0">
+           <widget class="QLabel" name="numberOfChildrenLabel_2">
+            <property name="text">
+             <string>Number Of children with parent</string>
+            </property>
+           </widget>
+          </item>
+          <item row="30" column="0">
+           <widget class="QLabel" name="sonLabel">
+            <property name="text">
+             <string>Son</string>
+            </property>
+           </widget>
+          </item>
+          <item row="31" column="0">
+           <widget class="QLabel" name="daughterLabel">
+            <property name="text">
+             <string>Daughter</string>
+            </property>
+           </widget>
+          </item>
+          <item row="32" column="0">
+           <widget class="QLabel" name="numberOfChildrenLivingWithOtherLabel">
+            <property name="text">
+             <string>Number of children living with other</string>
+            </property>
+           </widget>
+          </item>
+          <item row="32" column="1">
+           <widget class="QLineEdit" name="numberOfChildrenLivingWithOtherLineEdit"/>
+          </item>
+          <item row="26" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_28">
+            <item>
+             <widget class="QDateEdit" name="dateEdit_6"/>
+            </item>
+            <item>
+             <widget class="QDateEdit" name="dateEdit_5"/>
+            </item>
+           </layout>
+          </item>
+          <item row="30" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_30">
+            <item>
+             <widget class="QLineEdit" name="lineEdit_46"/>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="lineEdit_45"/>
+            </item>
+           </layout>
+          </item>
+          <item row="31" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_31">
+            <item>
+             <widget class="QLineEdit" name="lineEdit_44"/>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="lineEdit_43"/>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+        <item row="1" column="0">
+         <layout class="QFormLayout" name="formLayout">
+          <item row="0" column="0">
+           <widget class="QLabel" name="TypeOfCourtLabel">
+            <property name="text">
+             <string>The type of court that decides separation</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QComboBox" name="TypeOfCourtLineEdit"/>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="districtLabel">
+            <property name="text">
+             <string>District</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLineEdit" name="districtLineEdit"/>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="courtDecisionNumberLabel">
+            <property name="text">
+             <string>Court decision number</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QLineEdit" name="courtDecisionNumberLineEdit"/>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="courtDecisionDateLabel">
+            <property name="text">
+             <string>Court decision date</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QDateEdit" name="courtDecisionDateDateEdit"/>
+          </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="marriageRegistrationNumberLabel">
+            <property name="text">
+             <string>Marriage Registration number</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QLineEdit" name="marriageRegistrationNumberLineEdit"/>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
