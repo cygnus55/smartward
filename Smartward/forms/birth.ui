@@ -26,119 +26,11 @@
          <x>0</x>
          <y>0</y>
          <width>843</width>
-         <height>1159</height>
+         <height>1258</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_2">
-        <item row="0" column="0">
-         <layout class="QFormLayout" name="formLayout">
-          <item row="0" column="0">
-           <widget class="QLabel" name="nameLabel">
-            <property name="text">
-             <string>Name</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1">
-           <widget class="QLineEdit" name="nameLineEdit"/>
-          </item>
-          <item row="1" column="0">
-           <widget class="QLabel" name="dateOfBirthLabel">
-            <property name="text">
-             <string>Date of birth</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1">
-           <widget class="QDateEdit" name="dateOfBirthDateEdit"/>
-          </item>
-          <item row="2" column="0">
-           <widget class="QLabel" name="placeOfBirthLabel">
-            <property name="text">
-             <string>Place Of Birth</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="1">
-           <widget class="QComboBox" name="placeOfBirthComboBox"/>
-          </item>
-          <item row="3" column="0">
-           <widget class="QLabel" name="genderLabel">
-            <property name="text">
-             <string>Gender</string>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="1">
-           <widget class="QComboBox" name="genderComboBox"/>
-          </item>
-          <item row="4" column="0">
-           <widget class="QLabel" name="casteLabel">
-            <property name="text">
-             <string>caste</string>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="1">
-           <widget class="QLineEdit" name="casteLineEdit"/>
-          </item>
-          <item row="5" column="0">
-           <widget class="QLabel" name="birthTypeLabel">
-            <property name="text">
-             <string>Birth Type</string>
-            </property>
-           </widget>
-          </item>
-          <item row="5" column="1">
-           <widget class="QComboBox" name="birthTypeComboBox"/>
-          </item>
-          <item row="6" column="0">
-           <widget class="QLabel" name="physicalDisabledLabel">
-            <property name="text">
-             <string>Physical Disabled(if any)</string>
-            </property>
-           </widget>
-          </item>
-          <item row="6" column="1">
-           <widget class="QLineEdit" name="physicalDisabledLineEdit"/>
-          </item>
-          <item row="7" column="0" colspan="2">
-           <layout class="QFormLayout" name="formLayout_2">
-            <item row="0" column="0">
-             <widget class="QLabel" name="districtLabel">
-              <property name="text">
-               <string>District</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="1">
-             <widget class="QLineEdit" name="districtLineEdit"/>
-            </item>
-            <item row="1" column="0">
-             <widget class="QLabel" name="MunicipalityLabel">
-              <property name="text">
-               <string>Rural Municipality/Municipality</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="1">
-             <widget class="QLineEdit" name="MunicipalityLineEdit"/>
-            </item>
-            <item row="2" column="0">
-             <widget class="QLabel" name="wardNoLabel">
-              <property name="text">
-               <string>Ward no</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="1">
-             <widget class="QLineEdit" name="wardNoLineEdit"/>
-            </item>
-           </layout>
-          </item>
-         </layout>
-        </item>
-        <item row="2" column="0">
+        <item row="4" column="0">
          <layout class="QFormLayout" name="formLayout_5">
           <item row="0" column="0">
            <widget class="QLabel" name="grandFatherLabel">
@@ -152,21 +44,24 @@
           </item>
          </layout>
         </item>
-        <item row="1" column="0">
-         <layout class="QFormLayout" name="formLayout_4">
-          <item row="0" column="0">
-           <widget class="QLabel" name="countryLabel_2">
-            <property name="text">
-             <string>country</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1">
-           <widget class="QLineEdit" name="countryLineEdit_2"/>
-          </item>
-         </layout>
+        <item row="2" column="0">
+         <layout class="QFormLayout" name="formLayout_4"/>
         </item>
         <item row="3" column="0">
+         <widget class="QLabel" name="label_7">
+          <property name="text">
+           <string>Grandfather Details</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_5">
+          <property name="text">
+           <string>Details Of Newly Born</string>
+          </property>
+         </widget>
+        </item>
+        <item row="6" column="0">
          <layout class="QFormLayout" name="formLayout_6">
           <item row="0" column="0">
            <widget class="QLabel" name="label">
@@ -554,6 +449,138 @@
            </layout>
           </item>
          </layout>
+        </item>
+        <item row="1" column="0">
+         <layout class="QFormLayout" name="formLayout">
+          <item row="0" column="0">
+           <widget class="QLabel" name="nameLabel">
+            <property name="text">
+             <string>Name</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLineEdit" name="nameLineEdit"/>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="dateOfBirthLabel">
+            <property name="text">
+             <string>Date of birth</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QDateEdit" name="dateOfBirthDateEdit"/>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="placeOfBirthLabel">
+            <property name="text">
+             <string>Place Of Birth</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QComboBox" name="placeOfBirthComboBox"/>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="genderLabel">
+            <property name="text">
+             <string>Gender</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QComboBox" name="genderComboBox"/>
+          </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="casteLabel">
+            <property name="text">
+             <string>caste</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QLineEdit" name="casteLineEdit"/>
+          </item>
+          <item row="5" column="0">
+           <widget class="QLabel" name="birthTypeLabel">
+            <property name="text">
+             <string>Birth Type</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="1">
+           <widget class="QComboBox" name="birthTypeComboBox"/>
+          </item>
+          <item row="6" column="0">
+           <widget class="QLabel" name="physicalDisabledLabel">
+            <property name="text">
+             <string>Physical Disabled(if any)</string>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="1">
+           <widget class="QLineEdit" name="physicalDisabledLineEdit"/>
+          </item>
+          <item row="7" column="0" colspan="2">
+           <layout class="QFormLayout" name="formLayout_2">
+            <item row="0" column="0">
+             <widget class="QLabel" name="label_6">
+              <property name="text">
+               <string>Adress Of Newly Born</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="districtLabel">
+              <property name="text">
+               <string>District</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QLineEdit" name="districtLineEdit"/>
+            </item>
+            <item row="2" column="0">
+             <widget class="QLabel" name="MunicipalityLabel">
+              <property name="text">
+               <string>Rural Municipality/Municipality</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="1">
+             <widget class="QLineEdit" name="MunicipalityLineEdit"/>
+            </item>
+            <item row="3" column="0">
+             <widget class="QLabel" name="wardNoLabel">
+              <property name="text">
+               <string>Ward no</string>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="1">
+             <widget class="QLineEdit" name="wardNoLineEdit"/>
+            </item>
+            <item row="4" column="0">
+             <widget class="QLabel" name="countryIfBornInForeignLabel">
+              <property name="text">
+               <string>Country(if born in foreign)</string>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="1">
+             <widget class="QLineEdit" name="countryIfBornInForeignLineEdit"/>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+        <item row="5" column="0">
+         <widget class="QLabel" name="label_8">
+          <property name="text">
+           <string>Details of newly born parent</string>
+          </property>
+         </widget>
         </item>
        </layout>
       </widget>
