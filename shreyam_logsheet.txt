@@ -18,4 +18,6 @@ Week 4:
 
 Learnt how to connect python with database using Xampp server and started designing the pages of our interface in presence of all the groupmembers 
 Went through modules like ezgmail,matplotlib,googletrans and webbrowser that may aid in our project
- 
+
+Week 5:
+

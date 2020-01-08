@@ -1,6 +1,7 @@
 def isEmpty(*strings):
     for s in strings:
-        if (s=="") or (s==" "):
+        s=s.strip()
+        if (s==""):
             return True
         
 def generateID(municipality,wardno,state):
