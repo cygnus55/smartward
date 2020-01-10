@@ -1,23 +1,29 @@
 import mysql.connector
 from PyQt5 import QtCore, QtGui, QtWidgets
-from datetime import datetime
-mydb = mysql.connector.connect(
-          host="localhost",
-          user="root",
-          passwd="",
-          database="smartward"
-        )
-mycursor = mydb.cursor()
-sql = "SELECT * FROM users"
-mycursor.execute(sql)
-records = mycursor.fetchall()
+from PyQt5.QtWidgets import *
+from PyQt5.QtGui import *
+from PyQt5.QtCore import *
+#from datetime import datetime
 username=[]
-for row in records:
-    username.append(row[3])
-mycursor.close()
+try:
+    mydb = mysql.connector.connect(
+              host="localhost",
+              user="root",
+              passwd="",
+              database="smartward"
+            )
+    mycursor = mydb.cursor()
+    sql = "SELECT * FROM users"
+    mycursor.execute(sql)
+    records = mycursor.fetchall()
+    for row in records:
+        username.append(row[3])
+    mycursor.close()
+except Exception:
+    print("Not connected to database.")
 
 
-class Ui_MainWindow(object):
+class Ui_MainWindow(QWidget):
     def adminPageAccess(self):
         self.stackedWidget.setCurrentIndex(4)
         print('Logged in as Admin.')        
@@ -141,9 +147,9 @@ class Ui_MainWindow(object):
                     mycursor.execute(sql, val)
                     mydb.commit()
                     mycursor.close()
-                    print ("......................................")
-                    print ("Signup Successful.")
-                    print ("......................................")
+                    
+                    QMessageBox.information(self,"Signup successful","Signed in as:\nUsername: {0}\nPassword: {1}".format(username_su,password_su))
+                    
                     username.append(username_su)
                     #print (username)
                     self.clearsignuplabels()
@@ -181,13 +187,13 @@ class Ui_MainWindow(object):
                 if (uname_login=="admin" and password_login=="admin"):
                     self.stackedWidget.setCurrentIndex(5)
                     self.statusbar.showMessage("Logged In.(Admin):"+str(uname_login)+"                          "+"© Smartward")
-                    print('Logged in as Admin.:'+str(uname_login))
+                    QMessageBox.information(self,"Logged In (Admin)","Adminname: {0}".format(uname_login))
                     MainWindow.setWindowTitle("SmartWard-Admin- Welcome "+str(uname_login))
                     password_login=self.password_edit.setText("")
                 else:
                     self.stackedWidget.setCurrentIndex(3)
                     self.statusbar.showMessage("Logged In.(User):"+str(uname_login)+"                          "+"© Smartward")
-                    print('Logged in as User.:'+str(uname_login))
+                    QMessageBox.information(self,"Logged In (User)","Username: {0}".format(uname_login))
                     MainWindow.setWindowTitle("SmartWard-User- Welcome "+str(uname_login))
                     password_login=self.password_edit.setText("")
             else:
