@@ -18,7 +18,7 @@ if __name__ == "__main__":
     def on_submit_clicked():
         #connection with database and sending values to table(incomplete)
 
-        #some values returned empty(incomplete) 
+        #checking the values returned (empty)(incomplete) 
 
         print("Name of holder: {}".format(name_of_holder))
         print("Date: {}".format(date))
@@ -29,6 +29,7 @@ if __name__ == "__main__":
         #generating text files from the data given(incomplete)
 
         filename="{0}to{1}.txt".format(name_of_holder,name_of_receiver)
+        
         with open(filename,'w') as doc:
             doc.write() #write content from the text file
         doc.close()

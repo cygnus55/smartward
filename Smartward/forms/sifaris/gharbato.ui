@@ -118,6 +118,13 @@
           </item>
          </layout>
         </item>
+        <item row="2" column="0">
+         <widget class="QPushButton" name="pushButton_submit">
+          <property name="text">
+           <string>Submit</string>
+          </property>
+         </widget>
+        </item>
        </layout>
       </widget>
      </widget>
