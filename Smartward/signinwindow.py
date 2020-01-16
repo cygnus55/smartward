@@ -9,6 +9,7 @@ from ui_signinwindow import *
 from sw_string import *
 from dbconnect import *
 from swgmail import *
+import mysql.connector
 
 db=database_signinwindow("localhost","root","smartward")
 mygmail=SWGmail()

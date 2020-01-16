@@ -5,12 +5,12 @@ class database:
         try:
             self.mydb=mysql.connector.connect(
                 host=hostname,
-                username=user,
+                user=user,
                 password=pword,
                 database=dbase    
                 )
-        except Exception as e:
-            print("Not connected to database.")
+        except Exception:
+            print("Not Connected to database.")
 
     def insertintowadatable(self,name,address,about):
         #INSERT INTO `smartward`.`ward_registration` (ID,Municipality,WardNo,State,Address,Phone,Email,IP_Address,LogoPath,Password) VALUES('1','A','B','2','sgjkf','8935734','C','576','231','123')
