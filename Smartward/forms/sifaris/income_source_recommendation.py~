@@ -8,11 +8,13 @@ if __name__ == "__main__":
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow)
     MainWindow.show()
+
+
+    name=ui.nameLineEdit.text()
+    major_income_source=ui.majorIncomeSourceLineEdit.text()
    
 
     def on_submit_clicked():
-    	name=ui.nameLineEdit.text()
-    	major_income_source=ui.majorIncomeSourceLineEdit.text()
     	print(name,major_income_source)
         #connect to the database and send the values(incomplete)
         
