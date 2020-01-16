@@ -120,42 +120,15 @@ slogan</string>
         <property name="geometry">
          <rect>
           <x>0</x>
-          <y>200</y>
+          <y>281</y>
           <width>1902</width>
-          <height>862</height>
+          <height>781</height>
          </rect>
         </property>
         <property name="styleSheet">
          <string notr="true">background-color: rgb(255, 255, 255);</string>
         </property>
-        <widget class="QWidget" name="Setting_page">
-         <widget class="QWidget" name="">
-          <property name="geometry">
-           <rect>
-            <x>0</x>
-            <y>0</y>
-            <width>671</width>
-            <height>91</height>
-           </rect>
-          </property>
-          <layout class="QHBoxLayout" name="horizontalLayout">
-           <item>
-            <widget class="QPushButton" name="update_profile">
-             <property name="text">
-              <string>Update Profile</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="set_directory">
-             <property name="text">
-              <string>Set Destination Directory</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </widget>
+        <widget class="QWidget" name="Setting_page"/>
         <widget class="QWidget" name="HomePage">
          <widget class="QPushButton" name="pushButton">
           <property name="geometry">
@@ -209,6 +182,48 @@ slogan</string>
            <string>Relationship Verification</string>
           </property>
          </widget>
+        </widget>
+       </widget>
+       <widget class="QFrame" name="dropbox">
+        <property name="geometry">
+         <rect>
+          <x>90</x>
+          <y>200</y>
+          <width>241</width>
+          <height>80</height>
+         </rect>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <widget class="QPushButton" name="updateprofile">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>10</y>
+           <width>141</width>
+           <height>23</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Update profile</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="changedir">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>40</y>
+           <width>181</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Change Destination Directory</string>
+         </property>
         </widget>
        </widget>
       </widget>
