@@ -10,6 +10,7 @@ from sw_string import *
 from dbconnect import *
 from swgmail import *
 import mysql.connector
+from mainwindow import *
 
 db=database_signinwindow("localhost","root","smartward")
 mygmail=SWGmail()
@@ -85,7 +86,13 @@ if __name__ == "__main__":
                 if not(ip==ip_add):
                     db.updateIP(login_id,ip_add)
                 mygmail.sendLoginMail(email,ip)
+
                 #goto smartward main window
+                ui.hide()
+                WardWindow = QtWidgets.QMainWindow()
+                ui = Ui_WardWindow()
+                ui.setupUi(WardWindow)
+                WardWindow.show()
 
 
             """
