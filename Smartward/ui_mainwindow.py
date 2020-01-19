@@ -88,7 +88,7 @@ class Ui_WardWindow(object):
 
     def retranslateUi(self, WardWindow):
         _translate = QtCore.QCoreApplication.translate
-        WardWindow.setWindowTitle(_translate("WardWindow", "MainWindow"))
+        WardWindow.setWindowTitle(_translate("WardWindow", "SmartWard"))
         self.Mun_Name.setText(_translate("WardWindow", "Municipality name \n"
 "slogan"))
         self.home_button.setText(_translate("WardWindow", "Home"))
