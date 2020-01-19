@@ -21,3 +21,5 @@ Went through modules like ezgmail,matplotlib,googletrans and webbrowser that may
 
 Week 5:
 
+Learnt implementation of QMenu in QPushButton
+
