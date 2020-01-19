@@ -2,12 +2,12 @@
 
 Software Requirements
 
-  1.Python3+
+  1. Python3+
 
-  2.XAMMP Server
+  2. XAMMP Server
 
 Python modules used
 
-  1.PyQt5
+  1. PyQt5
 
-  2.sys,re
+  2. sys,re
