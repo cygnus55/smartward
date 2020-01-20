@@ -8,6 +8,9 @@ if __name__ == "__main__":
     ui.setupUi(WardWindow)
     WardWindow.show()
 
+    def on_home_button_clicked():
+        ui.stackedWidget.setCurrentIndex(0)
+    
     def update_profile():
         #update profile
         print("update profile")
@@ -43,7 +46,8 @@ if __name__ == "__main__":
         #new Window-migration reg. form
         print("migration registration") 
 
-
+    ui.home_button.clicked.connect(on_home_button_clicked)
+    
     settings_menu=QtWidgets.QMenu()
     settings_menu.addAction("Update Profile",update_profile)
     settings_menu.addAction("Change Destination Folder",change_destination_folder)
