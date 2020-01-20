@@ -48,7 +48,16 @@ class Ui_WardWindow(object):
         self.settings_button.setObjectName("settings_button")
         self.stackedWidget = QtWidgets.QStackedWidget(self.scrollAreaWidgetContents)
         self.stackedWidget.setGeometry(QtCore.QRect(0, 200, 1906, 856))
-        self.stackedWidget.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.stackedWidget.setStyleSheet("\n"
+"QPushButton:hover\n"
+"{\n"
+"color:red;\n"
+"background-color: rgb(255, 245, 235);\n"
+"}\n"
+"QWidget\n"
+"{\n"
+"background-color: rgb(255, 255, 255);\n"
+"}")
         self.stackedWidget.setObjectName("stackedWidget")
         self.home_page = QtWidgets.QWidget()
         self.home_page.setObjectName("home_page")
@@ -81,8 +90,8 @@ class Ui_WardWindow(object):
     def retranslateUi(self, WardWindow):
         _translate = QtCore.QCoreApplication.translate
         WardWindow.setWindowTitle(_translate("WardWindow", "MainWindow"))
-        self.Mun_Name.setText(_translate("WardWindow", "Municipality name \n"
-"slogan"))
+        self.Mun_Name.setText(_translate("WardWindow", "Municipality Name \n"
+"Slogan"))
         self.home_button.setText(_translate("WardWindow", "Home"))
         self.settings_button.setText(_translate("WardWindow", "Settings"))
         self.vital_reg_button.setText(_translate("WardWindow", "Vital Registration"))
