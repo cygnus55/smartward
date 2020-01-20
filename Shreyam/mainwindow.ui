@@ -85,8 +85,8 @@
           </rect>
          </property>
          <property name="text">
-          <string>Municipality name 
-slogan</string>
+          <string>Municipality Name 
+Slogan</string>
          </property>
         </widget>
         <widget class="QPushButton" name="home_button">
@@ -126,7 +126,14 @@ slogan</string>
          </rect>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(255, 255, 255);</string>
+         <string notr="true">QPushButton:hover
+{
+background-color:rgb(248, 244, 255);
+}
+QWidget
+{
+background-color: rgb(255, 255, 255);
+}</string>
         </property>
         <widget class="QWidget" name="home_page">
          <widget class="QPushButton" name="vital_reg_button">
