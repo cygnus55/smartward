@@ -25,3 +25,15 @@ week 4
 1.started making main window
 2.still learning python and pyqt5 documentation
 
+week 4
+1.still learn about python and pyqt5
+2.search about different form needed for our project
+
+week5
+1.make form for our project
+2.still learning puthon and pyqt5
+
+week 6
+1.make additinal form for our project
+2.help in making main window
+3.still learning python and pyqt5
