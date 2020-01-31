@@ -13,8 +13,16 @@ Week 2:
 		-Tools Test
 		
 Week 3:
-		-Tested various tools
+		-Tested various tools provided by PyQt5
 		-Mini projects to practice PyQt5 programming
 		
 Week 4:
 		-Designed Signin Window
+		-Learnt various python existing modules(ezgmail,matplotlib,pyqtgraph,json,pickle)
+		
+Week 5:
+		-Designed forms for ward ofice projects
+		-mainwindow for ward 
+		
+Week 6:
+		-Connecting various windows
