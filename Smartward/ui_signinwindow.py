@@ -6,11 +6,181 @@
 #
 # WARNING! All changes made in this file will be lost!
 
-
 from PyQt5 import QtCore, QtGui, QtWidgets
+
+import json
+#import os
+import re
+import socket
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
+from PyQt5.QtSql import *
+from sw_string import *
+from dbconnect import *
+from swgmail import *
+import mysql.connector
+from mainwindow import *
+
+db=database_signinwindow("localhost","root","smartward")
+mygmail=SWGmail()
 
 class Ui_MainWindow(QWidget):
+    def window_functions(self,MainWindow):
+
+        #checking whether ward is registered or not
+        try:
+            with open('ward.json','r') as obj:
+                read=json.load(obj)
+                print("Ward already registered.")
+                self.signStack.setCurrentIndex(2)
+        except Exception:
+            self.signStack.setCurrentIndex(0)
+
+        # definition of signinwindow functions
+        def on_signup_clicked():
+            print("signup clicked")
+            #get value from lineedits
+            municipality=self.municipality.text().title()
+            wardno=self.wardno.text()
+            address=self.address.text().title()
+            state=self.state.text()
+            phone=self.phoneNo.text()
+            email=self.email.text()
+            mun_logo=self.mun_logo.text()
+            password=self.password.text()
+            confirmpassword = self.confirmpassword.text()
+
+            #check if all fields are filled
+            if(isEmpty(municipality,wardno,address,phone,email,password,confirmpassword)):
+                QMessageBox.warning(self,"SignUp Failed","All fields are not filled!")
+            elif(not(password == confirmpassword)):
+                QMessageBox.warning(self,"Password Confirmation Invalid","Password doesnot match!")
+            else:
+                db.createWardTable()
+                if(not db.checkValid(municipality,wardno)):
+                    QMessageBox.information(self,"SignUp Failed","Ward Office already Registered!")
+                else:
+                    if(not db.checkEmailValid(email)):
+                        QMessageBox.information(self,"Signup Failed","Email Already in Use.Try another email.")
+                    else:
+                        id=generateID(municipality.lower(),wardno,state)
+                        print(id)
+                        ip = socket.gethostbyname(socket.gethostname())
+                        wada={'id':id,'municipality':municipality,'ward_no':wardno,'state':state,'address':address,'phone':phone,'email':email,'mun_logo':mun_logo,'password':password,'ip':ip}
+                        if(db.InsertIntoward_registrationTable(id,municipality,wardno,state,address,phone,email,"****",mun_logo,password)):
+                            with open('ward.json','w') as obj:
+                                json.dump(wada,obj)
+                                #mygmail.sendRegistrationSuccessfulMail(id,municipality,wardno,state,address,phone,email,ip,password)
+                                QMessageBox.information(self,"Registration Successful","We have sent mail to your email account.\nCheck the mail for login details.")
+
+        def on_browse_clicked():
+            print("browse clicked")
+            #set browse file for images
+            path=QFileDialog.getOpenFileName(self,"Municipality Logo","/home","Images(*.png)")[0]
+            self.mun_logo.setText(path)
+
+        def on_signin_2_clicked():
+            # go to signinPage
+            self.signStack.setCurrentIndex(2)
+
+
+        def on_signin_clicked():
+            #get id or email and password from line edits
+            login_id=self.login_id.text()
+            login_password=self.login_password.text()
+            if (isEmpty(login_id,login_password)):
+                QMessageBox.warning(self,"Login Unsucessful","Login ID or Password is Missing!")
+            else:
+                ip,email,id=db.checkLoginValidity(login_id,login_password)
+                print(ip,email,id)
+                if(ip=="invalid" and email=="" and id==""):
+                    QMessageBox.warning(self,"Login Unsucessful","Login ID or Password Invalid")
+                else:
+                    ip_add = socket.gethostbyname(socket.gethostname())
+                    if not(ip==ip_add):
+                        db.updateIP(login_id,ip_add)
+                        #mygmail.sendLoginMail(email,ip)
+                        
+                        
+                        MainWindow.hide()
+                        #os.startfile('mainwindow.py') #not a good idea
+                        self.WardWindow = QtWidgets.QMainWindow()
+                        self.home_window = Ui_WardWindow()
+                        self.home_window.setupUi(self.WardWindow)
+                        self.WardWindow.show()                
+                        print("login window opened")
+
+
+                        """
+                        get id or email and password from line edits
+                        --connect to database
+                        ---check email or id to resemble
+                        ----check password
+                        ----if new ip address replace in table
+                        -----send mail to inform sign in
+                        -----go to smart ward main workstation
+                        """
+
+
+        def on_signup_2_clicked():
+            # go to signupPage
+            try:
+                with open('ward.json','r') as obj:
+                    read=json.load(obj)
+                    QMessageBox.information(self,"Cannot register","Ward already registered.")
+                self.signStack.setCurrentIndex(2)
+            except Exception:
+                self.signStack.setCurrentIndex(0)
+
+
+        def on_forgetPassword_clicked():
+            # go to forget password page
+            self.signStack.setCurrentIndex(1)
+
+
+        def on_sendEmail_clicked():
+            print("send email clicked")
+            gmail=self.login_id_2.text()
+            login_details = db.checkEmailValidity(gmail)
+            if not(login_details):
+                QMessageBox.warning(self,"Forget Password","Invalid Email Id")
+            else:
+                id,email,pswd=login_details[0][0],login_details[0][6],login_details[0][-1]
+                mygmail.sendForgetPasswordMail(id,email,pswd)
+                QMessageBox.information(self,"Forget Password","Email has been sent to you\nwith your login details")
+                """
+                -connect to database
+                --check if that email exists
+                ---import gmail module
+                ----send email to reqselfred ward
+                """
+
+        # sign up page functions
+        self.signup.setAutoDefault(True)
+        self.signup.clicked.connect(on_signup_clicked)
+        self.browse.setAutoDefault(True)
+        self.browse.clicked.connect(on_browse_clicked)
+        self.signin_2.setAutoDefault(True)
+        self.signin_2.clicked.connect(on_signin_2_clicked)
+
+        # sign in page functions
+        self.signin.setAutoDefault(True)
+        self.signin.clicked.connect(on_signin_clicked)
+        self.signup_2.setAutoDefault(True)
+        self.signup_2.clicked.connect(on_signup_2_clicked)
+        self.forgetPassword.setAutoDefault(True)
+        self.forgetPassword.clicked.connect(on_forgetPassword_clicked)
+
+        # forget password functions
+        self.signin_3.setAutoDefault(True)
+        self.signin_3.clicked.connect(on_signin_2_clicked)
+        self.sendEmail.setAutoDefault(True)
+        self.sendEmail.clicked.connect(on_sendEmail_clicked)
+
+
+
+
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(614, 668)
@@ -189,7 +359,8 @@ class Ui_MainWindow(QWidget):
         MainWindow.setCentralWidget(self.centralWidget)
 
         self.retranslateUi(MainWindow)
-        self.signStack.setCurrentIndex(1)
+        self.window_functions(MainWindow)
+        self.signStack.setCurrentIndex(2)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):

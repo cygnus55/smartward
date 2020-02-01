@@ -23,7 +23,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>SmartWard</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
@@ -59,7 +59,7 @@
         <property name="frameShadow">
          <enum>QFrame::Raised</enum>
         </property>
-        <widget class="QLabel" name="label">
+        <widget class="QLabel" name="nepal_gov_logo">
          <property name="geometry">
           <rect>
            <x>0</x>
@@ -78,15 +78,15 @@
         <widget class="QLabel" name="Mun_Name">
          <property name="geometry">
           <rect>
-           <x>160</x>
+           <x>185</x>
            <y>30</y>
-           <width>641</width>
+           <width>616</width>
            <height>81</height>
           </rect>
          </property>
          <property name="text">
-          <string>Municipality name 
-slogan</string>
+          <string>Municipality Name 
+Slogan</string>
          </property>
         </widget>
         <widget class="QPushButton" name="home_button">
@@ -102,7 +102,7 @@ slogan</string>
           <string>Home</string>
          </property>
         </widget>
-        <widget class="QPushButton" name="setting_button">
+        <widget class="QPushButton" name="settings_button">
          <property name="geometry">
           <rect>
            <x>100</x>
@@ -115,22 +115,41 @@ slogan</string>
           <string>Settings</string>
          </property>
         </widget>
+        <widget class="QLabel" name="mun_logo_label">
+         <property name="geometry">
+          <rect>
+           <x>1170</x>
+           <y>10</y>
+           <width>150</width>
+           <height>148</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>mun_logo</string>
+         </property>
+        </widget>
        </widget>
        <widget class="QStackedWidget" name="stackedWidget">
         <property name="geometry">
          <rect>
           <x>0</x>
-          <y>281</y>
-          <width>1902</width>
-          <height>781</height>
+          <y>200</y>
+          <width>1906</width>
+          <height>856</height>
          </rect>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(255, 255, 255);</string>
+         <string notr="true">QPushButton:hover
+{
+background-color:rgb(248, 244, 255);
+}
+QWidget
+{
+background-color: rgb(255, 255, 255);
+}</string>
         </property>
-        <widget class="QWidget" name="Setting_page"/>
-        <widget class="QWidget" name="HomePage">
-         <widget class="QPushButton" name="pushButton">
+        <widget class="QWidget" name="home_page">
+         <widget class="QPushButton" name="vital_reg_button">
           <property name="geometry">
            <rect>
             <x>30</x>
@@ -143,7 +162,7 @@ slogan</string>
            <string>Vital Registration</string>
           </property>
          </widget>
-         <widget class="QPushButton" name="pushButton_2">
+         <widget class="QPushButton" name="citizenship_button">
           <property name="geometry">
            <rect>
             <x>30</x>
@@ -156,7 +175,7 @@ slogan</string>
            <string>Citizenship</string>
           </property>
          </widget>
-         <widget class="QPushButton" name="pushButton_4">
+         <widget class="QPushButton" name="sifarish_button">
           <property name="geometry">
            <rect>
             <x>690</x>
@@ -169,7 +188,7 @@ slogan</string>
            <string>Sifaris</string>
           </property>
          </widget>
-         <widget class="QPushButton" name="pushButton_5">
+         <widget class="QPushButton" name="relation_verify_button">
           <property name="geometry">
            <rect>
             <x>690</x>
@@ -183,48 +202,8 @@ slogan</string>
           </property>
          </widget>
         </widget>
-       </widget>
-       <widget class="QFrame" name="dropbox">
-        <property name="geometry">
-         <rect>
-          <x>90</x>
-          <y>200</y>
-          <width>241</width>
-          <height>80</height>
-         </rect>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Raised</enum>
-        </property>
-        <widget class="QPushButton" name="updateprofile">
-         <property name="geometry">
-          <rect>
-           <x>0</x>
-           <y>10</y>
-           <width>141</width>
-           <height>23</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Update profile</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="changedir">
-         <property name="geometry">
-          <rect>
-           <x>0</x>
-           <y>40</y>
-           <width>181</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Change Destination Directory</string>
-         </property>
-        </widget>
+        <widget class="QWidget" name="update_profile_page"/>
+        <widget class="QWidget" name="change_directory_page"/>
        </widget>
       </widget>
      </widget>
