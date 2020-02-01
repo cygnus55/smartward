@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>744</width>
+    <height>672</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QScrollArea" name="scrollArea">
+      <property name="widgetResizable">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="scrollAreaWidgetContents">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>720</width>
+         <height>648</height>
+        </rect>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_2">
+        <item row="3" column="0">
+         <layout class="QFormLayout" name="formLayout_2">
+          <item row="0" column="0">
+           <widget class="QLabel" name="registrationNoLabel">
+            <property name="text">
+             <string>Registration No</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLineEdit" name="registrationNoLineEdit"/>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="districtLabel_2">
+            <property name="text">
+             <string>District</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLineEdit" name="districtLineEdit_2"/>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="municipalityLabel_2">
+            <property name="text">
+             <string>Municipality</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QLineEdit" name="municipalityLineEdit_2"/>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="wardNoLabel_2">
+            <property name="text">
+             <string>Ward No</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QLineEdit" name="wardNoLineEdit_2"/>
+          </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="roadStreetLabel_2">
+            <property name="text">
+             <string>Road/Street</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QLineEdit" name="roadStreetLineEdit_2"/>
+          </item>
+          <item row="5" column="0">
+           <widget class="QLabel" name="houseNoLabel_2">
+            <property name="text">
+             <string>House No</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="1">
+           <widget class="QLineEdit" name="houseNoLineEdit_2"/>
+          </item>
+          <item row="6" column="0">
+           <widget class="QLabel" name="villageCommunityLabel">
+            <property name="text">
+             <string>Village/Community</string>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="1">
+           <widget class="QLineEdit" name="villageCommunityLineEdit"/>
+          </item>
+          <item row="7" column="0">
+           <widget class="QLabel" name="nameOfHomeownerWhoRelocatedLabel">
+            <property name="text">
+             <string>Name of homeowner who relocated</string>
+            </property>
+           </widget>
+          </item>
+          <item row="7" column="1">
+           <widget class="QLineEdit" name="nameOfHomeownerWhoRelocatedLineEdit"/>
+          </item>
+          <item row="8" column="0">
+           <widget class="QLabel" name="dateOfRelocatedLabel">
+            <property name="text">
+             <string>Date of relocated</string>
+            </property>
+           </widget>
+          </item>
+          <item row="8" column="1">
+           <widget class="QDateEdit" name="dateOfRelocatedDateEdit"/>
+          </item>
+          <item row="9" column="0">
+           <widget class="QLabel" name="reasonOfRelocatedLabel">
+            <property name="text">
+             <string>Reason of relocated</string>
+            </property>
+           </widget>
+          </item>
+          <item row="9" column="1">
+           <widget class="QComboBox" name="reasonOfRelocatedComboBox"/>
+          </item>
+         </layout>
+        </item>
+        <item row="1" column="0">
+         <layout class="QFormLayout" name="formLayout">
+          <item row="0" column="0">
+           <widget class="QLabel" name="districtLabel">
+            <property name="text">
+             <string>District</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLineEdit" name="districtLineEdit"/>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="municipalityLabel">
+            <property name="text">
+             <string>Municipality</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLineEdit" name="municipalityLineEdit"/>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="wardNoLabel">
+            <property name="text">
+             <string>Ward No</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QLineEdit" name="wardNoLineEdit"/>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="roadStreetLabel">
+            <property name="text">
+             <string>Road/Street</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QLineEdit" name="roadStreetLineEdit"/>
+          </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="houseNoLabel">
+            <property name="text">
+             <string>House No</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QLineEdit" name="houseNoLineEdit"/>
+          </item>
+          <item row="5" column="0">
+           <widget class="QLabel" name="villageLabel">
+            <property name="text">
+             <string>Village/Community</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="1">
+           <widget class="QLineEdit" name="villageyLineEdit"/>
+          </item>
+         </layout>
+        </item>
+        <item row="0" column="0">
+         <widget class="QLabel" name="label">
+          <property name="text">
+           <string>Where To Move</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="label_2">
+          <property name="text">
+           <string>The Adress From Where You Moved</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="0">
+         <widget class="QLabel" name="label_3">
+          <property name="text">
+           <string>Details Of The Person Relocated</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

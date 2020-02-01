@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Property  Transfer</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QScrollArea" name="scrollArea">
+      <property name="widgetResizable">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="scrollAreaWidgetContents">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>780</width>
+         <height>560</height>
+        </rect>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_2">
+        <item row="0" column="0">
+         <layout class="QFormLayout" name="formLayout">
+          <item row="0" column="0">
+           <widget class="QLabel" name="propertyHolderDetailSLabel">
+            <property name="text">
+             <string>Property holder detail's</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="fullNameLabel">
+            <property name="text">
+             <string>Full Name</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLineEdit" name="fullNameLineEdit"/>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="dateOfDeathLabel">
+            <property name="text">
+             <string>Date of death</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QDateEdit" name="dateOfDeathDateEdit"/>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="kitaNoLabel">
+            <property name="text">
+             <string>Kita No</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QLineEdit" name="kitaNoLineEdit"/>
+          </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="TransferedDetailsLabel">
+            <property name="text">
+             <string>Property to be transfered details</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="0">
+           <widget class="QLabel" name="nameLabel">
+            <property name="text">
+             <string>Full Name</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="1">
+           <widget class="QLineEdit" name="nameLineEdit"/>
+          </item>
+          <item row="6" column="0">
+           <widget class="QLabel" name="relationWithDeceisedLabel">
+            <property name="text">
+             <string>Relation with deceised</string>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="1">
+           <widget class="QComboBox" name="relationWithDeceisedComboBox">
+            <item>
+             <property name="text">
+              <string>Husband</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Wife</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Son</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Daughter</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Father</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Mother</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>other</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item row="7" column="1">
+           <widget class="QPushButton" name="pushButton_submit">
+            <property name="text">
+             <string>Submit</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
