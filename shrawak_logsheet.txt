@@ -22,4 +22,5 @@ Week 4
 	2.Connected database sucessfully using XAMPP in a small project on PyQt5 
 Week 5
 	1.Created main window(homepage) format 
-	2.learn to connect windows sucessfull
+	2.learn to connect windows sucessfully
+	3.
