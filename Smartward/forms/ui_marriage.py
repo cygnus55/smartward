@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'marriage.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.2
+# Created by: PyQt5 UI code generator 5.13.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -22,7 +22,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 774, 1049))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, -326, 777, 1271))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.gridLayout_2 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents)
         self.gridLayout_2.setObjectName("gridLayout_2")
@@ -415,6 +415,14 @@ class Ui_MainWindow(object):
         self.lineEdit_49.setObjectName("lineEdit_49")
         self.horizontalLayout_39.addWidget(self.lineEdit_49)
         self.formLayout_2.setLayout(26, QtWidgets.QFormLayout.FieldRole, self.horizontalLayout_39)
+        self.jhLabel = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.jhLabel.setText("")
+        self.jhLabel.setObjectName("jhLabel")
+        self.formLayout_2.setWidget(27, QtWidgets.QFormLayout.LabelRole, self.jhLabel)
+        self.buttonBox = QtWidgets.QDialogButtonBox(self.scrollAreaWidgetContents)
+        self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
+        self.buttonBox.setObjectName("buttonBox")
+        self.formLayout_2.setWidget(27, QtWidgets.QFormLayout.FieldRole, self.buttonBox)
         self.gridLayout_2.addLayout(self.formLayout_2, 3, 0, 1, 1)
         self.label_6 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
         self.label_6.setObjectName("label_6")
@@ -423,8 +431,26 @@ class Ui_MainWindow(object):
         self.gridLayout.addWidget(self.scrollArea, 1, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
 
+        #self.actualWork()
+
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
+    """
+    def actualWork(self):
+        self.buttonBox.accepted.connect(self.submitform)
+
+    def submitform(self):
+        self.getallvalues()
+
+    def getallvalues(self):
+        self.marriagetype=self.marriageTypeComboBox.currentText()
+        self.marriagedate=(self.dateEdit_2.date(),self.dateEdit.date())
+        self.locationofmarriage=(self.districtLineEdit.text(),self.municipalityLineEdit.text(),self.wardNoLineEdit.text(),self.roadStreetLineEdit.text(),self.villageLineEdit.text(),self.houseNoLineEdit.text(),self.locationIfMarriageAbroadLineEdit.text())
+        self.detailsofbride=[]
+        self.detailsofbridegroom=[]
+        self.detailsofspouse=(self.detailsofbride,self.detailsofbridegroom)
+        print("sfkgjd")
+    """
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -472,11 +498,38 @@ class Ui_MainWindow(object):
         self.label_6.setText(_translate("MainWindow", "Details Of Spouse"))
 
 
+class ActualWork():
+    def __init__(self):
+        self.MainWindow = QtWidgets.QMainWindow()
+        self.ui = Ui_MainWindow()
+        self.ui.setupUi(self.MainWindow)
+        self.MainWindow.show()
+        self.actualWork()
+
+    def actualWork(self):
+        self.ui.buttonBox.accepted.connect(self.submitform)
+
+    def submitform(self):
+        self.getallvalues()
+
+    def getallvalues(self):
+        self.marriagetype=self.ui.marriageTypeComboBox.currentText()
+        self.marriagedate=(self.ui.dateEdit_2.date(),self.ui.dateEdit.date())
+        self.locationofmarriage=(self.ui.districtLineEdit.text(),self.ui.municipalityLineEdit.text(),self.ui.wardNoLineEdit.text(),self.ui.roadStreetLineEdit.text(),self.ui.villageLineEdit.text(),self.ui.houseNoLineEdit.text(),self.ui.locationIfMarriageAbroadLineEdit.text())
+        self.detailsofbride=(self.ui.lineEdit_2.text(),self.ui.lineEdit_4.text(),self.ui.lineEdit_8.text(),self.ui.lineEdit_10.text())
+        print (self.detailsofbride)
+        self.detailsofbridegroom=()
+        self.detailsofspouse=(self.detailsofbride,self.detailsofbridegroom)
+
+
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
+    ui=ActualWork()
+    """
     MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
+    ui = ActualWork()
     ui.setupUi(MainWindow)
     MainWindow.show()
+    """
     sys.exit(app.exec_())
