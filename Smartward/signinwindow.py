@@ -8,12 +8,12 @@ from PyQt5.QtSql import *
 from ui_signinwindow import *
 from sw_string import *
 from dbconnect import *
-from swgmail import *
+#from swgmail import *
 import mysql.connector
 from mainwindow import *
 
 db=database_signinwindow("localhost","root","smartward")
-mygmail=SWGmail()
+#mygmail=SWGmail()
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
@@ -56,7 +56,7 @@ if __name__ == "__main__":
                     print(id)
                     ip = socket.gethostbyname(socket.gethostname())
                     if(db.InsertIntoward_registrationTable(id,municipality,wardno,state,address,phone,email,"****",mun_logo,password)):
-                        mygmail.sendRegistrationSuccessfulMail(id,municipality,wardno,state,address,phone,email,ip,password)
+                       # mygmail.sendRegistrationSuccessfulMail(id,municipality,wardno,state,address,phone,email,ip,password)
                         QMessageBox.information(ui,"Registration Sucessful","We have sent mail to your email account.\nCheck the mail for login details.")
 
     def on_browse_clicked():
@@ -85,7 +85,7 @@ if __name__ == "__main__":
                 ip_add = socket.gethostbyname(socket.gethostname())
                 if not(ip==ip_add):
                     db.updateIP(login_id,ip_add)
-                mygmail.sendLoginMail(email,ip)
+               # mygmail.sendLoginMail(email,ip)
 
                 #goto smartward main window
                 ui.hide()
@@ -124,7 +124,7 @@ if __name__ == "__main__":
             QMessageBox.warning(ui,"Forget Password","Invalid Email Id")
         else:
             id,email,pswd=login_details[0][0],login_details[0][6],login_details[0][-1]
-            mygmail.sendForgetPasswordMail(id,email,pswd)
+           # mygmail.sendForgetPasswordMail(id,email,pswd)
             QMessageBox.information(ui,"Forget Password","Email has been sent to you\nwith your login details")
         """
         -connect to database
