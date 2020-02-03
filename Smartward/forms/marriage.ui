@@ -24,9 +24,9 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>0</y>
-         <width>774</width>
-         <height>1049</height>
+         <y>-326</y>
+         <width>777</width>
+         <height>1271</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_2">
@@ -606,6 +606,20 @@
              <widget class="QLineEdit" name="lineEdit_49"/>
             </item>
            </layout>
+          </item>
+          <item row="27" column="0">
+           <widget class="QLabel" name="jhLabel">
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="27" column="1">
+           <widget class="QDialogButtonBox" name="buttonBox">
+            <property name="standardButtons">
+             <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+            </property>
+           </widget>
           </item>
          </layout>
         </item>
