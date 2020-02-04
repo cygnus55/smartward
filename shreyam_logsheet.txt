@@ -25,6 +25,6 @@ Learnt implementation of QMenu in QPushButton, hovering feature of QPushButton
 
 Week 6:
 
-Learnt using json(loading and dumping information such as lists,dictionaries) file for reading existing account on a device or creating one if not registered and to connect multiple windows
+Learnt using json(loading and dumping information such as lists,dictionaries) file for reading existing account on a device or creating one if not registered and to connect multiple windows with minimal success
 
 
