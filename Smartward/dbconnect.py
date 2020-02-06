@@ -7,10 +7,10 @@ class database:
                 host=hostname,
                 user=user,
                 password=pword,
-                database=dbase    
                 )
-        except Exception:
+        except Exception as e:
             print("Not Connected to database.")
+            print(e)
 
     def insertintowadatable(self,name,address,about):
         #INSERT INTO `smartward`.`ward_registration` (ID,Municipality,WardNo,State,Address,Phone,Email,IP_Address,LogoPath,Password) VALUES('1','A','B','2','sgjkf','8935734','C','576','231','123')
@@ -86,3 +86,35 @@ class database_signinwindow(database):
             self.mycursor.close()
         except Exception:
             print("Ip update unsucessful")
+
+    def createDatabase(self):
+        self.mycursor.execute("CREATE DATABASE 3hu4")
+        self.mydb.commit()
+        self.mycursor.close()
+
+class database_wardwindow(database):
+    def __init__(self,hostname,user,dbase,pword=""):
+        super().__init__(hostname, user, dbase, pword)
+        self.mycursor = self.mydb.cursor()
+        self.mycursor.execute("USE {0}".format(dbase))
+        self.mydb.commit()
+
+
+    def createFormTable(self,tablename):
+        try:
+            sql="CREATE TABLE {0} (ID INTEGER(3) NOT NULL, PRIMARY KEY(ID)) ENGINE=InnoDB".format(tablename)
+            self.mycursor.execute(sql)
+            self.mydb.commit()
+        except Exception:
+            return;
+
+    def addColumns(self,tablename,*columns):
+        for column in columns:
+            sql="ALTER TABLE {0} ADD COLUMN {1} VARCHAR({2}) NOT NULL".format(tablename,column,600)
+            self.mycursor.execute(sql)
+            self.mydb.commit()
+
+
+#a=database_wardwindow("localhost","root","jdb")
+#a.createFormTable("gshs")
+#a.addColumns("gshs","Ajh","sdkjjhv","hjgd")
