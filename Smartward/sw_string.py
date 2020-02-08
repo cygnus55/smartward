@@ -14,3 +14,12 @@ def generateID(municipality,wardno,state):
     except Exception:
         id = municipality.lower()
     return state+id+wardno
+
+def generateList(**dic):
+    string=[]
+    for key,value in dic.items():
+        string.append(key)
+        string.append(value.replace("'",">>"))
+    return string
+
+
