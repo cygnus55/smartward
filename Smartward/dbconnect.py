@@ -1,4 +1,9 @@
 import mysql.connector
+import json
+
+with open("ward.json","r") as jsonfile:
+    database_name=json.load(jsonfile)['id']
+print(database_name)
 
 class database:
     def __init__(self,hostname,user,dbase,pword=""):
@@ -93,28 +98,47 @@ class database_signinwindow(database):
         self.mycursor.close()
 
 class database_wardwindow(database):
-    def __init__(self,hostname,user,dbase,pword=""):
+    def __init__(self,hostname,user,dbase=database_name,pword=""):
         super().__init__(hostname, user, dbase, pword)
         self.mycursor = self.mydb.cursor()
+        try:
+            self.mycursor.execute("CREATE DATABASE {0}".format(dbase))
+            self.mydb.commit()
+        except Exception:
+            pass
         self.mycursor.execute("USE {0}".format(dbase))
         self.mydb.commit()
 
 
     def createFormTable(self,tablename):
         try:
-            sql="CREATE TABLE {0} (ID INTEGER(3) NOT NULL, PRIMARY KEY(ID)) ENGINE=InnoDB".format(tablename)
+            sql="CREATE TABLE {0} (RegDate VARCHAR(10) NOT NULL,RegNo VARCHAR(15) NOT NULL, PRIMARY KEY(RegNo)) ENGINE=InnoDB".format(tablename)
             self.mycursor.execute(sql)
             self.mydb.commit()
-        except Exception:
-            return;
+        except Exception as e:
+            print(e)
+            return
 
     def addColumns(self,tablename,*columns):
-        for column in columns:
-            sql="ALTER TABLE {0} ADD COLUMN {1} VARCHAR({2}) NOT NULL".format(tablename,column,600)
+        try:
+            for column in columns:
+                sql="ALTER TABLE {0} ADD COLUMN {1} VARCHAR(1600)".format(tablename,column)
+                self.mycursor.execute(sql)
+                self.mydb.commit()
+        except Exception:
+            return
+
+    def insertValues(self,tablename,columnandvaluselist):
+        csv=columnandvaluselist
+        print(csv)
+        sql="INSERT INTO {0} ({1},{2}) VALUES ('{3}','{4}')".format(tablename,csv[0],csv[2],csv[1],csv[3])
+        self.mycursor.execute(sql)
+        self.mydb.commit()
+        for i in range(4,len(csv),2):
+            sql="UPDATE {0} SET {1}='{2}' WHERE {3}='{4}'".format(tablename,csv[i],csv[i+1],csv[0],csv[1])
             self.mycursor.execute(sql)
             self.mydb.commit()
-
-
+        print("Ok")
 #a=database_wardwindow("localhost","root","jdb")
 #a.createFormTable("gshs")
 #a.addColumns("gshs","Ajh","sdkjjhv","hjgd")

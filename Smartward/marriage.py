@@ -8,12 +8,18 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-import nepali_date
-import datetime
+from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
+
+import datetime
+import nepali_date
 import sw_string
 import dbconnect
+
+db=dbconnect.database_wardwindow("localhost","root")
+table="MarriageRegistration"
+
 
 
 class Ui_MarriageForm(object):
@@ -22,19 +28,19 @@ class Ui_MarriageForm(object):
         MarriageForm.resize(811, 957)
         self.centralwidget = QtWidgets.QWidget(MarriageForm)
         self.centralwidget.setObjectName("centralwidget")
-        self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
-        self.gridLayout.setObjectName("gridLayout")
+        self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.centralwidget)
+        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.scrollArea = QtWidgets.QScrollArea(self.centralwidget)
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, -324, 777, 1261))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 777, 1294))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.gridLayout_2 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents)
         self.gridLayout_2.setObjectName("gridLayout_2")
         self.label = QtWidgets.QLabel(self.scrollAreaWidgetContents)
         self.label.setObjectName("label")
-        self.gridLayout_2.addWidget(self.label, 0, 0, 1, 1)
+        self.gridLayout_2.addWidget(self.label, 3, 0, 1, 1)
         self.formLayout = QtWidgets.QFormLayout()
         self.formLayout.setObjectName("formLayout")
         self.marriageTypeLabel = QtWidgets.QLabel(self.scrollAreaWidgetContents)
@@ -49,7 +55,6 @@ class Ui_MarriageForm(object):
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.dateEdit_2 = QtWidgets.QDateEdit(self.scrollAreaWidgetContents)
-        self.dateEdit_2.setDisplayFormat("yyyy/MM/dd")
         self.dateEdit_2.setObjectName("dateEdit_2")
         self.horizontalLayout.addWidget(self.dateEdit_2)
         self.formLayout.setLayout(1, QtWidgets.QFormLayout.FieldRole, self.horizontalLayout)
@@ -98,7 +103,7 @@ class Ui_MarriageForm(object):
         self.locationIfMarriageAbroadLineEdit = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
         self.locationIfMarriageAbroadLineEdit.setObjectName("locationIfMarriageAbroadLineEdit")
         self.formLayout.setWidget(9, QtWidgets.QFormLayout.FieldRole, self.locationIfMarriageAbroadLineEdit)
-        self.gridLayout_2.addLayout(self.formLayout, 1, 0, 1, 1)
+        self.gridLayout_2.addLayout(self.formLayout, 4, 0, 1, 1)
         self.formLayout_2 = QtWidgets.QFormLayout()
         self.formLayout_2.setObjectName("formLayout_2")
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
@@ -418,15 +423,24 @@ class Ui_MarriageForm(object):
         self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
         self.buttonBox.setObjectName("buttonBox")
         self.formLayout_2.setWidget(27, QtWidgets.QFormLayout.FieldRole, self.buttonBox)
-        self.gridLayout_2.addLayout(self.formLayout_2, 3, 0, 1, 1)
+        self.gridLayout_2.addLayout(self.formLayout_2, 6, 0, 1, 1)
         self.label_6 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
         self.label_6.setObjectName("label_6")
-        self.gridLayout_2.addWidget(self.label_6, 2, 0, 1, 1)
+        self.gridLayout_2.addWidget(self.label_6, 5, 0, 1, 1)
+        self.formLayout_3 = QtWidgets.QFormLayout()
+        self.formLayout_3.setObjectName("formLayout_3")
+        self.marriageRegistrationNoLabel = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.marriageRegistrationNoLabel.setObjectName("marriageRegistrationNoLabel")
+        self.formLayout_3.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.marriageRegistrationNoLabel)
+        self.marriageRegistrationNoLineEdit = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
+        self.marriageRegistrationNoLineEdit.setObjectName("marriageRegistrationNoLineEdit")
+        self.formLayout_3.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.marriageRegistrationNoLineEdit)
+        self.gridLayout_2.addLayout(self.formLayout_3, 0, 0, 1, 1)
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
-        self.gridLayout.addWidget(self.scrollArea, 1, 0, 1, 1)
+        self.horizontalLayout_2.addWidget(self.scrollArea)
         MarriageForm.setCentralWidget(self.centralwidget)
 
-        self.marriageTypeComboBox.addItems(['Social Tradition','Marriage Registration Act 2028'])
+        self.marriageTypeComboBox.addItems(['Social Tradition', 'Marriage Registration Act 2028'])
 
         self.retranslateUi(MarriageForm)
         QtCore.QMetaObject.connectSlotsByName(MarriageForm)
@@ -474,6 +488,8 @@ class Ui_MarriageForm(object):
         self.fatherNameLabel_2.setText(_translate("MarriageForm", "Father Name"))
         self.motherNameLabel_2.setText(_translate("MarriageForm", "Mother Name"))
         self.label_6.setText(_translate("MarriageForm", "<b>Details Of Spouse</b>"))
+        self.marriageRegistrationNoLabel.setText(_translate("MarriageForm", "<b>Marriage Registration No.</b>"))
+
 
 class ActualWork():
     def __init__(self):
@@ -489,17 +505,24 @@ class ActualWork():
 
     def submitform(self):
         self.values=self.getallvalues()
-        a = sw_string.generateList(**self.values)
-        #['detailsofmarriage', ('Social Tradition', ('2000-01-01', '2056/09/17')), 'locationofmarriage', ('Kavre', 'Namobudda', '04', 'Timal Road', 'Methinkot', '45', ''), 'detailsofspouse', {'detailsofbride': ('Tandon', 'Rabina', '2057/01/05', 'Kami', '+2', 'Actress', 'Divorcee', ('Rampur', 'Narayanghat', '5', 'Ghandi Street', 'Hariharpur', '78', 'India'), ('India', '27-12398721', '2071/06/09', 'Rampur', '87289398', 'India', 'New Delhi'), ('Fariha Tandon', 'Kanod Tandon', 'Kajol Tandon')), 'detailsofbridegroom': ('Ghimere', 'Tilak', '2051/03/21', 'Brahmin', 'B.Sc.', 'Astrologer', 'Single', ('Solukhumbu', 'Namche Bazar', '9', 'Manila Street', 'Vaisepati', '567', 'Nepal'), ('Nepal', '983-3468', '2067/03/05', 'Solukhumbu', '', '', ''), ('Goshnath Ghimere', 'Farilal Ghimere', 'Nabina Ghimere'))}]
-
+        a=sw_string.generateList(**self.values)
+        #a=["RegDate","1","RegNo","2","C","3","D","4","E","5"]
+        #b=['RegNo','123-32','detailsofmarriage', "('Social Tradition', ('2000-01-01', '2056/09/17'))", 'locationofmarriage', "('Kavre', 'Namobudda', '04', 'Timal Road', 'Methinkot', '45', '')", 'detailsofspouse', "{'detailsofbride': ('Tandon', 'Rabina', '2057/01/05', 'Kami', '+2', 'Actress', 'Divorcee', ('Rampur', 'Narayanghat', '5', 'Ghandi Street', 'Hariharpur', '78', 'India'), ('India', '27-12398721', '2071/06/09', 'Rampur', '87289398', 'India', 'New Delhi'), ('Fariha Tandon', 'Kanod Tandon', 'Kajol Tandon')), 'detailsofbridegroom': ('Ghimere', 'Tilak', '2051/03/21', 'Brahmin', 'B.Sc.', 'Astrologer', 'Single', ('Solukhumbu', 'Namche Bazar', '9', 'Manila Street', 'Vaisepati', '567', 'Nepal'), ('Nepal', '983-3468', '2067/03/05', 'Solukhumbu', '', '', ''), ('Goshnath Ghimere', 'Farilal Ghimere', 'Nabina Ghimere'))}"]
+        #a=['RegDate',,b[0],b[1],b[2],b[3].replace("'","__"),b[4],b[5].replace("'","__"),b[6],b[7].replace("'","__")]
+        #print(a)
+        db.createFormTable(table)
+        db.addColumns(table,a[4],a[6],a[8])
+        db.insertValues(table,a)
 
     def getallvalues(self):
+        self.magRegNo=self.ui.marriageRegistrationNoLineEdit.text()
         self.marriagetype=self.ui.marriageTypeComboBox.currentText()
         date=QDate(self.ui.dateEdit_2.date())
         year,month,day=date.getDate()
         marriage_in_ad=datetime.date(year,month,day)
         marriage_in_bs=nepali_date.NepaliDate.to_nepali_date(marriage_in_ad)
-        print(str(marriage_in_bs))
+        today=nepali_date.NepaliDate.today()
+        registrationdate=str(today)[3:]
         self.marriagedate=(str(marriage_in_ad),str(marriage_in_bs)[3:])
         detailsofmarriage=(self.marriagetype,self.marriagedate)
         locationofmarriage=(self.ui.districtLineEdit.text(),self.ui.municipalityLineEdit.text(),self.ui.wardNoLineEdit.text(),self.ui.roadStreetLineEdit.text(),self.ui.villageLineEdit.text(),self.ui.houseNoLineEdit.text(),self.ui.locationIfMarriageAbroadLineEdit.text())
@@ -515,7 +538,10 @@ class ActualWork():
         self.detailsofbridegroom=(self.ui.lineEdit_3.text(),self.ui.lineEdit_5.text(),self.ui.lineEdit_7.text(),self.ui.lineEdit_9.text(),self.ui.lineEdit_11.text(),self.ui.lineEdit_13.text(),self.ui.lineEdit_15.text(),self.paddressbridegroom,self.ccbridegroom,self.parentbridegroom)
         detailsofspouse={'detailsofbride':self.detailsofbride, 'detailsofbridegroom':self.detailsofbridegroom}
 
-        return {"detailsofmarriage":detailsofmarriage , "locationofmarriage":locationofmarriage , 'detailsofspouse':detailsofspouse}
+        return {"RegDate":registrationdate,"RegNo":self.magRegNo,"detailsofmarriage":str(detailsofmarriage) , "locationofmarriage":str(locationofmarriage) , 'detailsofspouse':str(detailsofspouse)}
+
+    def closeActualWork(self):
+        self.MarriageForm.close()
 
 if __name__ == "__main__":
     import sys
