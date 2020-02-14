@@ -139,6 +139,16 @@ class database_wardwindow(database):
             self.mycursor.execute(sql)
             self.mydb.commit()
         print("Ok")
-#a=database_wardwindow("localhost","root","jdb")
+
+    def getRowCount(self,column,tablename,value):
+        sql = "SELECT {0} FROM {1} WHERE {0} LIKE '{2}'".format(column,tablename,value)
+        self.mycursor.execute(sql)
+        rows=self.mycursor.fetchall()
+        if(rows):
+            return len(rows)
+        return 0
+#a=database_wardwindow("localhost","root","3zxc3")
 #a.createFormTable("gshs")
 #a.addColumns("gshs","Ajh","sdkjjhv","hjgd")
+#print(a.getRowCount('RegDate','marriageregistration',"2076/01/%"))
+
