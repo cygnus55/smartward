@@ -23,7 +23,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>SmartWard</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
@@ -51,7 +51,22 @@
          </rect>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(255, 255, 255);</string>
+         <string notr="true">QFrame
+{
+background-color: rgb(255, 255, 255);
+}
+QPushButton:hover
+{
+background-color:rgb(248, 244, 255);
+}
+QPushButton
+{
+font-size:16px;
+}
+QLabel
+{
+color:red;
+}</string>
         </property>
         <property name="frameShape">
          <enum>QFrame::StyledPanel</enum>
@@ -59,7 +74,7 @@
         <property name="frameShadow">
          <enum>QFrame::Raised</enum>
         </property>
-        <widget class="QLabel" name="label">
+        <widget class="QLabel" name="nepal_gov_logo">
          <property name="geometry">
           <rect>
            <x>0</x>
@@ -78,41 +93,93 @@
         <widget class="QLabel" name="Mun_Name">
          <property name="geometry">
           <rect>
-           <x>160</x>
+           <x>185</x>
            <y>30</y>
-           <width>641</width>
-           <height>81</height>
+           <width>616</width>
+           <height>31</height>
           </rect>
          </property>
+         <property name="font">
+          <font>
+           <pointsize>20</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
          <property name="text">
-          <string>Municipality name 
-slogan</string>
+          <string/>
          </property>
         </widget>
         <widget class="QPushButton" name="home_button">
          <property name="geometry">
           <rect>
            <x>10</x>
-           <y>170</y>
-           <width>75</width>
-           <height>23</height>
+           <y>163</y>
+           <width>121</width>
+           <height>30</height>
           </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border-radius:6px;
+border:1px solid rgb(170, 170, 127);
+qproperty-icon:url(:pic/home-icon.png);
+</string>
          </property>
          <property name="text">
           <string>Home</string>
          </property>
         </widget>
-        <widget class="QPushButton" name="setting_button">
+        <widget class="QPushButton" name="settings_button">
          <property name="geometry">
           <rect>
-           <x>100</x>
-           <y>170</y>
-           <width>75</width>
-           <height>23</height>
+           <x>135</x>
+           <y>163</y>
+           <width>136</width>
+           <height>30</height>
           </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border-radius:6px;
+border:1px solid rgb(170, 170, 127);
+qproperty-icon:url(:pic/settings-icon.png);</string>
          </property>
          <property name="text">
           <string>Settings</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="mun_logo_label">
+         <property name="geometry">
+          <rect>
+           <x>1170</x>
+           <y>10</y>
+           <width>150</width>
+           <height>148</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+        <widget class="QLabel" name="Mun_Ward_num">
+         <property name="geometry">
+          <rect>
+           <x>185</x>
+           <y>60</y>
+           <width>600</width>
+           <height>30</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>14</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="text">
+          <string/>
          </property>
         </widget>
        </widget>
@@ -120,62 +187,99 @@ slogan</string>
         <property name="geometry">
          <rect>
           <x>0</x>
-          <y>281</y>
-          <width>1902</width>
-          <height>781</height>
+          <y>200</y>
+          <width>1366</width>
+          <height>568</height>
          </rect>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(255, 255, 255);</string>
+         <string notr="true">QPushButton:hover
+{
+background-color:rgb(248, 244, 255);
+}
+QPushButton#delete_account_button:hover{
+background-color:rgb(255, 0, 0);
+color:rgb(255, 255, 255);
+}
+QPushButton#change_password_button:hover{
+background-color: rgb(170, 170, 255);
+color:rgb(0, 0, 127);
+}
+QPushButton#delete_account_button
+{
+background-color:rgb(248, 244, 255);
+}
+QPushButton#change_password_button
+{
+background-color:rgb(248, 244, 255);
+}
+QPushButton{
+border-radius:10px;
+border:1px solid rgb(170, 170, 127);
+font-size:16px;
+}
+QWidget
+{
+background-color: rgb(255, 255, 255);
+}
+
+
+
+</string>
         </property>
-        <widget class="QWidget" name="Setting_page"/>
-        <widget class="QWidget" name="HomePage">
-         <widget class="QPushButton" name="pushButton">
+        <property name="currentIndex">
+         <number>0</number>
+        </property>
+        <widget class="QWidget" name="home_page">
+         <widget class="QPushButton" name="vital_reg_button">
           <property name="geometry">
            <rect>
             <x>30</x>
-            <y>50</y>
+            <y>75</y>
             <width>540</width>
-            <height>80</height>
+            <height>91</height>
            </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true"/>
           </property>
           <property name="text">
            <string>Vital Registration</string>
           </property>
          </widget>
-         <widget class="QPushButton" name="pushButton_2">
+         <widget class="QPushButton" name="citizenship_button">
           <property name="geometry">
            <rect>
             <x>30</x>
             <y>220</y>
             <width>540</width>
-            <height>80</height>
+            <height>91</height>
            </rect>
           </property>
           <property name="text">
            <string>Citizenship</string>
           </property>
          </widget>
-         <widget class="QPushButton" name="pushButton_4">
+         <widget class="QPushButton" name="sifarish_button">
           <property name="geometry">
            <rect>
             <x>690</x>
-            <y>50</y>
+            <y>75</y>
             <width>540</width>
-            <height>80</height>
+            <height>91</height>
            </rect>
           </property>
           <property name="text">
-           <string>Sifaris</string>
+           <string>Sifaris (Recommendation Forms)</string>
           </property>
          </widget>
-         <widget class="QPushButton" name="pushButton_5">
+         <widget class="QPushButton" name="relation_verify_button">
           <property name="geometry">
            <rect>
             <x>690</x>
             <y>220</y>
             <width>540</width>
-            <height>80</height>
+            <height>91</height>
            </rect>
           </property>
           <property name="text">
@@ -183,47 +287,354 @@ slogan</string>
           </property>
          </widget>
         </widget>
-       </widget>
-       <widget class="QFrame" name="dropbox">
-        <property name="geometry">
-         <rect>
-          <x>90</x>
-          <y>200</y>
-          <width>241</width>
-          <height>80</height>
-         </rect>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Raised</enum>
-        </property>
-        <widget class="QPushButton" name="updateprofile">
-         <property name="geometry">
-          <rect>
-           <x>0</x>
-           <y>10</y>
-           <width>141</width>
-           <height>23</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Update profile</string>
-         </property>
+        <widget class="QWidget" name="change_password">
+         <widget class="QGroupBox" name="groupBox">
+          <property name="geometry">
+           <rect>
+            <x>180</x>
+            <y>90</y>
+            <width>496</width>
+            <height>256</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>16</pointsize>
+           </font>
+          </property>
+          <property name="title">
+           <string>Change Password:</string>
+          </property>
+          <widget class="QLineEdit" name="old_password_lineedit">
+           <property name="geometry">
+            <rect>
+             <x>75</x>
+             <y>45</y>
+             <width>256</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">border-radius:6px;
+border:1px solid rgb(170, 170, 127);</string>
+           </property>
+           <property name="echoMode">
+            <enum>QLineEdit::Password</enum>
+           </property>
+           <property name="placeholderText">
+            <string> Current Password</string>
+           </property>
+          </widget>
+          <widget class="QLineEdit" name="new_password_linedit">
+           <property name="geometry">
+            <rect>
+             <x>75</x>
+             <y>90</y>
+             <width>256</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">border-radius:6px;
+border:1px solid rgb(170, 170, 127);</string>
+           </property>
+           <property name="echoMode">
+            <enum>QLineEdit::Password</enum>
+           </property>
+           <property name="placeholderText">
+            <string> New Password</string>
+           </property>
+          </widget>
+          <widget class="QLineEdit" name="reconfirm_password_lineedit">
+           <property name="geometry">
+            <rect>
+             <x>75</x>
+             <y>135</y>
+             <width>256</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">border-radius:6px;
+border:1px solid rgb(170, 170, 127);</string>
+           </property>
+           <property name="echoMode">
+            <enum>QLineEdit::Password</enum>
+           </property>
+           <property name="placeholderText">
+            <string> Reconfirm New Password</string>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="change_password_button">
+           <property name="geometry">
+            <rect>
+             <x>300</x>
+             <y>195</y>
+             <width>151</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Change Password</string>
+           </property>
+          </widget>
+         </widget>
         </widget>
-        <widget class="QPushButton" name="changedir">
-         <property name="geometry">
-          <rect>
-           <x>0</x>
-           <y>40</y>
-           <width>181</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Change Destination Directory</string>
-         </property>
+        <widget class="QWidget" name="remove_ward_page">
+         <widget class="QGroupBox" name="groupBox_2">
+          <property name="geometry">
+           <rect>
+            <x>180</x>
+            <y>90</y>
+            <width>481</width>
+            <height>211</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>16</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+          <property name="title">
+           <string>Delete Account</string>
+          </property>
+          <widget class="QLabel" name="label">
+           <property name="geometry">
+            <rect>
+             <x>15</x>
+             <y>30</y>
+             <width>451</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string> Enter password for deletion if you are to delete your account:</string>
+           </property>
+          </widget>
+          <widget class="QLineEdit" name="deletion_password_lineedit">
+           <property name="geometry">
+            <rect>
+             <x>30</x>
+             <y>90</y>
+             <width>256</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">border: 1px solid rgb(170, 170, 127);
+border-radius:6px;
+</string>
+           </property>
+           <property name="echoMode">
+            <enum>QLineEdit::PasswordEchoOnEdit</enum>
+           </property>
+           <property name="placeholderText">
+            <string> Enter password</string>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="delete_account_button">
+           <property name="geometry">
+            <rect>
+             <x>240</x>
+             <y>150</y>
+             <width>136</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Remove Account</string>
+           </property>
+          </widget>
+         </widget>
+        </widget>
+        <widget class="QWidget" name="update_ward_profile_page">
+         <widget class="QGroupBox" name="groupBox_3">
+          <property name="geometry">
+           <rect>
+            <x>105</x>
+            <y>45</y>
+            <width>721</width>
+            <height>421</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>16</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QLineEdit
+{
+	border: 1px solid rgb(170, 170, 127);
+	border-radius:6px;
+}
+QPushButton:hover
+{
+color:rgb(0, 0, 127);
+}</string>
+          </property>
+          <property name="title">
+           <string>Ward Profile</string>
+          </property>
+          <widget class="QLineEdit" name="municipality_update_lineedit">
+           <property name="geometry">
+            <rect>
+             <x>105</x>
+             <y>75</y>
+             <width>286</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="styleSheet">
+            <string notr="true"/>
+           </property>
+           <property name="placeholderText">
+            <string> Municipality</string>
+           </property>
+          </widget>
+          <widget class="QLineEdit" name="address_update_lineedit">
+           <property name="geometry">
+            <rect>
+             <x>105</x>
+             <y>120</y>
+             <width>286</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="styleSheet">
+            <string notr="true"/>
+           </property>
+           <property name="placeholderText">
+            <string> Address</string>
+           </property>
+          </widget>
+          <widget class="QLineEdit" name="email_update_lineedit">
+           <property name="geometry">
+            <rect>
+             <x>105</x>
+             <y>165</y>
+             <width>286</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="placeholderText">
+            <string> Email address</string>
+           </property>
+          </widget>
+          <widget class="QLineEdit" name="phone_update_lineedit">
+           <property name="geometry">
+            <rect>
+             <x>105</x>
+             <y>210</y>
+             <width>286</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="placeholderText">
+            <string> Phone</string>
+           </property>
+          </widget>
+          <widget class="QLineEdit" name="logo_path_update_lineedit">
+           <property name="geometry">
+            <rect>
+             <x>105</x>
+             <y>255</y>
+             <width>286</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="placeholderText">
+            <string> Logo path</string>
+           </property>
+          </widget>
+          <widget class="QLineEdit" name="state_update_lineedit">
+           <property name="geometry">
+            <rect>
+             <x>435</x>
+             <y>120</y>
+             <width>151</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="placeholderText">
+            <string> State</string>
+           </property>
+          </widget>
+          <widget class="QLineEdit" name="ward_no_update_lineedit">
+           <property name="geometry">
+            <rect>
+             <x>435</x>
+             <y>75</y>
+             <width>151</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="placeholderText">
+            <string> Ward No.</string>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="browse">
+           <property name="geometry">
+            <rect>
+             <x>420</x>
+             <y>255</y>
+             <width>41</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">border: 2px solid black;
+border-radius:0px;
+border-image:url(:/pic/browse.png);
+
+</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="update_ward_profile_button">
+           <property name="geometry">
+            <rect>
+             <x>375</x>
+             <y>330</y>
+             <width>166</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Update Ward Profile</string>
+           </property>
+          </widget>
+         </widget>
         </widget>
        </widget>
       </widget>
@@ -232,6 +643,30 @@ slogan</string>
    </layout>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>scrollArea</tabstop>
+  <tabstop>home_button</tabstop>
+  <tabstop>settings_button</tabstop>
+  <tabstop>vital_reg_button</tabstop>
+  <tabstop>sifarish_button</tabstop>
+  <tabstop>citizenship_button</tabstop>
+  <tabstop>relation_verify_button</tabstop>
+  <tabstop>old_password_lineedit</tabstop>
+  <tabstop>new_password_linedit</tabstop>
+  <tabstop>reconfirm_password_lineedit</tabstop>
+  <tabstop>change_password_button</tabstop>
+  <tabstop>deletion_password_lineedit</tabstop>
+  <tabstop>delete_account_button</tabstop>
+  <tabstop>municipality_update_lineedit</tabstop>
+  <tabstop>ward_no_update_lineedit</tabstop>
+  <tabstop>address_update_lineedit</tabstop>
+  <tabstop>state_update_lineedit</tabstop>
+  <tabstop>email_update_lineedit</tabstop>
+  <tabstop>phone_update_lineedit</tabstop>
+  <tabstop>logo_path_update_lineedit</tabstop>
+  <tabstop>browse</tabstop>
+  <tabstop>update_ward_profile_button</tabstop>
+ </tabstops>
  <resources>
   <include location="sw.qrc"/>
  </resources>

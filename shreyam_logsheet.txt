@@ -31,5 +31,3 @@ Week 7:
 
 Added some major functions in homewindow to change password, delete account and update ward profile
 
-
-

@@ -15,10 +15,10 @@ from PyQt5.QtGui import *
 import datetime
 import nepali_date
 import sw_string
-import dbconnect
 
-db=dbconnect.database_wardwindow("localhost","root")
-table="MarriageRegistration"
+
+#db=dbconnect.database_wardwindow("localhost","root")
+#table="MarriageRegistration"
 
 
 
@@ -493,6 +493,9 @@ class Ui_MarriageForm(object):
 
 class ActualWork():
     def __init__(self):
+        import dbconnect
+        self.db=dbconnect.database_wardwindow("localhost","root",)
+        self.table="MarriageRegistration"
         self.MarriageForm = QtWidgets.QMainWindow()
         self.ui = Ui_MarriageForm()
         self.ui.setupUi(self.MarriageForm)
@@ -510,9 +513,9 @@ class ActualWork():
         #b=['RegNo','123-32','detailsofmarriage', "('Social Tradition', ('2000-01-01', '2056/09/17'))", 'locationofmarriage', "('Kavre', 'Namobudda', '04', 'Timal Road', 'Methinkot', '45', '')", 'detailsofspouse', "{'detailsofbride': ('Tandon', 'Rabina', '2057/01/05', 'Kami', '+2', 'Actress', 'Divorcee', ('Rampur', 'Narayanghat', '5', 'Ghandi Street', 'Hariharpur', '78', 'India'), ('India', '27-12398721', '2071/06/09', 'Rampur', '87289398', 'India', 'New Delhi'), ('Fariha Tandon', 'Kanod Tandon', 'Kajol Tandon')), 'detailsofbridegroom': ('Ghimere', 'Tilak', '2051/03/21', 'Brahmin', 'B.Sc.', 'Astrologer', 'Single', ('Solukhumbu', 'Namche Bazar', '9', 'Manila Street', 'Vaisepati', '567', 'Nepal'), ('Nepal', '983-3468', '2067/03/05', 'Solukhumbu', '', '', ''), ('Goshnath Ghimere', 'Farilal Ghimere', 'Nabina Ghimere'))}"]
         #a=['RegDate',,b[0],b[1],b[2],b[3].replace("'","__"),b[4],b[5].replace("'","__"),b[6],b[7].replace("'","__")]
         #print(a)
-        db.createFormTable(table)
-        db.addColumns(table,a[4],a[6],a[8])
-        db.insertValues(table,a)
+        self.db.createFormTable(table)
+        self.db.addColumns(table,a[4],a[6],a[8])
+        self.db.insertValues(table,a)
 
     def getallvalues(self):
         self.magRegNo=self.ui.marriageRegistrationNoLineEdit.text()
