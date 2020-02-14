@@ -1,8 +1,8 @@
 import mysql.connector
-import json
+import pickle
 
-with open("ward.json","r") as jsonfile:
-    database_name=json.load(jsonfile)['id']
+with open("../ward.pickle","rb") as picklefile:
+    database_name=pickle.load(picklefile)['id']
 print(database_name)
 
 class database:

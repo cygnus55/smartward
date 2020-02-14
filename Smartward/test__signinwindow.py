@@ -1,72 +1,16 @@
+# -*- coding: utf-8 -*-
+
+# Form implementation generated from reading ui file 'signinwindow.ui'
+#
+# Created by: PyQt5 UI code generator 5.13.2
+#
+# WARNING! All changes made in this file will be lost!
+
+
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-import time
-import pickle
-import re
-import socket
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
-from PyQt5.QtSql import *
-from sw_string import *
-from swgmail import *
-import mysql.connector
-from ui_mainwindow import *
 
-#from dbconnect import *
-#db=database_signinwindow("localhost","root","smartward")
-mygmail=SWGmail()
-
-class Ui_SigninWindow(QWidget):
-    def window_functions(self,MainWindow):
-        # definition of signinwindow functions
-        def on_signup_clicked():
-            print("signup clicked")
-            #get value from lineedits
-            municipality=self.municipality.text().title()
-            wardno=self.wardno.text()
-            address=self.address.text().title()
-            state=self.state.text()
-            phone=self.phoneNo.text()
-            email=self.email.text()
-            mun_logo=self.mun_logo.text()
-            password=self.password.text()
-            confirmpassword = self.confirmpassword.text()
-
-            #check if all fields are filled
-            if(isEmpty(municipality,wardno,address,phone,email,password,confirmpassword)):
-                QMessageBox.warning(self,"SignUp Failed","All fields are not filled!")
-            elif(not(password == confirmpassword)):
-                QMessageBox.warning(self,"Password Confirmation Invalid","Password doesnot match!")
-            else:
-                id=generateID(municipality.lower(),wardno,state)
-                print(id)
-                ip = socket.gethostbyname(socket.gethostname())
-                wada={'id':id,'municipality':municipality,'wardno':wardno,'state':state,'address':address,'phone':phone,'email':email,'mun_logo':mun_logo,'password':password}
-                with open('ward.pickle','wb') as obj:
-                    pickle.dump(wada,obj)
-                    obj.close()
-                #mygmail.sendRegistrationSuccessfulMail(id,municipality,wardno,state,address,phone,email,ip,password)
-                QMessageBox.information(self,"Registration Successful","We have sent mail to your email account.\nCheck the mail for login details.")
-                MainWindow.close()
-                self.WardWindow=QMainWindow()
-                self.ui_ward=Ui_WardWindow()
-                self.ui_ward.setupUi(self.WardWindow)
-                self.WardWindow.show()
-
-        def on_browse_clicked():
-            print("browse clicked")
-            #set browse file for images
-            path=QFileDialog.getOpenFileName(self,"Municipality Logo","/home","Images(*.png)")[0]
-            self.mun_logo.setText(path)
-
-        # sign up page functions
-        self.mun_logo.setEchoMode(0)
-        self.signup.setAutoDefault(True)
-        self.signup.clicked.connect(on_signup_clicked)
-        self.browse.setAutoDefault(True)
-        self.browse.clicked.connect(on_browse_clicked)
-
+class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(614, 668)
@@ -104,11 +48,6 @@ class Ui_SigninWindow(QWidget):
 "    ")
         self.label_3.setAlignment(QtCore.Qt.AlignCenter)
         self.label_3.setObjectName("label_3")
-        self.municipality = QtWidgets.QLineEdit(self.signinBox)
-        self.municipality.setGeometry(QtCore.QRect(30, 270, 351, 31))
-        self.municipality.setStyleSheet("background:transparent")
-        self.municipality.setText("")
-        self.municipality.setObjectName("municipality")
         self.wardno = QtWidgets.QLineEdit(self.signinBox)
         self.wardno.setGeometry(QtCore.QRect(405, 270, 141, 31))
         self.wardno.setStyleSheet("background:transparent")
@@ -161,10 +100,14 @@ class Ui_SigninWindow(QWidget):
 "color:white;\n"
 "")
         self.signup.setObjectName("signup")
+        self.municipality = QtWidgets.QLineEdit(self.signinBox)
+        self.municipality.setGeometry(QtCore.QRect(30, 270, 351, 31))
+        self.municipality.setStyleSheet("background:transparent")
+        self.municipality.setText("")
+        self.municipality.setObjectName("municipality")
         MainWindow.setCentralWidget(self.centralWidget)
 
         self.retranslateUi(MainWindow)
-        self.window_functions(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
         MainWindow.setTabOrder(self.municipality, self.wardno)
         MainWindow.setTabOrder(self.wardno, self.address)
@@ -192,3 +135,13 @@ class Ui_SigninWindow(QWidget):
         self.signup.setText(_translate("MainWindow", "Sign Up"))
         self.municipality.setPlaceholderText(_translate("MainWindow", "(Rural) Municipality/(Sub) Metropolitan City"))
 import sw_rc
+
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    MainWindow = QtWidgets.QMainWindow()
+    ui = Ui_MainWindow()
+    ui.setupUi(MainWindow)
+    MainWindow.show()
+    sys.exit(app.exec_())

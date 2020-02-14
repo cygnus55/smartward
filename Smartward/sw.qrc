@@ -1,5 +1,7 @@
 <RCC>
   <qresource prefix="pic">
+    <file>home-icon.png</file>
+    <file>settings-icon.png</file>
     <file>logo.png</file>
     <file>sw_logo.png</file>
     <file>browse.png</file>
