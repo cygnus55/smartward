@@ -23,4 +23,6 @@ Week 4
 Week 5
 	1.Created main window(homepage) format 
 	2.learn to connect windows sucessfully
-	3.
+	3.Went through ezgmail module
+Week 6
+	1.
