@@ -10,10 +10,11 @@ import sys
 import os
 import time
 
-
-#import forms from folder remaining
-#from forms.dbconnect import database_wardwindow
-#from forms.marriage import ActualWork
+import dbconnect ##might cause error
+#from graph import MainWindow as StatWindow ##might cause some error
+#importing regd. forms
+from forms import marriage
+from forms import birth
 
 myemail=SWGmail()
 
@@ -89,8 +90,7 @@ class Ui_WardWindow(QWidget):
         
         def on_browse_clicked():
             print("browse clicked")
-            #set browse file for images
-            path=QFileDialog.getOpenFileName(self,"Municipality Logo","/","Images(*.png)")[0]
+            path=QFileDialog.getOpenFileName(self,"Municipality Logo",sys.path[0]+"\Logo","Images(*.png)")[0]
             self.logo_path_update_lineedit.setText(path)
 
         def on_ward_profile_update_clicked():
@@ -177,7 +177,8 @@ class Ui_WardWindow(QWidget):
         #birth_reg,death_reg,marriage_reg,divorce_reg and migration_reg help open respective forms
         def birth_reg():
             #birth registration
-            #new Window-birth reg. form            
+            #new Window-birth reg. form 
+            self.birth_form=birth.ActualWork()
             print("birth registration")
         
         def death_reg():
@@ -188,7 +189,7 @@ class Ui_WardWindow(QWidget):
         def marriage_reg():
             #marriage registration
             #new Window-marriage reg. form
-            #self.marriage_form=ActualWork()
+            self.marriage_form=marriage.ActualWork()
             print("marriage registration") 
 
         def divorce_reg():
@@ -200,12 +201,19 @@ class Ui_WardWindow(QWidget):
             #migration registration
             #new Window-migration reg. form
             print("migration registration") 
+        
+        def statistics_show():
+            #self.stat_window=graph.StatWindow()
+            #self.start_window.show()
+            print("StatWindow displayed.")
+
 
         self.home_button.clicked.connect(home_page)
         self.delete_account_button.clicked.connect(on_remove_account_clicked)
         self.change_password_button.clicked.connect(on_change_password_clicked)
         self.update_ward_profile_button.clicked.connect(on_ward_profile_update_clicked)
         self.browse.clicked.connect(on_browse_clicked)
+        self.statistics_button.clicked.connect(statistics_show)
 
         settings_menu=QtWidgets.QMenu()
         settings_menu.addAction("Update Ward Profile",update_ward_profile_page)
@@ -348,6 +356,9 @@ class Ui_WardWindow(QWidget):
         self.relation_verify_button = QtWidgets.QPushButton(self.home_page)
         self.relation_verify_button.setGeometry(QtCore.QRect(690, 220, 540, 91))
         self.relation_verify_button.setObjectName("relation_verify_button")
+        self.statistics_button = QtWidgets.QPushButton(self.home_page)
+        self.statistics_button.setGeometry(QtCore.QRect(30, 375, 540, 91))
+        self.statistics_button.setObjectName("statistics_button")
         self.stackedWidget.addWidget(self.home_page)
         self.change_password = QtWidgets.QWidget()
         self.change_password.setObjectName("change_password")
@@ -509,6 +520,7 @@ class Ui_WardWindow(QWidget):
         self.citizenship_button.setText(_translate("WardWindow", "Citizenship"))
         self.sifarish_button.setText(_translate("WardWindow", "Sifaris (Recommendation Forms)"))
         self.relation_verify_button.setText(_translate("WardWindow", "Relationship Verification"))
+        self.statistics_button.setText(_translate("WardWindow", "Statistics"))
         self.groupBox.setTitle(_translate("WardWindow", "Change Password:"))
         self.old_password_lineedit.setPlaceholderText(_translate("WardWindow", " Current Password"))
         self.new_password_linedit.setPlaceholderText(_translate("WardWindow", " New Password"))
