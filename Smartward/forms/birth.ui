@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>BirthForm</class>
+ <widget class="QMainWindow" name="BirthForm">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Birth Registration Form</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
@@ -25,8 +25,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>843</width>
-         <height>1258</height>
+         <width>851</width>
+         <height>1086</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_2">
@@ -44,20 +44,17 @@
           </item>
          </layout>
         </item>
-        <item row="2" column="0">
-         <layout class="QFormLayout" name="formLayout_4"/>
-        </item>
         <item row="3" column="0">
          <widget class="QLabel" name="label_7">
           <property name="text">
-           <string>Grandfather Details</string>
+           <string>&lt;b&gt;Grandfather's Details&lt;/b&gt;</string>
           </property>
          </widget>
         </item>
-        <item row="0" column="0">
+        <item row="1" column="0">
          <widget class="QLabel" name="label_5">
           <property name="text">
-           <string>Details Of Newly Born</string>
+           <string>&lt;b&gt;Details Of Newly Born&lt;/b&gt;</string>
           </property>
          </widget>
         </item>
@@ -450,7 +447,7 @@
           </item>
          </layout>
         </item>
-        <item row="1" column="0">
+        <item row="2" column="0">
          <layout class="QFormLayout" name="formLayout">
           <item row="0" column="0">
            <widget class="QLabel" name="nameLabel">
@@ -495,7 +492,7 @@
           <item row="4" column="0">
            <widget class="QLabel" name="casteLabel">
             <property name="text">
-             <string>caste</string>
+             <string>Caste</string>
             </property>
            </widget>
           </item>
@@ -578,12 +575,33 @@
         <item row="5" column="0">
          <widget class="QLabel" name="label_8">
           <property name="text">
-           <string>Details of newly born parent</string>
+           <string>&lt;b&gt;Details of the parents of new born baby&lt;/b&gt;</string>
           </property>
          </widget>
         </item>
+        <item row="0" column="0">
+         <layout class="QFormLayout" name="formLayout_9">
+          <item row="0" column="0">
+           <widget class="QLabel" name="birthRegistrationNoLabel">
+            <property name="text">
+             <string>&lt;b&gt;Birth Registration No.&lt;/b&gt;</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLineEdit" name="birthRegistrationNoLineEdit"/>
+          </item>
+         </layout>
+        </item>
        </layout>
       </widget>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QDialogButtonBox" name="buttonBox">
+      <property name="standardButtons">
+       <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+      </property>
      </widget>
     </item>
    </layout>

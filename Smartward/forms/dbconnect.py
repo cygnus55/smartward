@@ -1,7 +1,7 @@
 import mysql.connector
 import pickle
 
-with open("../ward.pickle","rb") as picklefile:
+with open("ward.pickle","rb") as picklefile:
     database_name=pickle.load(picklefile)['id']
 print(database_name)
 
