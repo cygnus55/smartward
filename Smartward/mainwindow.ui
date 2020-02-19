@@ -286,6 +286,19 @@ background-color: rgb(255, 255, 255);
            <string>Relationship Verification</string>
           </property>
          </widget>
+         <widget class="QPushButton" name="statistics_button">
+          <property name="geometry">
+           <rect>
+            <x>30</x>
+            <y>375</y>
+            <width>540</width>
+            <height>91</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Statistics</string>
+          </property>
+         </widget>
         </widget>
         <widget class="QWidget" name="change_password">
          <widget class="QGroupBox" name="groupBox">
