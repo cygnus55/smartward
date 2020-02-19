@@ -1,7 +1,10 @@
-from PyQt5 import QtCore, QtGui, QtWidgets
+#copy this in every code
+#self.window_functions(MainWindow)
 
+from PyQt5 import QtCore, QtGui, QtWidgets
 import time
 import pickle
+import sys
 import re
 import socket
 from PyQt5.QtCore import *
@@ -12,8 +15,8 @@ from sw_string import *
 from swgmail import *
 import mysql.connector
 from ui_mainwindow import *
-
 #from dbconnect import *
+
 #db=database_signinwindow("localhost","root","smartward")
 mygmail=SWGmail()
 
@@ -57,7 +60,7 @@ class Ui_SigninWindow(QWidget):
         def on_browse_clicked():
             print("browse clicked")
             #set browse file for images
-            path=QFileDialog.getOpenFileName(self,"Municipality Logo","/home","Images(*.png)")[0]
+            path=QFileDialog.getOpenFileName(self,"Municipality Logo",sys.path[0]+"\Logo","Images(*.png)")[0]
             self.mun_logo.setText(path)
 
         # sign up page functions

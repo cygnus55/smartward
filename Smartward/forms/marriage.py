@@ -1,12 +1,3 @@
-# -*- coding: utf-8 -*-
-
-# Form implementation generated from reading ui file 'marriage.ui'
-#
-# Created by: PyQt5 UI code generator 5.13.1
-#
-# WARNING! All changes made in this file will be lost!
-
-
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
@@ -16,11 +7,7 @@ import datetime
 import nepali_date
 import sw_string
 
-
-#db=dbconnect.database_wardwindow("localhost","root")
-#table="MarriageRegistration"
-
-
+table="MarriageRegistration"
 
 class Ui_MarriageForm(object):
     def setupUi(self, MarriageForm):
@@ -494,8 +481,7 @@ class Ui_MarriageForm(object):
 class ActualWork():
     def __init__(self):
         import dbconnect
-        self.db=dbconnect.database_wardwindow("localhost","root",)
-        self.table="MarriageRegistration"
+        self.db=dbconnect.database_wardwindow("localhost","root")
         self.MarriageForm = QtWidgets.QMainWindow()
         self.ui = Ui_MarriageForm()
         self.ui.setupUi(self.MarriageForm)
