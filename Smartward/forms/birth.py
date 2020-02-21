@@ -473,37 +473,35 @@ class ActualWork():
         #a=['RegDate',,b[0],b[1],b[2],b[3].replace("'","__"),b[4],b[5].replace("'","__"),b[6],b[7].replace("'","__")]
         #print(a)
         self.db.createFormTable(table)
-        self.db.addColumns(table,a[4],a[6],a[8])
+        #self.db.addColumns(table,a[4],a[6],a[8])
         self.db.insertValues(table,a)
 
     def getallvalues(self):
-        '''
-        self.magRegNo=self.ui.marriageRegistrationNoLineEdit.text()
-        self.marriagetype=self.ui.marriageTypeComboBox.currentText()
-        date=QDate(self.ui.dateEdit_2.date())
+        
+        self.birthRegNo=self.ui.birthRegistrationNoLineEdit.text()
+        #self.marriagetype=self.ui.marriageTypeComboBox.currentText()
+        date=QDate(self.ui.dateOfBirthDateEdit.date())
         year,month,day=date.getDate()
-        marriage_in_ad=datetime.date(year,month,day)
-        marriage_in_bs=nepali_date.NepaliDate.to_nepali_date(marriage_in_ad)
+        birth_in_ad=datetime.date(year,month,day)
+        birth_in_bs=nepali_date.NepaliDate.to_nepali_date(birth_in_ad)
         today=nepali_date.NepaliDate.today()
         registrationdate=str(today)[3:]
-        self.marriagedate=(str(marriage_in_ad),str(marriage_in_bs)[3:])
-        detailsofmarriage=(self.marriagetype,self.marriagedate)
-        locationofmarriage=(self.ui.districtLineEdit.text(),self.ui.municipalityLineEdit.text(),self.ui.wardNoLineEdit.text(),self.ui.roadStreetLineEdit.text(),self.ui.villageLineEdit.text(),self.ui.houseNoLineEdit.text(),self.ui.locationIfMarriageAbroadLineEdit.text())
-
-        self.paddressbride=(self.ui.lineEdit_18.text(),self.ui.lineEdit_20.text(),self.ui.lineEdit_21.text(),self.ui.lineEdit_24.text(),self.ui.lineEdit_26.text(),self.ui.lineEdit_28.text(),self.ui.lineEdit_30.text())
-        self.ccbride=(self.ui.lineEdit_32.text(),self.ui.lineEdit_34.text(),self.ui.lineEdit_36.text(),self.ui.lineEdit_38.text(),self.ui.lineEdit_40.text(),self.ui.lineEdit_42.text(),self.ui.lineEdit_44.text())
-        self.parentbride=(self.ui.lineEdit_46.text(),self.ui.lineEdit_48.text(),self.ui.lineEdit_50.text())
-        self.detailsofbride=(self.ui.lineEdit_4.text(),self.ui.lineEdit_6.text(),self.ui.lineEdit_8.text(),self.ui.lineEdit_10.text(),self.ui.lineEdit_12.text(),self.ui.lineEdit_14.text(),self.ui.lineEdit_16.text(),self.paddressbride,self.ccbride,self.parentbride)
-
-        self.paddressbridegroom=(self.ui.lineEdit_17.text(),self.ui.lineEdit_19.text(),self.ui.lineEdit_22.text(),self.ui.lineEdit_23.text(),self.ui.lineEdit_25.text(),self.ui.lineEdit_27.text(),self.ui.lineEdit_29.text())
-        self.ccbridegroom=(self.ui.lineEdit_31.text(),self.ui.lineEdit_33.text(),self.ui.lineEdit_35.text(),self.ui.lineEdit_37.text(),self.ui.lineEdit_39.text(),self.ui.lineEdit_41.text(),self.ui.lineEdit_43.text())
-        self.parentbridegroom=(self.ui.lineEdit_45.text(),self.ui.lineEdit_47.text(),self.ui.lineEdit_49.text())
-        self.detailsofbridegroom=(self.ui.lineEdit_3.text(),self.ui.lineEdit_5.text(),self.ui.lineEdit_7.text(),self.ui.lineEdit_9.text(),self.ui.lineEdit_11.text(),self.ui.lineEdit_13.text(),self.ui.lineEdit_15.text(),self.paddressbridegroom,self.ccbridegroom,self.parentbridegroom)
-        detailsofspouse={'detailsofbride':self.detailsofbride, 'detailsofbridegroom':self.detailsofbridegroom}
-
-        return {"RegDate":registrationdate,"RegNo":self.magRegNo,"detailsofmarriage":str(detailsofmarriage) , "locationofmarriage":str(locationofmarriage) , 'detailsofspouse':str(detailsofspouse)}
-        '''
-        pass
+        self.birthdate=(str(birth_in_ad),str(birth_in_bs)[3:])
+        detailsofbirth=(self.birthdate,self.ui.nameLineEdit.text(),self.ui.placeOfBirthComboBox.currentText(),self.ui.genderComboBox.currentText(),self.ui.casteLineEdit.text(),self.ui.birthTypeComboBox.currentText(),self.ui.physicalDisabledLineEdit.text())
+        locationofbirth=(self.ui.districtLineEdit.text(),self.ui.MunicipalityLineEdit.text(),self.ui.wardNoLineEdit.text(),self.ui.countryIfBornInForeignLineEdit.text())
+        self.detailsoffather=(self.ui.lineEdit.text(),self.ui.districtLineEdit_3.text(),self.ui.districtLineEdit_4.text(),self.ui.districtLineEdit_6.text(),self.ui.districtLineEdit_8.text(),self.ui.districtLineEdit_10.text(),self.ui.districtLineEdit_12.text(),self.ui.districtLineEdit_14.text(),self.ui.districtLineEdit_16.text(),self.ui.districtLineEdit_18.text(),self.ui.districtLineEdit_20.text(),self.ui.districtLineEdit_22.text(),self.ui.districtLineEdit_24.text(),self.ui.districtLineEdit_26.text(),self.ui.districtLineEdit_28.text(),self.ui.districtLineEdit_30.text(),self.ui.districtLineEdit_32.text(),self.ui.districtLineEdit_34.text())
+        self.detailsofmother=(self.ui.lineEdit_6.text(),self.ui.districtLineEdit_2.text(),self.ui.districtLineEdit_5.text(),self.ui.districtLineEdit_7.text(),self.ui.districtLineEdit_9.text(),self.ui.districtLineEdit_11.text(),self.ui.districtLineEdit_13.text(),self.ui.districtLineEdit_15.text(),self.ui.districtLineEdit_17.text(),self.ui.districtLineEdit_19.text(),self.ui.districtLineEdit_21.text(),self.ui.districtLineEdit_23.text(),self.ui.districtLineEdit_25.text(),self.ui.districtLineEdit_27.text(),self.ui.districtLineEdit_29.text(),self.ui.districtLineEdit_31.text(),self.ui.districtLineEdit_33.text(),self.ui.districtLineEdit_35.text())        
+        date1=QDate(self.ui.dateEdit_2.date())
+        year,month,day=date1.getDate()
+        self.marriage_in_ad1=datetime.date1(year,month,day)
+        date2=QDate(self.ui.dateEdit.date())
+        year,month,day=date2.getDate()
+        marriage_in_ad2=datetime.date2(year,month,day)
+        self.marriage_in_bs=nepali_date.NepaliDate.to_nepali_date(birth_in_ad)
+        detailsofparent(self.ui.totalChildrenLineEdit.text(),self.ui.totalChildrenAliveLineEdit.text(),self.ui.marriageRegistrationNoLineEdit.text(),self.marriage_in_ad1,self.marriage_in_bs,self.detailsoffather,self.detailsofmother)
+        return {"RegDate":registrationdate,"RegNo":self.birthRegNo,"detailsofbirth":str(detailsofbirth) , "locationofbirth":str(locationofbirth) , 'detailsofparent':str(detailsofparent)}
+        
+    
     def closeActualWork(self):
         self.BirthForm.close()
 
