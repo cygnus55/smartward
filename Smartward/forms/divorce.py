@@ -1,3 +1,12 @@
+# -*- coding: utf-8 -*-
+
+# Form implementation generated from reading ui file 'divorce.ui'
+#
+# Created by: PyQt5 UI code generator 5.13.2
+#
+# WARNING! All changes made in this file will be lost!
+
+
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
@@ -10,6 +19,7 @@ import sw_string
 table="DivorceRegistration"
 
 
+
 class Ui_DivorceForm(object):
     def setupUi(self, DivorceForm):
         DivorceForm.setObjectName("DivorceForm")
@@ -18,24 +28,65 @@ class Ui_DivorceForm(object):
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
         self.gridLayout.setObjectName("gridLayout")
-        self.buttonBox = QtWidgets.QDialogButtonBox(self.centralwidget)
-        self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
-        self.buttonBox.setObjectName("buttonBox")
-        self.gridLayout.addWidget(self.buttonBox, 1, 0, 1, 1)
         self.scrollArea = QtWidgets.QScrollArea(self.centralwidget)
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 787, 1077))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 779, 1341))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.gridLayout_2 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents)
         self.gridLayout_2.setObjectName("gridLayout_2")
-        self.label = QtWidgets.QLabel(self.scrollAreaWidgetContents)
-        self.label.setObjectName("label")
-        self.gridLayout_2.addWidget(self.label, 0, 0, 1, 1)
         self.label_2 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
         self.label_2.setObjectName("label_2")
-        self.gridLayout_2.addWidget(self.label_2, 2, 0, 1, 1)
+        self.gridLayout_2.addWidget(self.label_2, 3, 0, 1, 1)
+        self.label = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.label.setObjectName("label")
+        self.gridLayout_2.addWidget(self.label, 1, 0, 1, 1)
+        self.formLayout = QtWidgets.QFormLayout()
+        self.formLayout.setObjectName("formLayout")
+        self.TypeOfCourtLabel = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.TypeOfCourtLabel.setObjectName("TypeOfCourtLabel")
+        self.formLayout.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.TypeOfCourtLabel)
+        self.TypeOfCourtLineEdit = QtWidgets.QComboBox(self.scrollAreaWidgetContents)
+        self.TypeOfCourtLineEdit.setObjectName("TypeOfCourtLineEdit")
+        self.TypeOfCourtLineEdit.addItem("")
+        self.TypeOfCourtLineEdit.addItem("")
+        self.TypeOfCourtLineEdit.addItem("")
+        self.formLayout.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.TypeOfCourtLineEdit)
+        self.districtLabel = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.districtLabel.setObjectName("districtLabel")
+        self.formLayout.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.districtLabel)
+        self.districtLineEdit = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
+        self.districtLineEdit.setObjectName("districtLineEdit")
+        self.formLayout.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.districtLineEdit)
+        self.courtDecisionNumberLabel = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.courtDecisionNumberLabel.setObjectName("courtDecisionNumberLabel")
+        self.formLayout.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.courtDecisionNumberLabel)
+        self.courtDecisionNumberLineEdit = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
+        self.courtDecisionNumberLineEdit.setObjectName("courtDecisionNumberLineEdit")
+        self.formLayout.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.courtDecisionNumberLineEdit)
+        self.courtDecisionDateLabel = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.courtDecisionDateLabel.setObjectName("courtDecisionDateLabel")
+        self.formLayout.setWidget(3, QtWidgets.QFormLayout.LabelRole, self.courtDecisionDateLabel)
+        self.courtDecisionDateDateEdit = QtWidgets.QDateEdit(self.scrollAreaWidgetContents)
+        self.courtDecisionDateDateEdit.setObjectName("courtDecisionDateDateEdit")
+        self.formLayout.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.courtDecisionDateDateEdit)
+        self.marriageRegistrationNumberLabel = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.marriageRegistrationNumberLabel.setObjectName("marriageRegistrationNumberLabel")
+        self.formLayout.setWidget(4, QtWidgets.QFormLayout.LabelRole, self.marriageRegistrationNumberLabel)
+        self.marriageRegistrationNumberLineEdit = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
+        self.marriageRegistrationNumberLineEdit.setObjectName("marriageRegistrationNumberLineEdit")
+        self.formLayout.setWidget(4, QtWidgets.QFormLayout.FieldRole, self.marriageRegistrationNumberLineEdit)
+        self.gridLayout_2.addLayout(self.formLayout, 2, 0, 1, 1)
+        self.formLayout_4 = QtWidgets.QFormLayout()
+        self.formLayout_4.setObjectName("formLayout_4")
+        self.registrationNoLabel = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.registrationNoLabel.setObjectName("registrationNoLabel")
+        self.formLayout_4.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.registrationNoLabel)
+        self.registrationNoLineEdit = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
+        self.registrationNoLineEdit.setObjectName("registrationNoLineEdit")
+        self.formLayout_4.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.registrationNoLineEdit)
+        self.gridLayout_2.addLayout(self.formLayout_4, 0, 0, 1, 1)
         self.formLayout_2 = QtWidgets.QFormLayout()
         self.formLayout_2.setObjectName("formLayout_2")
         self.Label = QtWidgets.QLabel(self.scrollAreaWidgetContents)
@@ -187,9 +238,9 @@ class Ui_DivorceForm(object):
         self.formLayout_2.setWidget(12, QtWidgets.QFormLayout.LabelRole, self.issueDateLabel_2)
         self.horizontalLayout_16 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_16.setObjectName("horizontalLayout_16")
-        self.dateEdit_8 = QtWidgets.QDateEdit(self.scrollAreaWidgetContents)
-        self.dateEdit_8.setObjectName("dateEdit_8")
-        self.horizontalLayout_16.addWidget(self.dateEdit_8)
+        self.dateEdit_6 = QtWidgets.QDateEdit(self.scrollAreaWidgetContents)
+        self.dateEdit_6.setObjectName("dateEdit_6")
+        self.horizontalLayout_16.addWidget(self.dateEdit_6)
         self.dateEdit_7 = QtWidgets.QDateEdit(self.scrollAreaWidgetContents)
         self.dateEdit_7.setObjectName("dateEdit_7")
         self.horizontalLayout_16.addWidget(self.dateEdit_7)
@@ -373,9 +424,6 @@ class Ui_DivorceForm(object):
         self.formLayout_2.setWidget(32, QtWidgets.QFormLayout.FieldRole, self.numberOfChildrenLivingWithOtherLineEdit)
         self.horizontalLayout_28 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_28.setObjectName("horizontalLayout_28")
-        self.dateEdit_6 = QtWidgets.QDateEdit(self.scrollAreaWidgetContents)
-        self.dateEdit_6.setObjectName("dateEdit_6")
-        self.horizontalLayout_28.addWidget(self.dateEdit_6)
         self.dateEdit_5 = QtWidgets.QDateEdit(self.scrollAreaWidgetContents)
         self.dateEdit_5.setObjectName("dateEdit_5")
         self.horizontalLayout_28.addWidget(self.dateEdit_5)
@@ -398,40 +446,11 @@ class Ui_DivorceForm(object):
         self.lineEdit_43.setObjectName("lineEdit_43")
         self.horizontalLayout_31.addWidget(self.lineEdit_43)
         self.formLayout_2.setLayout(31, QtWidgets.QFormLayout.FieldRole, self.horizontalLayout_31)
-        self.gridLayout_2.addLayout(self.formLayout_2, 3, 0, 1, 1)
-        self.formLayout = QtWidgets.QFormLayout()
-        self.formLayout.setObjectName("formLayout")
-        self.TypeOfCourtLabel = QtWidgets.QLabel(self.scrollAreaWidgetContents)
-        self.TypeOfCourtLabel.setObjectName("TypeOfCourtLabel")
-        self.formLayout.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.TypeOfCourtLabel)
-        self.TypeOfCourtLineEdit = QtWidgets.QComboBox(self.scrollAreaWidgetContents)
-        self.TypeOfCourtLineEdit.setObjectName("TypeOfCourtLineEdit")
-        self.formLayout.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.TypeOfCourtLineEdit)
-        self.districtLabel = QtWidgets.QLabel(self.scrollAreaWidgetContents)
-        self.districtLabel.setObjectName("districtLabel")
-        self.formLayout.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.districtLabel)
-        self.districtLineEdit = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
-        self.districtLineEdit.setObjectName("districtLineEdit")
-        self.formLayout.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.districtLineEdit)
-        self.courtDecisionNumberLabel = QtWidgets.QLabel(self.scrollAreaWidgetContents)
-        self.courtDecisionNumberLabel.setObjectName("courtDecisionNumberLabel")
-        self.formLayout.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.courtDecisionNumberLabel)
-        self.courtDecisionNumberLineEdit = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
-        self.courtDecisionNumberLineEdit.setObjectName("courtDecisionNumberLineEdit")
-        self.formLayout.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.courtDecisionNumberLineEdit)
-        self.courtDecisionDateLabel = QtWidgets.QLabel(self.scrollAreaWidgetContents)
-        self.courtDecisionDateLabel.setObjectName("courtDecisionDateLabel")
-        self.formLayout.setWidget(3, QtWidgets.QFormLayout.LabelRole, self.courtDecisionDateLabel)
-        self.courtDecisionDateDateEdit = QtWidgets.QDateEdit(self.scrollAreaWidgetContents)
-        self.courtDecisionDateDateEdit.setObjectName("courtDecisionDateDateEdit")
-        self.formLayout.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.courtDecisionDateDateEdit)
-        self.marriageRegistrationNumberLabel = QtWidgets.QLabel(self.scrollAreaWidgetContents)
-        self.marriageRegistrationNumberLabel.setObjectName("marriageRegistrationNumberLabel")
-        self.formLayout.setWidget(4, QtWidgets.QFormLayout.LabelRole, self.marriageRegistrationNumberLabel)
-        self.marriageRegistrationNumberLineEdit = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
-        self.marriageRegistrationNumberLineEdit.setObjectName("marriageRegistrationNumberLineEdit")
-        self.formLayout.setWidget(4, QtWidgets.QFormLayout.FieldRole, self.marriageRegistrationNumberLineEdit)
-        self.gridLayout_2.addLayout(self.formLayout, 1, 0, 1, 1)
+        self.buttonBox_2 = QtWidgets.QDialogButtonBox(self.scrollAreaWidgetContents)
+        self.buttonBox_2.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
+        self.buttonBox_2.setObjectName("buttonBox_2")
+        self.formLayout_2.setWidget(33, QtWidgets.QFormLayout.FieldRole, self.buttonBox_2)
+        self.gridLayout_2.addLayout(self.formLayout_2, 4, 0, 1, 1)
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.gridLayout.addWidget(self.scrollArea, 0, 0, 1, 1)
         DivorceForm.setCentralWidget(self.centralwidget)
@@ -442,8 +461,17 @@ class Ui_DivorceForm(object):
     def retranslateUi(self, DivorceForm):
         _translate = QtCore.QCoreApplication.translate
         DivorceForm.setWindowTitle(_translate("DivorceForm", "Divorce Registration"))
-        self.label.setText(_translate("DivorceForm", "<b>Details Regarding The Separation</b>"))
         self.label_2.setText(_translate("DivorceForm", "<b>Details Of Wife And Husband</b>"))
+        self.label.setText(_translate("DivorceForm", "<b>Details Regarding The Separation</b>"))
+        self.TypeOfCourtLabel.setText(_translate("DivorceForm", "The type of court that decides separation"))
+        self.TypeOfCourtLineEdit.setItemText(0, _translate("DivorceForm", "District Court"))
+        self.TypeOfCourtLineEdit.setItemText(1, _translate("DivorceForm", "Supreme Court"))
+        self.TypeOfCourtLineEdit.setItemText(2, _translate("DivorceForm", "Appellate court"))
+        self.districtLabel.setText(_translate("DivorceForm", "District"))
+        self.courtDecisionNumberLabel.setText(_translate("DivorceForm", "Court decision number"))
+        self.courtDecisionDateLabel.setText(_translate("DivorceForm", "Court decision date"))
+        self.marriageRegistrationNumberLabel.setText(_translate("DivorceForm", "Marriage Registration number"))
+        self.registrationNoLabel.setText(_translate("DivorceForm", "Registration no"))
         self.Label.setText(_translate("DivorceForm", "....."))
         self.label_4.setText(_translate("DivorceForm", "Husband Details"))
         self.label_3.setText(_translate("DivorceForm", "Wife Details"))
@@ -451,7 +479,7 @@ class Ui_DivorceForm(object):
         self.lastnameLabel.setText(_translate("DivorceForm", "Lastname"))
         self.fullNameLabel.setText(_translate("DivorceForm", "Full Name"))
         self.dateOfBirthLabel.setText(_translate("DivorceForm", "Date Of Birth"))
-        self.birthRegistrationNoLabel.setText(_translate("DivorceForm", "<b>Divorce Registration No.</b>"))
+        self.birthRegistrationNoLabel.setText(_translate("DivorceForm", "<html><head/><body><p><span style=\" font-weight:600;\">Birth Registration No.</span></p></body></html>"))
         self.casteLabel.setText(_translate("DivorceForm", "Caste"))
         self.countryWhereBornLabel.setText(_translate("DivorceForm", "Country Where Born"))
         self.citizenshipNoLabel.setText(_translate("DivorceForm", "Citizenship No(if have)"))
@@ -479,12 +507,6 @@ class Ui_DivorceForm(object):
         self.sonLabel.setText(_translate("DivorceForm", "Son"))
         self.daughterLabel.setText(_translate("DivorceForm", "Daughter"))
         self.numberOfChildrenLivingWithOtherLabel.setText(_translate("DivorceForm", "Number of children living with other"))
-        self.TypeOfCourtLabel.setText(_translate("DivorceForm", "The type of court that decides separation"))
-        self.districtLabel.setText(_translate("DivorceForm", "District"))
-        self.courtDecisionNumberLabel.setText(_translate("DivorceForm", "Court decision number"))
-        self.courtDecisionDateLabel.setText(_translate("DivorceForm", "Court decision date"))
-        self.marriageRegistrationNumberLabel.setText(_translate("DivorceForm", "Marriage Registration number"))
-
 class ActualWork():
     def __init__(self):
         import dbconnect
@@ -496,8 +518,8 @@ class ActualWork():
         self.actualWork()
 
     def actualWork(self):
-        self.ui.buttonBox.accepted.connect(self.submitform)
-        self.ui.buttonBox.rejected.connect(lambda:self.DivorceForm.close())
+        self.ui.buttonBox_2.accepted.connect(self.submitform)
+        self.ui.buttonBox_2.rejected.connect(lambda:self.DivorceForm.close())
 
     def submitform(self):
         self.values=self.getallvalues()
@@ -507,43 +529,85 @@ class ActualWork():
         #a=['RegDate',,b[0],b[1],b[2],b[3].replace("'","__"),b[4],b[5].replace("'","__"),b[6],b[7].replace("'","__")]
         #print(a)
         self.db.createFormTable(table)
-        self.db.addColumns(table,a[4],a[6],a[8])
+        self.db.addColumns(table,a[4],a[6],a[8],a[10])
         self.db.insertValues(table,a)
-
     def getallvalues(self):
-        '''
-        self.birthRegNo=self.ui.birthRegistrationNoLineEdit.text()
-        #self.marriagetype=self.ui.marriageTypeComboBox.currentText()
-        date=QDate(self.ui.dateOfBirthDateEdit.date())
+        self.divorceRegNo=self.ui.registrationNoLineEdit.text()
+        date=QDate(self.ui.courtDecisionDateDateEdit.date())
+        year,month,day=date.getDate()
+        decision_in_ad=datetime.date(year,month,day)
+        decision_in_bs=nepali_date.NepaliDate.to_nepali_date(decision_in_ad)
+        #today date
+        today=nepali_date.NepaliDate.today()
+        registrationdate=str(today)[3:]
+        #court decision date
+        self.decisiondate=(str(decision_in_ad),str(decision_in_bs)[3:])
+        #details of separation
+        detailsofseparation=(self.decisiondate,self.ui.TypeOfCourtLineEdit.currentText(),self.ui.districtLineEdit.text(),self.ui.courtDecisionNumberLineEdit.text(),self.ui.marriageRegistrationNumberLineEdit.text())
+        #details of husband
+        #birthdate
+        date=QDate(self.ui.dateEdit_2.date())
         year,month,day=date.getDate()
         birth_in_ad=datetime.date(year,month,day)
         birth_in_bs=nepali_date.NepaliDate.to_nepali_date(birth_in_ad)
-        today=nepali_date.NepaliDate.today()
-        registrationdate=str(today)[3:]
-        self.birthdate=(str(birth_in_ad),str(birth_in_bs)[3:])
-        detailsofbirth=(self.birthdate,self.ui.nameLineEdit.text(),self.ui.placeOfBirthComboBox.currentText(),self.ui.genderComboBox.currentText(),self.ui.casteLineEdit.text(),self.ui.birthTypeComboBox.currentText(),self.ui.physicalDisabledLineEdit.text())
-        locationofbirth=(self.ui.districtLineEdit.text(),self.ui.MunicipalityLineEdit.text(),self.ui.wardNoLineEdit.text(),self.ui.countryIfBornInForeignLineEdit.text())
-        self.detailsoffather=(self.ui.lineEdit.text(),self.ui.districtLineEdit_3.text(),self.ui.districtLineEdit_4.text(),self.ui.districtLineEdit_6.text(),self.ui.districtLineEdit_8.text(),self.ui.districtLineEdit_10.text(),self.ui.districtLineEdit_12.text(),self.ui.districtLineEdit_14.text(),self.ui.districtLineEdit_16.text(),self.ui.districtLineEdit_18.text(),self.ui.districtLineEdit_20.text(),self.ui.districtLineEdit_22.text(),self.ui.districtLineEdit_24.text(),self.ui.districtLineEdit_26.text(),self.ui.districtLineEdit_28.text(),self.ui.districtLineEdit_30.text(),self.ui.districtLineEdit_32.text(),self.ui.districtLineEdit_34.text())
-        self.detailsofmother=(self.ui.lineEdit_6.text(),self.ui.districtLineEdit_2.text(),self.ui.districtLineEdit_5.text(),self.ui.districtLineEdit_7.text(),self.ui.districtLineEdit_9.text(),self.ui.districtLineEdit_11.text(),self.ui.districtLineEdit_13.text(),self.ui.districtLineEdit_15.text(),self.ui.districtLineEdit_17.text(),self.ui.districtLineEdit_19.text(),self.ui.districtLineEdit_21.text(),self.ui.districtLineEdit_23.text(),self.ui.districtLineEdit_25.text(),self.ui.districtLineEdit_27.text(),self.ui.districtLineEdit_29.text(),self.ui.districtLineEdit_31.text(),self.ui.districtLineEdit_33.text(),self.ui.districtLineEdit_35.text())        
-        date1=QDate(self.ui.dateEdit_2.date())
-        year,month,day=date1.getDate()
-        self.marriage_in_ad1=datetime.date1(year,month,day)
-        date2=QDate(self.ui.dateEdit.date())
-        year,month,day=date2.getDate()
-        marriage_in_ad2=datetime.date2(year,month,day)
-        self.marriage_in_bs=nepali_date.NepaliDate.to_nepali_date(birth_in_ad)
-        detailsofparent=(self.ui.totalChildrenLineEdit.text(),self.ui.totalChildrenAliveLineEdit.text(),self.ui.marriageRegistrationNoLineEdit.text(),self.marriage_in_ad1,self.marriage_in_bs,self.detailsoffather,self.detailsofmother)
-        return {"RegDate":registrationdate,"RegNo":self.birthRegNo,"detailsofbirth":str(detailsofbirth) , "locationofbirth":str(locationofbirth) , 'detailsofparent':str(detailsofparent)}
-        '''
-        pass
-    
+        self.birthdateh=(str(birth_in_ad),str(birth_in_bs)[3:])
+        #citizenship issue date
+        date=QDate(self.ui.dateEdit_4.date())
+        year,month,day=date.getDate()
+        issue_in_ad=datetime.date(year,month,day)
+        issue_in_bs=nepali_date.NepaliDate.to_nepali_date(issue_in_ad)
+        self.issuedateh=(str(issue_in_ad),str(issue_in_bs)[3:])
+        #passport issue date
+        date=QDate(self.ui.dateEdit_6.date())
+        year,month,day=date.getDate()
+        passissue_in_ad=datetime.date(year,month,day)
+        passissue_in_bs=nepali_date.NepaliDate.to_nepali_date(passissue_in_ad)
+        self.passissuedateh=(str(passissue_in_ad),str(passissue_in_bs)[3:])
+        #husband details
+        husbanddetails=(self.birthdateh,self.issuedateh,self.passissuedateh,self.ui.lineEdit_2.text(),self.ui.lineEdit_4.text(),self.ui.lineEdit_6.text(),self.ui.lineEdit_8.text(),self.ui.lineEdit_10.text(),self.ui.lineEdit_12.text(),self.ui.lineEdit_14.text(),self.ui.lineEdit_16.text(),self.ui.lineEdit_18.text(),self.ui.lineEdit_20.text(),self.ui.lineEdit_21.text(),self.ui.lineEdit_24.text(),self.ui.lineEdit_26.text(),self.ui.lineEdit_28.text(),self.ui.lineEdit_30.text(),self.ui.lineEdit_33.text(),self.ui.lineEdit_34.text(),self.ui.lineEdit_36.text(),self.ui.lineEdit_38.text(),self.ui.lineEdit_40.text(),self.ui.lineEdit_42.text(),self.ui.lineEdit_44.text(),self.ui.lineEdit_46.text())
+        #details of wife
+        #birthdate
+        date=QDate(self.ui.dateEdit.date())
+        year,month,day=date.getDate()
+        birth_in_ad=datetime.date(year,month,day)
+        birth_in_bs=nepali_date.NepaliDate.to_nepali_date(birth_in_ad)
+        self.birthdatew=(str(birth_in_ad),str(birth_in_bs)[3:])
+        #citizenship issue date
+        date=QDate(self.ui.dateEdit_3.date())
+        year,month,day=date.getDate()
+        issue_in_ad=datetime.date(year,month,day)
+        issue_in_bs=nepali_date.NepaliDate.to_nepali_date(issue_in_ad)
+        self.issuedatew=(str(issue_in_ad),str(issue_in_bs)[3:])
+        #passport issue date
+        date=QDate(self.ui.dateEdit_7.date())
+        year,month,day=date.getDate()
+        passissue_in_ad=datetime.date(year,month,day)
+        passissue_in_bs=nepali_date.NepaliDate.to_nepali_date(passissue_in_ad)
+        self.passissuedatew=(str(passissue_in_ad),str(passissue_in_bs)[3:])
+        #wife details
+        wifedetails=(self.birthdatew,self.issuedatew,self.passissuedatew,self.ui.lineEdit.text(),self.ui.lineEdit_3.text(),self.ui.lineEdit_5.text(),self.ui.lineEdit_7.text(),self.ui.lineEdit_9.text(),self.ui.lineEdit_11.text(),self.ui.lineEdit_13.text(),self.ui.lineEdit_15.text(),self.ui.lineEdit_17.text(),self.ui.lineEdit_19.text(),self.ui.lineEdit_22.text(),self.ui.lineEdit_23.text(),self.ui.lineEdit_25.text(),self.ui.lineEdit_27.text(),self.ui.lineEdit_29.text(),self.ui.lineEdit_31.text(),self.ui.lineEdit_32.text(),self.ui.lineEdit_35.text(),self.ui.lineEdit_37.text(),self.ui.lineEdit_39.text(),self.ui.lineEdit_41.text(),self.ui.lineEdit_43.text(),self.ui.lineEdit_45.text())        
+        #couple children details and marriage date
+        date=QDate(self.ui.dateEdit_7.date())
+        year,month,day=date.getDate()
+        marriage_in_ad=datetime.date(year,month,day)
+        marriage_in_bs=nepali_date.NepaliDate.to_nepali_date(marriage_in_ad)
+        self.marriagedate=(str(marriage_in_ad),str(marriage_in_bs)[3:])
+        couplechildrendetail=(self.marriagedate,self.ui.numberOfChildrenLineEdit.text(),self.ui.totalAliveChildrenLineEdit.text(),self.ui.numberOfChildrenLivingWithOtherLineEdit.text())
+        
+        return {"RegDate":registrationdate,"RegNo":self.divorceRegNo,"detailsofseparation":str(detailsofseparation) , "detailofhusband":str(husbanddetails) , 'detailsofwife':str(wifedetails),'detailofchildren':str(couplechildrendetail)}
+
     def closeActualWork(self):
         self.DivorceForm.close()
+
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     aw=ActualWork()
-    
+    '''
+    DivorceForm = QtWidgets.QMainWindow()
+    ui = Ui_DivorceForm()
+    ui.setupUi(DivorceForm)
+    DivorceForm.show()
+    '''
     sys.exit(app.exec_())
-
