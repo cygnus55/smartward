@@ -15,13 +15,6 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="1" column="0">
-     <widget class="QDialogButtonBox" name="buttonBox">
-      <property name="standardButtons">
-       <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
-      </property>
-     </widget>
-    </item>
     <item row="0" column="0">
      <widget class="QScrollArea" name="scrollArea">
       <property name="widgetResizable">
@@ -31,13 +24,27 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>0</y>
-         <width>787</width>
-         <height>1077</height>
+         <y>-581</y>
+         <width>779</width>
+         <height>1369</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_2">
         <item row="0" column="0">
+         <layout class="QFormLayout" name="formLayout_4">
+          <item row="0" column="0">
+           <widget class="QLabel" name="registrationNoLabel">
+            <property name="text">
+             <string>Registration no</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLineEdit" name="registrationNoLineEdit"/>
+          </item>
+         </layout>
+        </item>
+        <item row="1" column="0">
          <widget class="QLabel" name="label">
           <property name="text">
            <string>&lt;b&gt;Details Regarding The Separation&lt;/b&gt;</string>
@@ -45,13 +52,83 @@
          </widget>
         </item>
         <item row="2" column="0">
+         <layout class="QFormLayout" name="formLayout">
+          <item row="0" column="0">
+           <widget class="QLabel" name="TypeOfCourtLabel">
+            <property name="text">
+             <string>The type of court that decides separation</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QComboBox" name="TypeOfCourtLineEdit">
+            <item>
+             <property name="text">
+              <string>District Court</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Supreme Court</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Appellate court</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="districtLabel">
+            <property name="text">
+             <string>District</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLineEdit" name="districtLineEdit"/>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="courtDecisionNumberLabel">
+            <property name="text">
+             <string>Court decision number</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QLineEdit" name="courtDecisionNumberLineEdit"/>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="courtDecisionDateLabel">
+            <property name="text">
+             <string>Court decision date</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QDateEdit" name="courtDecisionDateDateEdit"/>
+          </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="marriageRegistrationNumberLabel">
+            <property name="text">
+             <string>Marriage Registration number</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QLineEdit" name="marriageRegistrationNumberLineEdit"/>
+          </item>
+         </layout>
+        </item>
+        <item row="3" column="0">
          <widget class="QLabel" name="label_2">
           <property name="text">
            <string>&lt;b&gt;Details Of Wife And Husband&lt;/b&gt;</string>
           </property>
          </widget>
         </item>
-        <item row="3" column="0">
+        <item row="4" column="0">
          <layout class="QFormLayout" name="formLayout_2">
           <item row="0" column="0">
            <widget class="QLabel" name="Label">
@@ -149,7 +226,7 @@
           <item row="5" column="0">
            <widget class="QLabel" name="birthRegistrationNoLabel">
             <property name="text">
-             <string>&lt;b&gt;Divorce Registration No.&lt;/b&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Birth Registration No.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
            </widget>
           </item>
@@ -275,7 +352,7 @@
           <item row="12" column="1">
            <layout class="QHBoxLayout" name="horizontalLayout_16">
             <item>
-             <widget class="QDateEdit" name="dateEdit_8"/>
+             <widget class="QDateEdit" name="dateEdit_6"/>
             </item>
             <item>
              <widget class="QDateEdit" name="dateEdit_7"/>
@@ -534,28 +611,22 @@
             </property>
            </widget>
           </item>
-          <item row="31" column="0">
+          <item row="33" column="0">
            <widget class="QLabel" name="daughterLabel">
             <property name="text">
              <string>Daughter</string>
             </property>
            </widget>
           </item>
-          <item row="32" column="0">
+          <item row="35" column="0">
            <widget class="QLabel" name="numberOfChildrenLivingWithOtherLabel">
             <property name="text">
              <string>Number of children living with other</string>
             </property>
            </widget>
           </item>
-          <item row="32" column="1">
-           <widget class="QLineEdit" name="numberOfChildrenLivingWithOtherLineEdit"/>
-          </item>
           <item row="26" column="1">
            <layout class="QHBoxLayout" name="horizontalLayout_28">
-            <item>
-             <widget class="QDateEdit" name="dateEdit_6"/>
-            </item>
             <item>
              <widget class="QDateEdit" name="dateEdit_5"/>
             </item>
@@ -571,7 +642,7 @@
             </item>
            </layout>
           </item>
-          <item row="31" column="1">
+          <item row="33" column="1">
            <layout class="QHBoxLayout" name="horizontalLayout_31">
             <item>
              <widget class="QLineEdit" name="lineEdit_44"/>
@@ -581,59 +652,15 @@
             </item>
            </layout>
           </item>
-         </layout>
-        </item>
-        <item row="1" column="0">
-         <layout class="QFormLayout" name="formLayout">
-          <item row="0" column="0">
-           <widget class="QLabel" name="TypeOfCourtLabel">
-            <property name="text">
-             <string>The type of court that decides separation</string>
+          <item row="37" column="1">
+           <widget class="QDialogButtonBox" name="buttonBox_2">
+            <property name="standardButtons">
+             <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
             </property>
            </widget>
           </item>
-          <item row="0" column="1">
-           <widget class="QComboBox" name="TypeOfCourtLineEdit"/>
-          </item>
-          <item row="1" column="0">
-           <widget class="QLabel" name="districtLabel">
-            <property name="text">
-             <string>District</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1">
-           <widget class="QLineEdit" name="districtLineEdit"/>
-          </item>
-          <item row="2" column="0">
-           <widget class="QLabel" name="courtDecisionNumberLabel">
-            <property name="text">
-             <string>Court decision number</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="1">
-           <widget class="QLineEdit" name="courtDecisionNumberLineEdit"/>
-          </item>
-          <item row="3" column="0">
-           <widget class="QLabel" name="courtDecisionDateLabel">
-            <property name="text">
-             <string>Court decision date</string>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="1">
-           <widget class="QDateEdit" name="courtDecisionDateDateEdit"/>
-          </item>
-          <item row="4" column="0">
-           <widget class="QLabel" name="marriageRegistrationNumberLabel">
-            <property name="text">
-             <string>Marriage Registration number</string>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="1">
-           <widget class="QLineEdit" name="marriageRegistrationNumberLineEdit"/>
+          <item row="35" column="1">
+           <widget class="QLineEdit" name="numberOfChildrenLivingWithOtherLineEdit"/>
           </item>
          </layout>
         </item>
