@@ -15,6 +15,8 @@ import dbconnect ##might cause error
 #importing regd. forms
 from forms import marriage
 from forms import birth
+from forms import death
+from forms import divorce
 
 myemail=SWGmail()
 
@@ -184,6 +186,7 @@ class Ui_WardWindow(QWidget):
         def death_reg():
             #death registration
             #new Window-death reg. form
+            self.death_form=death.ActualWork()
             print("death registration")
 
         def marriage_reg():
@@ -195,6 +198,7 @@ class Ui_WardWindow(QWidget):
         def divorce_reg():
             #divorce registration
             #new Window-divorce reg. form
+            self.death_form=divorce.ActualWork()
             print("divorce registration") 
 
         def migration_reg():

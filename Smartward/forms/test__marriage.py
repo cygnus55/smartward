@@ -1,13 +1,13 @@
+# -*- coding: utf-8 -*-
+
+# Form implementation generated from reading ui file 'marriage.ui'
+#
+# Created by: PyQt5 UI code generator 5.13.2
+#
+# WARNING! All changes made in this file will be lost!
+
+
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import *
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-
-import datetime
-import nepali_date
-import sw_string
-
-table="MarriageRegistration"
 
 
 class Ui_MarriageForm(object):
@@ -477,63 +477,11 @@ class Ui_MarriageForm(object):
         self.marriageRegistrationNoLabel.setText(_translate("MarriageForm", "<b>Marriage Registration No.</b>"))
 
 
-class ActualWork():
-    def __init__(self):
-        import dbconnect
-        self.db=dbconnect.database_wardwindow("localhost","root")
-        self.MarriageForm = QtWidgets.QMainWindow()
-        self.ui = Ui_MarriageForm()
-        self.ui.setupUi(self.MarriageForm)
-        self.MarriageForm.show()
-        self.actualWork()
-
-    def actualWork(self):
-        self.ui.buttonBox.accepted.connect(self.submitform)
-        self.ui.buttonBox.rejected.connect(lambda:self.MarriageForm.close())
-
-    def submitform(self):
-        self.values=self.getallvalues()
-        a=sw_string.generateList(**self.values)
-        #a=["RegDate","1","RegNo","2","C","3","D","4","E","5"]
-        #b=['RegNo','123-32','detailsofmarriage', "('Social Tradition', ('2000-01-01', '2056/09/17'))", 'locationofmarriage', "('Kavre', 'Namobudda', '04', 'Timal Road', 'Methinkot', '45', '')", 'detailsofspouse', "{'detailsofbride': ('Tandon', 'Rabina', '2057/01/05', 'Kami', '+2', 'Actress', 'Divorcee', ('Rampur', 'Narayanghat', '5', 'Ghandi Street', 'Hariharpur', '78', 'India'), ('India', '27-12398721', '2071/06/09', 'Rampur', '87289398', 'India', 'New Delhi'), ('Fariha Tandon', 'Kanod Tandon', 'Kajol Tandon')), 'detailsofbridegroom': ('Ghimere', 'Tilak', '2051/03/21', 'Brahmin', 'B.Sc.', 'Astrologer', 'Single', ('Solukhumbu', 'Namche Bazar', '9', 'Manila Street', 'Vaisepati', '567', 'Nepal'), ('Nepal', '983-3468', '2067/03/05', 'Solukhumbu', '', '', ''), ('Goshnath Ghimere', 'Farilal Ghimere', 'Nabina Ghimere'))}"]
-        #a=['RegDate',,b[0],b[1],b[2],b[3].replace("'","__"),b[4],b[5].replace("'","__"),b[6],b[7].replace("'","__")]
-        #print(a)
-        self.db.createFormTable(table)
-        self.db.addColumns(table,a[4],a[6],a[8])
-        self.db.insertValues(table,a)
-
-    def getallvalues(self):
-        self.magRegNo=self.ui.marriageRegistrationNoLineEdit.text()
-        self.marriagetype=self.ui.marriageTypeComboBox.currentText()
-        date=QDate(self.ui.dateEdit_2.date())
-        year,month,day=date.getDate()
-        marriage_in_ad=datetime.date(year,month,day)
-        marriage_in_bs=nepali_date.NepaliDate.to_nepali_date(marriage_in_ad)
-        today=nepali_date.NepaliDate.today()
-        registrationdate=str(today)[3:]
-        self.marriagedate=(str(marriage_in_ad),str(marriage_in_bs)[3:])
-        detailsofmarriage=(self.marriagetype,self.marriagedate)
-        locationofmarriage=(self.ui.districtLineEdit.text(),self.ui.municipalityLineEdit.text(),self.ui.wardNoLineEdit.text(),self.ui.roadStreetLineEdit.text(),self.ui.villageLineEdit.text(),self.ui.houseNoLineEdit.text(),self.ui.locationIfMarriageAbroadLineEdit.text())
-
-        self.paddressbride=(self.ui.lineEdit_18.text(),self.ui.lineEdit_20.text(),self.ui.lineEdit_21.text(),self.ui.lineEdit_24.text(),self.ui.lineEdit_26.text(),self.ui.lineEdit_28.text(),self.ui.lineEdit_30.text())
-        self.ccbride=(self.ui.lineEdit_32.text(),self.ui.lineEdit_34.text(),self.ui.lineEdit_36.text(),self.ui.lineEdit_38.text(),self.ui.lineEdit_40.text(),self.ui.lineEdit_42.text(),self.ui.lineEdit_44.text())
-        self.parentbride=(self.ui.lineEdit_46.text(),self.ui.lineEdit_48.text(),self.ui.lineEdit_50.text())
-        self.detailsofbride=(self.ui.lineEdit_4.text(),self.ui.lineEdit_6.text(),self.ui.lineEdit_8.text(),self.ui.lineEdit_10.text(),self.ui.lineEdit_12.text(),self.ui.lineEdit_14.text(),self.ui.lineEdit_16.text(),self.paddressbride,self.ccbride,self.parentbride)
-
-        self.paddressbridegroom=(self.ui.lineEdit_17.text(),self.ui.lineEdit_19.text(),self.ui.lineEdit_22.text(),self.ui.lineEdit_23.text(),self.ui.lineEdit_25.text(),self.ui.lineEdit_27.text(),self.ui.lineEdit_29.text())
-        self.ccbridegroom=(self.ui.lineEdit_31.text(),self.ui.lineEdit_33.text(),self.ui.lineEdit_35.text(),self.ui.lineEdit_37.text(),self.ui.lineEdit_39.text(),self.ui.lineEdit_41.text(),self.ui.lineEdit_43.text())
-        self.parentbridegroom=(self.ui.lineEdit_45.text(),self.ui.lineEdit_47.text(),self.ui.lineEdit_49.text())
-        self.detailsofbridegroom=(self.ui.lineEdit_3.text(),self.ui.lineEdit_5.text(),self.ui.lineEdit_7.text(),self.ui.lineEdit_9.text(),self.ui.lineEdit_11.text(),self.ui.lineEdit_13.text(),self.ui.lineEdit_15.text(),self.paddressbridegroom,self.ccbridegroom,self.parentbridegroom)
-        detailsofspouse={'detailsofbride':self.detailsofbride, 'detailsofbridegroom':self.detailsofbridegroom}
-
-        return {"RegDate":registrationdate,"RegNo":self.magRegNo,"detailsofmarriage":str(detailsofmarriage) , "locationofmarriage":str(locationofmarriage) , 'detailsofspouse':str(detailsofspouse)}
-
-    def closeActualWork(self):
-        self.MarriageForm.close()
-
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    aw=ActualWork()
-   
+    MarriageForm = QtWidgets.QMainWindow()
+    ui = Ui_MarriageForm()
+    ui.setupUi(MarriageForm)
+    MarriageForm.show()
     sys.exit(app.exec_())
