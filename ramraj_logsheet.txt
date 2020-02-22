@@ -19,6 +19,7 @@ Week 3:
 Week 4:
 		-Designed Signin Window
 		-Learnt various python existing modules(ezgmail,matplotlib,pyqtgraph,json,pickle)
+		-field visit (Namobuddha Municipality ward no. 4)
 		
 Week 5:
 		-Designed forms for ward ofice projects
@@ -26,3 +27,8 @@ Week 5:
 		
 Week 6:
 		-Connecting various windows
+		-Almost completed marriage registration
+		-json and pickle module learned
+		
+Week 7:
+		-Started to work on other forms
