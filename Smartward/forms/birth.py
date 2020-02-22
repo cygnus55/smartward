@@ -473,13 +473,13 @@ class ActualWork():
         #a=['RegDate',,b[0],b[1],b[2],b[3].replace("'","__"),b[4],b[5].replace("'","__"),b[6],b[7].replace("'","__")]
         #print(a)
         self.db.createFormTable(table)
-        #self.db.addColumns(table,a[4],a[6],a[8])
+        self.db.addColumns(table,a[4],a[6],a[8])
         self.db.insertValues(table,a)
 
     def getallvalues(self):
-        
+        '''
         self.birthRegNo=self.ui.birthRegistrationNoLineEdit.text()
-        #self.marriagetype=self.ui.marriageTypeComboBox.currentText()
+        self.marriagetype=self.ui.marriageTypeComboBox.currentText()
         date=QDate(self.ui.dateOfBirthDateEdit.date())
         year,month,day=date.getDate()
         birth_in_ad=datetime.date(year,month,day)
@@ -498,9 +498,10 @@ class ActualWork():
         year,month,day=date2.getDate()
         marriage_in_ad2=datetime.date2(year,month,day)
         self.marriage_in_bs=nepali_date.NepaliDate.to_nepali_date(birth_in_ad)
-        detailsofparent(self.ui.totalChildrenLineEdit.text(),self.ui.totalChildrenAliveLineEdit.text(),self.ui.marriageRegistrationNoLineEdit.text(),self.marriage_in_ad1,self.marriage_in_bs,self.detailsoffather,self.detailsofmother)
+        detailsofparent=(self.ui.totalChildrenLineEdit.text(),self.ui.totalChildrenAliveLineEdit.text(),self.ui.marriageRegistrationNoLineEdit.text(),self.marriage_in_ad1,self.marriage_in_bs,self.detailsoffather,self.detailsofmother)
         return {"RegDate":registrationdate,"RegNo":self.birthRegNo,"detailsofbirth":str(detailsofbirth) , "locationofbirth":str(locationofbirth) , 'detailsofparent':str(detailsofparent)}
-        
+        '''
+        pass
     
     def closeActualWork(self):
         self.BirthForm.close()
@@ -509,11 +510,6 @@ if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     aw=ActualWork()
-    """
-    MainWindow = QtWidgets.QMainWindow()
-    ui = ActualWork()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
-    """
+    
     sys.exit(app.exec_())
 

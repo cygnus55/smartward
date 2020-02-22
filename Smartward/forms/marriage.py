@@ -9,6 +9,7 @@ import sw_string
 
 table="MarriageRegistration"
 
+
 class Ui_MarriageForm(object):
     def setupUi(self, MarriageForm):
         MarriageForm.setObjectName("MarriageForm")
@@ -21,7 +22,7 @@ class Ui_MarriageForm(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 777, 1294))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, -150, 774, 1097))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.gridLayout_2 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents)
         self.gridLayout_2.setObjectName("gridLayout_2")
@@ -427,8 +428,6 @@ class Ui_MarriageForm(object):
         self.horizontalLayout_2.addWidget(self.scrollArea)
         MarriageForm.setCentralWidget(self.centralwidget)
 
-        self.marriageTypeComboBox.addItems(['Social Tradition', 'Marriage Registration Act 2028'])
-
         self.retranslateUi(MarriageForm)
         QtCore.QMetaObject.connectSlotsByName(MarriageForm)
 
@@ -536,10 +535,5 @@ if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     aw=ActualWork()
-    """
-    MainWindow = QtWidgets.QMainWindow()
-    ui = ActualWork()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
-    """
+   
     sys.exit(app.exec_())
