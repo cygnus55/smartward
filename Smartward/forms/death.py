@@ -1,3 +1,12 @@
+# -*- coding: utf-8 -*-
+
+# Form implementation generated from reading ui file 'deathregistrationform.ui'
+#
+# Created by: PyQt5 UI code generator 5.13.1
+#
+# WARNING! All changes made in this file will be lost!
+
+
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
@@ -10,11 +19,11 @@ import sw_string
 table="DeathRegistration"
 
 
-class Ui_DeathForm(object):
-    def setupUi(self, DeathForm):
-        DeathForm.setObjectName("DeathForm")
-        DeathForm.resize(694, 801)
-        self.centralwidget = QtWidgets.QWidget(DeathForm)
+class Ui_Deathform(object):
+    def setupUi(self, Deathform):
+        Deathform.setObjectName("Deathform")
+        Deathform.resize(694, 801)
+        self.centralwidget = QtWidgets.QWidget(Deathform)
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
         self.gridLayout.setObjectName("gridLayout")
@@ -22,7 +31,7 @@ class Ui_DeathForm(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 657, 939))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, -134, 660, 1115))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.gridLayout_2 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents)
         self.gridLayout_2.setObjectName("gridLayout_2")
@@ -241,6 +250,10 @@ class Ui_DeathForm(object):
         self.causeOfDeathLineEdit = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
         self.causeOfDeathLineEdit.setObjectName("causeOfDeathLineEdit")
         self.formLayout_6.setWidget(12, QtWidgets.QFormLayout.FieldRole, self.causeOfDeathLineEdit)
+        self.buttonBox = QtWidgets.QDialogButtonBox(self.scrollAreaWidgetContents)
+        self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
+        self.buttonBox.setObjectName("buttonBox")
+        self.formLayout_6.setWidget(13, QtWidgets.QFormLayout.FieldRole, self.buttonBox)
         self.gridLayout_2.addLayout(self.formLayout_6, 8, 0, 1, 1)
         self.formLayout_7 = QtWidgets.QFormLayout()
         self.formLayout_7.setObjectName("formLayout_7")
@@ -251,71 +264,68 @@ class Ui_DeathForm(object):
         self.registrationNoLineEdit.setObjectName("registrationNoLineEdit")
         self.formLayout_7.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.registrationNoLineEdit)
         self.gridLayout_2.addLayout(self.formLayout_7, 0, 0, 1, 1)
-        self.buttonBox = QtWidgets.QDialogButtonBox(self.scrollAreaWidgetContents)
-        self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
-        self.buttonBox.setObjectName("buttonBox")
-        self.gridLayout_2.addWidget(self.buttonBox, 9, 0, 1, 1)
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.gridLayout.addWidget(self.scrollArea, 0, 0, 1, 1)
-        DeathForm.setCentralWidget(self.centralwidget)
+        Deathform.setCentralWidget(self.centralwidget)
 
-        self.retranslateUi(DeathForm)
-        QtCore.QMetaObject.connectSlotsByName(DeathForm)
+        self.retranslateUi(Deathform)
+        QtCore.QMetaObject.connectSlotsByName(Deathform)
 
-    def retranslateUi(self, DeathForm):
+    def retranslateUi(self, Deathform):
         _translate = QtCore.QCoreApplication.translate
-        DeathForm.setWindowTitle(_translate("DeathForm", "MainWindow"))
-        self.districtLabel_2.setText(_translate("DeathForm", "District"))
-        self.municipalityLabel.setText(_translate("DeathForm", "Municipality"))
-        self.wardNoLabel_2.setText(_translate("DeathForm", "Ward No."))
-        self.roadtLabel.setText(_translate("DeathForm", "Road/street"))
-        self.houseNoLabel_2.setText(_translate("DeathForm", "House No."))
-        self.villageLabel_2.setText(_translate("DeathForm", "Village/Community"))
-        self.label_3.setText(_translate("DeathForm", "<b>Address Of Deceased</b>"))
-        self.label.setText(_translate("DeathForm", "<b>Details of the Deceased</b>"))
-        self.districtLabel.setText(_translate("DeathForm", "District"))
-        self.mubicipalityLabel.setText(_translate("DeathForm", "Municopality"))
-        self.wardNoLabel.setText(_translate("DeathForm", "Ward No."))
-        self.roadLabel.setText(_translate("DeathForm", "Road/Route/street"))
-        self.houseNoLabel.setText(_translate("DeathForm", "House No."))
-        self.villageLabel.setText(_translate("DeathForm", "Village/Community"))
-        self.label_2.setText(_translate("DeathForm", "<b>Place Of Death</b>"))
-        self.birthRegistrationNoLabel.setText(_translate("DeathForm", "Birth Registration No."))
-        self.nameLabel.setText(_translate("DeathForm", "Name"))
-        self.dateOfBirthLabel.setText(_translate("DeathForm", "Date Of Birth"))
-        self.dateOfDeathLabel.setText(_translate("DeathForm", "Date Of Death"))
-        self.placeOfDeathLabel.setText(_translate("DeathForm", "Place of Death"))
-        self.label_4.setText(_translate("DeathForm", "<b>Details Of Deceased</b>"))
-        self.citizenshipNoLabel.setText(_translate("DeathForm", "Citizenship No."))
-        self.issueDistrictLabel.setText(_translate("DeathForm", "Issue District"))
-        self.issueDateLabel.setText(_translate("DeathForm", "Issue Date"))
-        self.forForeignerLabel.setText(_translate("DeathForm", "For Foreigner"))
-        self.lineEdit_2.setPlaceholderText(_translate("DeathForm", "Country"))
-        self.lineEdit.setPlaceholderText(_translate("DeathForm", "Passport No"))
-        self.qualificationLabel.setText(_translate("DeathForm", "Qualification"))
-        self.mothersTongueLabel.setText(_translate("DeathForm", "Mothers Tongue"))
-        self.casteLabel.setText(_translate("DeathForm", "Caste"))
-        self.religionLabel.setText(_translate("DeathForm", "Religion"))
-        self.grandFatherLabel.setText(_translate("DeathForm", "GrandFather"))
-        self.fatherLabel.setText(_translate("DeathForm", "Father"))
-        self.motherLabel.setText(_translate("DeathForm", "Mother"))
-        self.spouseLabel.setText(_translate("DeathForm", "Spouse"))
-        self.causeOfDeathLabel.setText(_translate("DeathForm", "Cause Of Death"))
-        self.registrationNoLabel.setText(_translate("DeathForm", "<b>Registration No.</b>"))
+        Deathform.setWindowTitle(_translate("Deathform", "MainWindow"))
+        self.districtLabel_2.setText(_translate("Deathform", "District"))
+        self.municipalityLabel.setText(_translate("Deathform", "Municipality"))
+        self.wardNoLabel_2.setText(_translate("Deathform", "Ward No"))
+        self.roadtLabel.setText(_translate("Deathform", "Road/street"))
+        self.houseNoLabel_2.setText(_translate("Deathform", "House No"))
+        self.villageLabel_2.setText(_translate("Deathform", "Village/Community"))
+        self.label_3.setText(_translate("Deathform", "Adress Of Deceased"))
+        self.label.setText(_translate("Deathform", "Details Of Deceased\'s"))
+        self.districtLabel.setText(_translate("Deathform", "District"))
+        self.mubicipalityLabel.setText(_translate("Deathform", "Municipality"))
+        self.wardNoLabel.setText(_translate("Deathform", "Ward No"))
+        self.roadLabel.setText(_translate("Deathform", "Road/Route/street"))
+        self.houseNoLabel.setText(_translate("Deathform", "House No:"))
+        self.villageLabel.setText(_translate("Deathform", "Village/Community"))
+        self.label_2.setText(_translate("Deathform", "Place Of Birth"))
+        self.birthRegistrationNoLabel.setText(_translate("Deathform", "Birth Registration No"))
+        self.nameLabel.setText(_translate("Deathform", "Name"))
+        self.dateOfBirthLabel.setText(_translate("Deathform", "Date Of Birth"))
+        self.dateOfDeathLabel.setText(_translate("Deathform", "Date Of Death"))
+        self.placeOfDeathLabel.setText(_translate("Deathform", "Place of Death"))
+        self.label_4.setText(_translate("Deathform", "Deatils Of Deceased"))
+        self.citizenshipNoLabel.setText(_translate("Deathform", "Citizenship No"))
+        self.issueDistrictLabel.setText(_translate("Deathform", "Issue District"))
+        self.issueDateLabel.setText(_translate("Deathform", "Issue Date"))
+        self.forForeignerLabel.setText(_translate("Deathform", "For Foreigner"))
+        self.lineEdit_2.setPlaceholderText(_translate("Deathform", "Country"))
+        self.lineEdit.setPlaceholderText(_translate("Deathform", "Passport No"))
+        self.qualificationLabel.setText(_translate("Deathform", "Qualification"))
+        self.mothersTongueLabel.setText(_translate("Deathform", "Mothers Tongue"))
+        self.casteLabel.setText(_translate("Deathform", "Caste"))
+        self.religionLabel.setText(_translate("Deathform", "Religion"))
+        self.grandFatherLabel.setText(_translate("Deathform", "GrandFather"))
+        self.fatherLabel.setText(_translate("Deathform", "Father"))
+        self.motherLabel.setText(_translate("Deathform", "Mother"))
+        self.spouseLabel.setText(_translate("Deathform", "Spouse"))
+        self.causeOfDeathLabel.setText(_translate("Deathform", "Cause Of Death"))
+        self.registrationNoLabel.setText(_translate("Deathform", "Registration No"))
+
 
 class ActualWork():
     def __init__(self):
         import dbconnect
         self.db=dbconnect.database_wardwindow("localhost","root")
-        self.DeathForm = QtWidgets.QMainWindow()
-        self.ui = Ui_DeathForm()
-        self.ui.setupUi(self.DeathForm)
-        self.DeathForm.show()
+        self.deathForm = QtWidgets.QMainWindow()
+        self.ui = Ui_Deathform()
+        self.ui.setupUi(self.deathForm)
+        self.deathForm.show()
         self.actualWork()
 
     def actualWork(self):
         self.ui.buttonBox.accepted.connect(self.submitform)
-        self.ui.buttonBox.rejected.connect(lambda:self.DeathForm.close())
+        self.ui.buttonBox.rejected.connect(lambda:self.deathForm.close())
 
     def submitform(self):
         self.values=self.getallvalues()
@@ -323,46 +333,56 @@ class ActualWork():
         #a=["RegDate","1","RegNo","2","C","3","D","4","E","5"]
         #b=['RegNo','123-32','detailsofmarriage', "('Social Tradition', ('2000-01-01', '2056/09/17'))", 'locationofmarriage', "('Kavre', 'Namobudda', '04', 'Timal Road', 'Methinkot', '45', '')", 'detailsofspouse', "{'detailsofbride': ('Tandon', 'Rabina', '2057/01/05', 'Kami', '+2', 'Actress', 'Divorcee', ('Rampur', 'Narayanghat', '5', 'Ghandi Street', 'Hariharpur', '78', 'India'), ('India', '27-12398721', '2071/06/09', 'Rampur', '87289398', 'India', 'New Delhi'), ('Fariha Tandon', 'Kanod Tandon', 'Kajol Tandon')), 'detailsofbridegroom': ('Ghimere', 'Tilak', '2051/03/21', 'Brahmin', 'B.Sc.', 'Astrologer', 'Single', ('Solukhumbu', 'Namche Bazar', '9', 'Manila Street', 'Vaisepati', '567', 'Nepal'), ('Nepal', '983-3468', '2067/03/05', 'Solukhumbu', '', '', ''), ('Goshnath Ghimere', 'Farilal Ghimere', 'Nabina Ghimere'))}"]
         #a=['RegDate',,b[0],b[1],b[2],b[3].replace("'","__"),b[4],b[5].replace("'","__"),b[6],b[7].replace("'","__")]
-        #print(a)
+        #print("a=",a)
         self.db.createFormTable(table)
-        self.db.addColumns(table,a[4],a[6],a[8])
+        self.db.addColumns(table,a[4],a[6],a[8],a[10])
         self.db.insertValues(table,a)
-
     def getallvalues(self):
-        '''
-        self.deathRegNo=self.ui.registrationNoLineEdit.text()
+        #print('i love you')
+        self.RegNo=self.ui.registrationNoLineEdit.text()
+        #date of birth
         date=QDate(self.ui.dateEdit.date())
         year,month,day=date.getDate()
         birth_in_ad=datetime.date(year,month,day)
         birth_in_bs=nepali_date.NepaliDate.to_nepali_date(birth_in_ad)
+        #registration date
         today=nepali_date.NepaliDate.today()
         registrationdate=str(today)[3:]
+        #date of death
         self.birthdate=(str(birth_in_ad),str(birth_in_bs)[3:])
         date=QDate(self.ui.dateEdit_3.date())
         year,month,day=date.getDate()
         death_in_ad=datetime.date(year,month,day)
         death_in_bs=nepali_date.NepaliDate.to_nepali_date(death_in_ad)
         self.deathdate=(str(death_in_ad),str(death_in_bs)[3:])
-        detailsofdeceased=(self.birthdate,self.deathdate,self.ui.birthRegistrationNoLineEdit.text(),self.ui.nameLineEdit.text(),self.ui.placeOfDeathLineEdit.text())
+        #details of deceased
+        detailsofdeceased=(self.ui.birthRegistrationNoLineEdit.text(),self.ui.nameLineEdit.text(),self.birthdate,self.deathdate,self.ui.placeOfDeathLineEdit.text())
+        #place of birth
         placeofbirth=(self.ui.districtLineEdit.text(),self.ui.mubicipalityLineEdit.text(),self.ui.wardNoLineEdit.text(),self.ui.roadLineEdit.text(),self.ui.houseNoLineEdit.text(),self.ui.villageLineEdit.text())
+        #addressof deceased
         Adressofdeceased=(self.ui.districtLineEdit_2.text(),self.ui.municipalityLineEdit.text(),self.ui.wardNoLineEdit_2.text(),self.ui.roadStreetLineEdit.text(),self.ui.houseNoLineEdit_2.text(),self.ui.houseNoLineEdit_3.text())
+        #detailsofseceased2
         date=QDate(self.ui.dateEdit_5.date())
         year,month,day=date.getDate()
         issue_in_ad=datetime.date(year,month,day)
         issue_in_bs=nepali_date.NepaliDate.to_nepali_date(issue_in_ad)
         self.issuedate=(str(issue_in_ad),str(issue_in_bs)[3:])
-        briefofdeath=(self.issuedate,self.ui.citizenshipNoLineEdit.text(),self.ui.issueDistrictLineEdit.text(),self.ui.lineEdit_2.text(),self.ui.lineEdit.text(),self.ui.qualificationLineEdit.text(),self.ui.mothersTongueLineEdit.text(),self.ui.casteLineEdit.text(),self.ui.religionLineEdit.text(),self.ui.grandFatherLineEdit.text(),self.ui.fatherLineEdit.text(),self.ui.motherLineEdit.text(),self.ui.spouseLineEdit.text(),self.ui.causeOfDeathLineEdit.text())
-        return {"RegDate":registrationdate,"RegNo":self.deathRegNo,"detaillsofdeceased":str(detailsofdeceased) , "placeofbirth":str(placeofbirth) , 'adressofdecesed':str(Adressofdeceased),'briefofdeath':str(briefofdeath)}
-        '''
-        pass
-    
+        detailsofdeceased_2=(self.ui.citizenshipNoLineEdit.text(),self.ui.issueDistrictLineEdit.text(),self.issuedate,self.ui.lineEdit_2.text(),self.ui.lineEdit.text(),self.ui.qualificationLineEdit.text(),self.ui.mothersTongueLineEdit.text(),self.ui.casteLineEdit.text(),self.ui.religionLineEdit.text(),self.ui.grandFatherLineEdit.text(),self.ui.fatherLineEdit.text(),self.ui.motherLineEdit.text(),self.ui.spouseLineEdit.text(),self.ui.causeOfDeathLineEdit.text())
+
+        return {"RegDate":registrationdate,"RegNo":self.RegNo,"detaillsofdeceased":str(detailsofdeceased) , "placeofbirth":str(placeofbirth) , 'adressofdecesed':str(Adressofdeceased),'detailsofdeceased_2':str(detailsofdeceased_2)}
+
     def closeActualWork(self):
-        self.DeathForm.close()
+        self.deathForm.close()
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     aw=ActualWork()
-    
+    '''
+    Deathform = QtWidgets.QMainWindow()
+    ui = Ui_Deathform()
+    ui.setupUi(Deathform)
+    Deathform.show()
+    '''
     sys.exit(app.exec_())

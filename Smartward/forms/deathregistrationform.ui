@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>DeathForm</class>
- <widget class="QMainWindow" name="DeathForm">
+ <class>Deathform</class>
+ <widget class="QMainWindow" name="Deathform">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -24,9 +24,9 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>-154</y>
-         <width>657</width>
-         <height>939</height>
+         <y>-134</y>
+         <width>660</width>
+         <height>1115</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_2">
@@ -55,7 +55,7 @@
           <item row="2" column="0">
            <widget class="QLabel" name="wardNoLabel_2">
             <property name="text">
-             <string>Ward No.</string>
+             <string>Ward No</string>
             </property>
            </widget>
           </item>
@@ -72,7 +72,7 @@
           <item row="4" column="0">
            <widget class="QLabel" name="houseNoLabel_2">
             <property name="text">
-             <string>House No.</string>
+             <string>House No</string>
             </property>
            </widget>
           </item>
@@ -97,14 +97,14 @@
         <item row="5" column="0">
          <widget class="QLabel" name="label_3">
           <property name="text">
-           <string>&lt;b&gt;Address Of Deceased&lt;/b&gt;</string>
+           <string>Adress Of Deceased</string>
           </property>
          </widget>
         </item>
         <item row="1" column="0">
          <widget class="QLabel" name="label">
           <property name="text">
-           <string>&lt;b&gt;Details of the Deceased&lt;/b&gt;</string>
+           <string>Details Of Deceased's</string>
           </property>
          </widget>
         </item>
@@ -123,7 +123,7 @@
           <item row="1" column="0">
            <widget class="QLabel" name="mubicipalityLabel">
             <property name="text">
-             <string>Municopality</string>
+             <string>Municipality</string>
             </property>
            </widget>
           </item>
@@ -133,7 +133,7 @@
           <item row="2" column="0">
            <widget class="QLabel" name="wardNoLabel">
             <property name="text">
-             <string>Ward No.</string>
+             <string>Ward No</string>
             </property>
            </widget>
           </item>
@@ -150,7 +150,7 @@
           <item row="4" column="0">
            <widget class="QLabel" name="houseNoLabel">
             <property name="text">
-             <string>House No.</string>
+             <string>House No:</string>
             </property>
            </widget>
           </item>
@@ -175,7 +175,7 @@
         <item row="3" column="0">
          <widget class="QLabel" name="label_2">
           <property name="text">
-           <string>&lt;b&gt;Place Of Death&lt;/b&gt;</string>
+           <string>Place Of Birth</string>
           </property>
          </widget>
         </item>
@@ -184,7 +184,7 @@
           <item row="0" column="0">
            <widget class="QLabel" name="birthRegistrationNoLabel">
             <property name="text">
-             <string>Birth Registration No.</string>
+             <string>Birth Registration No</string>
             </property>
            </widget>
           </item>
@@ -244,7 +244,7 @@
         <item row="7" column="0">
          <widget class="QLabel" name="label_4">
           <property name="text">
-           <string>&lt;b&gt;Details Of Deceased&lt;/b&gt;</string>
+           <string>Deatils Of Deceased</string>
           </property>
          </widget>
         </item>
@@ -253,7 +253,7 @@
           <item row="0" column="0">
            <widget class="QLabel" name="citizenshipNoLabel">
             <property name="text">
-             <string>Citizenship No.</string>
+             <string>Citizenship No</string>
             </property>
            </widget>
           </item>
@@ -395,6 +395,13 @@
           <item row="12" column="1">
            <widget class="QLineEdit" name="causeOfDeathLineEdit"/>
           </item>
+          <item row="13" column="1">
+           <widget class="QDialogButtonBox" name="buttonBox">
+            <property name="standardButtons">
+             <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+            </property>
+           </widget>
+          </item>
          </layout>
         </item>
         <item row="0" column="0">
@@ -402,7 +409,7 @@
           <item row="0" column="0">
            <widget class="QLabel" name="registrationNoLabel">
             <property name="text">
-             <string>&lt;b&gt;Registration No.&lt;/b&gt;</string>
+             <string>Registration No</string>
             </property>
            </widget>
           </item>
@@ -410,13 +417,6 @@
            <widget class="QLineEdit" name="registrationNoLineEdit"/>
           </item>
          </layout>
-        </item>
-        <item row="9" column="0">
-         <widget class="QDialogButtonBox" name="buttonBox">
-          <property name="standardButtons">
-           <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
-          </property>
-         </widget>
         </item>
        </layout>
       </widget>
