@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>citizenshiprequest</class>
+ <widget class="QMainWindow" name="citizenshiprequest">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -24,20 +24,13 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>-45</y>
-         <width>763</width>
-         <height>625</height>
+         <y>0</y>
+         <width>755</width>
+         <height>779</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_2">
-        <item row="0" column="0">
-         <widget class="QLabel" name="label">
-          <property name="text">
-           <string>&lt;b&gt;Details Of Candidate&lt;/b&gt;</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
+        <item row="2" column="0">
          <layout class="QFormLayout" name="formLayout">
           <item row="0" column="0">
            <widget class="QLabel" name="fullNameLabel">
@@ -57,7 +50,23 @@
            </widget>
           </item>
           <item row="1" column="1">
-           <widget class="QComboBox" name="genderComboBox"/>
+           <widget class="QComboBox" name="genderComboBox">
+            <item>
+             <property name="text">
+              <string>Male</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Female</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Other</string>
+             </property>
+            </item>
+           </widget>
           </item>
           <item row="2" column="0">
            <widget class="QLabel" name="birthPlaceLabel">
@@ -256,10 +265,31 @@
           </item>
          </layout>
         </item>
-        <item row="2" column="0">
+        <item row="0" column="0">
+         <layout class="QFormLayout" name="formLayout_3">
+          <item row="0" column="0">
+           <widget class="QLabel" name="registrationNoLabel">
+            <property name="text">
+             <string>Registration no</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLineEdit" name="registrationNoLineEdit"/>
+          </item>
+         </layout>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="label">
+          <property name="text">
+           <string>&lt;b&gt;Details Of Candidate&lt;/b&gt;</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="0">
          <widget class="QDialogButtonBox" name="buttonBox">
           <property name="standardButtons">
-           <set>QDialogButtonBox::Close|QDialogButtonBox::Save</set>
+           <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
           </property>
          </widget>
         </item>
