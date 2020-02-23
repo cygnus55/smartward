@@ -20,7 +20,7 @@ table="citizenshipcopyRegistration"
 
 
 
-class Ui_Requestforcopyofcitizenship(object):
+class Ui_RequestForCopyOfCitizenship(object):
     def setupUi(self, Requestforcopyofcitizenship):
         Requestforcopyofcitizenship.setObjectName("Requestforcopyofcitizenship")
         Requestforcopyofcitizenship.resize(800, 600)
@@ -193,7 +193,7 @@ class Ui_Requestforcopyofcitizenship(object):
 
     def retranslateUi(self, Requestforcopyofcitizenship):
         _translate = QtCore.QCoreApplication.translate
-        Requestforcopyofcitizenship.setWindowTitle(_translate("Requestforcopyofcitizenship", "copyof citizenship form"))
+        Requestforcopyofcitizenship.setWindowTitle(_translate("Requestforcopyofcitizenship", "Request for Copy of Citizenship"))
         self.label.setText(_translate("Requestforcopyofcitizenship", "Details of the citizenship certificate"))
         self.registrationNoLabel.setText(_translate("Requestforcopyofcitizenship", "Registration no"))
         self.citizenshipNoLabel.setText(_translate("Requestforcopyofcitizenship", "Citizenship No"))
@@ -227,7 +227,7 @@ class ActualWork():
         import dbconnect
         self.db=dbconnect.database_wardwindow("localhost","root")
         self.citizencopyForm = QtWidgets.QMainWindow()
-        self.ui = Ui_Requestforcopyofcitizenship()
+        self.ui = Ui_RequestForCopyOfCitizenship()
         self.ui.setupUi(self.citizencopyForm)
         self.citizencopyForm.show()
         self.actualWork()

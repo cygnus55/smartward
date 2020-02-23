@@ -20,7 +20,7 @@ table="citizenshipRegistration"
 
 
 
-class Ui_citizenshiprequest(object):
+class Ui_CitizenshipRequest(object):
     def setupUi(self, citizenshiprequest):
         citizenshiprequest.setObjectName("citizenshiprequest")
         citizenshiprequest.resize(800, 600)
@@ -190,7 +190,7 @@ class Ui_citizenshiprequest(object):
 
     def retranslateUi(self, citizenshiprequest):
         _translate = QtCore.QCoreApplication.translate
-        citizenshiprequest.setWindowTitle(_translate("citizenshiprequest", "Nepali Citizenship Requset"))
+        citizenshiprequest.setWindowTitle(_translate("citizenshiprequest", "Nepali Citizenship Request"))
         self.fullNameLabel.setText(_translate("citizenshiprequest", "Full Name"))
         self.genderLabel.setText(_translate("citizenshiprequest", "Gender"))
         self.genderComboBox.setItemText(0, _translate("citizenshiprequest", "Male"))
@@ -219,12 +219,13 @@ class Ui_citizenshiprequest(object):
         self.addressLabel_2.setText(_translate("citizenshiprequest", "Address"))
         self.registrationNoLabel.setText(_translate("citizenshiprequest", "Registration no"))
         self.label.setText(_translate("citizenshiprequest", "<b>Details Of Candidate</b>"))
+
 class ActualWork():
     def __init__(self):
         import dbconnect
         self.db=dbconnect.database_wardwindow("localhost","root")
         self.citizenshipForm = QtWidgets.QMainWindow()
-        self.ui = Ui_citizenshiprequest()
+        self.ui = Ui_CitizenshipRequest()
         self.ui.setupUi(self.citizenshipForm)
         self.citizenshipForm.show()
         self.actualWork()
