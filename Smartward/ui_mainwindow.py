@@ -17,6 +17,9 @@ from forms import marriage
 from forms import birth
 from forms import death
 from forms import divorce
+#import citizenship related forms
+from forms.sifaris import citizenshiprequest
+from forms.sifaris import citizenshipcopy
 
 myemail=SWGmail()
 
@@ -209,7 +212,10 @@ class Ui_WardWindow(QWidget):
         def statistics_show(name,table_name):
             #self.stat_window=graph.StatWindow()
             #self.start_window.show()
-            self.stat_window=graph.StatWindow(name,table_name)
+            StatWindow=QtWidgets.QMainWindow()
+            window = graph.Ui_StatWindow(name,table_name)
+            window.setupUi(StatWindow)
+            StatWindow.show()
             print(f"StatWindow displayed: {name} and {table_name} table.")
         
 
@@ -218,6 +224,12 @@ class Ui_WardWindow(QWidget):
         self.change_password_button.clicked.connect(on_change_password_clicked)
         self.update_ward_profile_button.clicked.connect(on_ward_profile_update_clicked)
         self.browse.clicked.connect(on_browse_clicked)
+        
+        citizenship_menu=QtWidgets.QMenu()
+        citizenship_menu.addAction("Citizenship request",lambda:citizenshiprequest.ActualWork())
+        citizenship_menu.addAction("Request Copy of Citizenship",lambda:citizenshipcopy.ActualWork())
+        self.citizenship_button.setMenu(citizenship_menu)
+        
         
         statistics_menu=QtWidgets.QMenu()
         statistics_menu.addAction("View Birth Statistics",lambda:statistics_show('Birth','birthregistration'))
