@@ -24,20 +24,34 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>-166</y>
+         <y>0</y>
          <width>755</width>
-         <height>742</height>
+         <height>787</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_2">
-        <item row="0" column="0">
+        <item row="1" column="0">
          <widget class="QLabel" name="label">
           <property name="text">
            <string>Details of the citizenship certificate</string>
           </property>
          </widget>
         </item>
-        <item row="1" column="0">
+        <item row="0" column="0">
+         <layout class="QFormLayout" name="formLayout_2">
+          <item row="0" column="0">
+           <widget class="QLabel" name="registrationNoLabel">
+            <property name="text">
+             <string>Registration no</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLineEdit" name="registrationNoLineEdit"/>
+          </item>
+         </layout>
+        </item>
+        <item row="2" column="0">
          <layout class="QFormLayout" name="formLayout">
           <item row="0" column="0">
            <widget class="QLabel" name="citizenshipNoLabel">
@@ -66,9 +80,6 @@
             </property>
            </widget>
           </item>
-          <item row="2" column="1">
-           <widget class="QComboBox" name="typeComboBox"/>
-          </item>
           <item row="3" column="0">
            <widget class="QLabel" name="fullNamelabel">
             <property name="text">
@@ -87,7 +98,23 @@
            </widget>
           </item>
           <item row="4" column="1">
-           <widget class="QComboBox" name="sexComboBox"/>
+           <widget class="QComboBox" name="sexComboBox">
+            <item>
+             <property name="text">
+              <string>Male</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Femle</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Other</string>
+             </property>
+            </item>
+           </widget>
           </item>
           <item row="5" column="0">
            <widget class="QLabel" name="placeOfBirthLabel">
@@ -180,9 +207,6 @@
             </property>
            </widget>
           </item>
-          <item row="14" column="1">
-           <widget class="QComboBox" name="comboBox_2"/>
-          </item>
           <item row="15" column="0">
            <widget class="QLabel" name="motherSDetailLabel">
             <property name="text">
@@ -199,6 +223,16 @@
           </item>
           <item row="16" column="1">
            <widget class="QLineEdit" name="fullNameLineEdit_2"/>
+          </item>
+          <item row="17" column="0">
+           <widget class="QLabel" name="typesOfCitizenshipLabel_4">
+            <property name="text">
+             <string>Types of citizenship</string>
+            </property>
+           </widget>
+          </item>
+          <item row="17" column="1">
+           <widget class="QLineEdit" name="typesOfCitizenshipLineEdit"/>
           </item>
           <item row="18" column="0">
            <widget class="QLabel" name="countryLabel_2">
@@ -244,28 +278,21 @@
             </property>
            </widget>
           </item>
-          <item row="22" column="1">
-           <widget class="QComboBox" name="comboBox"/>
-          </item>
-          <item row="23" column="0">
-           <widget class="QLabel" name="typesOfCitizenshipLabel_3">
-            <property name="text">
-             <string>Types Of citizenship</string>
-            </property>
-           </widget>
-          </item>
           <item row="23" column="1">
-           <widget class="QComboBox" name="typesOfCitizenshipComboBox"/>
-          </item>
-          <item row="17" column="0">
-           <widget class="QLabel" name="typesOfCitizenshipLabel_4">
-            <property name="text">
-             <string>Types of citizenship</string>
+           <widget class="QDialogButtonBox" name="buttonBox">
+            <property name="standardButtons">
+             <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
             </property>
            </widget>
           </item>
-          <item row="17" column="1">
-           <widget class="QLineEdit" name="typesOfCitizenshipLineEdit"/>
+          <item row="2" column="1">
+           <widget class="QLineEdit" name="lineEdit"/>
+          </item>
+          <item row="14" column="1">
+           <widget class="QLineEdit" name="lineEdit_2"/>
+          </item>
+          <item row="22" column="1">
+           <widget class="QLineEdit" name="lineEdit_3"/>
           </item>
          </layout>
         </item>
