@@ -27,3 +27,10 @@ Week 5
 Week 6
 	1.Helping in making additional forms needed 
 	2.learning to switch windows more effectively
+	3.Completed our first form marriage 
+Week 7
+	1.Learning database (mysql)
+	2.still making additional forms needed
+Week 8
+	1.Learning to make graph for data visualization 
+	2.Still working on forms and connecting with main program
