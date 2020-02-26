@@ -10,13 +10,16 @@ import sys
 import os
 import time
 
-import dbconnect ##might cause error
-#from graph import MainWindow as StatWindow ##might cause some error
+import dbconnect 
+import graph
 #importing regd. forms
 from forms import marriage
 from forms import birth
 from forms import death
 from forms import divorce
+#import citizenship related forms
+from forms.sifaris import citizenshiprequest
+from forms.sifaris import citizenshipcopy
 
 myemail=SWGmail()
 
@@ -206,18 +209,36 @@ class Ui_WardWindow(QWidget):
             #new Window-migration reg. form
             print("migration registration") 
         
-        def statistics_show():
+        def statistics_show(name,table_name):
             #self.stat_window=graph.StatWindow()
             #self.start_window.show()
-            print("StatWindow displayed.")
-
+            StatWindow=QtWidgets.QMainWindow()
+            window = graph.Ui_StatWindow(name,table_name)
+            window.setupUi(StatWindow)
+            StatWindow.show()
+            print(f"StatWindow displayed: {name} and {table_name} table.")
+        
 
         self.home_button.clicked.connect(home_page)
         self.delete_account_button.clicked.connect(on_remove_account_clicked)
         self.change_password_button.clicked.connect(on_change_password_clicked)
         self.update_ward_profile_button.clicked.connect(on_ward_profile_update_clicked)
         self.browse.clicked.connect(on_browse_clicked)
-        self.statistics_button.clicked.connect(statistics_show)
+        
+        citizenship_menu=QtWidgets.QMenu()
+        citizenship_menu.addAction("Citizenship request",lambda:citizenshiprequest.ActualWork())
+        citizenship_menu.addAction("Request Copy of Citizenship",lambda:citizenshipcopy.ActualWork())
+        self.citizenship_button.setMenu(citizenship_menu)
+        
+        
+        statistics_menu=QtWidgets.QMenu()
+        statistics_menu.addAction("View Birth Statistics",lambda:statistics_show('Birth','birthregistration'))
+        statistics_menu.addAction("View Death Statistics",lambda:statistics_show('Death','deathregistration'))
+        statistics_menu.addAction("View Marriage Statistics",lambda:statistics_show('Marriage','marriageregistration'))
+        statistics_menu.addAction("View Divorce Statistics",lambda:statistics_show('Divorce','divorceregistration'))
+        statistics_menu.addAction("View Migration Statistics",lambda:statistics_show('Migration','migrationregistration'))
+        self.statistics_button.setMenu(statistics_menu)
+        
 
         settings_menu=QtWidgets.QMenu()
         settings_menu.addAction("Update Ward Profile",update_ward_profile_page)

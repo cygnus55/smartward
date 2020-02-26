@@ -37,3 +37,16 @@ week 6
 1.make additinal form for our project
 2.help in making main window
 3.still learning python and pyqt5
+Week 7:
+1.learning how to Connecting various windows
+2.learing about datbase
+3.Revising python
+		
+Week 7:
+1.learning mysql database
+2.continue reading pyqt5 documentation
+week 8:
+1.implementing database work
+week 9:
+1.completing work of form birth ,death and divorce
+		
