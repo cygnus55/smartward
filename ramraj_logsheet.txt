@@ -32,3 +32,12 @@ Week 6:
 		
 Week 7:
 		-Started to work on other forms
+		
+Week 8:
+		-Completed forms and stored info to database
+		-Working on certificates
+		-Learned fpdf module
+		
+Week 9:
+		-Completed Birth Certificate Prototype
+		-Working on extracting birth info from table and adding to certificate
