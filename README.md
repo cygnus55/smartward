@@ -6,8 +6,12 @@ Software Requirements
 
   2. XAMMP Server
 
-Python modules used
+Additional Python modules required(i.e. not provided by Python developer's Library)
 
   1. PyQt5
-
-  2. sys,re
+  
+  2. mysql-connector
+  
+  3. fpdf
+  
+  4. 
