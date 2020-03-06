@@ -510,7 +510,7 @@ class ActualWork():
         self.db.createFormTable(table)
         self.db.addColumns(table, a[4], a[6], a[8], a[10], a[12],a[14],a[16])
         self.db.insertValues(table, a)
-        self.getCertificate(**self.values)
+        self.getCertificate()
 
     def getallvalues(self):
         self.birthRegNo = self.ui.birthRegistrationNoLineEdit.text()
@@ -564,8 +564,8 @@ class ActualWork():
             pickle.dump(d,obj)
             obj.close()
 
-    def getCertificate(self, **dict):
-        QMessageBox.information(self.ui, "Birth Registration Sucessful","Birth Reistration was Sucessful.\nGet Birth Registration Certificate.")
+    def getCertificate(self):
+        QMessageBox.information(self.ui, "Birth Registration","Get Birth Registration Certificate.")
         certificate = BirthCertificate()
         f=open("certificate.pickle",'rb')
         cInfo=pickle.load(f)
@@ -574,6 +574,7 @@ class ActualWork():
             cert.append(value)
         certificate.setBody(cert)
         certificate.output()
+        QMessageBox.information(self.ui, "Birth Registration","Birth Reistration was Sucessful.")
 
     def closeActualWork(self):
         self.BirthForm.close()
