@@ -52,7 +52,7 @@ class BirthCertificate(Certificate):
         return txt
 
     def setBody(self,args):
-        print(args)
+        #print(args)
         contents=self.getfromtxt('birthcertificate.txt')
         #args=('12321','2056/09/03','4233','Ram Hari Khatiwada','Hari Krishna Ghimere','Tilak Ghimere','Sunita Ghimere','Ghana Shyam Ghimere','05','Namobuddha','2056/01/03','1997/05/09','Methinkot Hospital','2023/05/06','Kavre','23452','2030/06/09','Kavre','875683')
         #contents=content.format('12321','2056/09/03','4233','Ram Hari Khatiwada','Hari Krishna Ghimere','Tilak Ghimere','Sunita Ghimere','Ghana Shyam Ghimere','05','Namobuddha','2056/01/03','1997/05/09','Methinkot Hospital','2023/05/06','Kavre','23452','2030/06/09','Kavre','875683')
@@ -63,9 +63,10 @@ class BirthCertificate(Certificate):
             self.pdf.set_font('Times',size=10)
             self.pdf.cell(1950,8,txt=line,ln=1,align='L')
 
-    def output(self,pdffilepath):
-        self.pdf.output(pdffilepath)
+    def output(self):
+        self.pdf.output("birthcertificate.pdf")
 
 #a=BirthCertificate()
 #a.setOfficeAddress('Namobuddha Municipality','Kavre')
+#a.setBody(123)
 #a.output("test.pdf")
