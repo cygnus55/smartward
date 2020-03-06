@@ -7,7 +7,7 @@ municipality,address=wardinfo['municipality'],wardinfo['address']
 
 logo="logo.png"
 
-class PDF():
+class Certificate():
     def __init__(self):
         #self.logopath=logopath
         self.pdf=FPDF()
@@ -36,12 +36,12 @@ class PDF():
 
 
 
-class BirthCertificate(PDF):
+class BirthCertificate(Certificate):
     def __init__(self):
         super().__init__()
         self.pdf.set_font("Times",'BU',20)
         self.pdf.cell(180,8,txt='Birth Registration Certificate',ln=1,align='C')
-        self.setBody('12321','2056/09/03','4233','Ram Hari Khatiwada','Hari Krishna Ghimere','Tilak Ghimere','Sunita Ghimere','Ghana Shyam Ghimere','05','Namobuddha','2056/01/03','1997/05/09','Methinkot Hospital','2023/05/06','Kavre','23452','2030/06/09','Kavre','875683')
+        #self.setBody('12321','2056/09/03','4233','Ram Hari Khatiwada','Hari Krishna Ghimere','Tilak Ghimere','Sunita Ghimere','Ghana Shyam Ghimere','05','Namobuddha','2056/01/03','1997/05/09','Methinkot Hospital','2023/05/06','Kavre','23452','2030/06/09','Kavre','875683')
         #self.getfromtxt('birthcertificate.txt')
         #self.setBody('fdsf')
 
@@ -51,7 +51,7 @@ class BirthCertificate(PDF):
         txt=text.readlines()
         return txt
 
-    def setBody(self,*args):
+    def setBody(self,args):
         print(args)
         contents=self.getfromtxt('birthcertificate.txt')
         #args=('12321','2056/09/03','4233','Ram Hari Khatiwada','Hari Krishna Ghimere','Tilak Ghimere','Sunita Ghimere','Ghana Shyam Ghimere','05','Namobuddha','2056/01/03','1997/05/09','Methinkot Hospital','2023/05/06','Kavre','23452','2030/06/09','Kavre','875683')
@@ -66,6 +66,6 @@ class BirthCertificate(PDF):
     def output(self,pdffilepath):
         self.pdf.output(pdffilepath)
 
-a=BirthCertificate()
+#a=BirthCertificate()
 #a.setOfficeAddress('Namobuddha Municipality','Kavre')
-a.output("test.pdf")
+#a.output("test.pdf")
