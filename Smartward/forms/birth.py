@@ -573,7 +573,7 @@ class ActualWork():
         for value in cInfo.values():
             cert.append(value)
         certificate.setBody(cert)
-        certificate.output("test.pdf")
+        certificate.output()
 
     def closeActualWork(self):
         self.BirthForm.close()
