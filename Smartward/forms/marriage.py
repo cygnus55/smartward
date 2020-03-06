@@ -6,11 +6,12 @@ from PyQt5.QtGui import *
 import datetime
 import nepali_date
 import sw_string
+import pickle
+from sw_pdf import MarriageCertificate
 
 table="MarriageRegistration"
 
-
-class Ui_MarriageForm(object):
+class Ui_MarriageForm(QWidget):
     def setupUi(self, MarriageForm):
         MarriageForm.setObjectName("MarriageForm")
         MarriageForm.resize(811, 957)
@@ -22,10 +23,13 @@ class Ui_MarriageForm(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, -150, 774, 1097))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 777, 1441))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.gridLayout_2 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents)
         self.gridLayout_2.setObjectName("gridLayout_2")
+        self.label_6 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.label_6.setObjectName("label_6")
+        self.gridLayout_2.addWidget(self.label_6, 5, 0, 1, 1)
         self.label = QtWidgets.QLabel(self.scrollAreaWidgetContents)
         self.label.setObjectName("label")
         self.gridLayout_2.addWidget(self.label, 3, 0, 1, 1)
@@ -92,6 +96,21 @@ class Ui_MarriageForm(object):
         self.locationIfMarriageAbroadLineEdit.setObjectName("locationIfMarriageAbroadLineEdit")
         self.formLayout.setWidget(9, QtWidgets.QFormLayout.FieldRole, self.locationIfMarriageAbroadLineEdit)
         self.gridLayout_2.addLayout(self.formLayout, 4, 0, 1, 1)
+        self.formLayout_3 = QtWidgets.QFormLayout()
+        self.formLayout_3.setObjectName("formLayout_3")
+        self.marriageRegistrationNoLabel = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.marriageRegistrationNoLabel.setObjectName("marriageRegistrationNoLabel")
+        self.formLayout_3.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.marriageRegistrationNoLabel)
+        self.marriageRegistrationNoLineEdit = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
+        self.marriageRegistrationNoLineEdit.setObjectName("marriageRegistrationNoLineEdit")
+        self.formLayout_3.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.marriageRegistrationNoLineEdit)
+        self.FamilyRecordFormNoLabel = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.FamilyRecordFormNoLabel.setObjectName("FamilyRecordFormNoLabel")
+        self.formLayout_3.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.FamilyRecordFormNoLabel)
+        self.FamilyRecordFormNoLineEdit = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
+        self.FamilyRecordFormNoLineEdit.setObjectName("FamilyRecordFormNoLineEdit")
+        self.formLayout_3.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.FamilyRecordFormNoLineEdit)
+        self.gridLayout_2.addLayout(self.formLayout_3, 0, 0, 1, 1)
         self.formLayout_2 = QtWidgets.QFormLayout()
         self.formLayout_2.setObjectName("formLayout_2")
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
@@ -403,30 +422,41 @@ class Ui_MarriageForm(object):
         self.lineEdit_49.setObjectName("lineEdit_49")
         self.horizontalLayout_39.addWidget(self.lineEdit_49)
         self.formLayout_2.setLayout(26, QtWidgets.QFormLayout.FieldRole, self.horizontalLayout_39)
+        self.informationProvidedByLabel = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.informationProvidedByLabel.setObjectName("informationProvidedByLabel")
+        self.formLayout_2.setWidget(27, QtWidgets.QFormLayout.LabelRole, self.informationProvidedByLabel)
+        self.nameLabel = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.nameLabel.setObjectName("nameLabel")
+        self.formLayout_2.setWidget(28, QtWidgets.QFormLayout.LabelRole, self.nameLabel)
+        self.nameLineEdit = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
+        self.nameLineEdit.setObjectName("nameLineEdit")
+        self.formLayout_2.setWidget(28, QtWidgets.QFormLayout.FieldRole, self.nameLineEdit)
         self.jhLabel = QtWidgets.QLabel(self.scrollAreaWidgetContents)
         self.jhLabel.setText("")
         self.jhLabel.setObjectName("jhLabel")
-        self.formLayout_2.setWidget(27, QtWidgets.QFormLayout.LabelRole, self.jhLabel)
+        self.formLayout_2.setWidget(31, QtWidgets.QFormLayout.LabelRole, self.jhLabel)
         self.buttonBox = QtWidgets.QDialogButtonBox(self.scrollAreaWidgetContents)
         self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
         self.buttonBox.setObjectName("buttonBox")
-        self.formLayout_2.setWidget(27, QtWidgets.QFormLayout.FieldRole, self.buttonBox)
+        self.formLayout_2.setWidget(31, QtWidgets.QFormLayout.FieldRole, self.buttonBox)
+        self.citizenshipCertificateNoLabel = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.citizenshipCertificateNoLabel.setObjectName("citizenshipCertificateNoLabel")
+        self.formLayout_2.setWidget(29, QtWidgets.QFormLayout.LabelRole, self.citizenshipCertificateNoLabel)
+        self.citizenshipCertificateNoLineEdit = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
+        self.citizenshipCertificateNoLineEdit.setObjectName("citizenshipCertificateNoLineEdit")
+        self.formLayout_2.setWidget(29, QtWidgets.QFormLayout.FieldRole, self.citizenshipCertificateNoLineEdit)
+        self.relationToMarriedCoupleLabel = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.relationToMarriedCoupleLabel.setObjectName("relationToMarriedCoupleLabel")
+        self.formLayout_2.setWidget(30, QtWidgets.QFormLayout.LabelRole, self.relationToMarriedCoupleLabel)
+        self.relationToMarriedCoupleLineEdit = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
+        self.relationToMarriedCoupleLineEdit.setObjectName("relationToMarriedCoupleLineEdit")
+        self.formLayout_2.setWidget(30, QtWidgets.QFormLayout.FieldRole, self.relationToMarriedCoupleLineEdit)
         self.gridLayout_2.addLayout(self.formLayout_2, 6, 0, 1, 1)
-        self.label_6 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
-        self.label_6.setObjectName("label_6")
-        self.gridLayout_2.addWidget(self.label_6, 5, 0, 1, 1)
-        self.formLayout_3 = QtWidgets.QFormLayout()
-        self.formLayout_3.setObjectName("formLayout_3")
-        self.marriageRegistrationNoLabel = QtWidgets.QLabel(self.scrollAreaWidgetContents)
-        self.marriageRegistrationNoLabel.setObjectName("marriageRegistrationNoLabel")
-        self.formLayout_3.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.marriageRegistrationNoLabel)
-        self.marriageRegistrationNoLineEdit = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
-        self.marriageRegistrationNoLineEdit.setObjectName("marriageRegistrationNoLineEdit")
-        self.formLayout_3.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.marriageRegistrationNoLineEdit)
-        self.gridLayout_2.addLayout(self.formLayout_3, 0, 0, 1, 1)
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.horizontalLayout_2.addWidget(self.scrollArea)
         MarriageForm.setCentralWidget(self.centralwidget)
+
+        self.marriageTypeComboBox.addItems(['social tradition', 'Marriage Registration Act 2028'])
 
         self.retranslateUi(MarriageForm)
         QtCore.QMetaObject.connectSlotsByName(MarriageForm)
@@ -434,6 +464,7 @@ class Ui_MarriageForm(object):
     def retranslateUi(self, MarriageForm):
         _translate = QtCore.QCoreApplication.translate
         MarriageForm.setWindowTitle(_translate("MarriageForm", "Marriage Form"))
+        self.label_6.setText(_translate("MarriageForm", "<b>Details Of Spouse</b>"))
         self.label.setText(_translate("MarriageForm", "<b>Details Of Marriage</b>"))
         self.marriageTypeLabel.setText(_translate("MarriageForm", "Marriage Type"))
         self.marriageDateLabel.setText(_translate("MarriageForm", "Marriage Date"))
@@ -445,6 +476,8 @@ class Ui_MarriageForm(object):
         self.villageLabel.setText(_translate("MarriageForm", "village"))
         self.houseNoLabel.setText(_translate("MarriageForm", "House No"))
         self.locationIfMarriageAbroadLabel.setText(_translate("MarriageForm", "Location if Marriage Abroad"))
+        self.marriageRegistrationNoLabel.setText(_translate("MarriageForm", "<b>Marriage Registration No.</b>"))
+        self.FamilyRecordFormNoLabel.setText(_translate("MarriageForm", "<b>Family Record Form No."))
         self.label_5.setText(_translate("MarriageForm", "Bride"))
         self.label_2.setText(_translate("MarriageForm", "Bridegroom"))
         self.nameLabel_2.setText(_translate("MarriageForm", "<b>Name</b>"))
@@ -473,8 +506,10 @@ class Ui_MarriageForm(object):
         self.grandfatherNameLabel_2.setText(_translate("MarriageForm", "Grandfather Name"))
         self.fatherNameLabel_2.setText(_translate("MarriageForm", "Father Name"))
         self.motherNameLabel_2.setText(_translate("MarriageForm", "Mother Name"))
-        self.label_6.setText(_translate("MarriageForm", "<b>Details Of Spouse</b>"))
-        self.marriageRegistrationNoLabel.setText(_translate("MarriageForm", "<b>Marriage Registration No.</b>"))
+        self.informationProvidedByLabel.setText(_translate("MarriageForm", "<b>Information Provided By"))
+        self.nameLabel.setText(_translate("MarriageForm", "Name"))
+        self.citizenshipCertificateNoLabel.setText(_translate("MarriageForm", "Citizenship Certificate No."))
+        self.relationToMarriedCoupleLabel.setText(_translate("MarriageForm", "Relation to Married Couple"))
 
 
 class ActualWork():
@@ -499,11 +534,13 @@ class ActualWork():
         #a=['RegDate',,b[0],b[1],b[2],b[3].replace("'","__"),b[4],b[5].replace("'","__"),b[6],b[7].replace("'","__")]
         #print(a)
         self.db.createFormTable(table)
-        self.db.addColumns(table,a[4],a[6],a[8])
+        self.db.addColumns(table,a[4],a[6],a[8],a[10],a[12])
         self.db.insertValues(table,a)
+        self.getCertificate()
 
     def getallvalues(self):
         self.magRegNo=self.ui.marriageRegistrationNoLineEdit.text()
+        self.familyrecordno=self.ui.FamilyRecordFormNoLineEdit.text()
         self.marriagetype=self.ui.marriageTypeComboBox.currentText()
         date=QDate(self.ui.dateEdit_2.date())
         year,month,day=date.getDate()
@@ -525,8 +562,34 @@ class ActualWork():
         self.parentbridegroom=(self.ui.lineEdit_45.text(),self.ui.lineEdit_47.text(),self.ui.lineEdit_49.text())
         self.detailsofbridegroom=(self.ui.lineEdit_3.text(),self.ui.lineEdit_5.text(),self.ui.lineEdit_7.text(),self.ui.lineEdit_9.text(),self.ui.lineEdit_11.text(),self.ui.lineEdit_13.text(),self.ui.lineEdit_15.text(),self.paddressbridegroom,self.ccbridegroom,self.parentbridegroom)
         detailsofspouse={'detailsofbride':self.detailsofbride, 'detailsofbridegroom':self.detailsofbridegroom}
+        informer=(self.ui.nameLineEdit.text(),self.ui.citizenshipCertificateNoLineEdit.text(),self.ui.relationToMarriedCoupleLineEdit.text())
 
-        return {"RegDate":registrationdate,"RegNo":self.magRegNo,"detailsofmarriage":str(detailsofmarriage) , "locationofmarriage":str(locationofmarriage) , 'detailsofspouse':str(detailsofspouse)}
+        certificate=(
+            self.magRegNo,registrationdate,self.familyrecordno,self.ui.nameLineEdit.text(),
+            self.ui.lineEdit_6.text(),self.ui.lineEdit_48.text(),self.ui.lineEdit_46.text(),
+            self.ui.lineEdit_21.text(),self.ui.lineEdit_20.text(),self.ui.lineEdit_18.text(),
+            self.ui.lineEdit_5.text(), self.ui.lineEdit_47.text(), self.ui.lineEdit_45.text(),
+            self.ui.lineEdit_22.text(), self.ui.lineEdit_19.text(), self.ui.lineEdit_17.text(),
+            str(marriage_in_bs)[3:],str(marriage_in_ad),self.ui.marriageTypeComboBox.currentText(),
+            self.ui.lineEdit_36.text(), self.ui.lineEdit_35.text(), self.ui.lineEdit_38.text(),
+            self.ui.lineEdit_27.text(), self.ui.lineEdit_34.text(), self.ui.lineEdit_33.text()
+        )
+        self.writePickle(certificate)
+        return {"RegDate":registrationdate,"RegNo":self.magRegNo,"FamilyRecordNo":self.familyrecordno,"detailsofmarriage":str(detailsofmarriage) , "locationofmarriage":str(locationofmarriage) , 'detailsofspouse':str(detailsofspouse), 'Informer':str(informer)}
+
+    def writePickle(self, d):
+        with open("certificate.pickle", "wb") as obj:
+            pickle.dump(d, obj)
+            obj.close()
+
+    def getCertificate(self):
+        QMessageBox.information(self.ui, "Marriage Registration","Get Marriage Registration Certificate.")
+        certificate = MarriageCertificate()
+        f = open("certificate.pickle", 'rb')
+        cert = pickle.load(f)
+        certificate.setBody(cert)
+        certificate.output("test.pdf")
+        QMessageBox.information(self.ui, "Marriage Registration", "Marriage Reistration was Sucessful.")
 
     def closeActualWork(self):
         self.MarriageForm.close()
@@ -535,5 +598,10 @@ if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     aw=ActualWork()
-   
+    """
+    MainWindow = QtWidgets.QMainWindow()
+    ui = ActualWork()
+    ui.setupUi(MainWindow)
+    MainWindow.show()
+    """
     sys.exit(app.exec_())

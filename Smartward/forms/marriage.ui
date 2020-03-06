@@ -24,12 +24,19 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>-150</y>
-         <width>774</width>
-         <height>1097</height>
+         <y>-306</y>
+         <width>777</width>
+         <height>1442</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_2">
+        <item row="5" column="0">
+         <widget class="QLabel" name="label_6">
+          <property name="text">
+           <string>&lt;b&gt;Details Of Spouse&lt;/b&gt;</string>
+          </property>
+         </widget>
+        </item>
         <item row="3" column="0">
          <widget class="QLabel" name="label">
           <property name="text">
@@ -142,6 +149,30 @@
           </item>
          </layout>
         </item>
+        <item row="0" column="0">
+         <layout class="QFormLayout" name="formLayout_3">
+          <item row="0" column="0">
+           <widget class="QLabel" name="marriageRegistrationNoLabel">
+            <property name="text">
+             <string>&lt;b&gt;Marriage Registration No.&lt;/b&gt;</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLineEdit" name="marriageRegistrationNoLineEdit"/>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="FamilyRecordFormNoLabel">
+            <property name="text">
+             <string>&lt;b&gt;Family Record Form No.</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLineEdit" name="FamilyRecordFormNoLineEdit"/>
+          </item>
+         </layout>
+        </item>
         <item row="6" column="0">
          <layout class="QFormLayout" name="formLayout_2">
           <item row="0" column="1">
@@ -216,10 +247,10 @@
           <item row="4" column="1">
            <layout class="QHBoxLayout" name="horizontalLayout_7">
             <item>
-             <widget class="QLineEdit" name="lineEdit_8"/>
+             <widget class="QDateEdit" name="dateEdit_3"/>
             </item>
             <item>
-             <widget class="QLineEdit" name="lineEdit_7"/>
+             <widget class="QDateEdit" name="dateEdit"/>
             </item>
            </layout>
           </item>
@@ -591,39 +622,55 @@
            </layout>
           </item>
           <item row="27" column="0">
+           <widget class="QLabel" name="informationProvidedByLabel">
+            <property name="text">
+             <string>&lt;b&gt;Information Provided By</string>
+            </property>
+           </widget>
+          </item>
+          <item row="28" column="0">
+           <widget class="QLabel" name="nameLabel">
+            <property name="text">
+             <string>Name</string>
+            </property>
+           </widget>
+          </item>
+          <item row="28" column="1">
+           <widget class="QLineEdit" name="nameLineEdit"/>
+          </item>
+          <item row="31" column="0">
            <widget class="QLabel" name="jhLabel">
             <property name="text">
              <string/>
             </property>
            </widget>
           </item>
-          <item row="27" column="1">
+          <item row="31" column="1">
            <widget class="QDialogButtonBox" name="buttonBox">
             <property name="standardButtons">
              <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
             </property>
            </widget>
           </item>
-         </layout>
-        </item>
-        <item row="5" column="0">
-         <widget class="QLabel" name="label_6">
-          <property name="text">
-           <string>&lt;b&gt;Details Of Spouse&lt;/b&gt;</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="0">
-         <layout class="QFormLayout" name="formLayout_3">
-          <item row="0" column="0">
-           <widget class="QLabel" name="marriageRegistrationNoLabel">
+          <item row="29" column="0">
+           <widget class="QLabel" name="citizenshipCertificateNoLabel">
             <property name="text">
-             <string>&lt;b&gt;Marriage Registration No.&lt;/b&gt;</string>
+             <string>Citizenship Certificate No.</string>
             </property>
            </widget>
           </item>
-          <item row="0" column="1">
-           <widget class="QLineEdit" name="marriageRegistrationNoLineEdit"/>
+          <item row="29" column="1">
+           <widget class="QLineEdit" name="citizenshipCertificateNoLineEdit"/>
+          </item>
+          <item row="30" column="0">
+           <widget class="QLabel" name="relationToMarriedCoupleLabel">
+            <property name="text">
+             <string>Relation to Married Couple</string>
+            </property>
+           </widget>
+          </item>
+          <item row="30" column="1">
+           <widget class="QLineEdit" name="relationToMarriedCoupleLineEdit"/>
           </item>
          </layout>
         </item>
