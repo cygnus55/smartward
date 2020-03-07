@@ -31,3 +31,16 @@ Week 7:
 
 Added some major functions in homewindow to change password, delete account and update ward profile
 
+Week 8:
+
+Carried out the integration of vital registration forms barring migration(birth, death,marriage,divorce) and also figured out the works of other group members for easiness in integration of forms and clean fed the repository
+
+Week 9:
+
+Implemented data visualization for the vital registration forms(graph.py) using the subplot of matplotlib and integrated it to the mainwindow along with the various citizenship related forms
+
+Week 10:
+-----(Internals)
+Tested code redundancy, minimized it,added local registrar update page to mainwindow and started working on project report
+
+

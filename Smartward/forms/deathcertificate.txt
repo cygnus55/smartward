@@ -1,0 +1,9 @@
+Registration No. {0}                                      Date of Registration {1}
+Family Record Form No. {2}
+This is to certify, as per the death register maintained at this office and the information provided by Mr./
+Mrs. {3} in the information from of schedule 3 , that Mr/Mrs {4} aged {5} ,son /daughter of
+Mr. {6} , grandson/granddaughter of Mr. {7}, husband/ wife of Mr/Mrs. {8} a resident of Ward No. {9}, {10}, {11} died on {12} BS ( {13} AD ) .
+If Citizenship Certificate is Issued to the deceased :
+His/Her Citizenship Certificate No. : {14}
+Date of issuance : {15}
+District of issuance: {16}

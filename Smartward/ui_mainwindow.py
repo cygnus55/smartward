@@ -49,6 +49,20 @@ class Ui_WardWindow(QWidget):
             except FileNotFoundError:
                 print("Ward not registered.")
         
+        def check_registrar():
+            try:
+                with open('ward.pickle','rb') as f:
+                    read=pickle.load(f)
+                if (not isEmpty(read['registrar_name'],read['registrar_post'])):
+                    return True
+                else:
+                    QMessageBox.warning(self,"No registrar","Enter the registrar details for operation.")
+                    update_registrar_page() 
+                    return False
+            except Exception as e:
+                print(e)
+
+
         def clear_lineedits():
             #clear_lineedits:
             #from update_profile_page
@@ -65,6 +79,9 @@ class Ui_WardWindow(QWidget):
             self.reconfirm_password_lineedit.clear()
             #from delete_ward_page
             self.deletion_password_lineedit.clear()
+            #from update_registrar_page
+            self.registrar_name_lineedit.clear()
+            self.registrar_post_lineedit.clear()
 
 
 
@@ -92,6 +109,12 @@ class Ui_WardWindow(QWidget):
             print("remove account page")
             clear_lineedits()
             self.stackedWidget.setCurrentIndex(2)
+
+        def update_registrar_page():
+            #update registrar page
+            print("update registrar page")
+            clear_lineedits()
+            self.stackedWidget.setCurrentIndex(4)
         
         def on_browse_clicked():
             print("browse clicked")
@@ -118,9 +141,8 @@ class Ui_WardWindow(QWidget):
             print("Id changed: {}".format(read['id']))
             with open("ward.pickle",'wb') as f:
                     pickle.dump(read,f)
-            clear_lineedits()
             ward_load_data()
-            self.stackedWidget.setCurrentIndex(0)
+            home_page()
             print(read)
 
         def on_change_password_clicked():
@@ -145,9 +167,8 @@ class Ui_WardWindow(QWidget):
                 data['password']=new_pwd
                 with open("ward.pickle",'wb') as f:
                     pickle.dump(data,f)
-                clear_lineedits()
                 QMessageBox.information(self,"Password Changed","Password Changed Successfully.")
-                self.stackedWidget.setCurrentIndex(0)
+                home_page()
 
 
         def on_remove_account_clicked():
@@ -172,43 +193,71 @@ class Ui_WardWindow(QWidget):
                     sys.exit()
                 else:
                     print('Account deletion aborted.')
-                    clear_lineedits()
-                    self.stackedWidget.setCurrentIndex(0)
-                
+                    home_page()
             else:
                 QMessageBox.warning(self,"Wrong password","Enter the correct password for deletion!!!")
                 clear_lineedits()
-                
+
+        def on_registrar_update_clicked():
+            #update local registrar
+            registrar_name=self.registrar_name_lineedit.text()
+            registrar_post=self.registrar_post_lineedit.text()
+            with open('ward.pickle','rb') as f:
+                read=pickle.load(f)
+            print(read)
+            read['registrar_name']=registrar_name
+            read['registrar_post']=registrar_post
+            with open('ward.pickle','wb') as f:
+                pickle.dump(read,f)
+            home_page()
+
+
         #birth_reg,death_reg,marriage_reg,divorce_reg and migration_reg help open respective forms
         def birth_reg():
             #birth registration
             #new Window-birth reg. form 
-            self.birth_form=birth.ActualWork()
-            print("birth registration")
+            if (check_registrar()):
+                self.birth_form=birth.ActualWork()
+                print("birth registration")
+            
         
         def death_reg():
             #death registration
             #new Window-death reg. form
-            self.death_form=death.ActualWork()
-            print("death registration")
-
+            if (check_registrar()):
+                self.death_form=death.ActualWork()
+                print("death registration")
+            
         def marriage_reg():
             #marriage registration
             #new Window-marriage reg. form
-            self.marriage_form=marriage.ActualWork()
-            print("marriage registration") 
+            if (check_registrar()):
+                self.marriage_form=marriage.ActualWork()
+                print("marriage registration")
 
         def divorce_reg():
             #divorce registration
             #new Window-divorce reg. form
-            self.death_form=divorce.ActualWork()
-            print("divorce registration") 
-
+            if (check_registrar()):
+                self.death_form=divorce.ActualWork()
+                print("divorce registration") 
+                
         def migration_reg():
             #migration registration
             #new Window-migration reg. form
-            print("migration registration") 
+            if (check_registrar()):
+                print("migration registration")
         
+        def citizenship_request():
+            if (check_registrar()):
+                cit_req=citizenshiprequest.ActualWork()
+                print("citizenship request form")
+
+        def citizenship_copy():
+            if (check_registrar()):
+                cit_copy=citizenshipcopy.ActualWork()
+                print("citizenship copy form")
+
         def statistics_show(name,table_name):
             #self.stat_window=graph.StatWindow()
             #self.start_window.show()
@@ -224,10 +273,11 @@ class Ui_WardWindow(QWidget):
         self.change_password_button.clicked.connect(on_change_password_clicked)
         self.update_ward_profile_button.clicked.connect(on_ward_profile_update_clicked)
         self.browse.clicked.connect(on_browse_clicked)
+        self.update_registrar_button.clicked.connect(on_registrar_update_clicked)
         
         citizenship_menu=QtWidgets.QMenu()
-        citizenship_menu.addAction("Citizenship request",lambda:citizenshiprequest.ActualWork())
-        citizenship_menu.addAction("Request Copy of Citizenship",lambda:citizenshipcopy.ActualWork())
+        citizenship_menu.addAction("Citizenship request",citizenship_request)
+        citizenship_menu.addAction("Request Copy of Citizenship",citizenship_copy)
         self.citizenship_button.setMenu(citizenship_menu)
         
         
@@ -244,6 +294,7 @@ class Ui_WardWindow(QWidget):
         settings_menu.addAction("Update Ward Profile",update_ward_profile_page)
         settings_menu.addAction("Change Password",change_password_page)
         settings_menu.addAction("Remove Ward Account",remove_account_page)
+        settings_menu.addAction("Update Registrar Details",update_registrar_page)
         self.settings_button.setMenu(settings_menu)
         
         vital_reg_menu=QtWidgets.QMenu()
@@ -506,13 +557,42 @@ class Ui_WardWindow(QWidget):
         self.update_ward_profile_button.setGeometry(QtCore.QRect(375, 330, 166, 31))
         self.update_ward_profile_button.setObjectName("update_ward_profile_button")
         self.stackedWidget.addWidget(self.update_ward_profile_page)
+        self.update_registrar_details_page = QtWidgets.QWidget()
+        self.update_registrar_details_page.setObjectName("update_registrar_details_page")
+        self.groupBox_4 = QtWidgets.QGroupBox(self.update_registrar_details_page)
+        self.groupBox_4.setGeometry(QtCore.QRect(195, 75, 481, 241))
+        font = QtGui.QFont()
+        font.setPointSize(16)
+        self.groupBox_4.setFont(font)
+        self.groupBox_4.setStyleSheet("QLineEdit\n"
+"{\n"
+"border-radius:6px;\n"
+"border: 1px solid rgb(170, 170, 127); \n"
+"padding:5px;\n"
+"}\n"
+"QPushButton:hover\n"
+"{\n"
+"color:rgb(0, 0, 127);\n"
+"}")
+        self.groupBox_4.setObjectName("groupBox_4")
+        self.update_registrar_button = QtWidgets.QPushButton(self.groupBox_4)
+        self.update_registrar_button.setGeometry(QtCore.QRect(315, 180, 136, 31))
+        self.update_registrar_button.setObjectName("update_registrar_button")
+        self.registrar_name_lineedit = QtWidgets.QLineEdit(self.groupBox_4)
+        self.registrar_name_lineedit.setGeometry(QtCore.QRect(30, 60, 316, 31))
+        self.registrar_name_lineedit.setText("")
+        self.registrar_name_lineedit.setObjectName("registrar_name_lineedit")
+        self.registrar_post_lineedit = QtWidgets.QLineEdit(self.groupBox_4)
+        self.registrar_post_lineedit.setGeometry(QtCore.QRect(30, 120, 316, 31))
+        self.registrar_post_lineedit.setObjectName("registrar_post_lineedit")
+        self.stackedWidget.addWidget(self.update_registrar_details_page)
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.gridLayout.addWidget(self.scrollArea, 0, 0, 1, 1)
         WardWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(WardWindow)
-        self.stackedWidget.setCurrentIndex(0)
         self.window_functions(WardWindow)
+        self.stackedWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(WardWindow)
         WardWindow.setTabOrder(self.scrollArea, self.home_button)
         WardWindow.setTabOrder(self.home_button, self.settings_button)
@@ -564,5 +644,8 @@ class Ui_WardWindow(QWidget):
         self.state_update_lineedit.setPlaceholderText(_translate("WardWindow", " State"))
         self.ward_no_update_lineedit.setPlaceholderText(_translate("WardWindow", " Ward No."))
         self.update_ward_profile_button.setText(_translate("WardWindow", "Update Ward Profile"))
+        self.groupBox_4.setTitle(_translate("WardWindow", "Update Local Registrar Details"))
+        self.update_registrar_button.setText(_translate("WardWindow", "Update Details"))
+        self.registrar_name_lineedit.setPlaceholderText(_translate("WardWindow", "Name of Local Registrar"))
+        self.registrar_post_lineedit.setPlaceholderText(_translate("WardWindow", "Post of the Local Registrar"))
 import sw_rc
-

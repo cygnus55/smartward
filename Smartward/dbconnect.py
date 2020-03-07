@@ -3,6 +3,7 @@ import pickle
 
 with open("ward.pickle","rb") as picklefile:
     database_name=pickle.load(picklefile)['id']
+print(database_name)
 
 class database:
     def __init__(self,hostname,user,dbase,pword=""):
@@ -139,19 +140,6 @@ class database_wardwindow(database):
             self.mydb.commit()
         print("Ok")
 
-    def getRowCount(self,column,tablename,value):
-        sql = "SELECT {0} FROM {1} WHERE {0} LIKE '{2}'".format(column,tablename,value)
-        self.mycursor.execute(sql)
-        rows=self.mycursor.fetchall()
-        if(rows):
-            return len(rows)
-        return 0
-#a=database_wardwindow("localhost","root","3zxc3")
-#a.createFormTable("gshs")
-#a.addColumns("gshs","Ajh","sdkjjhv","hjgd")
-#print(a.getRowCount('RegDate','marriageregistration',"2076/01/%"))
-
-
 class database_statwindow(database):
     def __init__(self,hostname,user,dbase=database_name,pword=""):
         super().__init__(hostname, user, dbase, pword)
@@ -170,4 +158,9 @@ class database_statwindow(database):
         except Exception as e:
             print(e)
 
+
+#a=database_wardwindow("localhost","root","3zxc3")
+#a.createFormTable("gshs")
+#a.addColumns("gshs","Ajh","sdkjjhv","hjgd")
+#print(a.getRowCount('RegDate','marriageregistration',"2076/01/%"))
 
