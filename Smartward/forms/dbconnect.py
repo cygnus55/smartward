@@ -3,7 +3,6 @@ import pickle
 
 with open("ward.pickle","rb") as picklefile:
     database_name=pickle.load(picklefile)['id']
-print(database_name)
 
 class database:
     def __init__(self,hostname,user,dbase,pword=""):
