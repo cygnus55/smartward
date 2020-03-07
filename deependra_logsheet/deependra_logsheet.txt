@@ -48,5 +48,10 @@ Week 7:
 week 8:
 1.implementing database work
 week 9:
-1.completing work of form birth ,death and divorce
+1.completing work of form birth ,death and divorce,migration
+week 10:
+1.learning matplotlib 
+2.testing the application and fixing the error
+week 11:
+1.working on report
 		
