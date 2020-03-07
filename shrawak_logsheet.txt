@@ -34,6 +34,12 @@ Week 7
 Week 8
 	1.Learning to make graph for data visualization 
 	2.Still working on forms and connecting with main program
-	3.still learning mysql database
+	3.Still learning mysql database
 Week 9
-
+	1.Completed death certificate prototype
+	2.Learning fpdf and matplot
+	3.Testing our project prototype 1  
+Week 10
+	1.Started work on writing report 
+	2.Testing prototype 2 of our project
+	3.
