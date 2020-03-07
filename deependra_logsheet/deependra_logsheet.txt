@@ -50,7 +50,7 @@ week 8:
 week 9:
 1.completing work of form birth ,death and divorce,migration
 week 10:
-1.learning matplotlib 
+1.learning matplotlib and pyqt5
 2.testing the application and fixing the error
 week 11:
 1.working on report
