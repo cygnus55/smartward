@@ -679,7 +679,7 @@ class ActualWork():
         f = open("certificate.pickle", 'rb')
         cert = pickle.load(f)
         certificate.setBody(cert)
-        certificate.output()
+        certificate.output("test.pdf")
         QMessageBox.information(self.ui, "Divorce Registration", "Divorce Reistration was Sucessful.")
 
 
