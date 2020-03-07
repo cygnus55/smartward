@@ -1,12 +1,3 @@
-# -*- coding: utf-8 -*-
-
-# Form implementation generated from reading ui file 'deathregistrationform.ui'
-#
-# Created by: PyQt5 UI code generator 5.13.1
-#
-# WARNING! All changes made in this file will be lost!
-
-
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
@@ -15,11 +6,13 @@ from PyQt5.QtGui import *
 import datetime
 import nepali_date
 import sw_string
+import pickle
+from sw_pdf import DeathCertificate
 
 table="DeathRegistration"
 
 
-class Ui_Deathform(object):
+class Ui_Deathform(QWidget):
     def setupUi(self, Deathform):
         Deathform.setObjectName("Deathform")
         Deathform.resize(694, 801)
@@ -31,7 +24,7 @@ class Ui_Deathform(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, -134, 660, 1115))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, -512, 660, 1293))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.gridLayout_2 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents)
         self.gridLayout_2.setObjectName("gridLayout_2")
@@ -52,6 +45,9 @@ class Ui_Deathform(object):
         self.wardNoLabel_2 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
         self.wardNoLabel_2.setObjectName("wardNoLabel_2")
         self.formLayout_5.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.wardNoLabel_2)
+        self.wardNoLineEdit_2 = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
+        self.wardNoLineEdit_2.setObjectName("wardNoLineEdit_2")
+        self.formLayout_5.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.wardNoLineEdit_2)
         self.roadtLabel = QtWidgets.QLabel(self.scrollAreaWidgetContents)
         self.roadtLabel.setObjectName("roadtLabel")
         self.formLayout_5.setWidget(3, QtWidgets.QFormLayout.LabelRole, self.roadtLabel)
@@ -70,9 +66,6 @@ class Ui_Deathform(object):
         self.houseNoLineEdit_3 = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
         self.houseNoLineEdit_3.setObjectName("houseNoLineEdit_3")
         self.formLayout_5.setWidget(5, QtWidgets.QFormLayout.FieldRole, self.houseNoLineEdit_3)
-        self.wardNoLineEdit_2 = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
-        self.wardNoLineEdit_2.setObjectName("wardNoLineEdit_2")
-        self.formLayout_5.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.wardNoLineEdit_2)
         self.gridLayout_2.addLayout(self.formLayout_5, 6, 0, 1, 1)
         self.label_3 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
         self.label_3.setObjectName("label_3")
@@ -138,32 +131,53 @@ class Ui_Deathform(object):
         self.formLayout.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.nameLineEdit)
         self.dateOfBirthLabel = QtWidgets.QLabel(self.scrollAreaWidgetContents)
         self.dateOfBirthLabel.setObjectName("dateOfBirthLabel")
-        self.formLayout.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.dateOfBirthLabel)
+        self.formLayout.setWidget(3, QtWidgets.QFormLayout.LabelRole, self.dateOfBirthLabel)
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.dateEdit = QtWidgets.QDateEdit(self.scrollAreaWidgetContents)
         self.dateEdit.setObjectName("dateEdit")
         self.horizontalLayout.addWidget(self.dateEdit)
-        self.formLayout.setLayout(2, QtWidgets.QFormLayout.FieldRole, self.horizontalLayout)
+        self.formLayout.setLayout(3, QtWidgets.QFormLayout.FieldRole, self.horizontalLayout)
         self.dateOfDeathLabel = QtWidgets.QLabel(self.scrollAreaWidgetContents)
         self.dateOfDeathLabel.setObjectName("dateOfDeathLabel")
-        self.formLayout.setWidget(3, QtWidgets.QFormLayout.LabelRole, self.dateOfDeathLabel)
+        self.formLayout.setWidget(4, QtWidgets.QFormLayout.LabelRole, self.dateOfDeathLabel)
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.dateEdit_3 = QtWidgets.QDateEdit(self.scrollAreaWidgetContents)
         self.dateEdit_3.setObjectName("dateEdit_3")
         self.horizontalLayout_2.addWidget(self.dateEdit_3)
-        self.formLayout.setLayout(3, QtWidgets.QFormLayout.FieldRole, self.horizontalLayout_2)
+        self.formLayout.setLayout(4, QtWidgets.QFormLayout.FieldRole, self.horizontalLayout_2)
         self.placeOfDeathLabel = QtWidgets.QLabel(self.scrollAreaWidgetContents)
         self.placeOfDeathLabel.setObjectName("placeOfDeathLabel")
-        self.formLayout.setWidget(4, QtWidgets.QFormLayout.LabelRole, self.placeOfDeathLabel)
+        self.formLayout.setWidget(5, QtWidgets.QFormLayout.LabelRole, self.placeOfDeathLabel)
         self.placeOfDeathLineEdit = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
         self.placeOfDeathLineEdit.setObjectName("placeOfDeathLineEdit")
-        self.formLayout.setWidget(4, QtWidgets.QFormLayout.FieldRole, self.placeOfDeathLineEdit)
+        self.formLayout.setWidget(5, QtWidgets.QFormLayout.FieldRole, self.placeOfDeathLineEdit)
+        self.ageLabel = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.ageLabel.setObjectName("ageLabel")
+        self.formLayout.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.ageLabel)
+        self.ageLineEdit = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
+        self.ageLineEdit.setObjectName("ageLineEdit")
+        self.formLayout.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.ageLineEdit)
         self.gridLayout_2.addLayout(self.formLayout, 2, 0, 1, 1)
         self.label_4 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
         self.label_4.setObjectName("label_4")
         self.gridLayout_2.addWidget(self.label_4, 7, 0, 1, 1)
+        self.formLayout_7 = QtWidgets.QFormLayout()
+        self.formLayout_7.setObjectName("formLayout_7")
+        self.registrationNoLabel = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.registrationNoLabel.setObjectName("registrationNoLabel")
+        self.formLayout_7.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.registrationNoLabel)
+        self.registrationNoLineEdit = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
+        self.registrationNoLineEdit.setObjectName("registrationNoLineEdit")
+        self.formLayout_7.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.registrationNoLineEdit)
+        self.familyRecordFormNoLabel = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.familyRecordFormNoLabel.setObjectName("familyRecordFormNoLabel")
+        self.formLayout_7.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.familyRecordFormNoLabel)
+        self.familyRecordFormNoLineEdit = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
+        self.familyRecordFormNoLineEdit.setObjectName("familyRecordFormNoLineEdit")
+        self.formLayout_7.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.familyRecordFormNoLineEdit)
+        self.gridLayout_2.addLayout(self.formLayout_7, 0, 0, 1, 1)
         self.formLayout_6 = QtWidgets.QFormLayout()
         self.formLayout_6.setObjectName("formLayout_6")
         self.citizenshipNoLabel = QtWidgets.QLabel(self.scrollAreaWidgetContents)
@@ -250,20 +264,32 @@ class Ui_Deathform(object):
         self.causeOfDeathLineEdit = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
         self.causeOfDeathLineEdit.setObjectName("causeOfDeathLineEdit")
         self.formLayout_6.setWidget(12, QtWidgets.QFormLayout.FieldRole, self.causeOfDeathLineEdit)
+        self.informationProvidedByLabel = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.informationProvidedByLabel.setObjectName("informationProvidedByLabel")
+        self.formLayout_6.setWidget(13, QtWidgets.QFormLayout.LabelRole, self.informationProvidedByLabel)
+        self.nameLabel_2 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.nameLabel_2.setObjectName("nameLabel_2")
+        self.formLayout_6.setWidget(14, QtWidgets.QFormLayout.LabelRole, self.nameLabel_2)
+        self.nameLineEdit_2 = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
+        self.nameLineEdit_2.setObjectName("nameLineEdit_2")
+        self.formLayout_6.setWidget(14, QtWidgets.QFormLayout.FieldRole, self.nameLineEdit_2)
+        self.citizenshipCertificateNoLabel = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.citizenshipCertificateNoLabel.setObjectName("citizenshipCertificateNoLabel")
+        self.formLayout_6.setWidget(15, QtWidgets.QFormLayout.LabelRole, self.citizenshipCertificateNoLabel)
+        self.citizenshipCertificateNoLineEdit = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
+        self.citizenshipCertificateNoLineEdit.setObjectName("citizenshipCertificateNoLineEdit")
+        self.formLayout_6.setWidget(15, QtWidgets.QFormLayout.FieldRole, self.citizenshipCertificateNoLineEdit)
         self.buttonBox = QtWidgets.QDialogButtonBox(self.scrollAreaWidgetContents)
         self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
         self.buttonBox.setObjectName("buttonBox")
-        self.formLayout_6.setWidget(13, QtWidgets.QFormLayout.FieldRole, self.buttonBox)
+        self.formLayout_6.setWidget(17, QtWidgets.QFormLayout.FieldRole, self.buttonBox)
+        self.relationToDeceasedLineEdit = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
+        self.relationToDeceasedLineEdit.setObjectName("relationToDeceasedLineEdit")
+        self.formLayout_6.setWidget(16, QtWidgets.QFormLayout.FieldRole, self.relationToDeceasedLineEdit)
+        self.relationToDeceasedLabel = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.relationToDeceasedLabel.setObjectName("relationToDeceasedLabel")
+        self.formLayout_6.setWidget(16, QtWidgets.QFormLayout.LabelRole, self.relationToDeceasedLabel)
         self.gridLayout_2.addLayout(self.formLayout_6, 8, 0, 1, 1)
-        self.formLayout_7 = QtWidgets.QFormLayout()
-        self.formLayout_7.setObjectName("formLayout_7")
-        self.registrationNoLabel = QtWidgets.QLabel(self.scrollAreaWidgetContents)
-        self.registrationNoLabel.setObjectName("registrationNoLabel")
-        self.formLayout_7.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.registrationNoLabel)
-        self.registrationNoLineEdit = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
-        self.registrationNoLineEdit.setObjectName("registrationNoLineEdit")
-        self.formLayout_7.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.registrationNoLineEdit)
-        self.gridLayout_2.addLayout(self.formLayout_7, 0, 0, 1, 1)
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.gridLayout.addWidget(self.scrollArea, 0, 0, 1, 1)
         Deathform.setCentralWidget(self.centralwidget)
@@ -280,21 +306,24 @@ class Ui_Deathform(object):
         self.roadtLabel.setText(_translate("Deathform", "Road/street"))
         self.houseNoLabel_2.setText(_translate("Deathform", "House No"))
         self.villageLabel_2.setText(_translate("Deathform", "Village/Community"))
-        self.label_3.setText(_translate("Deathform", "Adress Of Deceased"))
-        self.label.setText(_translate("Deathform", "Details Of Deceased\'s"))
+        self.label_3.setText(_translate("Deathform", "<b>Address Of Deceased"))
+        self.label.setText(_translate("Deathform", "<b>Details Of Deceased"))
         self.districtLabel.setText(_translate("Deathform", "District"))
         self.mubicipalityLabel.setText(_translate("Deathform", "Municipality"))
         self.wardNoLabel.setText(_translate("Deathform", "Ward No"))
         self.roadLabel.setText(_translate("Deathform", "Road/Route/street"))
         self.houseNoLabel.setText(_translate("Deathform", "House No:"))
         self.villageLabel.setText(_translate("Deathform", "Village/Community"))
-        self.label_2.setText(_translate("Deathform", "Place Of Birth"))
+        self.label_2.setText(_translate("Deathform", "<b>Place Of Birth"))
         self.birthRegistrationNoLabel.setText(_translate("Deathform", "Birth Registration No"))
         self.nameLabel.setText(_translate("Deathform", "Name"))
         self.dateOfBirthLabel.setText(_translate("Deathform", "Date Of Birth"))
         self.dateOfDeathLabel.setText(_translate("Deathform", "Date Of Death"))
         self.placeOfDeathLabel.setText(_translate("Deathform", "Place of Death"))
-        self.label_4.setText(_translate("Deathform", "Deatils Of Deceased"))
+        self.ageLabel.setText(_translate("Deathform", "Age"))
+        self.label_4.setText(_translate("Deathform", "<b>Deatils Of Deceased"))
+        self.registrationNoLabel.setText(_translate("Deathform", "<b>Registration No."))
+        self.familyRecordFormNoLabel.setText(_translate("Deathform", "<b>Family Record Form No."))
         self.citizenshipNoLabel.setText(_translate("Deathform", "Citizenship No"))
         self.issueDistrictLabel.setText(_translate("Deathform", "Issue District"))
         self.issueDateLabel.setText(_translate("Deathform", "Issue Date"))
@@ -310,8 +339,10 @@ class Ui_Deathform(object):
         self.motherLabel.setText(_translate("Deathform", "Mother"))
         self.spouseLabel.setText(_translate("Deathform", "Spouse"))
         self.causeOfDeathLabel.setText(_translate("Deathform", "Cause Of Death"))
-        self.registrationNoLabel.setText(_translate("Deathform", "Registration No"))
-
+        self.informationProvidedByLabel.setText(_translate("Deathform", "<b>Information Provided By"))
+        self.nameLabel_2.setText(_translate("Deathform", "Name"))
+        self.citizenshipCertificateNoLabel.setText(_translate("Deathform", "Citizenship Certificate No."))
+        self.relationToDeceasedLabel.setText(_translate("Deathform", "Relation To Deceased"))
 
 class ActualWork():
     def __init__(self):
@@ -325,7 +356,7 @@ class ActualWork():
 
     def actualWork(self):
         self.ui.buttonBox.accepted.connect(self.submitform)
-        self.ui.buttonBox.rejected.connect(lambda:self.deathForm.close())
+        self.ui.buttonBox.rejected.connect(self.closeActualWork)
 
     def submitform(self):
         self.values=self.getallvalues()
@@ -335,8 +366,10 @@ class ActualWork():
         #a=['RegDate',,b[0],b[1],b[2],b[3].replace("'","__"),b[4],b[5].replace("'","__"),b[6],b[7].replace("'","__")]
         #print("a=",a)
         self.db.createFormTable(table)
-        self.db.addColumns(table,a[4],a[6],a[8],a[10])
+        self.db.addColumns(table,a[4],a[6],a[8],a[10],a[12],a[14])
         self.db.insertValues(table,a)
+        self.getCertificate()
+
     def getallvalues(self):
         #print('i love you')
         self.RegNo=self.ui.registrationNoLineEdit.text()
@@ -368,8 +401,31 @@ class ActualWork():
         issue_in_bs=nepali_date.NepaliDate.to_nepali_date(issue_in_ad)
         self.issuedate=(str(issue_in_ad),str(issue_in_bs)[3:])
         detailsofdeceased_2=(self.ui.citizenshipNoLineEdit.text(),self.ui.issueDistrictLineEdit.text(),self.issuedate,self.ui.lineEdit_2.text(),self.ui.lineEdit.text(),self.ui.qualificationLineEdit.text(),self.ui.mothersTongueLineEdit.text(),self.ui.casteLineEdit.text(),self.ui.religionLineEdit.text(),self.ui.grandFatherLineEdit.text(),self.ui.fatherLineEdit.text(),self.ui.motherLineEdit.text(),self.ui.spouseLineEdit.text(),self.ui.causeOfDeathLineEdit.text())
+        informer=(self.ui.nameLineEdit_2.text(),self.ui.citizenshipCertificateNoLineEdit.text(),self.ui.relationToDeceasedLineEdit.text())
 
-        return {"RegDate":registrationdate,"RegNo":self.RegNo,"detaillsofdeceased":str(detailsofdeceased) , "placeofbirth":str(placeofbirth) , 'adressofdecesed':str(Adressofdeceased),'detailsofdeceased_2':str(detailsofdeceased_2)}
+        certificate=(
+            self.RegNo,registrationdate,self.ui.familyRecordFormNoLineEdit.text(),informer[0],
+            self.ui.nameLineEdit.text(),self.ui.ageLineEdit.text(),self.ui.fatherLineEdit.text(),
+            self.ui.grandFatherLineEdit.text(),self.ui.spouseLineEdit.text(),self.ui.wardNoLineEdit_2.text(),
+            self.ui.municipalityLineEdit.text(),self.ui.districtLineEdit_2.text(),str(death_in_bs)[3:],str(death_in_ad),
+            self.ui.citizenshipNoLineEdit.text(),str(issue_in_bs)[3:],self.ui.districtLineEdit.text()
+        )
+        self.writePickle(certificate)
+        return {"RegDate":registrationdate,"RegNo":self.RegNo,'FamilyRecord':self.ui.familyRecordFormNoLineEdit.text(),"detaillsofdeceased":str(detailsofdeceased) , "placeofbirth":str(placeofbirth) , 'adressofdecesed':str(Adressofdeceased),'detailsofdeceased_2':str(detailsofdeceased_2),'informer':str(informer)}
+
+    def writePickle(self, d):
+        with open("certificate.pickle", "wb") as obj:
+            pickle.dump(d, obj)
+            obj.close()
+
+    def getCertificate(self):
+        QMessageBox.information(self.ui, "Death Registration","Get Death Registration Certificate.")
+        certificate = DeathCertificate()
+        f = open("certificate.pickle", 'rb')
+        cert = pickle.load(f)
+        certificate.setBody(cert)
+        certificate.output("test.pdf")
+        QMessageBox.information(self.ui, "Death Registration", "Death Reistration was Sucessful.")
 
     def closeActualWork(self):
         self.deathForm.close()

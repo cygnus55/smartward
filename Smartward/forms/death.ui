@@ -24,9 +24,9 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>-134</y>
+         <y>-512</y>
          <width>660</width>
-         <height>1115</height>
+         <height>1293</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_2">
@@ -59,6 +59,9 @@
             </property>
            </widget>
           </item>
+          <item row="2" column="1">
+           <widget class="QLineEdit" name="wardNoLineEdit_2"/>
+          </item>
           <item row="3" column="0">
            <widget class="QLabel" name="roadtLabel">
             <property name="text">
@@ -89,22 +92,19 @@
           <item row="5" column="1">
            <widget class="QLineEdit" name="houseNoLineEdit_3"/>
           </item>
-          <item row="2" column="1">
-           <widget class="QLineEdit" name="wardNoLineEdit_2"/>
-          </item>
          </layout>
         </item>
         <item row="5" column="0">
          <widget class="QLabel" name="label_3">
           <property name="text">
-           <string>Adress Of Deceased</string>
+           <string>&lt;b&gt;Address Of Deceased</string>
           </property>
          </widget>
         </item>
         <item row="1" column="0">
          <widget class="QLabel" name="label">
           <property name="text">
-           <string>Details Of Deceased's</string>
+           <string>&lt;b&gt;Details Of Deceased</string>
           </property>
          </widget>
         </item>
@@ -175,7 +175,7 @@
         <item row="3" column="0">
          <widget class="QLabel" name="label_2">
           <property name="text">
-           <string>Place Of Birth</string>
+           <string>&lt;b&gt;Place Of Birth</string>
           </property>
          </widget>
         </item>
@@ -201,52 +201,86 @@
           <item row="1" column="1">
            <widget class="QLineEdit" name="nameLineEdit"/>
           </item>
-          <item row="2" column="0">
+          <item row="3" column="0">
            <widget class="QLabel" name="dateOfBirthLabel">
             <property name="text">
              <string>Date Of Birth</string>
             </property>
            </widget>
           </item>
-          <item row="2" column="1">
+          <item row="3" column="1">
            <layout class="QHBoxLayout" name="horizontalLayout">
             <item>
              <widget class="QDateEdit" name="dateEdit"/>
             </item>
            </layout>
           </item>
-          <item row="3" column="0">
+          <item row="4" column="0">
            <widget class="QLabel" name="dateOfDeathLabel">
             <property name="text">
              <string>Date Of Death</string>
             </property>
            </widget>
           </item>
-          <item row="3" column="1">
+          <item row="4" column="1">
            <layout class="QHBoxLayout" name="horizontalLayout_2">
             <item>
              <widget class="QDateEdit" name="dateEdit_3"/>
             </item>
            </layout>
           </item>
-          <item row="4" column="0">
+          <item row="5" column="0">
            <widget class="QLabel" name="placeOfDeathLabel">
             <property name="text">
              <string>Place of Death</string>
             </property>
            </widget>
           </item>
-          <item row="4" column="1">
+          <item row="5" column="1">
            <widget class="QLineEdit" name="placeOfDeathLineEdit"/>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="ageLabel">
+            <property name="text">
+             <string>Age</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QLineEdit" name="ageLineEdit"/>
           </item>
          </layout>
         </item>
         <item row="7" column="0">
          <widget class="QLabel" name="label_4">
           <property name="text">
-           <string>Deatils Of Deceased</string>
+           <string>&lt;b&gt;Deatils Of Deceased</string>
           </property>
          </widget>
+        </item>
+        <item row="0" column="0">
+         <layout class="QFormLayout" name="formLayout_7">
+          <item row="0" column="0">
+           <widget class="QLabel" name="registrationNoLabel">
+            <property name="text">
+             <string>&lt;b&gt;Registration No.</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLineEdit" name="registrationNoLineEdit"/>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="familyRecordFormNoLabel">
+            <property name="text">
+             <string>&lt;b&gt;Family Record Form No.</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLineEdit" name="familyRecordFormNoLineEdit"/>
+          </item>
+         </layout>
         </item>
         <item row="8" column="0">
          <layout class="QFormLayout" name="formLayout_6">
@@ -395,26 +429,49 @@
           <item row="12" column="1">
            <widget class="QLineEdit" name="causeOfDeathLineEdit"/>
           </item>
-          <item row="13" column="1">
+          <item row="13" column="0">
+           <widget class="QLabel" name="informationProvidedByLabel">
+            <property name="text">
+             <string>&lt;b&gt;Information Provided By</string>
+            </property>
+           </widget>
+          </item>
+          <item row="14" column="0">
+           <widget class="QLabel" name="nameLabel_2">
+            <property name="text">
+             <string>Name</string>
+            </property>
+           </widget>
+          </item>
+          <item row="14" column="1">
+           <widget class="QLineEdit" name="nameLineEdit_2"/>
+          </item>
+          <item row="15" column="0">
+           <widget class="QLabel" name="citizenshipCertificateNoLabel">
+            <property name="text">
+             <string>Citizenship Certificate No.</string>
+            </property>
+           </widget>
+          </item>
+          <item row="15" column="1">
+           <widget class="QLineEdit" name="citizenshipCertificateNoLineEdit"/>
+          </item>
+          <item row="17" column="1">
            <widget class="QDialogButtonBox" name="buttonBox">
             <property name="standardButtons">
              <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
             </property>
            </widget>
           </item>
-         </layout>
-        </item>
-        <item row="0" column="0">
-         <layout class="QFormLayout" name="formLayout_7">
-          <item row="0" column="0">
-           <widget class="QLabel" name="registrationNoLabel">
+          <item row="16" column="1">
+           <widget class="QLineEdit" name="relationToDeceasedLineEdit"/>
+          </item>
+          <item row="16" column="0">
+           <widget class="QLabel" name="relationToDeceasedLabel">
             <property name="text">
-             <string>Registration No</string>
+             <string>Relation To Deceased</string>
             </property>
            </widget>
-          </item>
-          <item row="0" column="1">
-           <widget class="QLineEdit" name="registrationNoLineEdit"/>
           </item>
          </layout>
         </item>
