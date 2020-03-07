@@ -151,3 +151,23 @@ class database_wardwindow(database):
 #a.addColumns("gshs","Ajh","sdkjjhv","hjgd")
 #print(a.getRowCount('RegDate','marriageregistration',"2076/01/%"))
 
+
+class database_statwindow(database):
+    def __init__(self,hostname,user,dbase=database_name,pword=""):
+        super().__init__(hostname, user, dbase, pword)
+        self.mycursor = self.mydb.cursor()
+        self.mycursor.execute("USE {0}".format(dbase))
+        self.mydb.commit()
+
+    def getRowCount(self,column,tablename,value):
+        try:
+            sql = "SELECT {0} FROM {1} WHERE {0} LIKE '{2}'".format(column,tablename,value)
+            self.mycursor.execute(sql)
+            rows=self.mycursor.fetchall()
+            if(rows):
+                return len(rows)
+            return 0
+        except Exception as e:
+            print(e)
+
+
