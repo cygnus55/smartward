@@ -649,6 +649,80 @@ border-image:url(:/pic/browse.png);
           </widget>
          </widget>
         </widget>
+        <widget class="QWidget" name="update_registrar_details_page">
+         <widget class="QGroupBox" name="groupBox_4">
+          <property name="geometry">
+           <rect>
+            <x>195</x>
+            <y>75</y>
+            <width>481</width>
+            <height>241</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>16</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QLineEdit
+{
+border-radius:6px;
+border: 1px solid rgb(170, 170, 127); 
+padding:5px;
+}
+QPushButton:hover
+{
+color:rgb(0, 0, 127);
+}</string>
+          </property>
+          <property name="title">
+           <string>Update Local Registrar Details</string>
+          </property>
+          <widget class="QPushButton" name="update_registrar_button">
+           <property name="geometry">
+            <rect>
+             <x>315</x>
+             <y>180</y>
+             <width>136</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Update Details</string>
+           </property>
+          </widget>
+          <widget class="QLineEdit" name="registrar_name_lineedit">
+           <property name="geometry">
+            <rect>
+             <x>30</x>
+             <y>60</y>
+             <width>316</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="placeholderText">
+            <string>Name of Local Registrar</string>
+           </property>
+          </widget>
+          <widget class="QLineEdit" name="registrar_post_lineedit">
+           <property name="geometry">
+            <rect>
+             <x>30</x>
+             <y>120</y>
+             <width>316</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="placeholderText">
+            <string>Post of the Local Registrar</string>
+           </property>
+          </widget>
+         </widget>
+        </widget>
        </widget>
       </widget>
      </widget>

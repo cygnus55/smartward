@@ -45,7 +45,7 @@ class Ui_SigninWindow(QWidget):
                 id=generateID(municipality.lower(),wardno,state)
                 print(id)
                 ip = socket.gethostbyname(socket.gethostname())
-                wada={'id':id,'municipality':municipality,'wardno':wardno,'state':state,'address':address,'phone':phone,'email':email,'mun_logo':mun_logo,'password':password}
+                wada={'id':id,'municipality':municipality,'wardno':wardno,'state':state,'address':address,'phone':phone,'email':email,'mun_logo':mun_logo,'password':password,'registrar_name':'', 'registrar_post':''}
                 with open('ward.pickle','wb') as obj:
                     pickle.dump(wada,obj)
                     obj.close()

@@ -1,312 +1,16 @@
-#Copy this in every code:
-#self.window_functions(WardWindow)
+# -*- coding: utf-8 -*-
+
+# Form implementation generated from reading ui file 'mainwindow.ui'
+#
+# Created by: PyQt5 UI code generator 5.13.2
+#
+# WARNING! All changes made in this file will be lost!
+
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import *
-from sw_string import *
-from swgmail import *
-import pickle
-import sys
-import os
-import time
-
-import dbconnect 
-import graph
-#importing regd. forms
-from forms import marriage
-from forms import birth
-from forms import death
-from forms import divorce
-#import citizenship related forms
-from forms.sifaris import citizenshiprequest
-from forms.sifaris import citizenshipcopy
-
-myemail=SWGmail()
 
 
-class Ui_WardWindow(QWidget):
-    def window_functions(self,MainWindow):
-        #set Logo in MainWindow
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("sw_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        MainWindow.setWindowIcon(icon)
-
-        def ward_load_data():
-            #this loads the info from ward.pickle file
-            try:
-                with open('ward.pickle','rb') as obj:
-                    read=pickle.load(obj)
-                    mun_name,mun_ward_num,state_num,mun_logo=read['municipality'],read['wardno'],read['state'],read['mun_logo']
-                    print(mun_name,mun_ward_num,state_num,mun_logo)
-                    if not isEmpty(mun_logo):
-                        mun_logo_pixmap=QtGui.QPixmap(mun_logo)
-                        self.mun_logo_label.setPixmap(mun_logo_pixmap)
-                        self.mun_logo_label.setScaledContents(True)
-                    else:
-                        self.mun_logo_label.setText("")
-                    self.Mun_Name.setText("{} Municipality".format(mun_name))
-                    self.Mun_Ward_num.setText(f"Ward No.: {mun_ward_num} , State : {state_num}")
-            except FileNotFoundError:
-                print("Ward not registered.")
-        
-        def check_registrar():
-            try:
-                with open('ward.pickle','rb') as f:
-                    read=pickle.load(f)
-                if (not isEmpty(read['registrar_name'],read['registrar_post'])):
-                    return True
-                else:
-                    QMessageBox.warning(self,"No registrar","Enter the registrar details for operation.")
-                    update_registrar_page() 
-                    return False
-            except Exception as e:
-                print(e)
-
-
-        def clear_lineedits():
-            #clear_lineedits:
-            #from update_profile_page
-            self.municipality_update_lineedit.clear()
-            self.ward_no_update_lineedit.clear()
-            self.address_update_lineedit.clear()
-            self.state_update_lineedit.clear()
-            self.email_update_lineedit.clear()
-            self.phone_update_lineedit.clear()
-            self.logo_path_update_lineedit.clear()
-            #from change_password_page
-            self.old_password_lineedit.clear()
-            self.new_password_linedit.clear()
-            self.reconfirm_password_lineedit.clear()
-            #from delete_ward_page
-            self.deletion_password_lineedit.clear()
-            #from update_registrar_page
-            self.registrar_name_lineedit.clear()
-            self.registrar_post_lineedit.clear()
-
-
-
-        #on_home_button_clicked,remove_account,change_destination_folder help navigate between stackWidget pages
-        def home_page():
-            #home page
-            print("home page")
-            clear_lineedits()
-            self.stackedWidget.setCurrentIndex(0)
-
-        def update_ward_profile_page():
-            #ward profile page
-            print("ward profile page")
-            clear_lineedits()
-            self.stackedWidget.setCurrentIndex(3)
-
-        def change_password_page():
-            #change password page
-            print("change password page")
-            clear_lineedits()
-            self.stackedWidget.setCurrentIndex(1)
-
-        def remove_account_page():
-            #remove account page
-            print("remove account page")
-            clear_lineedits()
-            self.stackedWidget.setCurrentIndex(2)
-
-        def update_registrar_page():
-            #update registrar page
-            print("update registrar page")
-            clear_lineedits()
-            self.stackedWidget.setCurrentIndex(4)
-        
-        def on_browse_clicked():
-            print("browse clicked")
-            path=QFileDialog.getOpenFileName(self,"Municipality Logo",sys.path[0]+"\Logo","Images(*.png)")[0]
-            self.logo_path_update_lineedit.setText(path)
-
-        def on_ward_profile_update_clicked():
-            #ward profile update
-            municipality=self.municipality_update_lineedit.text().title()
-            wardno=self.ward_no_update_lineedit.text()
-            address=self.address_update_lineedit.text().title()
-            state=self.state_update_lineedit.text()
-            email=self.email_update_lineedit.text()
-            phone=self.phone_update_lineedit.text()
-            mun_logo=self.logo_path_update_lineedit.text()
-            ward={'municipality':municipality,'wardno':wardno,'state':state,'address':address,'phone':phone,'email':email,'mun_logo':mun_logo}
-            with open("ward.pickle",'rb') as f:
-                read=pickle.load(f)
-            for key in ward:
-                if not isEmpty(ward[key]):
-                    read[key]=ward[key]
-                    print("{} changed.".format(key))
-            read['id']=generateID(read['municipality'],read['wardno'],read['state'])
-            print("Id changed: {}".format(read['id']))
-            with open("ward.pickle",'wb') as f:
-                    pickle.dump(read,f)
-            ward_load_data()
-            home_page()
-            print(read)
-
-        def on_change_password_clicked():
-            #change password
-            old_pwd=self.old_password_lineedit.text()
-            new_pwd=self.new_password_linedit.text()
-            re_new_pwd=self.reconfirm_password_lineedit.text()
-            with open("ward.pickle",'rb') as f:
-                read=pickle.load(f)
-                data=read
-                pwd=read['password']
-            if isEmpty(old_pwd,new_pwd,re_new_pwd):
-                QMessageBox.warning(self,"Empty Field","Please enter all the passwords!!!")
-            elif not(old_pwd==pwd):
-                self.old_password_lineedit.clear()
-                QMessageBox.warning(self,"Wrong Password","Wrong old password.")
-            elif not (new_pwd==re_new_pwd):
-                self.new_password_linedit.clear()
-                self.reconfirm_password_lineedit.clear()
-                QMessageBox.warning(self,"Password Error","New passwords do not match.")
-            else:
-                data['password']=new_pwd
-                with open("ward.pickle",'wb') as f:
-                    pickle.dump(data,f)
-                QMessageBox.information(self,"Password Changed","Password Changed Successfully.")
-                home_page()
-
-
-        def on_remove_account_clicked():
-            #remove ward account
-            pwd=self.deletion_password_lineedit.text()
-            with open('ward.pickle','rb') as f:
-                read=pickle.load(f)
-                password=read['password']
-            if (isEmpty(pwd)):
-                clear_lineedits()
-                QMessageBox.warning(self,"Empty field","Enter the password for deletion!!!")
-            elif password==pwd:
-                buttonReply = QMessageBox.question(self, 'Account deletion', "Once deleted, the account cannot be retreived.\n Are you sure you want to delete your account?", QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
-                if buttonReply == QMessageBox.Yes:
-                    print('Exiting window....')
-                    MainWindow.setWindowTitle("SmartWard ---account deletion")
-                    time.sleep(5)
-                    MainWindow.close()
-                    print('Window Exited.')
-                    os.remove("ward.pickle")
-                    print('Ward file deleted.')
-                    sys.exit()
-                else:
-                    print('Account deletion aborted.')
-                    home_page()
-            else:
-                QMessageBox.warning(self,"Wrong password","Enter the correct password for deletion!!!")
-                clear_lineedits()
-
-        def on_registrar_update_clicked():
-            #update local registrar
-            registrar_name=self.registrar_name_lineedit.text()
-            registrar_post=self.registrar_post_lineedit.text()
-            with open('ward.pickle','rb') as f:
-                read=pickle.load(f)
-            print(read)
-            read['registrar_name']=registrar_name
-            read['registrar_post']=registrar_post
-            with open('ward.pickle','wb') as f:
-                pickle.dump(read,f)
-            home_page()
-
-
-        #birth_reg,death_reg,marriage_reg,divorce_reg and migration_reg help open respective forms
-        def birth_reg():
-            #birth registration
-            #new Window-birth reg. form 
-            if (check_registrar()):
-                self.birth_form=birth.ActualWork()
-                print("birth registration")
-            
-        
-        def death_reg():
-            #death registration
-            #new Window-death reg. form
-            if (check_registrar()):
-                self.death_form=death.ActualWork()
-                print("death registration")
-            
-        def marriage_reg():
-            #marriage registration
-            #new Window-marriage reg. form
-            if (check_registrar()):
-                self.marriage_form=marriage.ActualWork()
-                print("marriage registration")
-
-        def divorce_reg():
-            #divorce registration
-            #new Window-divorce reg. form
-            if (check_registrar()):
-                self.death_form=divorce.ActualWork()
-                print("divorce registration") 
-                
-        def migration_reg():
-            #migration registration
-            #new Window-migration reg. form
-            if (check_registrar()):
-                print("migration registration")
-        
-        def citizenship_request():
-            if (check_registrar()):
-                cit_req=citizenshiprequest.ActualWork()
-                print("citizenship request form")
-
-        def citizenship_copy():
-            if (check_registrar()):
-                cit_copy=citizenshipcopy.ActualWork()
-                print("citizenship copy form")
-
-        def statistics_show(name,table_name):
-            #self.stat_window=graph.StatWindow()
-            #self.start_window.show()
-            StatWindow=QtWidgets.QMainWindow()
-            window = graph.Ui_StatWindow(name,table_name)
-            window.setupUi(StatWindow)
-            StatWindow.show()
-            print(f"StatWindow displayed: {name} and {table_name} table.")
-        
-
-        self.home_button.clicked.connect(home_page)
-        self.delete_account_button.clicked.connect(on_remove_account_clicked)
-        self.change_password_button.clicked.connect(on_change_password_clicked)
-        self.update_ward_profile_button.clicked.connect(on_ward_profile_update_clicked)
-        self.browse.clicked.connect(on_browse_clicked)
-        self.update_registrar_button.clicked.connect(on_registrar_update_clicked)
-        
-        citizenship_menu=QtWidgets.QMenu()
-        citizenship_menu.addAction("Citizenship request",citizenship_request)
-        citizenship_menu.addAction("Request Copy of Citizenship",citizenship_copy)
-        self.citizenship_button.setMenu(citizenship_menu)
-        
-        
-        statistics_menu=QtWidgets.QMenu()
-        statistics_menu.addAction("View Birth Statistics",lambda:statistics_show('Birth','birthregistration'))
-        statistics_menu.addAction("View Death Statistics",lambda:statistics_show('Death','deathregistration'))
-        statistics_menu.addAction("View Marriage Statistics",lambda:statistics_show('Marriage','marriageregistration'))
-        statistics_menu.addAction("View Divorce Statistics",lambda:statistics_show('Divorce','divorceregistration'))
-        statistics_menu.addAction("View Migration Statistics",lambda:statistics_show('Migration','migrationregistration'))
-        self.statistics_button.setMenu(statistics_menu)
-        
-
-        settings_menu=QtWidgets.QMenu()
-        settings_menu.addAction("Update Ward Profile",update_ward_profile_page)
-        settings_menu.addAction("Change Password",change_password_page)
-        settings_menu.addAction("Remove Ward Account",remove_account_page)
-        settings_menu.addAction("Update Registrar Details",update_registrar_page)
-        self.settings_button.setMenu(settings_menu)
-        
-        vital_reg_menu=QtWidgets.QMenu()
-        vital_reg_menu.addAction("Birth registration",birth_reg)
-        vital_reg_menu.addAction("Death registration",death_reg)
-        vital_reg_menu.addAction("Marriage registration",marriage_reg)
-        vital_reg_menu.addAction("Divorce registration",divorce_reg)
-        vital_reg_menu.addAction("Migration registration",migration_reg)
-        self.vital_reg_button.setMenu(vital_reg_menu)
-
-        ward_load_data()
-
+class Ui_WardWindow(object):
     def setupUi(self, WardWindow):
         WardWindow.setObjectName("WardWindow")
         WardWindow.resize(1366, 768)
@@ -591,7 +295,6 @@ class Ui_WardWindow(QWidget):
         WardWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(WardWindow)
-        self.window_functions(WardWindow)
         self.stackedWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(WardWindow)
         WardWindow.setTabOrder(self.scrollArea, self.home_button)
@@ -649,3 +352,13 @@ class Ui_WardWindow(QWidget):
         self.registrar_name_lineedit.setPlaceholderText(_translate("WardWindow", "Name of Local Registrar"))
         self.registrar_post_lineedit.setPlaceholderText(_translate("WardWindow", "Post of the Local Registrar"))
 import sw_rc
+
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    WardWindow = QtWidgets.QMainWindow()
+    ui = Ui_WardWindow()
+    ui.setupUi(WardWindow)
+    WardWindow.show()
+    sys.exit(app.exec_())
