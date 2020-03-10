@@ -43,4 +43,6 @@ Week 10:
 -----(Internals)
 Tested code redundancy, minimized it,added local registrar update page to mainwindow and started working on project report
 
+Week 11:
+
 
