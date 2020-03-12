@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>RegisterWindow</class>
+ <widget class="QMainWindow" name="RegisterWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -55,11 +55,13 @@
      </size>
     </property>
     <property name="styleSheet">
-     <string notr="true">QLineEdit,QGroupBox,QPushButton{
- background:transparent;
-color: rgb(23, 109, 2);
+     <string notr="true">QLineEdit,QGroupBox,QPushButton
+{
+      background:transparent;
+      color: rgb(23, 109, 2);
       border: 2px solid gray;
       border-radius: 10px;
+	  padding: 1px left;
 }</string>
     </property>
     <property name="title">
@@ -197,7 +199,7 @@ color: rgb(223, 101, 21);
       <string notr="true">background:transparent</string>
      </property>
      <property name="echoMode">
-      <enum>QLineEdit::Password</enum>
+      <enum>QLineEdit::Normal</enum>
      </property>
      <property name="placeholderText">
       <string>Municipality/VDC Logo</string>
