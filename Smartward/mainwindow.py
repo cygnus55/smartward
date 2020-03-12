@@ -3,26 +3,25 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import *
-from sw_string import *
-from sw_gmail import *
 import pickle
 import sys
 import os
 import time
 
+from sw_string import isEmpty,generateID,generateList
+from sw_gmail import *
 import dbconnect 
 import graph
-#importing regd. forms
+#importing registration forms
 from forms import marriage
 from forms import birth
 from forms import death
 from forms import divorce
-#import citizenship related forms
+#importing citizenship related forms
 from forms.sifaris import citizenshiprequest
 from forms.sifaris import citizenshipcopy
 
 myemail=SWGmail()
-
 
 class Ui_WardWindow(QWidget):
     def window_functions(self,MainWindow):
@@ -214,6 +213,21 @@ class Ui_WardWindow(QWidget):
             else:
                 QMessageBox.warning(self,"Empty Field","Enter the complete details for updating!!!")
 
+        def on_remove_registrar_clicked():
+            with open('ward.pickle','rb') as fileobj:
+                read=pickle.load(fileobj)
+            print(read)
+            if isEmpty(read['registrar_name']) and isEmpty(read['registrar_post']):
+                QMessageBox.information(self,"Empty Local Registrar","Local Registrar Details not registered.")
+            else:
+                read['registrar_name']=''
+                read['registrar_post']=''
+                print(read)
+                with open('ward.pickle','wb') as fileobj:
+                    pickle.dump(read,fileobj)
+                home_page()
+                QMessageBox.information(self,"Remove Local Registrar","Local registrar details successfully removed.")
+                
 
         #birth_reg,death_reg,marriage_reg,divorce_reg and migration_reg help open respective forms
         def birth_reg():
@@ -277,6 +291,7 @@ class Ui_WardWindow(QWidget):
         self.update_ward_profile_button.clicked.connect(on_ward_profile_update_clicked)
         self.browse.clicked.connect(on_browse_clicked)
         self.update_registrar_button.clicked.connect(on_registrar_update_clicked)
+        self.remove_registrar_button.clicked.connect(on_remove_registrar_clicked)
         
         citizenship_menu=QtWidgets.QMenu()
         citizenship_menu.addAction("Citizenship request",citizenship_request)
@@ -285,11 +300,11 @@ class Ui_WardWindow(QWidget):
         
         
         statistics_menu=QtWidgets.QMenu()
-        statistics_menu.addAction("View Birth Statistics",lambda:statistics_show('Birth','birthregistration'))
-        statistics_menu.addAction("View Death Statistics",lambda:statistics_show('Death','deathregistration'))
-        statistics_menu.addAction("View Marriage Statistics",lambda:statistics_show('Marriage','marriageregistration'))
-        statistics_menu.addAction("View Divorce Statistics",lambda:statistics_show('Divorce','divorceregistration'))
-        statistics_menu.addAction("View Migration Statistics",lambda:statistics_show('Migration','migrationregistration'))
+        statistics_menu.addAction("View Birth Statistics",lambda:statistics_show('Birth','BirthRegistration'))
+        statistics_menu.addAction("View Death Statistics",lambda:statistics_show('Death','DeathRegistration'))
+        statistics_menu.addAction("View Marriage Statistics",lambda:statistics_show('Marriage','MarriageRegistration'))
+        statistics_menu.addAction("View Divorce Statistics",lambda:statistics_show('Divorce','DivorceRegistration'))
+        statistics_menu.addAction("View Migration Statistics",lambda:statistics_show('Migration','MigrationRegistration'))
         self.statistics_button.setMenu(statistics_menu)
         
 
@@ -569,13 +584,17 @@ class Ui_WardWindow(QWidget):
         self.groupBox_4.setFont(font)
         self.groupBox_4.setStyleSheet("QLineEdit\n"
 "{\n"
-"border-radius:6px;\n"
-"border: 1px solid rgb(170, 170, 127); \n"
-"padding:5px;\n"
+"    border-radius:6px;\n"
+"    border: 1px solid rgb(170, 170, 127); \n"
+"    padding:5px;\n"
 "}\n"
 "QPushButton:hover\n"
 "{\n"
-"color:rgb(0, 0, 127);\n"
+"    color:rgb(0, 0, 127);\n"
+"}\n"
+"QPushButton#remove_registrar_button:hover\n"
+"{\n"
+"    color: rgb(255, 0, 0);\n"
 "}")
         self.groupBox_4.setObjectName("groupBox_4")
         self.update_registrar_button = QtWidgets.QPushButton(self.groupBox_4)
@@ -586,8 +605,11 @@ class Ui_WardWindow(QWidget):
         self.registrar_name_lineedit.setText("")
         self.registrar_name_lineedit.setObjectName("registrar_name_lineedit")
         self.registrar_post_lineedit = QtWidgets.QLineEdit(self.groupBox_4)
-        self.registrar_post_lineedit.setGeometry(QtCore.QRect(30, 120, 316, 31))
+        self.registrar_post_lineedit.setGeometry(QtCore.QRect(30, 105, 316, 31))
         self.registrar_post_lineedit.setObjectName("registrar_post_lineedit")
+        self.remove_registrar_button = QtWidgets.QPushButton(self.groupBox_4)
+        self.remove_registrar_button.setGeometry(QtCore.QRect(120, 180, 181, 31))
+        self.remove_registrar_button.setObjectName("remove_registrar_button")
         self.stackedWidget.addWidget(self.update_registrar_details_page)
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.gridLayout.addWidget(self.scrollArea, 0, 0, 1, 1)
@@ -651,6 +673,7 @@ class Ui_WardWindow(QWidget):
         self.update_registrar_button.setText(_translate("WardWindow", "Update Details"))
         self.registrar_name_lineedit.setPlaceholderText(_translate("WardWindow", "Name of Local Registrar"))
         self.registrar_post_lineedit.setPlaceholderText(_translate("WardWindow", "Post of the Local Registrar"))
+        self.remove_registrar_button.setText(_translate("WardWindow", "Remove Local Registrar"))
 import sw_rc
 
 if __name__=="__main__":            
