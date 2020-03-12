@@ -61,7 +61,7 @@ class BirthCertificate(Certificate):
 
     def setBody(self,args):
         print(args)
-        contents=self.getfromtxt('birthcertificate.txt')
+        contents=self.getfromtxt('txtfiles/birthcertificate.txt')
         #args=('12321','2056/09/03','4233','Ram Hari Khatiwada','Hari Krishna Ghimere','Tilak Ghimere','Sunita Ghimere','Ghana Shyam Ghimere','05','Namobuddha','2056/01/03','1997/05/09','Methinkot Hospital','2023/05/06','Kavre','23452','2030/06/09','Kavre','875683')
         #contents=content.format('12321','2056/09/03','4233','Ram Hari Khatiwada','Hari Krishna Ghimere','Tilak Ghimere','Sunita Ghimere','Ghana Shyam Ghimere','05','Namobuddha','2056/01/03','1997/05/09','Methinkot Hospital','2023/05/06','Kavre','23452','2030/06/09','Kavre','875683')
         lines=[]
@@ -72,7 +72,7 @@ class BirthCertificate(Certificate):
             self.pdf.cell(1950,8,txt=line,ln=1,align='L')
         self.addFooter()
 
-    def output(self,pdffilepath):
+    def output(self):
         self.pdf.output("certificate.pdf")
 
 class MarriageCertificate(Certificate):
@@ -92,7 +92,7 @@ class MarriageCertificate(Certificate):
 
     def setBody(self,args):
         print(args)
-        contents=self.getfromtxt('marriagecertificate.txt')
+        contents=self.getfromtxt('txtfiles/marriagecertificate.txt')
         #args=('12321','2056/09/03','4233','Ram Hari Khatiwada','Hari Krishna Ghimere','Tilak Ghimere','Sunita Ghimere','Ghana Shyam Ghimere','05','Namobuddha','2056/01/03','1997/05/09','Methinkot Hospital','2023/05/06','Kavre','23452','2030/06/09','Kavre','875683')
         #contents=content.format('12321','2056/09/03','4233','Ram Hari Khatiwada','Hari Krishna Ghimere','Tilak Ghimere','Sunita Ghimere','Ghana Shyam Ghimere','05','Namobuddha','2056/01/03','1997/05/09','Methinkot Hospital','2023/05/06','Kavre','23452','2030/06/09','Kavre','875683')
         lines=[]
@@ -103,7 +103,7 @@ class MarriageCertificate(Certificate):
             self.pdf.cell(1950,8,txt=line,ln=1,align='L')
         self.addFooter()
 
-    def output(self,pdffilepath):
+    def output(self):
         self.pdf.output("certificate.pdf")
 
 class DeathCertificate(Certificate):
@@ -123,7 +123,7 @@ class DeathCertificate(Certificate):
 
     def setBody(self,args):
         print(args)
-        contents=self.getfromtxt('deathcertificate.txt')
+        contents=self.getfromtxt('txtfiles/deathcertificate.txt')
         #args=('12321','2056/09/03','4233','Ram Hari Khatiwada','Hari Krishna Ghimere','Tilak Ghimere','Sunita Ghimere','Ghana Shyam Ghimere','05','Namobuddha','2056/01/03','1997/05/09','Methinkot Hospital','2023/05/06','Kavre','23452','2030/06/09','Kavre','875683')
         #contents=content.format('12321','2056/09/03','4233','Ram Hari Khatiwada','Hari Krishna Ghimere','Tilak Ghimere','Sunita Ghimere','Ghana Shyam Ghimere','05','Namobuddha','2056/01/03','1997/05/09','Methinkot Hospital','2023/05/06','Kavre','23452','2030/06/09','Kavre','875683')
         lines=[]
@@ -134,5 +134,36 @@ class DeathCertificate(Certificate):
             self.pdf.cell(1950,8,txt=line,ln=1,align='L')
         self.addFooter()
 
-    def output(self,pdffilepath):
+    def output(self):
+        self.pdf.output("certificate.pdf")
+        
+class DivorceCertificate(Certificate):
+    def __init__(self):
+        super().__init__()
+        self.pdf.set_font("Times",'BU',20)
+        self.pdf.cell(180,8,txt='Divorce Registration Certificate',ln=1,align='C')
+        #self.setBody('12321','2056/09/03','4233','Ram Hari Khatiwada','Hari Krishna Ghimere','Tilak Ghimere','Sunita Ghimere','Ghana Shyam Ghimere','05','Namobuddha','2056/01/03','1997/05/09','Methinkot Hospital','2023/05/06','Kavre','23452','2030/06/09','Kavre','875683')
+        #self.getfromtxt('Marriagecertificate.txt')
+        #self.setBody('fdsf')
+
+    def getfromtxt(self,txt):
+        content=''
+        text=open(txt,'r')
+        txt=text.readlines()
+        return txt
+
+    def setBody(self,args):
+        print(args)
+        contents=self.getfromtxt('txtfiles/divorcecertificate.txt')
+        #args=('12321','2056/09/03','4233','Ram Hari Khatiwada','Hari Krishna Ghimere','Tilak Ghimere','Sunita Ghimere','Ghana Shyam Ghimere','05','Namobuddha','2056/01/03','1997/05/09','Methinkot Hospital','2023/05/06','Kavre','23452','2030/06/09','Kavre','875683')
+        #contents=content.format('12321','2056/09/03','4233','Ram Hari Khatiwada','Hari Krishna Ghimere','Tilak Ghimere','Sunita Ghimere','Ghana Shyam Ghimere','05','Namobuddha','2056/01/03','1997/05/09','Methinkot Hospital','2023/05/06','Kavre','23452','2030/06/09','Kavre','875683')
+        lines=[]
+        for content in contents:
+            lines.append(content.format(*args))
+        for line in lines:
+            self.pdf.set_font('Times',size=10)
+            self.pdf.cell(1950,8,txt=line,ln=1,align='L')
+        self.addFooter()
+
+    def output(self):
         self.pdf.output("certificate.pdf")
