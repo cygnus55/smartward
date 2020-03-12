@@ -4,7 +4,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import *
 from sw_string import *
-from swgmail import *
+from sw_gmail import *
 import pickle
 import sys
 import os
@@ -205,11 +205,14 @@ class Ui_WardWindow(QWidget):
             with open('ward.pickle','rb') as f:
                 read=pickle.load(f)
             print(read)
-            read['registrar_name']=registrar_name
-            read['registrar_post']=registrar_post
-            with open('ward.pickle','wb') as f:
-                pickle.dump(read,f)
-            home_page()
+            if not isEmpty(registrar_name,registrar_post):
+                read['registrar_name']=registrar_name
+                read['registrar_post']=registrar_post
+                with open('ward.pickle','wb') as f:
+                    pickle.dump(read,f)
+                home_page()
+            else:
+                QMessageBox.warning(self,"Empty Field","Enter the complete details for updating!!!")
 
 
         #birth_reg,death_reg,marriage_reg,divorce_reg and migration_reg help open respective forms
@@ -649,3 +652,13 @@ class Ui_WardWindow(QWidget):
         self.registrar_name_lineedit.setPlaceholderText(_translate("WardWindow", "Name of Local Registrar"))
         self.registrar_post_lineedit.setPlaceholderText(_translate("WardWindow", "Post of the Local Registrar"))
 import sw_rc
+
+if __name__=="__main__":            
+    import sys
+    app = QtWidgets.QApplication(sys.argv)    
+    WardWindow = QtWidgets.QMainWindow()
+    ui = Ui_WardWindow()
+    ui.setupUi(WardWindow)
+    WardWindow.show()      
+    sys.exit(app.exec_())
+
