@@ -14,4 +14,4 @@ Additional Python modules required(i.e. not provided by Python developer's Libra
   
   3. fpdf
   
-  4. 
+  4. ezgmail
