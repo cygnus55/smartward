@@ -1,5 +1,5 @@
 #copy this in every code
-#self.window_functions(MainWindow)
+#self.window_functions(RegisterWindow)
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 import time
@@ -14,13 +14,14 @@ from PyQt5.QtSql import *
 from sw_string import *
 from sw_gmail import *
 import mysql.connector
-from ui_mainwindow import *
+from mainwindow import *
 #from dbconnect import *
 
 #db=database_signinwindow("localhost","root","smartward")
 mygmail=SWGmail()
 
-class Ui_SigninWindow(QWidget):
+
+class Ui_RegisterWindow(QWidget):
     def window_functions(self,MainWindow):
         # definition of signinwindow functions
         def on_signup_clicked():
@@ -40,7 +41,7 @@ class Ui_SigninWindow(QWidget):
             if(isEmpty(municipality,wardno,address,phone,email,password,confirmpassword)):
                 QMessageBox.warning(self,"SignUp Failed","All fields are not filled!")
             elif(not(password == confirmpassword)):
-                QMessageBox.warning(self,"Password Confirmation Invalid","Password doesnot match!")
+                QMessageBox.warning(self,"Password Confirmation Invalid","Password does not match!")
             else:
                 id=generateID(municipality.lower(),wardno,state)
                 print(id)
@@ -64,32 +65,33 @@ class Ui_SigninWindow(QWidget):
             self.mun_logo.setText(path)
 
         # sign up page functions
-        self.mun_logo.setEchoMode(0)
         self.signup.setAutoDefault(True)
         self.signup.clicked.connect(on_signup_clicked)
         self.browse.setAutoDefault(True)
         self.browse.clicked.connect(on_browse_clicked)
-
-    def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(614, 668)
-        MainWindow.setMinimumSize(QtCore.QSize(0, 0))
-        MainWindow.setMaximumSize(QtCore.QSize(1366, 768))
+        
+    def setupUi(self, RegisterWindow):
+        RegisterWindow.setObjectName("RegisterWindow")
+        RegisterWindow.resize(614, 668)
+        RegisterWindow.setMinimumSize(QtCore.QSize(0, 0))
+        RegisterWindow.setMaximumSize(QtCore.QSize(1366, 768))
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("sw_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        MainWindow.setWindowIcon(icon)
-        MainWindow.setStyleSheet("background-color: rgb(255, 255, 255);")
-        self.centralWidget = QtWidgets.QWidget(MainWindow)
+        RegisterWindow.setWindowIcon(icon)
+        RegisterWindow.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.centralWidget = QtWidgets.QWidget(RegisterWindow)
         self.centralWidget.setObjectName("centralWidget")
         self.signinBox = QtWidgets.QGroupBox(self.centralWidget)
         self.signinBox.setGeometry(QtCore.QRect(10, 10, 591, 641))
         self.signinBox.setMinimumSize(QtCore.QSize(0, 0))
         self.signinBox.setMaximumSize(QtCore.QSize(1366, 768))
-        self.signinBox.setStyleSheet("QLineEdit,QGroupBox,QPushButton{\n"
-" background:transparent;\n"
-"color: rgb(23, 109, 2);\n"
+        self.signinBox.setStyleSheet("QLineEdit,QGroupBox,QPushButton\n"
+"{\n"
+"      background:transparent;\n"
+"      color: rgb(23, 109, 2);\n"
 "      border: 2px solid gray;\n"
 "      border-radius: 10px;\n"
+"      padding: 1px left;\n"
 "}")
         self.signinBox.setTitle("")
         self.signinBox.setObjectName("signinBox")
@@ -107,11 +109,6 @@ class Ui_SigninWindow(QWidget):
 "    ")
         self.label_3.setAlignment(QtCore.Qt.AlignCenter)
         self.label_3.setObjectName("label_3")
-        self.municipality = QtWidgets.QLineEdit(self.signinBox)
-        self.municipality.setGeometry(QtCore.QRect(30, 270, 351, 31))
-        self.municipality.setStyleSheet("background:transparent")
-        self.municipality.setText("")
-        self.municipality.setObjectName("municipality")
         self.wardno = QtWidgets.QLineEdit(self.signinBox)
         self.wardno.setGeometry(QtCore.QRect(405, 270, 141, 31))
         self.wardno.setStyleSheet("background:transparent")
@@ -135,7 +132,7 @@ class Ui_SigninWindow(QWidget):
         self.mun_logo = QtWidgets.QLineEdit(self.signinBox)
         self.mun_logo.setGeometry(QtCore.QRect(30, 450, 351, 31))
         self.mun_logo.setStyleSheet("background:transparent")
-        self.mun_logo.setEchoMode(QtWidgets.QLineEdit.Password)
+        self.mun_logo.setEchoMode(QtWidgets.QLineEdit.Normal)
         self.mun_logo.setObjectName("mun_logo")
         self.password = QtWidgets.QLineEdit(self.signinBox)
         self.password.setGeometry(QtCore.QRect(30, 495, 251, 31))
@@ -164,45 +161,49 @@ class Ui_SigninWindow(QWidget):
 "color:white;\n"
 "")
         self.signup.setObjectName("signup")
-        MainWindow.setCentralWidget(self.centralWidget)
+        self.municipality = QtWidgets.QLineEdit(self.signinBox)
+        self.municipality.setGeometry(QtCore.QRect(30, 270, 351, 31))
+        self.municipality.setStyleSheet("background:transparent")
+        self.municipality.setText("")
+        self.municipality.setObjectName("municipality")
+        RegisterWindow.setCentralWidget(self.centralWidget)
 
-        self.retranslateUi(MainWindow)
-        self.window_functions(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
-        MainWindow.setTabOrder(self.municipality, self.wardno)
-        MainWindow.setTabOrder(self.wardno, self.address)
-        MainWindow.setTabOrder(self.address, self.state)
-        MainWindow.setTabOrder(self.state, self.phoneNo)
-        MainWindow.setTabOrder(self.phoneNo, self.email)
-        MainWindow.setTabOrder(self.email, self.mun_logo)
-        MainWindow.setTabOrder(self.mun_logo, self.browse)
-        MainWindow.setTabOrder(self.browse, self.password)
-        MainWindow.setTabOrder(self.password, self.confirmpassword)
-        MainWindow.setTabOrder(self.confirmpassword, self.signup)
+        self.retranslateUi(RegisterWindow)
+        self.window_functions(RegisterWindow)
+        QtCore.QMetaObject.connectSlotsByName(RegisterWindow)
+        RegisterWindow.setTabOrder(self.municipality, self.wardno)
+        RegisterWindow.setTabOrder(self.wardno, self.address)
+        RegisterWindow.setTabOrder(self.address, self.state)
+        RegisterWindow.setTabOrder(self.state, self.phoneNo)
+        RegisterWindow.setTabOrder(self.phoneNo, self.email)
+        RegisterWindow.setTabOrder(self.email, self.mun_logo)
+        RegisterWindow.setTabOrder(self.mun_logo, self.browse)
+        RegisterWindow.setTabOrder(self.browse, self.password)
+        RegisterWindow.setTabOrder(self.password, self.confirmpassword)
+        RegisterWindow.setTabOrder(self.confirmpassword, self.signup)
 
-    def retranslateUi(self, MainWindow):
+    def retranslateUi(self, RegisterWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "Smartवडा"))
-        self.label_3.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:12pt; font-weight:600;\">REGISTER NEW WARD</span></p></body></html>"))
-        self.wardno.setPlaceholderText(_translate("MainWindow", "Ward No."))
-        self.address.setPlaceholderText(_translate("MainWindow", "Address"))
-        self.state.setPlaceholderText(_translate("MainWindow", "State"))
-        self.phoneNo.setPlaceholderText(_translate("MainWindow", "Phone No"))
-        self.email.setPlaceholderText(_translate("MainWindow", "E-mail ID"))
-        self.mun_logo.setPlaceholderText(_translate("MainWindow", "Municipality/VDC Logo"))
-        self.password.setPlaceholderText(_translate("MainWindow", "Password"))
-        self.confirmpassword.setPlaceholderText(_translate("MainWindow", "Re-Type your Password"))
-        self.signup.setText(_translate("MainWindow", "Sign Up"))
-        self.municipality.setPlaceholderText(_translate("MainWindow", "(Rural) Municipality/(Sub) Metropolitan City"))
+        RegisterWindow.setWindowTitle(_translate("RegisterWindow", "Smartवडा"))
+        self.label_3.setText(_translate("RegisterWindow", "<html><head/><body><p><span style=\" font-size:12pt; font-weight:600;\">REGISTER NEW WARD</span></p></body></html>"))
+        self.wardno.setPlaceholderText(_translate("RegisterWindow", "Ward No."))
+        self.address.setPlaceholderText(_translate("RegisterWindow", "Address"))
+        self.state.setPlaceholderText(_translate("RegisterWindow", "State"))
+        self.phoneNo.setPlaceholderText(_translate("RegisterWindow", "Phone No"))
+        self.email.setPlaceholderText(_translate("RegisterWindow", "E-mail ID"))
+        self.mun_logo.setPlaceholderText(_translate("RegisterWindow", "Municipality/VDC Logo"))
+        self.password.setPlaceholderText(_translate("RegisterWindow", "Password"))
+        self.confirmpassword.setPlaceholderText(_translate("RegisterWindow", "Re-Type your Password"))
+        self.signup.setText(_translate("RegisterWindow", "Sign Up"))
+        self.municipality.setPlaceholderText(_translate("RegisterWindow", "(Rural) Municipality/(Sub) Metropolitan City"))
 import sw_rc
+
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_SigninWindow()
-    ui.setupUi(MainWindow)
-    ui.mun_logo.setEchoMode(0)
-    # Application start to run
-    MainWindow.show()   
+    RegisterWindow = QtWidgets.QMainWindow()
+    ui = Ui_RegisterWindow()
+    ui.setupUi(RegisterWindow)
+    RegisterWindow.show()
     sys.exit(app.exec_())
