@@ -12,7 +12,7 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtSql import *
 from sw_string import *
-from swgmail import *
+from sw_gmail import *
 import mysql.connector
 from ui_mainwindow import *
 #from dbconnect import *
@@ -195,3 +195,14 @@ class Ui_SigninWindow(QWidget):
         self.signup.setText(_translate("MainWindow", "Sign Up"))
         self.municipality.setPlaceholderText(_translate("MainWindow", "(Rural) Municipality/(Sub) Metropolitan City"))
 import sw_rc
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    MainWindow = QtWidgets.QMainWindow()
+    ui = Ui_SigninWindow()
+    ui.setupUi(MainWindow)
+    ui.mun_logo.setEchoMode(0)
+    # Application start to run
+    MainWindow.show()   
+    sys.exit(app.exec_())
