@@ -25,12 +25,26 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>619</width>
-         <height>462</height>
+         <width>615</width>
+         <height>458</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_2">
-        <item row="1" column="0">
+        <item row="0" column="0">
+         <layout class="QFormLayout" name="formLayout_2">
+          <item row="0" column="0">
+           <widget class="QLabel" name="registrationNoLabel">
+            <property name="text">
+             <string>Registration no</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLineEdit" name="registrationNoLineEdit"/>
+          </item>
+         </layout>
+        </item>
+        <item row="2" column="0">
          <widget class="QTableWidget" name="tableWidget">
           <row>
            <property name="text">
@@ -74,7 +88,7 @@
           </column>
          </widget>
         </item>
-        <item row="0" column="0">
+        <item row="1" column="0">
          <layout class="QFormLayout" name="formLayout">
           <item row="0" column="0">
            <widget class="QLabel" name="nameLabel">
@@ -118,10 +132,10 @@
           </item>
          </layout>
         </item>
-        <item row="2" column="0">
-         <widget class="QPushButton" name="pushButton_submit">
-          <property name="text">
-           <string>Submit</string>
+        <item row="3" column="0">
+         <widget class="QDialogButtonBox" name="buttonBox">
+          <property name="standardButtons">
+           <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
           </property>
          </widget>
         </item>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>incomereco</class>
+ <widget class="QMainWindow" name="incomereco">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -15,7 +15,21 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="1" column="0">
+    <item row="0" column="0">
+     <layout class="QFormLayout" name="formLayout_3">
+      <item row="0" column="0">
+       <widget class="QLabel" name="registrationNoLabel">
+        <property name="text">
+         <string>Registration No</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="registrationNoLineEdit"/>
+      </item>
+     </layout>
+    </item>
+    <item row="2" column="0">
      <widget class="QTableWidget" name="tableWidget">
       <row>
        <property name="text">
@@ -69,7 +83,7 @@
       </column>
      </widget>
     </item>
-    <item row="0" column="0">
+    <item row="1" column="0">
      <layout class="QFormLayout" name="formLayout">
       <item row="0" column="0">
        <widget class="QLabel" name="nameLabel">
@@ -93,26 +107,15 @@
       </item>
      </layout>
     </item>
-    <item row="2" column="0">
-     <widget class="QPushButton" name="pushButton_submit">
-      <property name="text">
-       <string>Submit</string>
+    <item row="3" column="0">
+     <widget class="QDialogButtonBox" name="buttonBox">
+      <property name="standardButtons">
+       <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
       </property>
      </widget>
     </item>
    </layout>
   </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>529</width>
-     <height>21</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
  <connections/>
