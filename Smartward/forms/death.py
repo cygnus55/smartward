@@ -424,7 +424,7 @@ class ActualWork():
         f = open("certificate.pickle", 'rb')
         cert = pickle.load(f)
         certificate.setBody(cert)
-        certificate.output("test.pdf")
+        certificate.output()
         QMessageBox.information(self.ui, "Death Registration", "Death Reistration was Sucessful.")
 
     def closeActualWork(self):

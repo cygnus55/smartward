@@ -1,0 +1,10 @@
+Registration No. {0}                                                   Date of Registration {1}
+Family Record Form No. {2}
+This is to certify, as per the divorce register maintained at this office and the information provided by Mr./
+Mrs. {3} in the information from of schedule 5, that the marital relationship between Mr. {4}, son of Mr. {5} grandson of Mr. {6}, a resident of
+Ward No.{7}, {8} Municipality , {9} District , and Mrs. {10},
+daughter of Mr. {11}, granddaughter of Mr. {12}, a resident of Ward No. {13}, {14} Municipality, {15} district, was terminated on as per the judgement of the
+{16}, {17},dated {18} BS ( {19} AD ).
+Issue Date, District and Citizenship No.if Citizenship Certificate is Issued to :
+A.Husband : {20}, {22}, {24}
+B.Wife : {21}, {23}, {25}
