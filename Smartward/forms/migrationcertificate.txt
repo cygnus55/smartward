@@ -1,0 +1,9 @@
+Registration No. {0}                                                Date of Registration {1}
+Family Record Form No. {2}
+
+        This is to certify, as per the birth register maintained at this office and the information provided by
+Mr./Mrs. {3} in the information from of schedule 6, that Mr./Mrs. {4}
+and his family members are migrated from ward no. {5}, {6} Municipality,
+{7} District to ward no. {8}, {9} Municipality, {10} District on {11} BS ({12} AD).
+
+Details of family members relocated:

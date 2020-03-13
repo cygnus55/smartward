@@ -1,12 +1,3 @@
-# -*- coding: utf-8 -*-
-
-# Form implementation generated from reading ui file 'migration.ui'
-#
-# Created by: PyQt5 UI code generator 5.13.2
-#
-# WARNING! All changes made in this file will be lost!
-
-
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
@@ -15,12 +6,13 @@ from PyQt5.QtGui import *
 import datetime
 import nepali_date
 import sw_string
+import pickle
+from sw_pdf import MigrationCertificate
 
-table="MigrationRegistration"
+table = "MigrationRegistration"
 
 
-
-class Ui_migration(object):
+class Ui_migration(QWidget):
     def setupUi(self, migration):
         migration.setObjectName("migration")
         migration.resize(814, 645)
@@ -32,7 +24,7 @@ class Ui_migration(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 769, 753))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, -227, 780, 852))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.gridLayout_2 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents)
         self.gridLayout_2.setObjectName("gridLayout_2")
@@ -103,51 +95,36 @@ class Ui_migration(object):
         self.reasonOfRelocatedComboBox.addItem("")
         self.reasonOfRelocatedComboBox.addItem("")
         self.reasonOfRelocatedComboBox.addItem("")
+        self.reasonOfRelocatedComboBox.addItem("")
         self.formLayout_2.setWidget(9, QtWidgets.QFormLayout.FieldRole, self.reasonOfRelocatedComboBox)
         self.gridLayout_2.addLayout(self.formLayout_2, 4, 0, 1, 1)
-        self.formLayout_3 = QtWidgets.QFormLayout()
-        self.formLayout_3.setObjectName("formLayout_3")
-        self.gridLayout_2.addLayout(self.formLayout_3, 7, 0, 1, 1)
         self.tableWidget = QtWidgets.QTableWidget(self.scrollAreaWidgetContents)
         self.tableWidget.setObjectName("tableWidget")
-        self.tableWidget.setColumnCount(9)
-        self.tableWidget.setRowCount(9)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget.setVerticalHeaderItem(0, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget.setVerticalHeaderItem(1, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget.setVerticalHeaderItem(2, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget.setVerticalHeaderItem(3, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget.setVerticalHeaderItem(4, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget.setVerticalHeaderItem(5, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget.setVerticalHeaderItem(6, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget.setVerticalHeaderItem(7, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget.setVerticalHeaderItem(8, item)
+        self.tableWidget.setColumnCount(7)
+        self.tableWidget.setRowCount(2)
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(0, item)
+        self.tableWidget.setColumnWidth(0,150)
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(1, item)
         item = QtWidgets.QTableWidgetItem()
+        self.tableWidget.setColumnWidth(1, 250)
         self.tableWidget.setHorizontalHeaderItem(2, item)
         item = QtWidgets.QTableWidgetItem()
+        self.tableWidget.setColumnWidth(2, 150)
         self.tableWidget.setHorizontalHeaderItem(3, item)
         item = QtWidgets.QTableWidgetItem()
+        self.tableWidget.setColumnWidth(3, 250)
         self.tableWidget.setHorizontalHeaderItem(4, item)
         item = QtWidgets.QTableWidgetItem()
+        self.tableWidget.setColumnWidth(4, 100)
         self.tableWidget.setHorizontalHeaderItem(5, item)
         item = QtWidgets.QTableWidgetItem()
+        self.tableWidget.setColumnWidth(5, 200)
         self.tableWidget.setHorizontalHeaderItem(6, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget.setHorizontalHeaderItem(7, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget.setHorizontalHeaderItem(8, item)
+        self.tableWidget.setColumnWidth(6, 200)
+        self.tableWidget.setFixedHeight(150)
+
         self.gridLayout_2.addWidget(self.tableWidget, 6, 0, 1, 1)
         self.formLayout_4 = QtWidgets.QFormLayout()
         self.formLayout_4.setObjectName("formLayout_4")
@@ -157,10 +134,13 @@ class Ui_migration(object):
         self.registrationNoLineEdit_2 = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
         self.registrationNoLineEdit_2.setObjectName("registrationNoLineEdit_2")
         self.formLayout_4.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.registrationNoLineEdit_2)
+        self.familyRecordFormNoLabel = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.familyRecordFormNoLabel.setObjectName("familyRecordFormNoLabel")
+        self.formLayout_4.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.familyRecordFormNoLabel)
+        self.familyRecordFormNoLineEdit = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
+        self.familyRecordFormNoLineEdit.setObjectName("familyRecordFormNoLineEdit")
+        self.formLayout_4.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.familyRecordFormNoLineEdit)
         self.gridLayout_2.addLayout(self.formLayout_4, 0, 0, 1, 1)
-        self.label_3 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
-        self.label_3.setObjectName("label_3")
-        self.gridLayout_2.addWidget(self.label_3, 5, 0, 1, 1)
         self.formLayout = QtWidgets.QFormLayout()
         self.formLayout.setObjectName("formLayout")
         self.districtLabel = QtWidgets.QLabel(self.scrollAreaWidgetContents)
@@ -207,12 +187,52 @@ class Ui_migration(object):
         self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
         self.buttonBox.setObjectName("buttonBox")
         self.gridLayout_2.addWidget(self.buttonBox, 8, 0, 1, 1)
+        self.formLayout_5 = QtWidgets.QFormLayout()
+        self.formLayout_5.setObjectName("formLayout_5")
+        self.InformationProvidedByLabel = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.InformationProvidedByLabel.setObjectName("InformationProvidedByLabel")
+        self.formLayout_5.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.InformationProvidedByLabel)
+        self.nameLabel = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.nameLabel.setObjectName("nameLabel")
+        self.formLayout_5.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.nameLabel)
+        self.nameLineEdit = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
+        self.nameLineEdit.setObjectName("nameLineEdit")
+        self.formLayout_5.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.nameLineEdit)
+        self.citizenshipCertificateNoLabel = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.citizenshipCertificateNoLabel.setObjectName("citizenshipCertificateNoLabel")
+        self.formLayout_5.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.citizenshipCertificateNoLabel)
+        self.citizenshipCertificateNoLineEdit = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
+        self.citizenshipCertificateNoLineEdit.setObjectName("citizenshipCertificateNoLineEdit")
+        self.formLayout_5.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.citizenshipCertificateNoLineEdit)
+        self.gridLayout_2.addLayout(self.formLayout_5, 7, 0, 1, 1)
+        self.formLayout_3 = QtWidgets.QFormLayout()
+        self.formLayout_3.setObjectName("formLayout_3")
+        self.bDetailsOfThePersonRelocatedLabel = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.bDetailsOfThePersonRelocatedLabel.setObjectName("bDetailsOfThePersonRelocatedLabel")
+        self.formLayout_3.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.bDetailsOfThePersonRelocatedLabel)
+        self.horizontalLayout_4 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_4.setObjectName("horizontalLayout_4")
+        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_4.addItem(spacerItem)
+        self.addMore = QtWidgets.QPushButton(self.scrollAreaWidgetContents)
+        self.addMore.setText("")
+        self.addMore.setObjectName("addMore")
+        self.horizontalLayout_4.addWidget(self.addMore)
+        self.formLayout_3.setLayout(0, QtWidgets.QFormLayout.FieldRole, self.horizontalLayout_4)
+        self.gridLayout_2.addLayout(self.formLayout_3, 5, 0, 1, 1)
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.gridLayout.addWidget(self.scrollArea, 0, 0, 1, 1)
         migration.setCentralWidget(self.centralwidget)
 
+        self.addMore.setText("Add")
+        self.addMore.clicked.connect(self.addMoreDetail)
         self.retranslateUi(migration)
         QtCore.QMetaObject.connectSlotsByName(migration)
+
+    def addMoreDetail(self):
+        i=self.tableWidget.rowCount()
+        self.tableWidget.insertRow(i)
+
 
     def retranslateUi(self, migration):
         _translate = QtCore.QCoreApplication.translate
@@ -228,47 +248,26 @@ class Ui_migration(object):
         self.nameOfHomeownerWhoRelocatedLabel.setText(_translate("migration", "Name of homeowner who relocated"))
         self.dateOfRelocatedLabel.setText(_translate("migration", "Date of relocated"))
         self.reasonOfRelocatedLabel.setText(_translate("migration", "Reason of relocated"))
-        self.reasonOfRelocatedComboBox.setItemText(0, _translate("migration", "Job"))
-        self.reasonOfRelocatedComboBox.setItemText(1, _translate("migration", "Bussiness"))
-        self.reasonOfRelocatedComboBox.setItemText(2, _translate("migration", "other"))
-        item = self.tableWidget.verticalHeaderItem(0)
-        item.setText(_translate("migration", "1"))
-        item = self.tableWidget.verticalHeaderItem(1)
-        item.setText(_translate("migration", "2"))
-        item = self.tableWidget.verticalHeaderItem(2)
-        item.setText(_translate("migration", "3"))
-        item = self.tableWidget.verticalHeaderItem(3)
-        item.setText(_translate("migration", "4"))
-        item = self.tableWidget.verticalHeaderItem(4)
-        item.setText(_translate("migration", "5"))
-        item = self.tableWidget.verticalHeaderItem(5)
-        item.setText(_translate("migration", "6"))
-        item = self.tableWidget.verticalHeaderItem(6)
-        item.setText(_translate("migration", "7"))
-        item = self.tableWidget.verticalHeaderItem(7)
-        item.setText(_translate("migration", "8"))
-        item = self.tableWidget.verticalHeaderItem(8)
-        item.setText(_translate("migration", "10"))
+        self.reasonOfRelocatedComboBox.setItemText(0, _translate("migration", "job"))
+        self.reasonOfRelocatedComboBox.setItemText(1, _translate("migration", "bussiness"))
+        self.reasonOfRelocatedComboBox.setItemText(2, _translate("migration", "new house"))
+        self.reasonOfRelocatedComboBox.setItemText(3, _translate("migration", "other"))
         item = self.tableWidget.horizontalHeaderItem(0)
         item.setText(_translate("migration", "Birth certificate no"))
         item = self.tableWidget.horizontalHeaderItem(1)
         item.setText(_translate("migration", "Full Name"))
         item = self.tableWidget.horizontalHeaderItem(2)
-        item.setText(_translate("migration", "Date Of Birth"))
-        item = self.tableWidget.horizontalHeaderItem(3)
-        item.setText(_translate("migration", "Place of Birth"))
-        item = self.tableWidget.horizontalHeaderItem(4)
         item.setText(_translate("migration", "Gender"))
-        item = self.tableWidget.horizontalHeaderItem(5)
+        item = self.tableWidget.horizontalHeaderItem(3)
         item.setText(_translate("migration", "Citizenship No"))
-        item = self.tableWidget.horizontalHeaderItem(6)
+        item = self.tableWidget.horizontalHeaderItem(4)
         item.setText(_translate("migration", "Issue date"))
-        item = self.tableWidget.horizontalHeaderItem(7)
+        item = self.tableWidget.horizontalHeaderItem(5)
         item.setText(_translate("migration", "Issue District"))
-        item = self.tableWidget.horizontalHeaderItem(8)
+        item = self.tableWidget.horizontalHeaderItem(6)
         item.setText(_translate("migration", "Relation with informative"))
-        self.registrationNoLabel_2.setText(_translate("migration", "Registration No"))
-        self.label_3.setText(_translate("migration", "Details Of The Person Relocated"))
+        self.registrationNoLabel_2.setText(_translate("migration", "<b>Registration No</b>"))
+        self.familyRecordFormNoLabel.setText(_translate("migration", "<b>Family Record Form No"))
         self.districtLabel.setText(_translate("migration", "District"))
         self.municipalityLabel.setText(_translate("migration", "Municipality"))
         self.wardNoLabel.setText(_translate("migration", "Ward No"))
@@ -276,10 +275,16 @@ class Ui_migration(object):
         self.houseNoLabel.setText(_translate("migration", "House No"))
         self.villageLabel.setText(_translate("migration", "Village/Community"))
         self.label.setText(_translate("migration", "<b>Place of Destination:</b>"))
+        self.InformationProvidedByLabel.setText(_translate("migration", "<b>Information Provided By"))
+        self.nameLabel.setText(_translate("migration", "Name"))
+        self.citizenshipCertificateNoLabel.setText(_translate("migration", "Citizenship Certificate No."))
+        self.bDetailsOfThePersonRelocatedLabel.setText(_translate("migration", "<b>Details Of The Person Relocated"))
+
+
 class ActualWork():
     def __init__(self):
         import dbconnect
-        self.db=dbconnect.database_wardwindow("localhost","root")
+        self.db = dbconnect.database_wardwindow("localhost", "root")
         self.MigrationForm = QtWidgets.QMainWindow()
         self.ui = Ui_migration()
         self.ui.setupUi(self.MigrationForm)
@@ -288,50 +293,83 @@ class ActualWork():
 
     def actualWork(self):
         self.ui.buttonBox.accepted.connect(self.submitform)
-        self.ui.buttonBox.rejected.connect(lambda:self.MigrationForm.close())
+        self.ui.buttonBox.rejected.connect(lambda: self.MigrationForm.close())
 
     def submitform(self):
-        self.values=self.getallvalues()
-        a=sw_string.generateList(**self.values)
-        #a=["RegDate","1","RegNo","2","C","3","D","4","E","5"]
-        #b=['RegNo','123-32','detailsofmarriage', "('Social Tradition', ('2000-01-01', '2056/09/17'))", 'locationofmarriage', "('Kavre', 'Namobudda', '04', 'Timal Road', 'Methinkot', '45', '')", 'detailsofspouse', "{'detailsofbride': ('Tandon', 'Rabina', '2057/01/05', 'Kami', '+2', 'Actress', 'Divorcee', ('Rampur', 'Narayanghat', '5', 'Ghandi Street', 'Hariharpur', '78', 'India'), ('India', '27-12398721', '2071/06/09', 'Rampur', '87289398', 'India', 'New Delhi'), ('Fariha Tandon', 'Kanod Tandon', 'Kajol Tandon')), 'detailsofbridegroom': ('Ghimere', 'Tilak', '2051/03/21', 'Brahmin', 'B.Sc.', 'Astrologer', 'Single', ('Solukhumbu', 'Namche Bazar', '9', 'Manila Street', 'Vaisepati', '567', 'Nepal'), ('Nepal', '983-3468', '2067/03/05', 'Solukhumbu', '', '', ''), ('Goshnath Ghimere', 'Farilal Ghimere', 'Nabina Ghimere'))}"]
-        #a=['RegDate',,b[0],b[1],b[2],b[3].replace("'","__"),b[4],b[5].replace("'","__"),b[6],b[7].replace("'","__")]
-        #print(a)
+        self.values = self.getallvalues()
+        a = sw_string.generateList(**self.values)
+        # a=["RegDate","1","RegNo","2","C","3","D","4","E","5"]
+        # b=['RegNo','123-32','detailsofmarriage', "('Social Tradition', ('2000-01-01', '2056/09/17'))", 'locationofmarriage', "('Kavre', 'Namobudda', '04', 'Timal Road', 'Methinkot', '45', '')", 'detailsofspouse', "{'detailsofbride': ('Tandon', 'Rabina', '2057/01/05', 'Kami', '+2', 'Actress', 'Divorcee', ('Rampur', 'Narayanghat', '5', 'Ghandi Street', 'Hariharpur', '78', 'India'), ('India', '27-12398721', '2071/06/09', 'Rampur', '87289398', 'India', 'New Delhi'), ('Fariha Tandon', 'Kanod Tandon', 'Kajol Tandon')), 'detailsofbridegroom': ('Ghimere', 'Tilak', '2051/03/21', 'Brahmin', 'B.Sc.', 'Astrologer', 'Single', ('Solukhumbu', 'Namche Bazar', '9', 'Manila Street', 'Vaisepati', '567', 'Nepal'), ('Nepal', '983-3468', '2067/03/05', 'Solukhumbu', '', '', ''), ('Goshnath Ghimere', 'Farilal Ghimere', 'Nabina Ghimere'))}"]
+        # a=['RegDate',,b[0],b[1],b[2],b[3].replace("'","__"),b[4],b[5].replace("'","__"),b[6],b[7].replace("'","__")]
+        # print(a)
         self.db.createFormTable(table)
-        self.db.addColumns(table,a[4],a[6])
-        self.db.insertValues(table,a)
+        self.db.addColumns(table, a[4], a[6],a[8],a[10],a[12])
+        self.db.insertValues(table, a)
+        self.getCertificate()
 
     def getallvalues(self):
-        self.migRegNo=self.ui.registrationNoLineEdit_2.text()
+        self.migRegNo = self.ui.registrationNoLineEdit_2.text()
         # place of destination
-        Destination=(self.ui.districtLineEdit.text(),self.ui.municipalityLineEdit.text(),self.ui.wardNoLineEdit.text(),self.ui.roadStreetLineEdit.text(),self.ui.houseNoLineEdit.text(),self.ui.villageyLineEdit.text())
-        date=QDate(self.ui.dateOfRelocatedDateEdit.date())
-        year,month,day=date.getDate()
-        reallocated_in_ad=datetime.date(year,month,day)
-        reallocated_in_bs=nepali_date.NepaliDate.to_nepali_date(reallocated_in_ad)
-        today=nepali_date.NepaliDate.today()
-        #registration date
-        registrationdate=str(today)[3:]
-        #date of reallocated
-        self.reallocateddate=(str(reallocated_in_ad),str(reallocated_in_bs)[3:])
-        #details  of place of origin
-        placeoforigin=(self.ui.registrationNoLineEdit.text(),self.ui.districtLineEdit_2.text(),self.ui.municipalityLineEdit_2.text(),self.ui.wardNoLineEdit_2.text(),self.ui.roadStreetLineEdit_2.text(),self.ui.houseNoLineEdit_2.text(),self.ui.villageCommunityLineEdit.text(),self.ui.nameOfHomeownerWhoRelocatedLineEdit.text(),self.reallocateddate,self.ui.reasonOfRelocatedComboBox.currentText())
-        nrows = self.ui.tableWidget.rowCount()
-        group = []
- 
-        for row in range(0,nrows):
-            curItem = self.ui.tableWidget.currentItem()
- 
-            #item = self.ui.tableWidget.item(row, 2)
-            #item_text = item.
- 
-            group.append(curItem.text())
- 
-        print(group)
-        #curItem = self.ui.tableWidget.currentItem()
-        #print (curItem.text())
-        return {"RegDate":registrationdate,"RegNo":self.migRegNo,"detailsofdestination":str(Destination) , "detailsofplaceoforigin":str(placeoforigin) }
+        Destination = (
+        self.ui.districtLineEdit.text(), self.ui.municipalityLineEdit.text(), self.ui.wardNoLineEdit.text(),
+        self.ui.roadStreetLineEdit.text(), self.ui.houseNoLineEdit.text(), self.ui.villageyLineEdit.text())
+        date = QDate(self.ui.dateOfRelocatedDateEdit.date())
+        year, month, day = date.getDate()
+        reallocated_in_ad = datetime.date(year, month, day)
+        reallocated_in_bs = nepali_date.NepaliDate.to_nepali_date(reallocated_in_ad)
+        today = nepali_date.NepaliDate.today()
+        # registration date
+        registrationdate = str(today)[3:]
+        # date of reallocated
+        self.reallocateddate = (str(reallocated_in_ad), str(reallocated_in_bs)[3:])
+        # details  of place of origin
+        placeoforigin = (
+        self.ui.registrationNoLineEdit.text(), self.ui.districtLineEdit_2.text(), self.ui.municipalityLineEdit_2.text(),
+        self.ui.wardNoLineEdit_2.text(), self.ui.roadStreetLineEdit_2.text(), self.ui.houseNoLineEdit_2.text(),
+        self.ui.villageCommunityLineEdit.text(), self.ui.nameOfHomeownerWhoRelocatedLineEdit.text(),
+        self.reallocateddate, self.ui.reasonOfRelocatedComboBox.currentText())
 
+        rows=self.ui.tableWidget.rowCount()
+        cols=self.ui.tableWidget.columnCount()
+        detailsofmigrants=[['Birth Certificate','Full Name','Gender','Citizenship No.','Issue Date','Issue District','Relation with Informer']]
+        for r in range(0,rows):
+            row=[]
+            for c in range(0,cols):
+                try:
+                    i=self.ui.tableWidget.item(r,c)
+                    row.append(i.text())
+                except AttributeError:
+                    i='-'
+                    row.append(i)
+            detailsofmigrants.append(row)
+        tabledata=detailsofmigrants
+        informer = str((self.ui.nameLineEdit.text(), self.ui.citizenshipCertificateNoLineEdit.text()))
+        body=(
+            self.migRegNo,registrationdate,self.ui.familyRecordFormNoLineEdit.text(),informer[0],
+            self.ui.nameOfHomeownerWhoRelocatedLineEdit.text(),
+            self.ui.wardNoLineEdit_2.text(),self.ui.municipalityLineEdit_2.text(),self.ui.districtLineEdit_2.text(),
+            self.ui.wardNoLineEdit.text(), self.ui.municipalityLineEdit.text(), self.ui.districtLineEdit.text(),
+            self.reallocateddate[1],self.reallocateddate[0]
+        )
+        certificate=(body,tabledata)
+        self.writePickle(certificate)
+        return {"RegDate": registrationdate, "RegNo": self.migRegNo,"FamilyRecordNo":self.ui.familyRecordFormNoLineEdit.text(),
+                "detailsofdestination": str(Destination),"detailsofplaceoforigin": str(placeoforigin),"detailsofmigrant":str(detailsofmigrants),"Informer":informer}
+
+    def writePickle(self, d):
+        with open("certificate.pickle", "wb") as obj:
+            pickle.dump(d, obj)
+            obj.close()
+
+    def getCertificate(self):
+        QMessageBox.information(self.ui, "Migration Registration","Get Migration Registration Certificate.")
+        certificate = MigrationCertificate()
+        f = open("certificate.pickle", 'rb')
+        cert = pickle.load(f)
+        certificate.setBody(cert[0])
+        certificate.setTable(cert[1])
+        certificate.output()
+        QMessageBox.information(self.ui, "Migration Registration", "Migration Reistration was Sucessful.")
 
     def closeActualWork(self):
         self.MigrationForm.close()
@@ -339,8 +377,9 @@ class ActualWork():
 
 if __name__ == "__main__":
     import sys
+
     app = QtWidgets.QApplication(sys.argv)
-    aw=ActualWork()
+    aw = ActualWork()
     '''
     migration = QtWidgets.QMainWindow()
     ui = Ui_migration()
