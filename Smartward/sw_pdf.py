@@ -1,12 +1,19 @@
 import pickle
 from fpdf import FPDF
+import nepali_date
+
+today=nepali_date.NepaliDate.today()
+today_date=str(today)[3:]
 
 ward=open("ward.pickle",'rb')
 wardinfo=pickle.load(ward)
 municipality,address=wardinfo['municipality'],wardinfo['address']
+wardno,state=wardinfo['wardno'],wardinfo['state']
+email,mun_logo=wardinfo['email'] ,wardinfo['mun_logo']
+phone,registrar_name=wardinfo['phone'],wardinfo['registrar_name']
+
 
 logo="logo.png"
-
 class Certificate():
     def __init__(self):
         #self.logopath=logopath
@@ -15,11 +22,11 @@ class Certificate():
         self.addHeader()
         #self.pdf.output(pdffilepath)
 
-    def addLogo(self,imgpath):
-        self.pdf.image(imgpath,15,30,25,24.67)
+    def addLogo(self):
+        self.pdf.image(logo,15,30,25,24.67)
 
     def addHeader(self):
-        self.addLogo(logo)
+        self.addLogo()
         self.pdf.set_font("Times",size=10)
         self.pdf.cell(180, 8, txt="Schedule-12/13/14/15/16", ln=1, align='C')
         self.pdf.cell(180, 8, txt="(Related with Rule 7)", ln=1, align='C')
@@ -34,13 +41,16 @@ class Certificate():
         self.pdf.cell(180, 8, txt="Local Registrar's:", ln=1, align='L')
         self.pdf.set_font("Times",size=10)
         self.pdf.cell(180, 8, txt="Signature:", ln=1, align='L')
-        self.pdf.cell(180, 8, txt="Name and Surname:", ln=1, align='L')
-        self.pdf.cell(180,8,txt="Date:",ln=1,align='L')
+        self.pdf.cell(180, 8, txt="Name and Surname: "+registrar_name, ln=1, align='L')
+        self.pdf.cell(180,8,txt="Date: "+today_date,ln=1,align='L')
 
     def setOfficeAddress(self, municipality, address):
         self.pdf.set_font("Times",size=10)
         self.pdf.cell(180,8,txt=municipality,ln=1,align='C')
         self.pdf.cell(180,8,txt=address,ln=1,align="C")
+       
+	def output(self):
+        self.pdf.output("output/certificate.pdf")       
 
 
 
@@ -72,8 +82,6 @@ class BirthCertificate(Certificate):
             self.pdf.cell(1950,8,txt=line,ln=1,align='L')
         self.addFooter()
 
-    def output(self):
-        self.pdf.output("certificate.pdf")
 
 class MarriageCertificate(Certificate):
     def __init__(self):
@@ -103,9 +111,6 @@ class MarriageCertificate(Certificate):
             self.pdf.cell(1950,8,txt=line,ln=1,align='L')
         self.addFooter()
 
-    def output(self):
-        self.pdf.output("certificate.pdf")
-
 class DeathCertificate(Certificate):
     def __init__(self):
         super().__init__()
@@ -134,8 +139,6 @@ class DeathCertificate(Certificate):
             self.pdf.cell(1950,8,txt=line,ln=1,align='L')
         self.addFooter()
 
-    def output(self):
-        self.pdf.output("certificate.pdf")
         
 class DivorceCertificate(Certificate):
     def __init__(self):
@@ -164,9 +167,6 @@ class DivorceCertificate(Certificate):
             self.pdf.set_font('Times',size=10)
             self.pdf.cell(1950,8,txt=line,ln=1,align='L')
         self.addFooter()
-
-    def output(self):
-        self.pdf.output("certificate.pdf")
 
 class MigrationCertificate(Certificate):
     def __init__(self):
@@ -204,5 +204,46 @@ class MigrationCertificate(Certificate):
             self.pdf.ln(row_height * 1)
         self.addFooter()
 
-    def output(self):
-        self.pdf.output("certificate.pdf")
+
+class Recommendation():
+    def __init__(self):
+        self.pdf=FPDF()
+        self.pdf.add_page()
+        self.addHeader()
+        self.addFooter()
+        
+   	def output(self):
+        self.pdf.output("output/recommendationletter.pdf")
+
+    def addLogo(self):
+        self.pdf.image(logo, 5, 5, 12.5*1.5, (24.67*1.5)/2)
+        try:
+            self.pdf.image(mun_logo,185,5,18.75,18.5625)
+        except Exception:
+            pass
+
+    def addHeader(self):
+        self.addLogo()
+        self.pdf.set_text_color(255,0,0)
+        self.pdf.set_font("Times", size=18)
+        self.pdf.cell(180, 6, txt=municipality.title()+" Municipality", ln=1, align='C',)
+        self.pdf.set_font("Times", size=14)
+        self.pdf.cell(180, 6, txt="Ward No. "+wardno+" Office", ln=1, align='C')
+        self.pdf.set_font("Times", size=10)
+        self.pdf.cell(180, 6, txt=address, ln=1, align='C')
+        self.pdf.cell(180, 6, txt="State No. "+state+", Nepal", ln=1, align='C')
+        self.pdf.cell(30,6,txt="Letter No.:",align='L')
+        self.pdf.set_x(175)
+        self.pdf.cell(30, 6, txt="Date: "+today_date,ln=1,align='L')
+        self.pdf.cell(30, 6, txt="Invoice No.:", ln=1, align='L')
+
+        y=self.pdf.get_y()
+        self.pdf.set_draw_color(255,0,0)
+        self.pdf.set_fill_color(255,0,0)
+        self.pdf.rect(0,y+2,220,.75,'DF')
+
+    def addFooter(self):
+        self.pdf.set_y(-28)
+        self.pdf.set_text_color(255, 0, 0)
+        self.pdf.set_font('Times', '', 8)
+        self.pdf.cell(0, 5,"Email: "+email+", Phone No.: "+phone, ln=1, align='C')
