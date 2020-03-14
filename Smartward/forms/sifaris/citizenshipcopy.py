@@ -23,7 +23,7 @@ table="citizenshipcopyRegistration"
 class Ui_RequestForCopyOfCitizenship(object):
     def setupUi(self, Requestforcopyofcitizenship):
         Requestforcopyofcitizenship.setObjectName("Requestforcopyofcitizenship")
-        Requestforcopyofcitizenship.resize(800, 600)
+        Requestforcopyofcitizenship.resize(888, 989)
         self.centralwidget = QtWidgets.QWidget(Requestforcopyofcitizenship)
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
