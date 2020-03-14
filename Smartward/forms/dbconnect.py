@@ -96,7 +96,7 @@ class database_signinwindow(database):
         self.mydb.commit()
         self.mycursor.close()
 
-class database_wardwindow(database):
+class database_registration(database):
     def __init__(self,hostname,user,dbase=database_name,pword=""):
         super().__init__(hostname, user, dbase, pword)
         self.mycursor = self.mydb.cursor()
@@ -151,3 +151,4 @@ class database_wardwindow(database):
 #a.addColumns("gshs","Ajh","sdkjjhv","hjgd")
 #print(a.getRowCount('RegDate','marriageregistration',"2076/01/%"))
 
+class
