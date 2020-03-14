@@ -24,9 +24,9 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>0</y>
-         <width>769</width>
-         <height>753</height>
+         <y>-227</y>
+         <width>780</width>
+         <height>852</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_2">
@@ -140,12 +140,17 @@
            <widget class="QComboBox" name="reasonOfRelocatedComboBox">
             <item>
              <property name="text">
-              <string>Job</string>
+              <string>job</string>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>Bussiness</string>
+              <string>bussiness</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>new house</string>
              </property>
             </item>
             <item>
@@ -157,56 +162,8 @@
           </item>
          </layout>
         </item>
-        <item row="7" column="0">
-         <layout class="QFormLayout" name="formLayout_3"/>
-        </item>
         <item row="6" column="0">
          <widget class="QTableWidget" name="tableWidget">
-          <row>
-           <property name="text">
-            <string>1</string>
-           </property>
-          </row>
-          <row>
-           <property name="text">
-            <string>2</string>
-           </property>
-          </row>
-          <row>
-           <property name="text">
-            <string>3</string>
-           </property>
-          </row>
-          <row>
-           <property name="text">
-            <string>4</string>
-           </property>
-          </row>
-          <row>
-           <property name="text">
-            <string>5</string>
-           </property>
-          </row>
-          <row>
-           <property name="text">
-            <string>6</string>
-           </property>
-          </row>
-          <row>
-           <property name="text">
-            <string>7</string>
-           </property>
-          </row>
-          <row>
-           <property name="text">
-            <string>8</string>
-           </property>
-          </row>
-          <row>
-           <property name="text">
-            <string>10</string>
-           </property>
-          </row>
           <column>
            <property name="text">
             <string>Birth certificate no</string>
@@ -215,16 +172,6 @@
           <column>
            <property name="text">
             <string>Full Name</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>Date Of Birth</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>Place of Birth</string>
            </property>
           </column>
           <column>
@@ -259,21 +206,24 @@
           <item row="0" column="0">
            <widget class="QLabel" name="registrationNoLabel_2">
             <property name="text">
-             <string>Registration No</string>
+             <string>&lt;b&gt;Registration No&lt;/b&gt;</string>
             </property>
            </widget>
           </item>
           <item row="0" column="1">
            <widget class="QLineEdit" name="registrationNoLineEdit_2"/>
           </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="familyRecordFormNoLabel">
+            <property name="text">
+             <string>&lt;b&gt;Family Record Form No</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLineEdit" name="familyRecordFormNoLineEdit"/>
+          </item>
          </layout>
-        </item>
-        <item row="5" column="0">
-         <widget class="QLabel" name="label_3">
-          <property name="text">
-           <string>Details Of The Person Relocated</string>
-          </property>
-         </widget>
         </item>
         <item row="2" column="0">
          <layout class="QFormLayout" name="formLayout">
@@ -352,6 +302,72 @@
            <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
           </property>
          </widget>
+        </item>
+        <item row="7" column="0">
+         <layout class="QFormLayout" name="formLayout_5">
+          <item row="0" column="0">
+           <widget class="QLabel" name="InformationProvidedByLabel">
+            <property name="text">
+             <string>&lt;b&gt;Information Provided By</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="nameLabel">
+            <property name="text">
+             <string>Name</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLineEdit" name="nameLineEdit"/>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="citizenshipCertificateNoLabel">
+            <property name="text">
+             <string>Citizenship Certificate No.</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QLineEdit" name="citizenshipCertificateNoLineEdit"/>
+          </item>
+         </layout>
+        </item>
+        <item row="5" column="0">
+         <layout class="QFormLayout" name="formLayout_3">
+          <item row="0" column="0">
+           <widget class="QLabel" name="bDetailsOfThePersonRelocatedLabel">
+            <property name="text">
+             <string>&lt;b&gt;Details Of The Person Relocated</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_4">
+            <item>
+             <spacer name="horizontalSpacer">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="addMore">
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
         </item>
        </layout>
       </widget>

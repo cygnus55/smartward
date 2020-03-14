@@ -1,16 +1,16 @@
+# -*- coding: utf-8 -*-
+
+# Form implementation generated from reading ui file 'incomesourcerecommendation.ui'
+#
+# Created by: PyQt5 UI code generator 5.13.1
+#
+# WARNING! All changes made in this file will be lost!
+
+
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import *
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
 
-import num2words
-import datetime
-import nepali_date
-import sw_string
-import pickle
-from sw_pdf import IncomeReco
 
-class Ui_incomereco(QWidget):
+class Ui_incomereco(object):
     def setupUi(self, incomereco):
         incomereco.setObjectName("incomereco")
         incomereco.resize(550, 500)
@@ -59,37 +59,30 @@ class Ui_incomereco(QWidget):
         self.formLayout.setLayout(5, QtWidgets.QFormLayout.FieldRole, self.horizontalLayout_2)
         self.gridLayout.addLayout(self.formLayout, 0, 0, 1, 1)
         self.buttonBox = QtWidgets.QDialogButtonBox(self.centralwidget)
-        self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel | QtWidgets.QDialogButtonBox.Ok)
+        self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
         self.buttonBox.setObjectName("buttonBox")
         self.gridLayout.addWidget(self.buttonBox, 3, 0, 1, 1)
         self.tableWidget = QtWidgets.QTableWidget(self.centralwidget)
         self.tableWidget.setObjectName("tableWidget")
-        self.tableWidget.setColumnCount(4)
+        self.tableWidget.setColumnCount(5)
         self.tableWidget.setRowCount(1)
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget.setVerticalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(0, item)
-        self.tableWidget.setColumnWidth(0, 25)
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(1, item)
-        self.tableWidget.setColumnWidth(1, 220)
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(2, item)
-        self.tableWidget.setColumnWidth(2, 100)
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(3, item)
-        self.tableWidget.setColumnWidth(3, 200)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(4, item)
         self.gridLayout.addWidget(self.tableWidget, 2, 0, 1, 1)
         incomereco.setCentralWidget(self.centralwidget)
 
-        self.pushButton.clicked.connect(self.addMoreDetail)
         self.retranslateUi(incomereco)
         QtCore.QMetaObject.connectSlotsByName(incomereco)
-
-    def addMoreDetail(self):
-        i=self.tableWidget.rowCount()
-        self.tableWidget.insertRow(i)
 
     def retranslateUi(self, incomereco):
         _translate = QtCore.QCoreApplication.translate
@@ -109,82 +102,6 @@ class Ui_incomereco(QWidget):
         item = self.tableWidget.horizontalHeaderItem(2)
         item.setText(_translate("incomereco", "Amount"))
         item = self.tableWidget.horizontalHeaderItem(3)
+        item.setText(_translate("incomereco", "Time"))
+        item = self.tableWidget.horizontalHeaderItem(4)
         item.setText(_translate("incomereco", "Remarks"))
-        self.nameLabel.setText(_translate("incomereco", "Name"))
-
-class ActualWork():
-    def __init__(self):
-        self.incomerecoForm = QtWidgets.QMainWindow()
-        self.ui = Ui_incomereco()
-        self.ui.setupUi(self.incomerecoForm)
-        self.incomerecoForm.show()
-        self.actualWork()
-
-    def actualWork(self):
-        self.ui.buttonBox.accepted.connect(self.submitform)
-        self.ui.buttonBox.rejected.connect(lambda: self.incomerecoForm.close())
-
-    def submitform(self):
-        self.getallvalues()
-
-    def getallvalues(self):
-        address=(
-            self.ui.wardNoLineEdit.text(),self.ui.municipalityLineEdit.text()
-        )
-        detailsofincome = [['SN', 'Details', 'Amount', 'Remarks']]
-        income = []
-        rows = self.ui.tableWidget.rowCount()
-        cols = self.ui.tableWidget.columnCount()
-        for r in range(0, rows):
-            row = []
-            income.append(int(self.ui.tableWidget.item(r,2).text()))
-            for c in range(0, cols):
-                try:
-                    i = self.ui.tableWidget.item(r, c)
-                    row.append(i.text())
-                except AttributeError:
-                    i = '-'
-                    row.append(i)
-            detailsofincome.append(row)
-        tabledata=detailsofincome
-        total=0
-        for amount in income:
-            total+=amount
-        totalincome=(total,num2words.num2words(total))
-        print(totalincome)
-        body=(self.ui.nameLineEdit.text(),self.ui.fatherNameLineEdit.text(),address[0],address[1])
-        rec=(body,tabledata)
-        self.writePickle(rec)
-
-
-    def writePickle(self, d):
-        with open("recommendation.pickle", "wb") as obj:
-            pickle.dump(d, obj)
-            obj.close()
-
-    def getCertificate(self):
-        QMessageBox.information(self.ui, "Migration Registration","Get Migration Registration Certificate.")
-        recommendation = IncomeReco()
-        f = open("recommendation.pickle", 'rb')
-        rec = pickle.load(f)
-        recommendation.setBody(rec[0])
-        recommendation.setTable(rec[1])
-        recommendation.output()
-        QMessageBox.information(self.ui, "Migration Registration", "Migration Reistration was Sucessful.")
-
-    def closeActualWork(self):
-        self.incomerecoForm.close()
-
-
-if __name__ == "__main__":
-    import sys
-
-    app = QtWidgets.QApplication(sys.argv)
-    aw = ActualWork()
-    '''
-    incomereco = QtWidgets.QMainWindow()
-    ui = Ui_incomereco()
-    ui.setupUi(incomereco)
-    incomereco.show()
-    '''
-    sys.exit(app.exec_())

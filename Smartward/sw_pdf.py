@@ -7,6 +7,7 @@ today_date=str(today)[3:]
 
 ward=open("ward.pickle",'rb')
 wardinfo=pickle.load(ward)
+print(wardinfo)
 municipality,address=wardinfo['municipality'],wardinfo['address']
 wardno,state=wardinfo['wardno'],wardinfo['state']
 email,mun_logo=wardinfo['email'] ,wardinfo['mun_logo']
@@ -48,9 +49,15 @@ class Certificate():
         self.pdf.set_font("Times",size=10)
         self.pdf.cell(180,8,txt=municipality,ln=1,align='C')
         self.pdf.cell(180,8,txt=address,ln=1,align="C")
-       
-	def output(self):
-        self.pdf.output("output/certificate.pdf")       
+
+    def getfromtxt(self,txt):
+        content=''
+        text=open(txt,'r')
+        txt=text.readlines()
+        return txt
+
+    def output(self):
+        self.pdf.output("output/certificate.pdf")
 
 
 
@@ -63,14 +70,7 @@ class BirthCertificate(Certificate):
         #self.getfromtxt('birthcertificate.txt')
         #self.setBody('fdsf')
 
-    def getfromtxt(self,txt):
-        content=''
-        text=open(txt,'r')
-        txt=text.readlines()
-        return txt
-
     def setBody(self,args):
-        print(args)
         contents=self.getfromtxt('txtfiles/birthcertificate.txt')
         #args=('12321','2056/09/03','4233','Ram Hari Khatiwada','Hari Krishna Ghimere','Tilak Ghimere','Sunita Ghimere','Ghana Shyam Ghimere','05','Namobuddha','2056/01/03','1997/05/09','Methinkot Hospital','2023/05/06','Kavre','23452','2030/06/09','Kavre','875683')
         #contents=content.format('12321','2056/09/03','4233','Ram Hari Khatiwada','Hari Krishna Ghimere','Tilak Ghimere','Sunita Ghimere','Ghana Shyam Ghimere','05','Namobuddha','2056/01/03','1997/05/09','Methinkot Hospital','2023/05/06','Kavre','23452','2030/06/09','Kavre','875683')
@@ -92,12 +92,6 @@ class MarriageCertificate(Certificate):
         #self.getfromtxt('Marriagecertificate.txt')
         #self.setBody('fdsf')
 
-    def getfromtxt(self,txt):
-        content=''
-        text=open(txt,'r')
-        txt=text.readlines()
-        return txt
-
     def setBody(self,args):
         print(args)
         contents=self.getfromtxt('txtfiles/marriagecertificate.txt')
@@ -116,21 +110,9 @@ class DeathCertificate(Certificate):
         super().__init__()
         self.pdf.set_font("Times",'BU',20)
         self.pdf.cell(180,8,txt='Death Registration Certificate',ln=1,align='C')
-        #self.setBody('12321','2056/09/03','4233','Ram Hari Khatiwada','Hari Krishna Ghimere','Tilak Ghimere','Sunita Ghimere','Ghana Shyam Ghimere','05','Namobuddha','2056/01/03','1997/05/09','Methinkot Hospital','2023/05/06','Kavre','23452','2030/06/09','Kavre','875683')
-        #self.getfromtxt('Marriagecertificate.txt')
-        #self.setBody('fdsf')
-
-    def getfromtxt(self,txt):
-        content=''
-        text=open(txt,'r')
-        txt=text.readlines()
-        return txt
 
     def setBody(self,args):
-        print(args)
         contents=self.getfromtxt('txtfiles/deathcertificate.txt')
-        #args=('12321','2056/09/03','4233','Ram Hari Khatiwada','Hari Krishna Ghimere','Tilak Ghimere','Sunita Ghimere','Ghana Shyam Ghimere','05','Namobuddha','2056/01/03','1997/05/09','Methinkot Hospital','2023/05/06','Kavre','23452','2030/06/09','Kavre','875683')
-        #contents=content.format('12321','2056/09/03','4233','Ram Hari Khatiwada','Hari Krishna Ghimere','Tilak Ghimere','Sunita Ghimere','Ghana Shyam Ghimere','05','Namobuddha','2056/01/03','1997/05/09','Methinkot Hospital','2023/05/06','Kavre','23452','2030/06/09','Kavre','875683')
         lines=[]
         for content in contents:
             lines.append(content.format(*args))
@@ -145,21 +127,10 @@ class DivorceCertificate(Certificate):
         super().__init__()
         self.pdf.set_font("Times",'BU',20)
         self.pdf.cell(180,8,txt='Divorce Registration Certificate',ln=1,align='C')
-        #self.setBody('12321','2056/09/03','4233','Ram Hari Khatiwada','Hari Krishna Ghimere','Tilak Ghimere','Sunita Ghimere','Ghana Shyam Ghimere','05','Namobuddha','2056/01/03','1997/05/09','Methinkot Hospital','2023/05/06','Kavre','23452','2030/06/09','Kavre','875683')
-        #self.getfromtxt('Marriagecertificate.txt')
-        #self.setBody('fdsf')
-
-    def getfromtxt(self,txt):
-        content=''
-        text=open(txt,'r')
-        txt=text.readlines()
-        return txt
 
     def setBody(self,args):
-        print(args)
+
         contents=self.getfromtxt('txtfiles/divorcecertificate.txt')
-        #args=('12321','2056/09/03','4233','Ram Hari Khatiwada','Hari Krishna Ghimere','Tilak Ghimere','Sunita Ghimere','Ghana Shyam Ghimere','05','Namobuddha','2056/01/03','1997/05/09','Methinkot Hospital','2023/05/06','Kavre','23452','2030/06/09','Kavre','875683')
-        #contents=content.format('12321','2056/09/03','4233','Ram Hari Khatiwada','Hari Krishna Ghimere','Tilak Ghimere','Sunita Ghimere','Ghana Shyam Ghimere','05','Namobuddha','2056/01/03','1997/05/09','Methinkot Hospital','2023/05/06','Kavre','23452','2030/06/09','Kavre','875683')
         lines=[]
         for content in contents:
             lines.append(content.format(*args))
@@ -173,21 +144,9 @@ class MigrationCertificate(Certificate):
         super().__init__()
         self.pdf.set_font("Times",'BU',20)
         self.pdf.cell(180,8,txt='Migration Registration Certificate',ln=1,align='C')
-        #self.setBody('12321','2056/09/03','4233','Ram Hari Khatiwada','Hari Krishna Ghimere','Tilak Ghimere','Sunita Ghimere','Ghana Shyam Ghimere','05','Namobuddha','2056/01/03','1997/05/09','Methinkot Hospital','2023/05/06','Kavre','23452','2030/06/09','Kavre','875683')
-        #self.getfromtxt('Marriagecertificate.txt')
-        #self.setBody('fdsf')
-
-    def getfromtxt(self,txt):
-        content=''
-        text=open(txt,'r')
-        txt=text.readlines()
-        return txt
 
     def setBody(self,args):
-        print(args)
-        contents=self.getfromtxt('migrationcertificate.txt')
-        #args=('12321','2056/09/03','4233','Ram Hari Khatiwada','Hari Krishna Ghimere','Tilak Ghimere','Sunita Ghimere','Ghana Shyam Ghimere','05','Namobuddha','2056/01/03','1997/05/09','Methinkot Hospital','2023/05/06','Kavre','23452','2030/06/09','Kavre','875683')
-        #contents=content.format('12321','2056/09/03','4233','Ram Hari Khatiwada','Hari Krishna Ghimere','Tilak Ghimere','Sunita Ghimere','Ghana Shyam Ghimere','05','Namobuddha','2056/01/03','1997/05/09','Methinkot Hospital','2023/05/06','Kavre','23452','2030/06/09','Kavre','875683')
+        contents=self.getfromtxt('txtfiles/migrationcertificate.txt')
         lines=[]
         for content in contents:
             lines.append(content.format(*args))
@@ -212,8 +171,14 @@ class Recommendation():
         self.addHeader()
         self.addFooter()
         
-   	def output(self):
+    def output(self):
         self.pdf.output("output/recommendationletter.pdf")
+
+    def getfromtxt(self,txt):
+        content=''
+        text=open(txt,'r')
+        txt=text.readlines()
+        return txt
 
     def addLogo(self):
         self.pdf.image(logo, 5, 5, 12.5*1.5, (24.67*1.5)/2)
@@ -247,3 +212,33 @@ class Recommendation():
         self.pdf.set_text_color(255, 0, 0)
         self.pdf.set_font('Times', '', 8)
         self.pdf.cell(0, 5,"Email: "+email+", Phone No.: "+phone, ln=1, align='C')
+
+class IncomeReco(Recommendation):
+    def __init__(self):
+        super().__init__()
+
+    def setBody(self, args):
+        contents = self.getfromtxt('txtfiles/incomereco.txt')
+        lines = []
+        for content in contents:
+            lines.append(content.format(*args))
+        for line in lines:
+            self.pdf.set_font('Times', size=10)
+            self.pdf.cell(1950, 8, txt=line, ln=1, align='L')
+
+    def setRegistrar(self):
+        self.pdf.set_font("Times", 'B', size=10)
+        self.pdf.cell(180, 8, txt="Verified By:", ln=1, align='L')
+        self.pdf.set_font("Times", size=10)
+        self.pdf.cell(180, 8, txt="Signature:", ln=1, align='L')
+        self.pdf.cell(180, 8, txt="Name and Surname: " + registrar_name, ln=1, align='L')
+        self.pdf.cell(180, 8, txt="Date: " + today_date, ln=1, align='L')
+
+    def setTable(self,data):
+        col_width = self.pdf.w / 5
+        row_height = self.pdf.font_size
+        for row in data:
+            for item in row:
+                self.pdf.cell(col_width, row_height * 1,txt=item, border=1)
+            self.pdf.ln(row_height * 1)
+        self.addFooter()
