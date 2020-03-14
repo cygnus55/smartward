@@ -158,9 +158,56 @@ class database_statwindow(database):
         except Exception as e:
             print(e)
 
+class database_receipt(database):
+    def __init__(self,hostname,user,dbase=database_name,pword=""):
+        super().__init__(hostname, user, dbase, pword)
+        self.mycursor = self.mydb.cursor()
+        self.mycursor.execute("USE {0}".format(dbase))
+        self.mydb.commit()
 
-#a=database_wardwindow("localhost","root","3zxc3")
-#a.createFormTable("gshs")
-#a.addColumns("gshs","Ajh","sdkjjhv","hjgd")
-#print(a.getRowCount('RegDate','marriageregistration',"2076/01/%"))
+    def createReceiptGenerateTable(self):
+        try:
+            sql="CREATE TABLE ReceiptGenerate (sn INTEGER(3) NOT NULL,details VARCHAR(15) NOT NULL,amount INTEGER(8) NOT NULL, PRIMARY KEY(sn)) ENGINE=InnoDB"
+            self.mycursor.execute(sql)
+            self.mydb.commit()
+        except Exception as e:
+            print(e)
+            return
 
+    def insertintoreceiptgenerate(self,data):
+        mycursor = self.mydb.cursor()
+        sql = "INSERT INTO ReceiptGenerate (sn,details,amount) VALUES (%s,%s,%s)"
+        val = (data[0],data[1],data[2])
+        mycursor.execute(sql, val)
+        self.mydb.commit()
+        mycursor.close()
+
+    def selectAmountfromReceiptGenerate(self):
+        sql = "SELECT amount FROM ReceiptGenerate"
+        self.mycursor.execute(sql)
+        amount=self.mycursor.fetchall()
+        total=0
+        for a in amount:
+            total+=a[0]
+        return total
+
+    def dropReceiptGenerate(self):
+        self.mycursor.execute('DROP TABLE ReceiptGenerate')
+        self.mydb.commit()
+
+    def createReceiptTable(self):
+        try:
+            sql="CREATE TABLE Receipt(date VARCHAR(15) NOT NULL,receiptno VARCHAR(13) NOT NULL,name VARCHAR(50) NOT NULL,amount INTEGER(8) NOT NULL, PRIMARY KEY(receiptno)) ENGINE=InnoDB"
+            self.mycursor.execute(sql)
+            self.mydb.commit()
+        except Exception as e:
+            print(e)
+            return
+
+    def insertintoreceipt(self,data):
+        mycursor = self.mydb.cursor()
+        sql = "INSERT INTO Receipt (date,receiptno,name,amount) VALUES (%s,%s,%s,%s)"
+        val = (data[0],data[1],data[2],data[3])
+        mycursor.execute(sql, val)
+        self.mydb.commit()
+        mycursor.close()

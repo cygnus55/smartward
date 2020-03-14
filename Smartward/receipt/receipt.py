@@ -1,29 +1,19 @@
-# -*- coding: utf-8 -*-
-
-# Form implementation generated from reading ui file 'receipt.ui'
-#
-# Created by: PyQt5 UI code generator 5.13.2
-#
-# WARNING! All changes made in this file will be lost!
-
-
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 
-import datetime
+import pickle
 import nepali_date
 import sw_string
-import inflect
-table="ReceiptRegistration"
+import num2words
+from sw_pdf import Receipt
 
 
-
-class Ui_Receiptwindow(object):
+class Ui_Receiptwindow(QWidget):
     def setupUi(self, Receiptwindow):
         Receiptwindow.setObjectName("Receiptwindow")
-        Receiptwindow.resize(800, 600)
+        Receiptwindow.resize(488, 429)
         self.centralwidget = QtWidgets.QWidget(Receiptwindow)
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
@@ -32,7 +22,7 @@ class Ui_Receiptwindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 776, 576))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 468, 409))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.gridLayout_2 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents)
         self.gridLayout_2.setObjectName("gridLayout_2")
@@ -56,41 +46,58 @@ class Ui_Receiptwindow(object):
         self.tableWidget = QtWidgets.QTableWidget(self.scrollAreaWidgetContents)
         self.tableWidget.setObjectName("tableWidget")
         self.tableWidget.setColumnCount(3)
-        self.tableWidget.setRowCount(3)
+        self.tableWidget.setRowCount(1)
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget.setVerticalHeaderItem(0, item)
+        self.tableWidget.setColumnWidth(0,15)
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget.setVerticalHeaderItem(1, item)
+        self.tableWidget.setColumnWidth(1, 300)
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget.setVerticalHeaderItem(2, item)
         item = QtWidgets.QTableWidgetItem()
+        self.tableWidget.setColumnWidth(2,88)
         self.tableWidget.setHorizontalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(1, item)
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(2, item)
-        self.formLayout_2.setWidget(0, QtWidgets.QFormLayout.SpanningRole, self.tableWidget)
+        self.formLayout_2.setWidget(1, QtWidgets.QFormLayout.SpanningRole, self.tableWidget)
         self.totalLabel = QtWidgets.QLabel(self.scrollAreaWidgetContents)
         self.totalLabel.setObjectName("totalLabel")
-        self.formLayout_2.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.totalLabel)
+        self.formLayout_2.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.totalLabel)
         self.label_2 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.label_2.setText("")
         self.label_2.setObjectName("label_2")
-        self.formLayout_2.setWidget(2, QtWidgets.QFormLayout.SpanningRole, self.label_2)
+        self.formLayout_2.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.label_2)
         self.label = QtWidgets.QLabel(self.scrollAreaWidgetContents)
         self.label.setObjectName("label")
         self.formLayout_2.setWidget(3, QtWidgets.QFormLayout.LabelRole, self.label)
         self.label_3 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.label_3.setText("")
         self.label_3.setObjectName("label_3")
-        self.formLayout_2.setWidget(4, QtWidgets.QFormLayout.SpanningRole, self.label_3)
+        self.formLayout_2.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.label_3)
+        spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.formLayout_2.setItem(4, QtWidgets.QFormLayout.FieldRole, spacerItem)
         self.buttonBox = QtWidgets.QDialogButtonBox(self.scrollAreaWidgetContents)
         self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
         self.buttonBox.setObjectName("buttonBox")
-        self.formLayout_2.setWidget(5, QtWidgets.QFormLayout.LabelRole, self.buttonBox)
-        self.gridLayout_2.addLayout(self.formLayout_2, 1, 0, 1, 1)
+        self.formLayout_2.setWidget(5, QtWidgets.QFormLayout.FieldRole, self.buttonBox)
+        self.horizontalLayout = QtWidgets.QHBoxLayout()
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem1)
+        self.pushButton = QtWidgets.QPushButton(self.scrollAreaWidgetContents)
+        self.pushButton.setObjectName("pushButton")
+        self.horizontalLayout.addWidget(self.pushButton)
+        self.formLayout_2.setLayout(0, QtWidgets.QFormLayout.FieldRole, self.horizontalLayout)
+        self.gridLayout_2.addLayout(self.formLayout_2, 3, 0, 1, 1)
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.gridLayout.addWidget(self.scrollArea, 0, 0, 1, 1)
         Receiptwindow.setCentralWidget(self.centralwidget)
 
+        Receiptwindow.setMinimumSize(500,430)
+        Receiptwindow.setMaximumSize(500,430)
         self.retranslateUi(Receiptwindow)
         QtCore.QMetaObject.connectSlotsByName(Receiptwindow)
 
@@ -105,71 +112,103 @@ class Ui_Receiptwindow(object):
         item.setText(_translate("Receiptwindow", "Description"))
         item = self.tableWidget.horizontalHeaderItem(2)
         item.setText(_translate("Receiptwindow", "Amount"))
-        self.totalLabel.setText(_translate("Receiptwindow", "Total"))
-        self.label_2.setText(_translate("Receiptwindow", ""))
-        self.label.setText(_translate("Receiptwindow", "Amount In word"))
-        self.label_3.setText(_translate("Receiptwindow", " "))
+        self.totalLabel.setText(_translate("Receiptwindow", "<b>Total:"))
+        self.label.setText(_translate("Receiptwindow", "<b>Amount In word:"))
+        self.pushButton.setText(_translate("Receiptwindow", "Add"))
+
+
 class ActualWork():
     def __init__(self):
         import dbconnect
-        self.db = dbconnect.database_wardwindow("localhost", "root")
+        self.db = dbconnect.database_receipt("localhost", "root")
+        self.db.createReceiptGenerateTable()
         self.receiptForm = QtWidgets.QMainWindow()
         self.ui = Ui_Receiptwindow()
         self.ui.setupUi(self.receiptForm)
         self.receiptForm.show()
         self.actualWork()
+
+    def addMore(self):
+        if(self.addToReceiptGenerate()):
+            i = self.ui.tableWidget.rowCount()
+            self.ui.tableWidget.insertRow(i)
+        self.showTotal()
+
+    def addToReceiptGenerate(self):
+        row = self.ui.tableWidget.rowCount()
+        cols = self.ui.tableWidget.columnCount()
+        rowdata=[]
+        for c in range(0,cols):
+            data=self.ui.tableWidget.item(row-1,c).text()
+            try:
+                if c==0 or c==2 :
+                    data=int(data)
+                rowdata.append(data)
+            except Exception as e:
+                    QMessageBox.warning(self.ui,"Receipt","Invalid Amount")
+                    rowdata.pop(row-1)
+                    return False
+        self.db.insertintoreceiptgenerate(rowdata)
+        return True
+
+    def showTotal(self):
+        total=self.db.selectAmountfromReceiptGenerate()
+        self.ui.label_2.setText("Rs. "+str(total)+"/-")
+        self.ui.label_3.setText("Rs. "+num2words.num2words(total).title()+" Only.")
+
     def actualWork(self):
-        self.ui.buttonBox.accepted.connect(self.submitform)
+        self.ui.pushButton.clicked.connect(self.addMore)
+        self.ui.buttonBox.accepted.connect(self.operateReceipt)
         self.ui.buttonBox.rejected.connect(lambda: self.receiptForm.close())
 
-    def submitform(self):
-        self.values = self.getallvalues()
-        a = sw_string.generateList(**self.values)
-        self.db.createFormTable(table)
-        self.db.addColumns(table, a[4], a[6],a[8],a[10])
-        self.db.insertValues(table, a)
-    def getallvalues(self):
-        self.receiptNo=self.ui.receiptNoLineEdit.text()
-        self.name=self.ui.nameLineEdit.text()
-        today = nepali_date.NepaliDate.today()
-        registrationdate = str(today)[3:]
-        detailsofreceipt=[['SN','Description','Amount']]
-        a=0
-        for r in range(0,3):
-            row=[]
-            for c in range(0,3):
+    def printReceipt(self):
+        rows = self.ui.tableWidget.rowCount()
+        cols = self.ui.tableWidget.columnCount()
+        detailsofreceipt= [['S.N.','Details','Amount']]
+        for r in range(0, rows):
+            row = []
+            for c in range(0, cols):
                 try:
-                    i=self.ui.tableWidget.item(r,c)
-                    b=self.ui.tableWidget.item(r,2).text()
-                    a=int(b)+a
+                    i = self.ui.tableWidget.item(r, c)
                     row.append(i.text())
                 except AttributeError:
-                    i='-'
+                    i = '-'
                     row.append(i)
             detailsofreceipt.append(row)
-        print (a)
-        self.total=self.ui.label_2.setText(str(a))
-        p= inflect. engine()
-        amount= p. number_to_words(self.total)
-        self.amountinword=self.ui.label_3.setText(amount)
-        return {"RegDate": registrationdate, "receiptno":self.receiptNo,"name":self.name,"receiptdetail":str(detailsofreceipt),"total":str(self.total),"amount inword":str(self.amountinword)}
-                    
+        tabledata = detailsofreceipt
+        receiptno = self.ui.receiptNoLineEdit.text()
+        name = self.ui.nameLineEdit.text()
+        total = (str(self.ui.label_2.text()),self.ui.label_3.text())
+        body=(receiptno,name,total)
+        receipt=(body,tabledata)
+        #print receipt
+        rcp=Receipt()
+        rcp.setBody(receipt)
+        rcp.output()
+        QMessageBox.information(self.ui,"Receipt","Sucessful")
 
-        
-        
-        
-            
-        
+    def operateReceipt(self):
+        self.printReceipt()
+        self.db.dropReceiptGenerate()
+        self.db.createReceiptTable()
+        today = nepali_date.NepaliDate.today()
+        today_date = str(today)[3:]
+        receiptno=self.ui.receiptNoLineEdit.text()
+        name=self.ui.nameLineEdit.text()
+        total=str(self.ui.label_2.text())
+        totalamount=int(total[4:len(total)-2])
+        rowdata=(today_date,receiptno,name,totalamount)
+        self.db.insertintoreceipt(rowdata)
+
     def closeActualWork(self):
         self.receiptForm.close()
-
-        
 
 
 if __name__ == "__main__":
     import sys
+
     app = QtWidgets.QApplication(sys.argv)
-    aw=ActualWork()
+    aw = ActualWork()
     '''
     Receiptwindow = QtWidgets.QMainWindow()
     ui = Ui_Receiptwindow()
