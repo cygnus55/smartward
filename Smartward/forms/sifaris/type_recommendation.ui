@@ -44,8 +44,8 @@
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>15</x>
-      <y>15</y>
+      <x>790</x>
+      <y>40</y>
       <width>106</width>
       <height>31</height>
      </rect>
@@ -58,9 +58,9 @@
     <property name="geometry">
      <rect>
       <x>15</x>
-      <y>60</y>
+      <y>114</y>
       <width>886</width>
-      <height>16777215</height>
+      <height>16777161</height>
      </rect>
     </property>
     <property name="font">
@@ -90,6 +90,28 @@
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>80</y>
+      <width>881</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>&lt;b&gt;Subject of Recommendation Letter</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="subject"/>
+     </item>
+    </layout>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -97,7 +119,7 @@
      <x>0</x>
      <y>0</y>
      <width>921</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>
