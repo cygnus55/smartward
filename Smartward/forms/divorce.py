@@ -460,7 +460,7 @@ class Ui_DivorceForm(object):
 
     def retranslateUi(self, DivorceForm):
         _translate = QtCore.QCoreApplication.translate
-        DivorceForm.setWindowTitle(_translate("DivorceForm", "Divorce Registration"))
+        DivorceForm.setWindowTitle(_translate("DivorceForm", "Divorce Registration Form"))
         self.label_2.setText(_translate("DivorceForm", "<b>Details Of Wife And Husband</b>"))
         self.label.setText(_translate("DivorceForm", "<b>Details Regarding The Separation</b>"))
         self.TypeOfCourtLabel.setText(_translate("DivorceForm", "The type of court that decides separation"))

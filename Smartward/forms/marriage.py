@@ -456,14 +456,14 @@ class Ui_MarriageForm(QWidget):
         self.horizontalLayout_2.addWidget(self.scrollArea)
         MarriageForm.setCentralWidget(self.centralwidget)
 
-        self.marriageTypeComboBox.addItems(['social tradition', 'Marriage Registration Act 2028'])
+        self.marriageTypeComboBox.addItems(['Social tradition', 'Marriage Registration Act 2028'])
 
         self.retranslateUi(MarriageForm)
         QtCore.QMetaObject.connectSlotsByName(MarriageForm)
 
     def retranslateUi(self, MarriageForm):
         _translate = QtCore.QCoreApplication.translate
-        MarriageForm.setWindowTitle(_translate("MarriageForm", "Marriage Form"))
+        MarriageForm.setWindowTitle(_translate("MarriageForm", "Marriage Registration Form"))
         self.label_6.setText(_translate("MarriageForm", "<b>Details Of Spouse</b>"))
         self.label.setText(_translate("MarriageForm", "<b>Details Of Marriage</b>"))
         self.marriageTypeLabel.setText(_translate("MarriageForm", "Marriage Type"))

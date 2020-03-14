@@ -13,7 +13,7 @@ from sw_pdf import IncomeReco
 class Ui_incomereco(QWidget):
     def setupUi(self, incomereco):
         incomereco.setObjectName("incomereco")
-        incomereco.resize(550, 500)
+        incomereco.resize(888, 989)
         incomereco.setMinimumSize(QtCore.QSize(550, 500))
         incomereco.setMaximumSize(QtCore.QSize(550, 500))
         self.centralwidget = QtWidgets.QWidget(incomereco)
