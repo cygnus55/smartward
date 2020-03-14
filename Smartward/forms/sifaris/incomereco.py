@@ -126,6 +126,7 @@ class ActualWork():
 
     def submitform(self):
         self.getallvalues()
+        self.getRecommendation()
 
     def getallvalues(self):
         address=(
@@ -151,9 +152,8 @@ class ActualWork():
         for amount in income:
             total+=amount
         totalincome=(total,num2words.num2words(total))
-        print(totalincome)
         body=(self.ui.nameLineEdit.text(),self.ui.fatherNameLineEdit.text(),address[0],address[1])
-        rec=(body,tabledata)
+        rec=(body,tabledata,totalincome)
         self.writePickle(rec)
 
 
@@ -162,15 +162,17 @@ class ActualWork():
             pickle.dump(d, obj)
             obj.close()
 
-    def getCertificate(self):
-        QMessageBox.information(self.ui, "Migration Registration","Get Migration Registration Certificate.")
+    def getRecommendation(self):
+        QMessageBox.information(self.ui, "Income Recommendation","Get Income Recommendation Letter.")
         recommendation = IncomeReco()
         f = open("recommendation.pickle", 'rb')
         rec = pickle.load(f)
+        print(rec[0])
         recommendation.setBody(rec[0])
         recommendation.setTable(rec[1])
+        recommendation.setTotalIncome(rec[2])
         recommendation.output()
-        QMessageBox.information(self.ui, "Migration Registration", "Migration Reistration was Sucessful.")
+        QMessageBox.information(self.ui, "Income Recommendation", "Income Recommendation was Sucessful.")
 
     def closeActualWork(self):
         self.incomerecoForm.close()

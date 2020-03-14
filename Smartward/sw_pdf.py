@@ -169,16 +169,10 @@ class Recommendation():
         self.pdf=FPDF()
         self.pdf.add_page()
         self.addHeader()
-        self.addFooter()
+        #self.addFooter()
         
     def output(self):
         self.pdf.output("output/recommendationletter.pdf")
-
-    def getfromtxt(self,txt):
-        content=''
-        text=open(txt,'r')
-        txt=text.readlines()
-        return txt
 
     def addLogo(self):
         self.pdf.image(logo, 5, 5, 12.5*1.5, (24.67*1.5)/2)
@@ -186,6 +180,12 @@ class Recommendation():
             self.pdf.image(mun_logo,185,5,18.75,18.5625)
         except Exception:
             pass
+
+    def getfromtxt(self,txt):
+        text=open(txt,'r')
+        txt=text.readlines()
+        print (txt)
+        return txt
 
     def addHeader(self):
         self.addLogo()
@@ -218,13 +218,16 @@ class IncomeReco(Recommendation):
         super().__init__()
 
     def setBody(self, args):
-        contents = self.getfromtxt('txtfiles/incomereco.txt')
-        lines = []
-        for content in contents:
-            lines.append(content.format(*args))
-        for line in lines:
-            self.pdf.set_font('Times', size=10)
-            self.pdf.cell(1950, 8, txt=line, ln=1, align='L')
+        self.pdf.set_text_color(0, 0, 0)
+        y=self.pdf.get_y()
+        self.pdf.set_y(y+5)
+        self.pdf.set_font("Times", size=10)
+        self.pdf.cell(180, 8, txt="Subject:Source of Income", ln=1, align='L')
+        self.pdf.cell(180, 8, txt="To whom it may concern", ln=1, align='L')
+        text='This is to certify that Mr. {0},son of {1}, permanent resident of'.format(*args)
+        self.pdf.cell(180, 8, txt=text, ln=1, align='L')
+        text ='ward no. {2}, {3} municipality has a following annual income of different sources as shown below.'.format(*args)
+        self.pdf.cell(180, 8, txt=text, ln=1, align='L')
 
     def setRegistrar(self):
         self.pdf.set_font("Times", 'B', size=10)
@@ -233,12 +236,22 @@ class IncomeReco(Recommendation):
         self.pdf.cell(180, 8, txt="Signature:", ln=1, align='L')
         self.pdf.cell(180, 8, txt="Name and Surname: " + registrar_name, ln=1, align='L')
         self.pdf.cell(180, 8, txt="Date: " + today_date, ln=1, align='L')
+        self.addFooter()
 
     def setTable(self,data):
+        self.pdf.set_draw_color(0, 0, 0)
+        self.pdf.set_fill_color(0, 0, 0)
         col_width = self.pdf.w / 5
         row_height = self.pdf.font_size
         for row in data:
             for item in row:
                 self.pdf.cell(col_width, row_height * 1,txt=item, border=1)
             self.pdf.ln(row_height * 1)
-        self.addFooter()
+
+    def setTotalIncome(self,data):
+        self.pdf.cell(180, 8, txt="", ln=1, align='L')
+        self.pdf.set_font("Times",'BU', size=10)
+        self.pdf.cell(180, 8, txt="Total Income:", ln=1, align='L')
+        self.pdf.cell(180, 8, txt="In Figure: "+str(data[0]), ln=1, align='L')
+        self.pdf.cell(180, 8, txt="In Words: Rs. "+data[1].title()+" Only.", ln=1, align='L')
+        self.setRegistrar()
