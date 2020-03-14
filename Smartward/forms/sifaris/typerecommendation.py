@@ -6,10 +6,12 @@ from PyQt5.QtGui import *
 import datetime
 import nepali_date
 import sw_string
+from sw_pdf import TypeRecommendation
 
-class Ui_TypeReco(object):
+class Ui_TypeReco(QWidget):
     def setupUi(self, TypeReco):
         TypeReco.setObjectName("TypeReco")
+        TypeReco.setEnabled(True)
         TypeReco.resize(921, 728)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -22,10 +24,10 @@ class Ui_TypeReco(object):
         self.centralwidget = QtWidgets.QWidget(TypeReco)
         self.centralwidget.setObjectName("centralwidget")
         self.pushButton = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton.setGeometry(QtCore.QRect(15, 15, 106, 31))
+        self.pushButton.setGeometry(QtCore.QRect(790, 40, 106, 31))
         self.pushButton.setObjectName("pushButton")
         self.textEdit = QtWidgets.QTextEdit(self.centralwidget)
-        self.textEdit.setGeometry(QtCore.QRect(15, 60, 886, 16777215))
+        self.textEdit.setGeometry(QtCore.QRect(15, 114, 886, 16777161))
         font = QtGui.QFont()
         font.setPointSize(14)
         self.textEdit.setFont(font)
@@ -37,9 +39,21 @@ class Ui_TypeReco(object):
         self.label.setFont(font)
         self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName("label")
+        self.widget = QtWidgets.QWidget(self.centralwidget)
+        self.widget.setGeometry(QtCore.QRect(20, 80, 881, 27))
+        self.widget.setObjectName("widget")
+        self.horizontalLayout = QtWidgets.QHBoxLayout(self.widget)
+        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.label_2 = QtWidgets.QLabel(self.widget)
+        self.label_2.setObjectName("label_2")
+        self.horizontalLayout.addWidget(self.label_2)
+        self.subject = QtWidgets.QLineEdit(self.widget)
+        self.subject.setObjectName("subject")
+        self.horizontalLayout.addWidget(self.subject)
         TypeReco.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(TypeReco)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 921, 21))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 921, 22))
         self.menubar.setObjectName("menubar")
         TypeReco.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(TypeReco)
@@ -54,9 +68,11 @@ class Ui_TypeReco(object):
         TypeReco.setWindowTitle(_translate("TypeReco", "Type Recommendation Letter"))
         self.pushButton.setText(_translate("TypeReco", "Save"))
         self.label.setText(_translate("TypeReco", "<b>Type Recommendation Letter</b>"))
+        self.label_2.setText(_translate("TypeReco", "<b>Subject of Recommendation Letter"))
 
 class ActualWork():
     def __init__(self):
+        print("hhsgdfjs")
         self.typerecowindow = QtWidgets.QMainWindow()
         self.ui = Ui_TypeReco()
         self.ui.setupUi(self.typerecowindow)
@@ -65,14 +81,18 @@ class ActualWork():
 
     def save(self):
         reco_text=self.ui.textEdit.toPlainText()
-        print(reco_text)
-        print(type(reco_text))
-        '''
-        with open('output.txt','w+') as f: 
-            f.write()
+        with open('newrecommendation.txt','w') as f:
+            f.write(reco_text)
             f.close()
-            '''
         print('file created')
+        self.getRecommendation()
+
+    def getRecommendation(self):
+        recommendation = TypeRecommendation()
+        recommendation.setSubject(self.ui.subject.text())
+        recommendation.setBody()
+        recommendation.output()
+        QMessageBox.information(self.ui, "Recommendation Letter", "Recommendation letter was sucessfully created.")
 
 if __name__ == "__main__":
     import sys
