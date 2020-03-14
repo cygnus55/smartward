@@ -7,7 +7,7 @@ today_date=str(today)[3:]
 
 ward=open("ward.pickle",'rb')
 wardinfo=pickle.load(ward)
-print(wardinfo)
+ward.close()
 municipality,address=wardinfo['municipality'],wardinfo['address']
 wardno,state=wardinfo['wardno'],wardinfo['state']
 email,mun_logo=wardinfo['email'] ,wardinfo['mun_logo']
@@ -17,6 +17,7 @@ phone,registrar_name=wardinfo['phone'],wardinfo['registrar_name']
 logo="logo.png"
 cOutput="output/certificate.pdf"
 rOutput="output/recommendationletter.pdf"
+rcpOutput="output/receipt.pdf"
 
 class Certificate():
     def __init__(self):
@@ -276,3 +277,59 @@ class TypeRecommendation(Recommendation):
             self.pdf.set_font('Times', size=10)
             self.pdf.cell(1950, 8, txt=line, ln=1, align='L')
         self.setRegistrar()
+
+class Receipt():
+    def __init__(self):
+        self.pdf = FPDF()
+        self.pdf.add_page()
+        self.addHeader()
+
+    def addHeader(self):
+        self.pdf.set_text_color(255, 0, 0)
+        self.pdf.set_font("Times", size=18)
+        self.pdf.cell(180, 6, txt=municipality.title() + " Municipality", ln=1,align='C')
+        self.pdf.set_font("Times", size=14)
+        self.pdf.cell(180, 6, txt="Ward No. "+wardno+" Office", ln=1, align='C')
+        self.pdf.set_font("Times", size=10)
+        self.pdf.cell(180, 6, txt=address, ln=1, align='C')
+        self.pdf.cell(180, 6, txt="State No. "+state+", Nepal", ln=1, align='C')
+
+    def setBody(self,data):
+        self.pdf.set_text_color(0, 0, 0)
+        self.pdf.set_font("Times",'B',size=10)
+        self.pdf.cell(180, 6, txt="Receipt No.: "+data[0][0],align='L')
+        self.pdf.set_x(175)
+        self.pdf.cell(30, 6, txt="Date: " + today_date, ln=1, align='L')
+        self.pdf.cell(180, 6, txt="Name: " + data[0][1], ln=1, align='L')
+        self.setTable(data[1])
+        self.setIncome(data[0][2])
+        self.setRegistrar()
+
+    def setTable(self,data):
+        self.pdf.set_draw_color(0, 0, 0)
+        self.pdf.set_fill_color(0, 0, 0)
+        col_width = self.pdf.w / 5
+        row_height = self.pdf.font_size
+        for row in data:
+            for item in row:
+                self.pdf.cell(col_width, row_height * 1,txt=item, border=1)
+            self.pdf.ln(row_height * 1)
+
+    def setIncome(self,data):
+        self.pdf.cell(180, 8, txt="", ln=1, align='L')
+        self.pdf.set_font("Times", 'BU', size=10)
+        self.pdf.cell(180, 8, txt="Total Income:", ln=1, align='L')
+        self.pdf.cell(180, 8, txt="In Figure: " + str(data[0]), ln=1, align='L')
+        self.pdf.cell(180, 8, txt="In Words: Rs. " + data[1].title() + " Only.", ln=1, align='L')
+
+    def setRegistrar(self):
+        self.pdf.set_text_color(0, 0, 0)
+        self.pdf.set_font("Times", 'B', size=10)
+        self.pdf.cell(180, 8, txt="Received By:", ln=1, align='L')
+        self.pdf.set_font("Times", size=10)
+        self.pdf.cell(180, 8, txt="Signature:", ln=1, align='L')
+        self.pdf.cell(180, 8, txt="Name and Surname: " + registrar_name, ln=1, align='L')
+        self.pdf.cell(180, 8, txt="Date: " + today_date, ln=1, align='L')
+
+    def output(self):
+        self.pdf.output('receipt.pdf')
