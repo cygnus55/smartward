@@ -17,9 +17,14 @@ from forms import marriage
 from forms import birth
 from forms import death
 from forms import divorce
+from forms import migration
 #importing citizenship related forms
 from forms.sifaris import citizenshiprequest
 from forms.sifaris import citizenshipcopy
+#importing recommendation forms
+from forms.sifaris import gharbato
+from forms.sifaris import incomereco
+from forms.sifaris import typerecommendation
 
 myemail=SWGmail()
 
@@ -136,7 +141,7 @@ class Ui_WardWindow(QWidget):
                 if not isEmpty(ward[key]):
                     read[key]=ward[key]
                     print("{} changed.".format(key))
-            read['id']=generateID(read['municipality'],read['wardno'],read['state'])
+            #read['id']=generateID(read['municipality'],read['wardno'],read['state'])#not necessary
             print("Id changed: {}".format(read['id']))
             with open("ward.pickle",'wb') as f:
                     pickle.dump(read,f)
@@ -263,6 +268,7 @@ class Ui_WardWindow(QWidget):
             #migration registration
             #new Window-migration reg. form
             if (check_registrar()):
+                self.migration_form=migration.ActualWork()
                 print("migration registration")
         
         def citizenship_request():
@@ -274,6 +280,21 @@ class Ui_WardWindow(QWidget):
             if (check_registrar()):
                 cit_copy=citizenshipcopy.ActualWork()
                 print("citizenship copy form")
+
+        def gharbato_reco():
+            if (check_registrar()):
+                gharbato_form=gharbato.ActualWork()
+                print("gharbaato recommendation form")
+        
+        def income_reco():
+            if (check_registrar()):
+                income_reco_form=incomereco.ActualWork()
+                print("income recommendation form")
+        
+        def type_recommendation():
+            if (check_registrar()):
+                type_reco_form=typerecommendation.ActualWork()
+                print("type recommendation form")
 
         def statistics_show(name,table_name):
             #self.stat_window=graph.StatWindow()
@@ -292,6 +313,12 @@ class Ui_WardWindow(QWidget):
         self.browse.clicked.connect(on_browse_clicked)
         self.update_registrar_button.clicked.connect(on_registrar_update_clicked)
         self.remove_registrar_button.clicked.connect(on_remove_registrar_clicked)
+        
+        sifaris_menu=QtWidgets.QMenu()
+        sifaris_menu.addAction("Gharbato Recommendation Form",gharbato_reco)
+        sifaris_menu.addAction("Income Source Recommendation Form",income_reco)
+        sifaris_menu.addAction("Type recommendation Form",type_recommendation)
+        self.sifarish_button.setMenu(sifaris_menu)
         
         citizenship_menu=QtWidgets.QMenu()
         citizenship_menu.addAction("Citizenship request",citizenship_request)
@@ -676,12 +703,12 @@ class Ui_WardWindow(QWidget):
         self.remove_registrar_button.setText(_translate("WardWindow", "Remove Local Registrar"))
 import sw_rc
 
-if __name__=="__main__":            
+if __name__=="__main__":
     import sys
-    app = QtWidgets.QApplication(sys.argv)    
+    app = QtWidgets.QApplication(sys.argv)
     WardWindow = QtWidgets.QMainWindow()
     ui = Ui_WardWindow()
     ui.setupUi(WardWindow)
-    WardWindow.show()      
+    WardWindow.show()
     sys.exit(app.exec_())
 
