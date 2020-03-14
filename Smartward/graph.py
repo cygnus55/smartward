@@ -45,21 +45,24 @@ class Ui_StatWindow(object):
             define_dropdown(year)
             x_axis=list(range(1,11))
             x__axis=[]
+            x_labels=[]
             today = NepaliDate.today()
             this_year=int(today.year)
             for i in range(this_year-9,this_year+1):
                 date=NepaliDate(i,1,1)
                 x__axis.append(date.strfdate('%Y/%'))
+                x_labels.append(date.strfdate('%Y'))
             y_axis=[]
             for x in x__axis:
                 y_axis.append(db.getRowCount('RegDate',self.table_name,x))
             
             print(y_axis)
-            year.axes.cla
             year.axes.plot(x_axis,y_axis)
             year.axes.set_title("{0} by {1}".format(self.name,"Year"))
             year.axes.set_xlabel("Year")
             year.axes.set_ylabel("No. of {}".format(self.name))
+            #year.axes.set_xscale()
+            #year.axes.set_xticklabels(x_labels)
             MainWindow.setCentralWidget(year)
 
         def plot_month():
@@ -77,14 +80,13 @@ class Ui_StatWindow(object):
                 y_axis.append(db.getRowCount('RegDate',self.table_name,x))
             
             print(y_axis)
-            month.axes.cla
             month.axes.plot(x_axis,y_axis)
             month.axes.set_title("{0} by {1}".format(self.name,"Month"))
             month.axes.set_xlabel("Month")
             month.axes.set_ylabel("No. of {}".format(self.name))
             MainWindow.setCentralWidget(month)
 
-        def plot_day():            
+        def plot_day():
             print("Day")
             day = MplCanvas(self, width=5, height=4, dpi=100)
             define_dropdown(day)
@@ -92,6 +94,7 @@ class Ui_StatWindow(object):
             x__axis=[]
             this_year=NepaliDate.today().year
             this_month=NepaliDate.today().month
+            print(this_month)
             for x in range(1,33):
                 try:
                     date=NepaliDate(this_year,this_month,x)
@@ -105,7 +108,6 @@ class Ui_StatWindow(object):
                 y_axis.append(db.getRowCount('RegDate',self.table_name,x))
             
             print(y_axis)
-            day.axes.cla
             day.axes.plot(x_axis,y_axis)
             day.axes.set_title("{0} by {1}".format(self.name,"Day"))
             day.axes.set_xlabel("Day")
@@ -127,7 +129,7 @@ class Ui_StatWindow(object):
 if __name__=="__main__":
     app = QtWidgets.QApplication(sys.argv)
     StatWindow=QtWidgets.QMainWindow()
-    window = Ui_StatWindow("Death","deathregistration")
+    window = Ui_StatWindow("Birth","birthregistration")
     window.setupUi(StatWindow)
     StatWindow.show()
     app.exec_()
