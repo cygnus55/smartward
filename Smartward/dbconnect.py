@@ -163,7 +163,8 @@ class database_statwindow(database):
                 return len(rows)
             return 0
         except Exception as e:
-            print(e)
+            #print(e)
+            return 0
 
 class database_receipt(database):
     def __init__(self,hostname,user,dbase=database_name,pword=""):
@@ -228,7 +229,8 @@ class database_receipt(database):
                 return len(rows)
             return 0
         except Exception as e:
-            print(e)
+            #print(e)
+            return 0
 
     def getAmount(self,date):
         try:
@@ -242,7 +244,8 @@ class database_receipt(database):
                 return total
             return 0
         except Exception as e:
-            print(e)
+            #print(e)
+            return 0
 
 #a=database_receipt("localhost", "root")
 #print(a.getRowCount('2076/12/%'))
