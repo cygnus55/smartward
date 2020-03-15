@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>639</width>
-    <height>482</height>
+    <width>713</width>
+    <height>583</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -25,42 +25,18 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>615</width>
-         <height>458</height>
+         <width>693</width>
+         <height>563</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_2">
-        <item row="0" column="0">
-         <layout class="QFormLayout" name="formLayout_2">
-          <item row="0" column="0">
-           <widget class="QLabel" name="registrationNoLabel">
-            <property name="text">
-             <string>Registration no</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1">
-           <widget class="QLineEdit" name="registrationNoLineEdit"/>
-          </item>
-         </layout>
-        </item>
-        <item row="2" column="0">
+        <item row="1" column="0">
          <widget class="QTableWidget" name="tableWidget">
           <row>
            <property name="text">
             <string/>
            </property>
           </row>
-          <column>
-           <property name="text">
-            <string>Municipality/Rural Municipality</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>Ward No.</string>
-           </property>
-          </column>
           <column>
            <property name="text">
             <string>Kitta No.</string>
@@ -88,12 +64,12 @@
           </column>
          </widget>
         </item>
-        <item row="1" column="0">
+        <item row="0" column="0">
          <layout class="QFormLayout" name="formLayout">
           <item row="0" column="0">
            <widget class="QLabel" name="nameLabel">
             <property name="text">
-             <string>Name</string>
+             <string>Name &lt;font color='red'&gt;*</string>
             </property>
            </widget>
           </item>
@@ -103,17 +79,21 @@
           <item row="1" column="0">
            <widget class="QLabel" name="permanentAddressLabel">
             <property name="text">
-             <string>PermanentAddress</string>
+             <string>PermanentAddress &lt;font color='red'&gt;*</string>
             </property>
            </widget>
           </item>
           <item row="1" column="1">
-           <widget class="QLineEdit" name="permanentAddressLineEdit"/>
+           <widget class="QLineEdit" name="permanentAddressLineEdit">
+            <property name="placeholderText">
+             <string>Ward No., Municipality, District</string>
+            </property>
+           </widget>
           </item>
           <item row="2" column="0">
            <widget class="QLabel" name="addressOfMalpotLabel">
             <property name="text">
-             <string>Address of Malpot Office</string>
+             <string>Address of Malpot Office &lt;font color='red'&gt;*</string>
             </property>
            </widget>
           </item>
@@ -123,16 +103,40 @@
           <item row="3" column="0">
            <widget class="QLabel" name="citizenshipNoLabel">
             <property name="text">
-             <string>Citizenship No.</string>
+             <string>Citizenship No. &lt;font color='red'&gt;*</string>
             </property>
            </widget>
           </item>
           <item row="3" column="1">
            <widget class="QLineEdit" name="citizenshipNoLineEdit"/>
           </item>
+          <item row="4" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout">
+            <item>
+             <spacer name="horizontalSpacer">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton">
+              <property name="text">
+               <string>Add</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
          </layout>
         </item>
-        <item row="3" column="0">
+        <item row="2" column="0">
          <widget class="QDialogButtonBox" name="buttonBox">
           <property name="standardButtons">
            <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
