@@ -1,9 +1,11 @@
 import mysql.connector
 import pickle
 
-with open("ward.pickle","rb") as picklefile:
-    database_name=pickle.load(picklefile)['id']
-print(database_name)
+try:
+    with open("ward.pickle","rb") as picklefile:
+        database_name=pickle.load(picklefile)['id']
+except Exception:
+    pass
 
 class database:
     def __init__(self,hostname,user,dbase,pword=""):
