@@ -132,12 +132,12 @@ class database_wardwindow(database):
 
     def insertValues(self,tablename,columnandvaluselist):
         csv=columnandvaluselist
-        print(csv)
+        #print(csv)
         sql="INSERT INTO {0} ({1},{2}) VALUES ('{3}','{4}')".format(tablename,csv[0],csv[2],csv[1],csv[3])
         self.mycursor.execute(sql)
         self.mydb.commit()
         for i in range(4,len(csv),2):
-            sql="UPDATE {0} SET {1}='{2}' WHERE {3}='{4}'".format(tablename,csv[i],csv[i+1],csv[0],csv[1])
+            sql="UPDATE {0} SET {1}='{2}' WHERE {3}='{4}'".format(tablename,csv[i],csv[i+1],csv[2],csv[3])
             self.mycursor.execute(sql)
             self.mydb.commit()
         print("Ok")
@@ -146,6 +146,11 @@ class database_statwindow(database):
     def __init__(self,hostname,user,dbase=database_name,pword=""):
         super().__init__(hostname, user, dbase, pword)
         self.mycursor = self.mydb.cursor()
+        try:
+            self.mycursor.execute("CREATE DATABASE {0}".format(dbase))
+            self.mydb.commit()
+        except Exception:
+            pass
         self.mycursor.execute("USE {0}".format(dbase))
         self.mydb.commit()
 
@@ -239,5 +244,5 @@ class database_receipt(database):
         except Exception as e:
             print(e)
 
-a=database_receipt("localhost", "root")
-print(a.getRowCount('2076/12/%'))
+#a=database_receipt("localhost", "root")
+#print(a.getRowCount('2076/12/%'))

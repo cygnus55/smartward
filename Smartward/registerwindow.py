@@ -16,7 +16,7 @@ from sw_gmail import *
 import mysql.connector
 from mainwindow import *
 
-mygmail=SWGmail()
+#mygmail=SWGmail()
 
 
 class Ui_RegisterWindow(QWidget):
