@@ -119,7 +119,8 @@ class Ui_WardWindow(QWidget):
             print("update registrar page")
             clear_lineedits()
             self.stackedWidget.setCurrentIndex(4)
-        
+
+        #these are the ward functions
         def on_browse_clicked():
             print("browse clicked")
             path=QFileDialog.getOpenFileName(self,"Municipality Logo",sys.path[0]+"\Logo","Images(*.png)")[0]
@@ -140,8 +141,7 @@ class Ui_WardWindow(QWidget):
             for key in ward:
                 if not isEmpty(ward[key]):
                     read[key]=ward[key]
-                    print("{} changed.".format(key))
-            #read['id']=generateID(read['municipality'],read['wardno'],read['state'])#not necessary
+                    print("{} changed.".format(key))  
             print("Id changed: {}".format(read['id']))
             with open("ward.pickle",'wb') as f:
                     pickle.dump(read,f)
@@ -193,7 +193,6 @@ class Ui_WardWindow(QWidget):
                     MainWindow.close()
                     print('Window Exited.')
                     os.remove("ward.pickle")
-                    print('Ward file deleted.')
                     sys.exit()
                 else:
                     print('Account deletion aborted.')
@@ -234,7 +233,7 @@ class Ui_WardWindow(QWidget):
                 QMessageBox.information(self,"Remove Local Registrar","Local registrar details successfully removed.")
                 
 
-        #birth_reg,death_reg,marriage_reg,divorce_reg and migration_reg help open respective forms
+        #open respective forms
         def birth_reg():
             #birth registration
             #new Window-birth reg. form 
