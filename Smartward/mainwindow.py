@@ -25,8 +25,10 @@ from forms.sifaris import citizenshipcopy
 from forms.sifaris import gharbato
 from forms.sifaris import incomereco
 from forms.sifaris import typerecommendation
+#import receipt
+from receipt import receipt
 
-myemail=SWGmail()
+#myemail=SWGmail()
 
 class Ui_WardWindow(QWidget):
     def window_functions(self,MainWindow):
@@ -305,6 +307,10 @@ class Ui_WardWindow(QWidget):
                 self.typerecowindow.show()
                 print("type recommendation form")
 
+        def on_receipt_clicked():
+            if (check_registrar()):
+                receipt.ActualWork()
+
         def statistics_show(name,table_name):
             #self.stat_window=graph.StatWindow()
             #self.start_window.show()
@@ -322,7 +328,7 @@ class Ui_WardWindow(QWidget):
         self.browse.clicked.connect(on_browse_clicked)
         self.update_registrar_button.clicked.connect(on_registrar_update_clicked)
         self.remove_registrar_button.clicked.connect(on_remove_registrar_clicked)
-        
+        self.receipt_button.clicked.connect(on_receipt_clicked)
         sifaris_menu=QtWidgets.QMenu()
         sifaris_menu.addAction("Gharbato Recommendation Form",gharbato_reco)
         sifaris_menu.addAction("Income Source Recommendation Form",income_reco)

@@ -65,8 +65,6 @@ class Certificate():
     def output(self):
         self.pdf.output(cOutput)
 
-
-
 class BirthCertificate(Certificate):
     def __init__(self):
         super().__init__()
@@ -87,7 +85,6 @@ class BirthCertificate(Certificate):
             self.pdf.set_font('Times',size=10)
             self.pdf.cell(1950,8,txt=line,ln=1,align='L')
         self.addFooter()
-
 
 class MarriageCertificate(Certificate):
     def __init__(self):
@@ -127,7 +124,6 @@ class DeathCertificate(Certificate):
             self.pdf.cell(1950,8,txt=line,ln=1,align='L')
         self.addFooter()
 
-        
 class DivorceCertificate(Certificate):
     def __init__(self):
         super().__init__()
@@ -168,7 +164,6 @@ class MigrationCertificate(Certificate):
                 self.pdf.cell(col_width, row_height * 1,txt=item, border=1)
             self.pdf.ln(row_height * 1)
         self.addFooter()
-
 
 class Recommendation():
     def __init__(self):

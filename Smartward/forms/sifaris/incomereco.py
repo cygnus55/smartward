@@ -167,7 +167,7 @@ class ActualWork():
         recommendation = IncomeReco()
         f = open("recommendation.pickle", 'rb')
         rec = pickle.load(f)
-        print(rec[0])
+        #print(rec[0])
         recommendation.setBody(rec[0])
         recommendation.setTable(rec[1])
         recommendation.setTotalIncome(rec[2])
