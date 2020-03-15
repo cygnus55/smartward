@@ -44,7 +44,7 @@ class Ui_RegisterWindow(QWidget):
                 id=generateID(state)
                 print(id)
                 ip = socket.gethostbyname(socket.gethostname())
-                wada={'id':id,'municipality':municipality,'wardno':wardno,'state':state,'address':address,'phone':phone,'email':email,'mun_logo':mun_logo,'password':password,'registrar_name':'', 'registrar_post':''}
+                wada={'id':id,'municipality':municipality,'wardno':wardno,'state':state,'address':address,'phone':phone,'email':email,'mun_logo':mun_logo,'password':password,'registrar_name':'', 'registrar_post':'','registration_status':True}
                 with open('ward.pickle','wb') as obj:
                     pickle.dump(wada,obj)
                     obj.close()

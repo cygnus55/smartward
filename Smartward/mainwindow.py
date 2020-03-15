@@ -192,7 +192,13 @@ class Ui_WardWindow(QWidget):
                     time.sleep(5)
                     MainWindow.close()
                     print('Window Exited.')
-                    os.remove("ward.pickle")
+                    with open('ward.pickle','rb') as f:
+                        read=pickle.load(f)
+                        f.close()
+                    read['registration_status']=False
+                    with open('ward.pickle','wb') as f:
+                        pickle.dump(read,f)
+                        f.close()
                     sys.exit()
                 else:
                     print('Account deletion aborted.')
