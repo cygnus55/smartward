@@ -18,7 +18,7 @@ except:
 
 logo="logo.png"
 cOutput="output/certificate.pdf"
-rOutput="output/recommendationletter.pdf"
+rOutput="recommendationletter.pdf"
 rcpOutput="output/receipt.pdf"
 
 class Certificate():
@@ -209,6 +209,8 @@ class Recommendation():
         self.pdf.rect(0,y+2,220,.75,'DF')
 
     def setRegistrar(self):
+        y = self.pdf.get_y()
+        self.pdf.set_y(y+20)
         self.pdf.set_text_color(0, 0, 0)
         self.pdf.set_font("Times", 'B', size=10)
         self.pdf.cell(180, 8, txt="Verified By:", ln=1, align='L')
@@ -218,6 +220,15 @@ class Recommendation():
         self.pdf.cell(180, 8, txt="Date: " + today_date, ln=1, align='L')
         self.addFooter()
 
+    def setTable(self,data):
+        self.pdf.set_draw_color(0, 0, 0)
+        self.pdf.set_fill_color(0, 0, 0)
+        col_width = self.pdf.w / 5.5
+        row_height = self.pdf.font_size
+        for row in data:
+            for item in row:
+                self.pdf.cell(col_width, row_height * 1,txt=item, border=1)
+            self.pdf.ln(row_height * 1)
 
     def addFooter(self):
         self.pdf.set_y(-28)
@@ -241,16 +252,6 @@ class IncomeReco(Recommendation):
         text ='ward no. {2}, {3} municipality has a following annual income of different sources as shown below.'.format(*args)
         self.pdf.cell(180, 8, txt=text, ln=1, align='L')
 
-    def setTable(self,data):
-        self.pdf.set_draw_color(0, 0, 0)
-        self.pdf.set_fill_color(0, 0, 0)
-        col_width = self.pdf.w / 5
-        row_height = self.pdf.font_size
-        for row in data:
-            for item in row:
-                self.pdf.cell(col_width, row_height * 1,txt=item, border=1)
-            self.pdf.ln(row_height * 1)
-
     def setTotalIncome(self,data):
         self.pdf.cell(180, 8, txt="", ln=1, align='L')
         self.pdf.set_font("Times",'BU', size=10)
@@ -258,6 +259,26 @@ class IncomeReco(Recommendation):
         self.pdf.cell(180, 8, txt="In Figure: "+str(data[0]), ln=1, align='L')
         self.pdf.cell(180, 8, txt="In Words: Rs. "+data[1].title()+" Only.", ln=1, align='L')
         self.setRegistrar()
+
+class GharBatoReco(Recommendation):
+    def __init__(self):
+        super().__init__()
+
+    def setBody(self, args):
+        self.pdf.set_text_color(0, 0, 0)
+        y=self.pdf.get_y()
+        self.pdf.set_y(y+5)
+        self.pdf.set_font("Times", size=10)
+        self.pdf.cell(180, 8, txt="Subject: Verification of road network", ln=1, align='FJ')
+        self.pdf.cell(180, 8, txt="", ln=1, align='L')
+        self.pdf.cell(180, 8, txt="Revenue office,{3},".format(*args), ln=1, align='FJ')
+        self.pdf.cell(180, 8, txt="", ln=1, align='L')
+        text='In relation to above, this is to verify that Mr./Mrs. {0}, having permanent address'.format(*args)
+        self.pdf.cell(180, 8, txt=text, ln=1, align='FJ')
+        text ='{1} with citizenship certificate number {2} has access to road network for following property of '.format(*args)
+        self.pdf.cell(180, 8, txt=text, ln=1, align='FJ')
+        text = 'him/her situated in this ward.'.format(*args)
+        self.pdf.cell(180, 8, txt=text, ln=1, align='FJ')
 
 class TypeRecommendation(Recommendation):
     def setSubject(self,subject):
