@@ -320,6 +320,12 @@ class Ui_WardWindow(QWidget):
             StatWindow.show()
             print(f"StatWindow displayed: {name} and {table_name} table.")
         
+        def show_receipt_statistics():
+            ReceiptStatWindow=QtWidgets.QMainWindow()
+            window = graph.Ui_ReceiptStat()
+            window.setupUi(ReceiptStatWindow)
+            ReceiptStatWindow.show()
+            print("Receipt Statwindow displayed")
 
         self.home_button.clicked.connect(home_page)
         self.delete_account_button.clicked.connect(on_remove_account_clicked)
@@ -347,7 +353,7 @@ class Ui_WardWindow(QWidget):
         statistics_menu.addAction("View Marriage Statistics",lambda:statistics_show('Marriage','MarriageRegistration'))
         statistics_menu.addAction("View Divorce Statistics",lambda:statistics_show('Divorce','DivorceRegistration'))
         statistics_menu.addAction("View Migration Statistics",lambda:statistics_show('Migration','MigrationRegistration'))
-        statistics_menu.addAction("View Receipt Statistics",citizenship_copy)
+        statistics_menu.addAction("View Receipt Statistics",show_receipt_statistics)
         self.statistics_button.setMenu(statistics_menu)
         
 
