@@ -11,6 +11,7 @@ from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg
 from matplotlib.figure import Figure
 
 db=dbconnect.database_statwindow('localhost','root')
+rdb=dbconnect.database_receipt('localhost','root')
 
 class MplCanvas(FigureCanvasQTAgg):
 
@@ -126,10 +127,83 @@ class Ui_StatWindow(object):
 
         plot_month()
 
-if __name__=="__main__":
-    app = QtWidgets.QApplication(sys.argv)
-    StatWindow=QtWidgets.QMainWindow()
-    window = Ui_StatWindow("Birth","birthregistration")
-    window.setupUi(StatWindow)
-    StatWindow.show()
-    app.exec_()
+class Ui_ReceiptStat(object):
+    def setupUi(self,MainWindow):
+        MainWindow.setWindowTitle("Receipt Stat")
+        MainWindow.setFixedSize(900,600)
+
+        def define_dropdown(sc):
+            self.dropdown=QtWidgets.QComboBox(sc)
+            self.dropdown.setGeometry(QtCore.QRect(0,0,200,30))
+            self.dropdown.addItem("--Choose the parameter--")
+            self.dropdown.addItem('Total Income')
+            self.dropdown.addItem('Total Number')
+            self.dropdown.setObjectName('dropdown')
+            self.dropdown.currentTextChanged.connect(change_parameter)
+   
+        def plot_totalincome():
+            income = MplCanvas(self, width=5, height=4, dpi=100)
+            define_dropdown(income)
+            x_axis=list(range(1,13))
+            x__axis=[]
+            today=NepaliDate.today().year
+            for i in range(1,13):
+                date=NepaliDate(today,i,1)
+                x__axis.append(date.strfdate('%Y/%m/%'))
+            y_axis=[]
+            for x in x__axis:
+                y_axis.append(rdb.getAmount(x))
+            
+            print(y_axis)
+            income.axes.plot(x_axis,y_axis)
+            income.axes.set_title("Income by month")
+            income.axes.set_xlabel("Month")
+            income.axes.set_ylabel("Total monthly income")
+            MainWindow.setCentralWidget(income)
+
+        def plot_totalnumber():
+            number = MplCanvas(self, width=5, height=4, dpi=100)
+            define_dropdown(number)
+            x_axis=list(range(1,13))
+            x__axis=[]
+            today=NepaliDate.today().year
+            for i in range(1,13):
+                date=NepaliDate(today,i,1)
+                x__axis.append(date.strfdate('%Y/%m/%'))
+            y_axis=[]
+            for x in x__axis:
+                y_axis.append(rdb.getRowCount(x))
+            
+            print(y_axis)
+            number.axes.plot(x_axis,y_axis)
+            number.axes.set_title("No. by month")
+            number.axes.set_xlabel("Month")
+            number.axes.set_ylabel("No. of receipts")
+            MainWindow.setCentralWidget(number)
+
+        def change_parameter():
+            parameter=self.dropdown.currentText()
+            if parameter=="Total Income":
+                plot_totalincome()
+            elif parameter=="Total Number":
+                plot_totalnumber()
+            else:
+                pass
+
+        plot_totalincome()
+
+#if __name__=="__main__":
+    
+    #app = QtWidgets.QApplication(sys.argv)
+    #StatWindow=QtWidgets.QMainWindow()
+    #window = Ui_StatWindow("Birth","birthregistration")
+    #window.setupUi(StatWindow)
+    #StatWindow.show()
+    #app.exec_()
+    
+    #app = QtWidgets.QApplication(sys.argv)
+    #ReceiptStatWindow=QtWidgets.QMainWindow()
+    #window = Ui_ReceiptStat()
+    #window.setupUi(ReceiptStatWindow)
+    #ReceiptStatWindow.show()
+    #app.exec_()
