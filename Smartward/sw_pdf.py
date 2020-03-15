@@ -18,7 +18,7 @@ except:
 
 logo="logo.png"
 cOutput="output/certificate.pdf"
-rOutput="recommendationletter.pdf"
+rOutput="output/recommendationletter.pdf"
 rcpOutput="output/receipt.pdf"
 
 class Certificate():
