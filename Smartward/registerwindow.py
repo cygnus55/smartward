@@ -15,9 +15,7 @@ from sw_string import *
 from sw_gmail import *
 import mysql.connector
 from mainwindow import *
-#from dbconnect import *
 
-#db=database_signinwindow("localhost","root","smartward")
 mygmail=SWGmail()
 
 
@@ -43,7 +41,7 @@ class Ui_RegisterWindow(QWidget):
             elif(not(password == confirmpassword)):
                 QMessageBox.warning(self,"Password Confirmation Invalid","Password does not match!")
             else:
-                id=generateID(municipality.lower(),wardno,state)
+                id=generateID(state)
                 print(id)
                 ip = socket.gethostbyname(socket.gethostname())
                 wada={'id':id,'municipality':municipality,'wardno':wardno,'state':state,'address':address,'phone':phone,'email':email,'mun_logo':mun_logo,'password':password,'registrar_name':'', 'registrar_post':''}
