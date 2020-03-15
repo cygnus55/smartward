@@ -211,3 +211,31 @@ class database_receipt(database):
         mycursor.execute(sql, val)
         self.mydb.commit()
         mycursor.close()
+
+    def getRowCount(self,date):
+        try:
+            sql = "SELECT amount FROM Receipt WHERE date LIKE '{0}'".format(date)
+            self.mycursor.execute(sql)
+            rows=self.mycursor.fetchall()
+            if(rows):
+                return len(rows)
+            return 0
+        except Exception as e:
+            print(e)
+
+    def getAmount(self,date):
+        try:
+            sql = "SELECT amount FROM Receipt WHERE date LIKE '{0}'".format(date)
+            self.mycursor.execute(sql)
+            rows=self.mycursor.fetchall()
+            if(rows):
+                total = 0
+                for a in rows:
+                    total += a[0]
+                return total
+            return 0
+        except Exception as e:
+            print(e)
+
+a=database_receipt("localhost", "root")
+print(a.getRowCount('2076/12/%'))
