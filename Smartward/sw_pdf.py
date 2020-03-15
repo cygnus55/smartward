@@ -4,14 +4,16 @@ import nepali_date
 
 today=nepali_date.NepaliDate.today()
 today_date=str(today)[3:]
-
-ward=open("ward.pickle",'rb')
-wardinfo=pickle.load(ward)
-ward.close()
-municipality,address=wardinfo['municipality'],wardinfo['address']
-wardno,state=wardinfo['wardno'],wardinfo['state']
-email,mun_logo=wardinfo['email'] ,wardinfo['mun_logo']
-phone,registrar_name=wardinfo['phone'],wardinfo['registrar_name']
+try:
+	ward=open("ward.pickle",'rb')
+	wardinfo=pickle.load(ward)
+	ward.close()
+	municipality,address=wardinfo['municipality'],wardinfo['address']
+	wardno,state=wardinfo['wardno'],wardinfo['state']
+	email,mun_logo=wardinfo['email'] ,wardinfo['mun_logo']
+	phone,registrar_name=wardinfo['phone'],wardinfo['registrar_name']
+except:
+	pass
 
 
 logo="logo.png"
@@ -332,4 +334,4 @@ class Receipt():
         self.pdf.cell(180, 8, txt="Date: " + today_date, ln=1, align='L')
 
     def output(self):
-        self.pdf.output('receipt.pdf')
+        self.pdf.output(rcpOutput)
