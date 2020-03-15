@@ -4,22 +4,11 @@ def isEmpty(*strings):
         if (s==""):
             return True
         
-def generateID(municipality,wardno,state):
-    '''
-    municipality=municipality.lower()
-    try:
-        index = municipality.rindex(" ")
-        i = municipality[0:index]
-        id = i.replace(" ", "")
-        id = id
-    except Exception:
-        id = municipality.lower()
-    return state+id+wardno
-    '''
+def generateID(state):
     import random
     pre=random.randint(11,51)
-    post=random.randint(11,51)
-    id=int(str(wardno)+str(pre)+str(state)+str(post))
+    post=random.randint(52,100)
+    id="ward"+str(pre)+str(post)+'s'+str(state)
     return id
 
 def generateList(**dic):
@@ -28,4 +17,5 @@ def generateList(**dic):
         string.append(key)
         string.append(value.replace("'",">>"))
     return string
+
 
