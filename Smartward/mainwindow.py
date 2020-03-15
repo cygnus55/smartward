@@ -292,7 +292,11 @@ class Ui_WardWindow(QWidget):
         
         def type_recommendation():
             if (check_registrar()):
-                type_reco_form=typerecommendation.ActualWork()
+                #type_reco_form=typerecommendation.ActualWork()
+                self.typerecowindow = QtWidgets.QMainWindow()
+                self.ui = typerecommendation.Ui_TypeReco()
+                self.ui.setupUi(self.typerecowindow)
+                self.typerecowindow.show()
                 print("type recommendation form")
 
         def statistics_show(name,table_name):
@@ -331,6 +335,7 @@ class Ui_WardWindow(QWidget):
         statistics_menu.addAction("View Marriage Statistics",lambda:statistics_show('Marriage','MarriageRegistration'))
         statistics_menu.addAction("View Divorce Statistics",lambda:statistics_show('Divorce','DivorceRegistration'))
         statistics_menu.addAction("View Migration Statistics",lambda:statistics_show('Migration','MigrationRegistration'))
+        statistics_menu.addAction("View Receipt Statistics",citizenship_copy)
         self.statistics_button.setMenu(statistics_menu)
         
 
@@ -473,9 +478,9 @@ class Ui_WardWindow(QWidget):
         self.sifarish_button = QtWidgets.QPushButton(self.home_page)
         self.sifarish_button.setGeometry(QtCore.QRect(690, 75, 540, 91))
         self.sifarish_button.setObjectName("sifarish_button")
-        self.relation_verify_button = QtWidgets.QPushButton(self.home_page)
-        self.relation_verify_button.setGeometry(QtCore.QRect(690, 220, 540, 91))
-        self.relation_verify_button.setObjectName("relation_verify_button")
+        self.receipt_button = QtWidgets.QPushButton(self.home_page)
+        self.receipt_button.setGeometry(QtCore.QRect(690, 220, 540, 91))
+        self.receipt_button.setObjectName("receipt_button")
         self.statistics_button = QtWidgets.QPushButton(self.home_page)
         self.statistics_button.setGeometry(QtCore.QRect(30, 375, 540, 91))
         self.statistics_button.setObjectName("statistics_button")
@@ -610,17 +615,13 @@ class Ui_WardWindow(QWidget):
         self.groupBox_4.setFont(font)
         self.groupBox_4.setStyleSheet("QLineEdit\n"
 "{\n"
-"    border-radius:6px;\n"
-"    border: 1px solid rgb(170, 170, 127); \n"
-"    padding:5px;\n"
+"border-radius:6px;\n"
+"border: 1px solid rgb(170, 170, 127); \n"
+"padding:5px;\n"
 "}\n"
 "QPushButton:hover\n"
 "{\n"
-"    color:rgb(0, 0, 127);\n"
-"}\n"
-"QPushButton#remove_registrar_button:hover\n"
-"{\n"
-"    color: rgb(255, 0, 0);\n"
+"color:rgb(0, 0, 127);\n"
 "}")
         self.groupBox_4.setObjectName("groupBox_4")
         self.update_registrar_button = QtWidgets.QPushButton(self.groupBox_4)
@@ -631,10 +632,10 @@ class Ui_WardWindow(QWidget):
         self.registrar_name_lineedit.setText("")
         self.registrar_name_lineedit.setObjectName("registrar_name_lineedit")
         self.registrar_post_lineedit = QtWidgets.QLineEdit(self.groupBox_4)
-        self.registrar_post_lineedit.setGeometry(QtCore.QRect(30, 105, 316, 31))
+        self.registrar_post_lineedit.setGeometry(QtCore.QRect(30, 120, 316, 31))
         self.registrar_post_lineedit.setObjectName("registrar_post_lineedit")
         self.remove_registrar_button = QtWidgets.QPushButton(self.groupBox_4)
-        self.remove_registrar_button.setGeometry(QtCore.QRect(120, 180, 181, 31))
+        self.remove_registrar_button.setGeometry(QtCore.QRect(165, 180, 136, 31))
         self.remove_registrar_button.setObjectName("remove_registrar_button")
         self.stackedWidget.addWidget(self.update_registrar_details_page)
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
@@ -642,16 +643,16 @@ class Ui_WardWindow(QWidget):
         WardWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(WardWindow)
-        self.window_functions(WardWindow)
         self.stackedWidget.setCurrentIndex(0)
+        self.window_functions(WardWindow)
         QtCore.QMetaObject.connectSlotsByName(WardWindow)
         WardWindow.setTabOrder(self.scrollArea, self.home_button)
         WardWindow.setTabOrder(self.home_button, self.settings_button)
         WardWindow.setTabOrder(self.settings_button, self.vital_reg_button)
         WardWindow.setTabOrder(self.vital_reg_button, self.sifarish_button)
         WardWindow.setTabOrder(self.sifarish_button, self.citizenship_button)
-        WardWindow.setTabOrder(self.citizenship_button, self.relation_verify_button)
-        WardWindow.setTabOrder(self.relation_verify_button, self.old_password_lineedit)
+        WardWindow.setTabOrder(self.citizenship_button, self.receipt_button)
+        WardWindow.setTabOrder(self.receipt_button, self.old_password_lineedit)
         WardWindow.setTabOrder(self.old_password_lineedit, self.new_password_linedit)
         WardWindow.setTabOrder(self.new_password_linedit, self.reconfirm_password_lineedit)
         WardWindow.setTabOrder(self.reconfirm_password_lineedit, self.change_password_button)
@@ -675,7 +676,7 @@ class Ui_WardWindow(QWidget):
         self.vital_reg_button.setText(_translate("WardWindow", "Vital Registration"))
         self.citizenship_button.setText(_translate("WardWindow", "Citizenship"))
         self.sifarish_button.setText(_translate("WardWindow", "Sifaris (Recommendation Forms)"))
-        self.relation_verify_button.setText(_translate("WardWindow", "Relationship Verification"))
+        self.receipt_button.setText(_translate("WardWindow", "Receipt"))
         self.statistics_button.setText(_translate("WardWindow", "Statistics"))
         self.groupBox.setTitle(_translate("WardWindow", "Change Password:"))
         self.old_password_lineedit.setPlaceholderText(_translate("WardWindow", " Current Password"))
@@ -699,7 +700,7 @@ class Ui_WardWindow(QWidget):
         self.update_registrar_button.setText(_translate("WardWindow", "Update Details"))
         self.registrar_name_lineedit.setPlaceholderText(_translate("WardWindow", "Name of Local Registrar"))
         self.registrar_post_lineedit.setPlaceholderText(_translate("WardWindow", "Post of the Local Registrar"))
-        self.remove_registrar_button.setText(_translate("WardWindow", "Remove Local Registrar"))
+        self.remove_registrar_button.setText(_translate("WardWindow", "Remove Registrar"))
 import sw_rc
 
 if __name__=="__main__":

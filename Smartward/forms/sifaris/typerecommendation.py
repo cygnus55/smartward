@@ -9,6 +9,24 @@ import sw_string
 from sw_pdf import TypeRecommendation
 
 class Ui_TypeReco(QWidget):
+    def window_functions(self):
+        def save(self):
+            reco_text=self.textEdit.toPlainText()
+            with open('newrecommendation.txt','w') as f:
+                f.write(reco_text)
+                f.close()
+            print('file created')
+            self.getRecommendation()
+
+        def getRecommendation(self):
+            recommendation = TypeRecommendation()
+            recommendation.setSubject(self.subject.text())
+            recommendation.setBody()
+            recommendation.output()
+            QMessageBox.information(self, "Recommendation Letter", "Recommendation letter was sucessfully created.")
+
+        self.pushButton.clicked.connect(save)
+
     def setupUi(self, TypeReco):
         TypeReco.setObjectName("TypeReco")
         TypeReco.setEnabled(True)
@@ -61,6 +79,7 @@ class Ui_TypeReco(QWidget):
         TypeReco.setStatusBar(self.statusbar)
 
         self.retranslateUi(TypeReco)
+        self.window_functions()
         QtCore.QMetaObject.connectSlotsByName(TypeReco)
 
     def retranslateUi(self, TypeReco):
@@ -70,38 +89,18 @@ class Ui_TypeReco(QWidget):
         self.label.setText(_translate("TypeReco", "<b>Type Recommendation Letter</b>"))
         self.label_2.setText(_translate("TypeReco", "<b>Subject of Recommendation Letter"))
 
-class ActualWork():
-    def __init__(self):
-        print("hhsgdfjs")
-        self.typerecowindow = QtWidgets.QMainWindow()
-        self.ui = Ui_TypeReco()
-        self.ui.setupUi(self.typerecowindow)
-        self.typerecowindow.show()
-        self.ui.pushButton.clicked.connect(self.save)
 
-    def save(self):
-        reco_text=self.ui.textEdit.toPlainText()
-        with open('newrecommendation.txt','w') as f:
-            f.write(reco_text)
-            f.close()
-        print('file created')
-        self.getRecommendation()
-
-    def getRecommendation(self):
-        recommendation = TypeRecommendation()
-        recommendation.setSubject(self.ui.subject.text())
-        recommendation.setBody()
-        recommendation.output()
-        QMessageBox.information(self.ui, "Recommendation Letter", "Recommendation letter was sucessfully created.")
-
+        
+'''
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     aw=ActualWork()
-    '''
+    
     TypeReco = QtWidgets.QMainWindow()
     ui = Ui_TypeReco()
     ui.setupUi(TypeReco)
     TypeReco.show()
-    '''
+    
     sys.exit(app.exec_())
+    '''
