@@ -28,7 +28,6 @@ from forms.sifaris import typerecommendation
 #import receipt
 from receipt import receipt
 
-#myemail=SWGmail()
 
 class Ui_WardWindow(QWidget):
     def window_functions(self,MainWindow):
