@@ -1,3 +1,4 @@
+
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
@@ -463,10 +464,10 @@ class Ui_MarriageForm(QWidget):
 
     def retranslateUi(self, MarriageForm):
         _translate = QtCore.QCoreApplication.translate
-        MarriageForm.setWindowTitle(_translate("MarriageForm", "Marriage Registration Form"))
+        MarriageForm.setWindowTitle(_translate("MarriageForm", "Marriage Form"))
         self.label_6.setText(_translate("MarriageForm", "<b>Details Of Spouse</b>"))
         self.label.setText(_translate("MarriageForm", "<b>Details Of Marriage</b>"))
-        self.marriageTypeLabel.setText(_translate("MarriageForm", "Marriage Type"))
+        self.marriageTypeLabel.setText(_translate("MarriageForm", "Marriage Type<font color=\'red\'>*"))
         self.marriageDateLabel.setText(_translate("MarriageForm", "Marriage Date"))
         self.locationOfMarriageLabel.setText(_translate("MarriageForm", "<b>Location Of marriage</b>"))
         self.districtLabel.setText(_translate("MarriageForm", "District"))
@@ -476,41 +477,41 @@ class Ui_MarriageForm(QWidget):
         self.villageLabel.setText(_translate("MarriageForm", "village"))
         self.houseNoLabel.setText(_translate("MarriageForm", "House No"))
         self.locationIfMarriageAbroadLabel.setText(_translate("MarriageForm", "Location if Marriage Abroad"))
-        self.marriageRegistrationNoLabel.setText(_translate("MarriageForm", "<b>Marriage Registration No.</b>"))
-        self.FamilyRecordFormNoLabel.setText(_translate("MarriageForm", "<b>Family Record Form No."))
+        self.marriageRegistrationNoLabel.setText(_translate("MarriageForm", "<b>Marriage Registration No.</b><font color=\'red\'>*"))
+        self.FamilyRecordFormNoLabel.setText(_translate("MarriageForm", "<b>Family Record Form No.<font color=\'red\'>*\n"
+""))
         self.label_5.setText(_translate("MarriageForm", "Bride"))
         self.label_2.setText(_translate("MarriageForm", "Bridegroom"))
         self.nameLabel_2.setText(_translate("MarriageForm", "<b>Name</b>"))
         self.lastnameLabel.setText(_translate("MarriageForm", "Lastname"))
-        self.fullNameLabel_2.setText(_translate("MarriageForm", "Full name"))
+        self.fullNameLabel_2.setText(_translate("MarriageForm", "Full name<font color=\'red\'>*"))
         self.dateOfBirthLabel.setText(_translate("MarriageForm", "Date of Birth"))
         self.casteLabel_2.setText(_translate("MarriageForm", "Caste"))
         self.qualificationLabel_2.setText(_translate("MarriageForm", "Qualification"))
         self.occupationLabel_2.setText(_translate("MarriageForm", "Occupation"))
         self.preMaritalStatusLabel_2.setText(_translate("MarriageForm", "Pre-marital status"))
         self.permanentAdressLabel_2.setText(_translate("MarriageForm", "<b>Permanent Address</b>"))
-        self.districtLabel_3.setText(_translate("MarriageForm", "District"))
-        self.municipalityLabel_3.setText(_translate("MarriageForm", "Municipality"))
-        self.wardNoLabel_3.setText(_translate("MarriageForm", "Ward No"))
+        self.districtLabel_3.setText(_translate("MarriageForm", "District<font color=\'red\'>*"))
+        self.municipalityLabel_3.setText(_translate("MarriageForm", "Municipality<font color=\'red\'>*"))
+        self.wardNoLabel_3.setText(_translate("MarriageForm", "Ward No<font color=\'red\'>*"))
         self.roadStreetLabel.setText(_translate("MarriageForm", "Road/street"))
         self.villageCommunityLabel.setText(_translate("MarriageForm", "Village/community"))
         self.houseNoLabel_3.setText(_translate("MarriageForm", "House No"))
         self.birthCountryLabel_2.setText(_translate("MarriageForm", "Birth Country"))
         self.countryWithCitizenshipLabel_2.setText(_translate("MarriageForm", "Country With citizenship"))
-        self.citizenshipNoLabel_2.setText(_translate("MarriageForm", "Citizenship No"))
-        self.issueDateLabel_2.setText(_translate("MarriageForm", "Issue Date"))
-        self.issueDistrictLabel_2.setText(_translate("MarriageForm", "Issue District"))
+        self.citizenshipNoLabel_2.setText(_translate("MarriageForm", "Citizenship No<font color=\'red\'>*"))
+        self.issueDateLabel_2.setText(_translate("MarriageForm", "Issue Date<font color=\'red\'>*"))
+        self.issueDistrictLabel_2.setText(_translate("MarriageForm", "Issue District<font color=\'red\'>*"))
         self.passportNoIfForeignLabel_2.setText(_translate("MarriageForm", "Passport No(if foreign)"))
         self.countryIfForeignLabel_2.setText(_translate("MarriageForm", "country(if foreign)"))
         self.adressIfForeignLabel_2.setText(_translate("MarriageForm", "Adress(if foreign)"))
-        self.grandfatherNameLabel_2.setText(_translate("MarriageForm", "Grandfather Name"))
-        self.fatherNameLabel_2.setText(_translate("MarriageForm", "Father Name"))
+        self.grandfatherNameLabel_2.setText(_translate("MarriageForm", "Grandfather Name<font color=\'red\'>*"))
+        self.fatherNameLabel_2.setText(_translate("MarriageForm", "Father Name<font color=\'red\'>*"))
         self.motherNameLabel_2.setText(_translate("MarriageForm", "Mother Name"))
         self.informationProvidedByLabel.setText(_translate("MarriageForm", "<b>Information Provided By"))
-        self.nameLabel.setText(_translate("MarriageForm", "Name"))
+        self.nameLabel.setText(_translate("MarriageForm", "Name<font color=\'red\'>*"))
         self.citizenshipCertificateNoLabel.setText(_translate("MarriageForm", "Citizenship Certificate No."))
         self.relationToMarriedCoupleLabel.setText(_translate("MarriageForm", "Relation to Married Couple"))
-
 
 class ActualWork():
     def __init__(self):
@@ -527,16 +528,38 @@ class ActualWork():
         self.ui.buttonBox.rejected.connect(lambda:self.MarriageForm.close())
 
     def submitform(self):
-        self.values=self.getallvalues()
-        a=sw_string.generateList(**self.values)
-        #a=["RegDate","1","RegNo","2","C","3","D","4","E","5"]
-        #b=['RegNo','123-32','detailsofmarriage', "('Social Tradition', ('2000-01-01', '2056/09/17'))", 'locationofmarriage', "('Kavre', 'Namobudda', '04', 'Timal Road', 'Methinkot', '45', '')", 'detailsofspouse', "{'detailsofbride': ('Tandon', 'Rabina', '2057/01/05', 'Kami', '+2', 'Actress', 'Divorcee', ('Rampur', 'Narayanghat', '5', 'Ghandi Street', 'Hariharpur', '78', 'India'), ('India', '27-12398721', '2071/06/09', 'Rampur', '87289398', 'India', 'New Delhi'), ('Fariha Tandon', 'Kanod Tandon', 'Kajol Tandon')), 'detailsofbridegroom': ('Ghimere', 'Tilak', '2051/03/21', 'Brahmin', 'B.Sc.', 'Astrologer', 'Single', ('Solukhumbu', 'Namche Bazar', '9', 'Manila Street', 'Vaisepati', '567', 'Nepal'), ('Nepal', '983-3468', '2067/03/05', 'Solukhumbu', '', '', ''), ('Goshnath Ghimere', 'Farilal Ghimere', 'Nabina Ghimere'))}"]
-        #a=['RegDate',,b[0],b[1],b[2],b[3].replace("'","__"),b[4],b[5].replace("'","__"),b[6],b[7].replace("'","__")]
-        #print(a)
-        self.db.createFormTable(table)
-        self.db.addColumns(table,a[4],a[6],a[8],a[10],a[12])
-        self.db.insertValues(table,a)
-        self.getCertificate()
+         if (self.checkEmpty()):
+            QMessageBox.warning(self.ui,"Death Registration","All * field should be filled.")
+         else:
+            self.values=self.getallvalues()
+            a=sw_string.generateList(**self.values)
+            #a=["RegDate","1","RegNo","2","C","3","D","4","E","5"]
+            #b=['RegNo','123-32','detailsofmarriage', "('Social Tradition', ('2000-01-01', '2056/09/17'))", 'locationofmarriage', "('Kavre', 'Namobudda', '04', 'Timal Road', 'Methinkot', '45', '')", 'detailsofspouse', "{'detailsofbride': ('Tandon', 'Rabina', '2057/01/05', 'Kami', '+2', 'Actress', 'Divorcee', ('Rampur', 'Narayanghat', '5', 'Ghandi Street', 'Hariharpur', '78', 'India'), ('India', '27-12398721', '2071/06/09', 'Rampur', '87289398', 'India', 'New Delhi'), ('Fariha Tandon', 'Kanod Tandon', 'Kajol Tandon')), 'detailsofbridegroom': ('Ghimere', 'Tilak', '2051/03/21', 'Brahmin', 'B.Sc.', 'Astrologer', 'Single', ('Solukhumbu', 'Namche Bazar', '9', 'Manila Street', 'Vaisepati', '567', 'Nepal'), ('Nepal', '983-3468', '2067/03/05', 'Solukhumbu', '', '', ''), ('Goshnath Ghimere', 'Farilal Ghimere', 'Nabina Ghimere'))}"]
+            #a=['RegDate',,b[0],b[1],b[2],b[3].replace("'","__"),b[4],b[5].replace("'","__"),b[6],b[7].replace("'","__")]
+            #print(a)
+            self.db.createFormTable(table)
+            self.db.addColumns(table,a[4],a[6],a[8],a[10],a[12])
+            if(self.db.insertValues(table,a)):    
+              self.getCertificate()
+            else:
+                QMessageBox.warning(self.ui,"Death Registration","Registration Number is repeted.")
+    def checkEmpty(self):
+        tup = (
+             self.ui.marriageRegistrationNoLineEdit.text(),self.ui.FamilyRecordFormNoLineEdit.text(),self.ui.nameLineEdit.text(),
+            self.ui.lineEdit_6.text(),self.ui.lineEdit_48.text(),self.ui.lineEdit_46.text(),
+            self.ui.lineEdit_21.text(),self.ui.lineEdit_20.text(),self.ui.lineEdit_18.text(),
+            self.ui.lineEdit_5.text(), self.ui.lineEdit_47.text(), self.ui.lineEdit_45.text(),
+            self.ui.lineEdit_22.text(), self.ui.lineEdit_19.text(), self.ui.lineEdit_17.text(),
+            self.ui.marriageTypeComboBox.currentText(),
+            self.ui.lineEdit_36.text(), self.ui.lineEdit_35.text(), self.ui.lineEdit_38.text(),
+            self.ui.lineEdit_37.text(), self.ui.lineEdit_34.text(), self.ui.lineEdit_33.text()
+           
+        )
+        for t in tup:
+            if t=='':
+                return True
+        return False
+
 
     def getallvalues(self):
         self.magRegNo=self.ui.marriageRegistrationNoLineEdit.text()
