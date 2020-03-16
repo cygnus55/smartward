@@ -16,7 +16,7 @@ from sw_gmail import *
 import mysql.connector
 from mainwindow import *
 
-#mygmail=SWGmail()
+mygmail=SWGmail()
 
 
 class Ui_RegisterWindow(QWidget):
@@ -48,7 +48,7 @@ class Ui_RegisterWindow(QWidget):
                 with open('ward.pickle','wb') as obj:
                     pickle.dump(wada,obj)
                     obj.close()
-                #mygmail.sendRegistrationSuccessfulMail(id,municipality,wardno,state,address,phone,email,ip,password)
+                mygmail.sendRegistrationSuccessfulMail(id,municipality,wardno,state,address,phone,email,ip,password)
                 QMessageBox.information(self,"Registration Successful","We have sent mail to your email account.\nCheck the mail for login details.")
                 MainWindow.close()
                 self.WardWindow=QMainWindow()
