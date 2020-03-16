@@ -437,52 +437,54 @@ class Ui_BirthForm(QWidget):
     def retranslateUi(self, BirthForm):
         _translate = QtCore.QCoreApplication.translate
         BirthForm.setWindowTitle(_translate("BirthForm", "Birth Registration Form"))
-        self.grandFatherLabel.setText(_translate("BirthForm", "Grandfather\'s Name "))
+        self.grandFatherLabel.setText(_translate("BirthForm", "Grandfather\'s Name <font color=\'red\'>*"))
         self.label_5.setText(_translate("BirthForm", "<b>Details Of Newly Born</b>"))
         self.label_2.setText(_translate("BirthForm", "Father\'s Details"))
         self.label_3.setText(_translate("BirthForm", "Mother\'s Details"))
-        self.nameLabel_2.setText(_translate("BirthForm", "Name"))
-        self.label_4.setText(_translate("BirthForm", "Temporary Adress"))
+        self.nameLabel_2.setText(_translate("BirthForm", "Name <font color=\'red\'>*"))
+        self.label_4.setText(_translate("BirthForm", "Temporay Adress"))
         self.districtLabel_2.setText(_translate("BirthForm", "District"))
         self.municipalityLabel.setText(_translate("BirthForm", "Municipality"))
-        self.wardNoLabel_2.setText(_translate("BirthForm", "Ward No."))
+        self.wardNoLabel_2.setText(_translate("BirthForm", "Ward No"))
         self.roadLabel.setText(_translate("BirthForm", "Road/Route"))
         self.communityLabel.setText(_translate("BirthForm", "Community"))
-        self.houseNoLabel.setText(_translate("BirthForm", "House No."))
+        self.houseNoLabel.setText(_translate("BirthForm", "House No"))
         self.ageAtBirthLabel.setText(_translate("BirthForm", "Age At Birth"))
         self.motherlandLabel.setText(_translate("BirthForm", "Motherland"))
         self.countryWithCitizenshipLabel.setText(_translate("BirthForm", "Country With Citizenship"))
-        self.citizenshipNoLabel.setText(_translate("BirthForm", "Citizenship No."))
-        self.issueDateLabel.setText(_translate("BirthForm", "Issue Date"))
-        self.issueAdressLabel.setText(_translate("BirthForm", "Issue Adress"))
-        self.citizenshipNoIfForeignLabel.setText(_translate("BirthForm", "Citizenship No.(If Foreign)"))
+        self.citizenshipNoLabel.setText(_translate("BirthForm", "Citizenship No <font color=\'red\'>*"))
+        self.issueDateLabel.setText(_translate("BirthForm", "Issue Date <font color=\'red\'>*"))
+        self.issueAdressLabel.setText(_translate("BirthForm", "Issue Address  <font color=\'red\'>*"))
+        self.citizenshipNoIfForeignLabel.setText(_translate("BirthForm", "Citizenship no(If Foreign)"))
         self.qualificationLabel.setText(_translate("BirthForm", "Qualification"))
         self.occupationLabel.setText(_translate("BirthForm", "Occupation"))
         self.religionLabel.setText(_translate("BirthForm", "Religion"))
         self.motherSTongueLabel.setText(_translate("BirthForm", "Mother\'s Tongue"))
         self.totalChildrenLabel.setText(_translate("BirthForm", "Total children"))
         self.totalChildrenAliveLabel.setText(_translate("BirthForm", "Total Children Alive"))
-        self.marriageRegistrationNoLabel.setText(_translate("BirthForm", "Marriage Registration No."))
+        self.marriageRegistrationNoLabel.setText(_translate("BirthForm", "Marriage Registration No"))
         self.marriageDateLabel.setText(_translate("BirthForm", "Marriage Date"))
         self.informationProvidedByLabel.setText(_translate("BirthForm", "<b>Information Provided By</b>"))
-        self.nameLabel_3.setText(_translate("BirthForm", "Name"))
-        self.citizenshipNoLabel_2.setText(_translate("BirthForm", "Citizenship Certificate No."))
+        self.nameLabel_3.setText(_translate("BirthForm", "Name <font color=\'red\'>*"))
+        self.citizenshipNoLabel_2.setText(_translate("BirthForm", "Citizenship Certificate No"))
         self.relationToNewbornLabel.setText(_translate("BirthForm", "Relation to newborn"))
-        self.nameLabel.setText(_translate("BirthForm", "Name"))
-        self.dateOfBirthLabel.setText(_translate("BirthForm", "Date of birth"))
+        self.nameLabel.setText(_translate("BirthForm", "Name <font color=\'red\'>*"))
+        self.dateOfBirthLabel.setText(_translate("BirthForm", "Date of birth <font color=\'red\'>*"))
         self.placeOfBirthLabel.setText(_translate("BirthForm", "Place Of Birth"))
         self.genderLabel.setText(_translate("BirthForm", "Gender"))
         self.casteLabel.setText(_translate("BirthForm", "Caste"))
         self.birthTypeLabel.setText(_translate("BirthForm", "Birth Type"))
         self.physicalDisabledLabel.setText(_translate("BirthForm", "Physical Disabled(if any)"))
-        self.label_6.setText(_translate("BirthForm", "Adress Of Newly Born"))
+        self.label_6.setText(_translate("BirthForm", "<b>Address Of Newly Born"))
         self.districtLabel.setText(_translate("BirthForm", "District"))
-        self.MunicipalityLabel.setText(_translate("BirthForm", "Rural Municipality/Municipality"))
-        self.wardNoLabel.setText(_translate("BirthForm", "Ward no"))
-        self.countryIfBornInForeignLabel.setText(_translate("BirthForm", "Country(if born abroad)"))
+        self.MunicipalityLabel.setText(_translate("BirthForm", "Rural Municipality/Municipality <font color=\'red\'>*"))
+        self.wardNoLabel.setText(_translate("BirthForm", "Ward no <font color=\'red\'>*"))
+        self.countryIfBornInForeignLabel.setText(_translate("BirthForm", "Country(if born in foreign)"))
         self.label_8.setText(_translate("BirthForm", "<b>Details of the parents of new born baby</b>"))
-        self.birthRegistrationNoLabel.setText(_translate("BirthForm", "<b>Birth Registration No.</b>"))
-        self.familyRecordFormNoLabel.setText(_translate("BirthForm", "<b>Family Record Form No.</b>"))
+        self.birthRegistrationNoLabel.setText(
+            _translate("BirthForm", "<b>Birth Registration No.</b> <font color=\'red\'>*"))
+        self.familyRecordFormNoLabel.setText(
+            _translate("BirthForm", "<b>Family Record Form No.</b> <font color=\'red\'>*"))
 
 
 class ActualWork():
@@ -501,16 +503,31 @@ class ActualWork():
         self.ui.buttonBox.rejected.connect(lambda: self.BirthForm.close())
 
     def submitform(self):
-        self.values = self.getallvalues()
-        a = sw_string.generateList(**self.values)
-        # a=["RegDate","1","RegNo","2","C","3","D","4","E","5"]
-        # a=['RegNo','123-32','detailsofmarriage', "('Social Tradition', ('2000-01-01', '2056/09/17'))", 'locationofmarriage', "('Kavre', 'Namobudda', '04', 'Timal Road', 'Methinkot', '45', '')", 'detailsofspouse', "{'detailsofbride': ('Tandon', 'Rabina', '2057/01/05', 'Kami', '+2', 'Actress', 'Divorcee', ('Rampur', 'Narayanghat', '5', 'Ghandi Street', 'Hariharpur', '78', 'India'), ('India', '27-12398721', '2071/06/09', 'Rampur', '87289398', 'India', 'New Delhi'), ('Fariha Tandon', 'Kanod Tandon', 'Kajol Tandon')), 'detailsofbridegroom': ('Ghimere', 'Tilak', '2051/03/21', 'Brahmin', 'B.Sc.', 'Astrologer', 'Single', ('Solukhumbu', 'Namche Bazar', '9', 'Manila Street', 'Vaisepati', '567', 'Nepal'), ('Nepal', '983-3468', '2067/03/05', 'Solukhumbu', '', '', ''), ('Goshnath Ghimere', 'Farilal Ghimere', 'Nabina Ghimere'))}"]
-        # a=['RegDate',,b[0],b[1],b[2],b[3].replace("'","__"),b[4],b[5].replace("'","__"),b[6],b[7].replace("'","__")]
-        # print(a)
-        self.db.createFormTable(table)
-        self.db.addColumns(table, a[4], a[6], a[8], a[10], a[12],a[14],a[16])
-        self.db.insertValues(table, a)
-        self.getCertificate()
+        if (self.checkEmpty()):
+            QMessageBox.warning(self.ui,"Birth Registration","All * field should be filled.")
+        else:
+            self.values = self.getallvalues()
+            a = sw_string.generateList(**self.values)
+            self.db.createFormTable(table)
+            self.db.addColumns(table, a[4], a[6], a[8], a[10], a[12],a[14],a[16])
+            if(self.db.insertValues(table, a)):
+                self.getCertificate()
+            else:
+                QMessageBox.warning(self.ui,"Birth Registration","Registration Number is repeted.")
+
+    def checkEmpty(self):
+        tup = (
+            self.ui.birthRegistrationNoLineEdit.text(), self.ui.familyRecordFormNoLineEdit.text(),
+            self.ui.nameLineEdit_2.text(),self.ui.nameLineEdit.text(),
+            self.ui.lineEdit.text(), self.ui.lineEdit_6.text(), self.ui.grandFatherLineEdit.text(),
+            self.ui.wardNoLineEdit.text(), self.ui.MunicipalityLineEdit.text(),
+            self.ui.districtLineEdit_22.text(),self.ui.districtLineEdit_24.text(), self.ui.districtLineEdit_20.text(), self.ui.districtLineEdit_23.text(),
+            self.ui.districtLineEdit_25.text(), self.ui.districtLineEdit_21.text()
+        )
+        for t in tup:
+            if t=='':
+                return True
+        return False
 
     def getallvalues(self):
         self.birthRegNo = self.ui.birthRegistrationNoLineEdit.text()
@@ -535,31 +552,18 @@ class ActualWork():
         self.marriagedate = (str(self.marriage_in_ad), str(self.marriage_in_bs))
         detailsofparent = (self.ui.totalChildrenLineEdit.text(), self.ui.totalChildrenAliveLineEdit.text(),self.ui.marriageRegistrationNoLineEdit.text(), self.marriagedate)
         informationprovider=(self.ui.nameLineEdit_2.text(),self.ui.citizenshipNoLineEdit.text(),self.ui.relationToNewbornLineEdit.text())
-        certificate={
-            "RegNo":self.birthRegNo,
-            "RegDate":registrationdate,
-            "FamilyRecordNo":self.familyRecordNo,
-            "Informer":self.ui.nameLineEdit_2.text(),
-            "ChildName":self.ui.nameLineEdit.text(),
-            "Father":self.ui.lineEdit.text(),
-            "Mother":self.ui.lineEdit_6.text(),
-            "GrandFather":self.ui.grandFatherLineEdit.text(),
-            "WardNo":self.ui.wardNoLineEdit.text(),
-            "Municipality":self.ui.MunicipalityLineEdit.text(),
-            "DOBBS":str(birth_in_bs)[3:],
-            "DOBAD":str(birth_in_ad),
-            "PlaceOfBirth":self.ui.placeOfBirthComboBox.currentText(),
-            "FIDate":self.ui.districtLineEdit_22.text(),
-            "FIDistrict":self.ui.districtLineEdit_24.text(),
-            "FICNo":self.ui.districtLineEdit_20.text(),
-            "MIDate":self.ui.districtLineEdit_23.text(),
-            "MIDistrict":self.ui.districtLineEdit_25.text(),
-            "MICNo":self.ui.districtLineEdit_21.text(),
-        }
-        self.writePickle(**certificate)
+        certificate=(
+            self.birthRegNo,registrationdate,self.familyRecordNo,self.ui.nameLineEdit_2.text(),self.ui.nameLineEdit.text(),
+            self.ui.lineEdit.text(),self.ui.lineEdit_6.text(),self.ui.grandFatherLineEdit.text(),
+            self.ui.wardNoLineEdit.text(),self.ui.MunicipalityLineEdit.text(),str(birth_in_bs)[3:],
+            str(birth_in_ad),self.ui.placeOfBirthComboBox.currentText(),self.ui.districtLineEdit_22.text(),
+            self.ui.districtLineEdit_24.text(),self.ui.districtLineEdit_20.text(),self.ui.districtLineEdit_23.text(),
+            self.ui.districtLineEdit_25.text(),self.ui.districtLineEdit_21.text()
+        )
+        self.writePickle(certificate)
         return {"RegDate": registrationdate, "RegNo": self.birthRegNo, "FamilyRecordNo": self.familyRecordNo,"detailsofbirth": str(detailsofbirth), "locationofbirth": str(locationofbirth),'detailsoffather': str(self.detailsoffather), 'detailsofmother': str(self.detailsofmother),'detailsofparent': str(detailsofparent),'informer':str(informationprovider)}
 
-    def writePickle(self,**d):
+    def writePickle(self,d):
         with open("certificate.pickle","wb") as obj:
             pickle.dump(d,obj)
             obj.close()
@@ -568,10 +572,7 @@ class ActualWork():
         QMessageBox.information(self.ui, "Birth Registration","Get Birth Registration Certificate.")
         certificate = BirthCertificate()
         f=open("certificate.pickle",'rb')
-        cInfo=pickle.load(f)
-        cert=[]
-        for value in cInfo.values():
-            cert.append(value)
+        cert=pickle.load(f)
         certificate.setBody(cert)
         certificate.output()
         QMessageBox.information(self.ui, "Birth Registration","Birth Reistration was Sucessful.")

@@ -1,21 +1,19 @@
+# -*- coding: utf-8 -*-
+
+# Form implementation generated from reading ui file 'death.ui'
+#
+# Created by: PyQt5 UI code generator 5.13.2
+#
+# WARNING! All changes made in this file will be lost!
+
+
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import *
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-
-import datetime
-import nepali_date
-import sw_string
-import pickle
-from sw_pdf import DeathCertificate
-
-table="DeathRegistration"
 
 
-class Ui_Deathform(QWidget):
+class Ui_Deathform(object):
     def setupUi(self, Deathform):
         Deathform.setObjectName("Deathform")
-        Deathform.resize(888, 989)
+        Deathform.resize(694, 801)
         self.centralwidget = QtWidgets.QWidget(Deathform)
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
@@ -24,7 +22,7 @@ class Ui_Deathform(QWidget):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, -512, 660, 1293))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, -155, 649, 1297))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.gridLayout_2 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents)
         self.gridLayout_2.setObjectName("gridLayout_2")
@@ -343,123 +341,3 @@ class Ui_Deathform(QWidget):
         self.nameLabel_2.setText(_translate("Deathform", "Name  <font color=\'red\'>*"))
         self.citizenshipCertificateNoLabel.setText(_translate("Deathform", "Citizenship Certificate No."))
         self.relationToDeceasedLabel.setText(_translate("Deathform", "Relation To Deceased"))
-
-class ActualWork():
-    def __init__(self):
-        import dbconnect
-        self.db=dbconnect.database_wardwindow("localhost","root")
-        self.deathForm = QtWidgets.QMainWindow()
-        self.ui = Ui_Deathform()
-        self.ui.setupUi(self.deathForm)
-        self.deathForm.show()
-        self.actualWork()
-
-    def actualWork(self):
-        self.ui.buttonBox.accepted.connect(self.submitform)
-        self.ui.buttonBox.rejected.connect(self.closeActualWork)
-
-    def submitform(self):
-        if (self.checkEmpty()):
-            QMessageBox.warning(self.ui,"Death Registration","All * field should be filled.")
-        else:
-            self.values=self.getallvalues()
-            a=sw_string.generateList(**self.values)
-            #a=["RegDate","1","RegNo","2","C","3","D","4","E","5"]
-            #b=['RegNo','123-32','detailsofmarriage', "('Social Tradition', ('2000-01-01', '2056/09/17'))", 'locationofmarriage', "('Kavre', 'Namobudda', '04', 'Timal Road', 'Methinkot', '45', '')", 'detailsofspouse', "{'detailsofbride': ('Tandon', 'Rabina', '2057/01/05', 'Kami', '+2', 'Actress', 'Divorcee', ('Rampur', 'Narayanghat', '5', 'Ghandi Street', 'Hariharpur', '78', 'India'), ('India', '27-12398721', '2071/06/09', 'Rampur', '87289398', 'India', 'New Delhi'), ('Fariha Tandon', 'Kanod Tandon', 'Kajol Tandon')), 'detailsofbridegroom': ('Ghimere', 'Tilak', '2051/03/21', 'Brahmin', 'B.Sc.', 'Astrologer', 'Single', ('Solukhumbu', 'Namche Bazar', '9', 'Manila Street', 'Vaisepati', '567', 'Nepal'), ('Nepal', '983-3468', '2067/03/05', 'Solukhumbu', '', '', ''), ('Goshnath Ghimere', 'Farilal Ghimere', 'Nabina Ghimere'))}"]
-            #a=['RegDate',,b[0],b[1],b[2],b[3].replace("'","__"),b[4],b[5].replace("'","__"),b[6],b[7].replace("'","__")]
-            #print("a=",a)
-            self.db.createFormTable(table)
-            self.db.addColumns(table,a[4],a[6],a[8],a[10],a[12],a[14])
-            if(self.db.insertValues(table,a)):
-                self.getCertificate()
-            else:
-                QMessageBox.warning(self.ui,"Death Registration","Registration Number is repeted.")
-
-    def checkEmpty(self):
-        tup = (
-           self.ui.registrationNoLineEdit.text(),self.ui.familyRecordFormNoLineEdit.text(),self.ui.nameLineEdit_2.text(),
-            self.ui.nameLineEdit.text(),self.ui.ageLineEdit.text(),self.ui.fatherLineEdit.text(),
-            self.ui.grandFatherLineEdit.text(),self.ui.spouseLineEdit.text(),self.ui.wardNoLineEdit_2.text(),
-            self.ui.municipalityLineEdit.text(),self.ui.districtLineEdit_2.text(),
-            self.ui.citizenshipNoLineEdit.text(),self.ui.districtLineEdit.text()
-        )
-        for t in tup:
-            if t=='':
-                return True
-        return False
-
-
-
-        
-    def getallvalues(self):
-        #print('i love you')
-        self.RegNo=self.ui.registrationNoLineEdit.text()
-        #date of birth
-        date=QDate(self.ui.dateEdit.date())
-        year,month,day=date.getDate()
-        birth_in_ad=datetime.date(year,month,day)
-        birth_in_bs=nepali_date.NepaliDate.to_nepali_date(birth_in_ad)
-        #registration date
-        today=nepali_date.NepaliDate.today()
-        registrationdate=str(today)[3:]
-        #date of death
-        self.birthdate=(str(birth_in_ad),str(birth_in_bs)[3:])
-        date=QDate(self.ui.dateEdit_3.date())
-        year,month,day=date.getDate()
-        death_in_ad=datetime.date(year,month,day)
-        death_in_bs=nepali_date.NepaliDate.to_nepali_date(death_in_ad)
-        self.deathdate=(str(death_in_ad),str(death_in_bs)[3:])
-        #details of deceased
-        detailsofdeceased=(self.ui.birthRegistrationNoLineEdit.text(),self.ui.nameLineEdit.text(),self.birthdate,self.deathdate,self.ui.placeOfDeathLineEdit.text())
-        #place of birth
-        placeofbirth=(self.ui.districtLineEdit.text(),self.ui.mubicipalityLineEdit.text(),self.ui.wardNoLineEdit.text(),self.ui.roadLineEdit.text(),self.ui.houseNoLineEdit.text(),self.ui.villageLineEdit.text())
-        #addressof deceased
-        Adressofdeceased=(self.ui.districtLineEdit_2.text(),self.ui.municipalityLineEdit.text(),self.ui.wardNoLineEdit_2.text(),self.ui.roadStreetLineEdit.text(),self.ui.houseNoLineEdit_2.text(),self.ui.houseNoLineEdit_3.text())
-        #detailsofseceased2
-        date=QDate(self.ui.dateEdit_5.date())
-        year,month,day=date.getDate()
-        issue_in_ad=datetime.date(year,month,day)
-        issue_in_bs=nepali_date.NepaliDate.to_nepali_date(issue_in_ad)
-        self.issuedate=(str(issue_in_ad),str(issue_in_bs)[3:])
-        detailsofdeceased_2=(self.ui.citizenshipNoLineEdit.text(),self.ui.issueDistrictLineEdit.text(),self.issuedate,self.ui.lineEdit_2.text(),self.ui.lineEdit.text(),self.ui.qualificationLineEdit.text(),self.ui.mothersTongueLineEdit.text(),self.ui.casteLineEdit.text(),self.ui.religionLineEdit.text(),self.ui.grandFatherLineEdit.text(),self.ui.fatherLineEdit.text(),self.ui.motherLineEdit.text(),self.ui.spouseLineEdit.text(),self.ui.causeOfDeathLineEdit.text())
-        informer=(self.ui.nameLineEdit_2.text(),self.ui.citizenshipCertificateNoLineEdit.text(),self.ui.relationToDeceasedLineEdit.text())
-
-        certificate=(
-            self.RegNo,registrationdate,self.ui.familyRecordFormNoLineEdit.text(),informer[0],
-            self.ui.nameLineEdit.text(),self.ui.ageLineEdit.text(),self.ui.fatherLineEdit.text(),
-            self.ui.grandFatherLineEdit.text(),self.ui.spouseLineEdit.text(),self.ui.wardNoLineEdit_2.text(),
-            self.ui.municipalityLineEdit.text(),self.ui.districtLineEdit_2.text(),str(death_in_bs)[3:],str(death_in_ad),
-            self.ui.citizenshipNoLineEdit.text(),str(issue_in_bs)[3:],self.ui.districtLineEdit.text()
-        )
-        self.writePickle(certificate)
-        return {"RegDate":registrationdate,"RegNo":self.RegNo,'FamilyRecord':self.ui.familyRecordFormNoLineEdit.text(),"detaillsofdeceased":str(detailsofdeceased) , "placeofbirth":str(placeofbirth) , 'adressofdecesed':str(Adressofdeceased),'detailsofdeceased_2':str(detailsofdeceased_2),'informer':str(informer)}
-
-    def writePickle(self, d):
-        with open("certificate.pickle", "wb") as obj:
-            pickle.dump(d, obj)
-            obj.close()
-
-    def getCertificate(self):
-        QMessageBox.information(self.ui, "Death Registration","Get Death Registration Certificate.")
-        certificate = DeathCertificate()
-        f = open("certificate.pickle", 'rb')
-        cert = pickle.load(f)
-        certificate.setBody(cert)
-        certificate.output()
-        QMessageBox.information(self.ui, "Death Registration", "Death Reistration was Sucessful.")
-
-    def closeActualWork(self):
-        self.deathForm.close()
-
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    aw=ActualWork()
-    '''
-    Deathform = QtWidgets.QMainWindow()
-    ui = Ui_Deathform()
-    ui.setupUi(Deathform)
-    Deathform.show()
-    '''
-    sys.exit(app.exec_())
