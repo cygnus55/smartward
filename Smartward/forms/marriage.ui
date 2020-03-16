@@ -24,9 +24,9 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>-306</y>
-         <width>777</width>
-         <height>1442</height>
+         <y>-283</y>
+         <width>774</width>
+         <height>1220</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_2">
@@ -49,7 +49,7 @@
           <item row="0" column="0">
            <widget class="QLabel" name="marriageTypeLabel">
             <property name="text">
-             <string>Marriage Type</string>
+             <string>Marriage Type&lt;font color='red'&gt;*</string>
             </property>
            </widget>
           </item>
@@ -154,7 +154,7 @@
           <item row="0" column="0">
            <widget class="QLabel" name="marriageRegistrationNoLabel">
             <property name="text">
-             <string>&lt;b&gt;Marriage Registration No.&lt;/b&gt;</string>
+             <string>&lt;b&gt;Marriage Registration No.&lt;/b&gt;&lt;font color='red'&gt;*</string>
             </property>
            </widget>
           </item>
@@ -164,7 +164,8 @@
           <item row="1" column="0">
            <widget class="QLabel" name="FamilyRecordFormNoLabel">
             <property name="text">
-             <string>&lt;b&gt;Family Record Form No.</string>
+             <string>&lt;b&gt;Family Record Form No.&lt;font color='red'&gt;*
+</string>
             </property>
            </widget>
           </item>
@@ -200,9 +201,6 @@
             </property>
            </widget>
           </item>
-          <item row="1" column="1">
-           <layout class="QHBoxLayout" name="horizontalLayout_4"/>
-          </item>
           <item row="2" column="0">
            <widget class="QLabel" name="lastnameLabel">
             <property name="text">
@@ -223,7 +221,7 @@
           <item row="3" column="0">
            <widget class="QLabel" name="fullNameLabel_2">
             <property name="text">
-             <string>Full name</string>
+             <string>Full name&lt;font color='red'&gt;*</string>
             </property>
            </widget>
           </item>
@@ -335,7 +333,7 @@
           <item row="10" column="0">
            <widget class="QLabel" name="districtLabel_3">
             <property name="text">
-             <string>District</string>
+             <string>District&lt;font color='red'&gt;*</string>
             </property>
            </widget>
           </item>
@@ -352,7 +350,7 @@
           <item row="11" column="0">
            <widget class="QLabel" name="municipalityLabel_3">
             <property name="text">
-             <string>Municipality</string>
+             <string>Municipality&lt;font color='red'&gt;*</string>
             </property>
            </widget>
           </item>
@@ -369,7 +367,7 @@
           <item row="12" column="0">
            <widget class="QLabel" name="wardNoLabel_3">
             <property name="text">
-             <string>Ward No</string>
+             <string>Ward No&lt;font color='red'&gt;*</string>
             </property>
            </widget>
           </item>
@@ -471,7 +469,7 @@
           <item row="18" column="0">
            <widget class="QLabel" name="citizenshipNoLabel_2">
             <property name="text">
-             <string>Citizenship No</string>
+             <string>Citizenship No&lt;font color='red'&gt;*</string>
             </property>
            </widget>
           </item>
@@ -488,7 +486,7 @@
           <item row="19" column="0">
            <widget class="QLabel" name="issueDateLabel_2">
             <property name="text">
-             <string>Issue Date</string>
+             <string>Issue Date&lt;font color='red'&gt;*</string>
             </property>
            </widget>
           </item>
@@ -505,7 +503,7 @@
           <item row="20" column="0">
            <widget class="QLabel" name="issueDistrictLabel_2">
             <property name="text">
-             <string>Issue District</string>
+             <string>Issue District&lt;font color='red'&gt;*</string>
             </property>
            </widget>
           </item>
@@ -573,7 +571,7 @@
           <item row="24" column="0">
            <widget class="QLabel" name="grandfatherNameLabel_2">
             <property name="text">
-             <string>Grandfather Name</string>
+             <string>Grandfather Name&lt;font color='red'&gt;*</string>
             </property>
            </widget>
           </item>
@@ -590,7 +588,7 @@
           <item row="25" column="0">
            <widget class="QLabel" name="fatherNameLabel_2">
             <property name="text">
-             <string>Father Name</string>
+             <string>Father Name&lt;font color='red'&gt;*</string>
             </property>
            </widget>
           </item>
@@ -631,7 +629,7 @@
           <item row="28" column="0">
            <widget class="QLabel" name="nameLabel">
             <property name="text">
-             <string>Name</string>
+             <string>Name&lt;font color='red'&gt;*</string>
             </property>
            </widget>
           </item>
