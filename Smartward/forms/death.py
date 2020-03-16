@@ -299,48 +299,48 @@ class Ui_Deathform(QWidget):
 
     def retranslateUi(self, Deathform):
         _translate = QtCore.QCoreApplication.translate
-        Deathform.setWindowTitle(_translate("Deathform", "Death Registration Form"))
-        self.districtLabel_2.setText(_translate("Deathform", "District"))
-        self.municipalityLabel.setText(_translate("Deathform", "Municipality"))
-        self.wardNoLabel_2.setText(_translate("Deathform", "Ward No."))
+        Deathform.setWindowTitle(_translate("Deathform", "MainWindow"))
+        self.districtLabel_2.setText(_translate("Deathform", "District <font color=\'red\'>*"))
+        self.municipalityLabel.setText(_translate("Deathform", "Municipality <font color=\'red\'>*"))
+        self.wardNoLabel_2.setText(_translate("Deathform", "Ward No <font color=\'red\'>*"))
         self.roadtLabel.setText(_translate("Deathform", "Road/street"))
-        self.houseNoLabel_2.setText(_translate("Deathform", "House No."))
+        self.houseNoLabel_2.setText(_translate("Deathform", "House No"))
         self.villageLabel_2.setText(_translate("Deathform", "Village/Community"))
         self.label_3.setText(_translate("Deathform", "<b>Address Of Deceased"))
         self.label.setText(_translate("Deathform", "<b>Details Of Deceased"))
-        self.districtLabel.setText(_translate("Deathform", "District"))
+        self.districtLabel.setText(_translate("Deathform", "District <font color=\'red\'>*"))
         self.mubicipalityLabel.setText(_translate("Deathform", "Municipality"))
-        self.wardNoLabel.setText(_translate("Deathform", "Ward No."))
+        self.wardNoLabel.setText(_translate("Deathform", "Ward No"))
         self.roadLabel.setText(_translate("Deathform", "Road/Route/street"))
-        self.houseNoLabel.setText(_translate("Deathform", "House No."))
+        self.houseNoLabel.setText(_translate("Deathform", "House No:"))
         self.villageLabel.setText(_translate("Deathform", "Village/Community"))
         self.label_2.setText(_translate("Deathform", "<b>Place Of Birth"))
-        self.birthRegistrationNoLabel.setText(_translate("Deathform", "Birth Registration No."))
-        self.nameLabel.setText(_translate("Deathform", "Name"))
+        self.birthRegistrationNoLabel.setText(_translate("Deathform", "Birth Registration No"))
+        self.nameLabel.setText(_translate("Deathform", "Name <font color=\'red\'>*"))
         self.dateOfBirthLabel.setText(_translate("Deathform", "Date Of Birth"))
         self.dateOfDeathLabel.setText(_translate("Deathform", "Date Of Death"))
         self.placeOfDeathLabel.setText(_translate("Deathform", "Place of Death"))
-        self.ageLabel.setText(_translate("Deathform", "Age"))
+        self.ageLabel.setText(_translate("Deathform", "Age <font color=\'red\'>*"))
         self.label_4.setText(_translate("Deathform", "<b>Deatils Of Deceased"))
-        self.registrationNoLabel.setText(_translate("Deathform", "<b>Registration No."))
-        self.familyRecordFormNoLabel.setText(_translate("Deathform", "<b>Family Record Form No."))
-        self.citizenshipNoLabel.setText(_translate("Deathform", "Citizenship No"))
-        self.issueDistrictLabel.setText(_translate("Deathform", "Issue District"))
-        self.issueDateLabel.setText(_translate("Deathform", "Issue Date"))
+        self.registrationNoLabel.setText(_translate("Deathform", "<b>Registration No.</b> <font color=\'red\'>*"))
+        self.familyRecordFormNoLabel.setText(_translate("Deathform", "<b>Family Record Form No. <font color=\'red\'>*"))
+        self.citizenshipNoLabel.setText(_translate("Deathform", "Citizenship No <font color=\'red\'>*"))
+        self.issueDistrictLabel.setText(_translate("Deathform", "Issue Distric <font color=\'red\'>*t"))
+        self.issueDateLabel.setText(_translate("Deathform", "Issue Date <font color=\'red\'>*"))
         self.forForeignerLabel.setText(_translate("Deathform", "For Foreigner"))
         self.lineEdit_2.setPlaceholderText(_translate("Deathform", "Country"))
         self.lineEdit.setPlaceholderText(_translate("Deathform", "Passport No"))
         self.qualificationLabel.setText(_translate("Deathform", "Qualification"))
-        self.mothersTongueLabel.setText(_translate("Deathform", "Mother Tongue"))
+        self.mothersTongueLabel.setText(_translate("Deathform", "Mothers Tongue"))
         self.casteLabel.setText(_translate("Deathform", "Caste"))
         self.religionLabel.setText(_translate("Deathform", "Religion"))
-        self.grandFatherLabel.setText(_translate("Deathform", "GrandFather"))
-        self.fatherLabel.setText(_translate("Deathform", "Father"))
-        self.motherLabel.setText(_translate("Deathform", "Mother"))
-        self.spouseLabel.setText(_translate("Deathform", "Spouse"))
+        self.grandFatherLabel.setText(_translate("Deathform", "GrandFather <font color=\'red\'>*"))
+        self.fatherLabel.setText(_translate("Deathform", "Father <font color=\'red\'>*"))
+        self.motherLabel.setText(_translate("Deathform", "Mother <font color=\'red\'>*"))
+        self.spouseLabel.setText(_translate("Deathform", "Spouse <font color=\'red\'>*"))
         self.causeOfDeathLabel.setText(_translate("Deathform", "Cause Of Death"))
-        self.informationProvidedByLabel.setText(_translate("Deathform", "<b>Information Provided By</b>"))
-        self.nameLabel_2.setText(_translate("Deathform", "Name"))
+        self.informationProvidedByLabel.setText(_translate("Deathform", "<b>Information Provided By"))
+        self.nameLabel_2.setText(_translate("Deathform", "Name  <font color=\'red\'>*"))
         self.citizenshipCertificateNoLabel.setText(_translate("Deathform", "Citizenship Certificate No."))
         self.relationToDeceasedLabel.setText(_translate("Deathform", "Relation To Deceased"))
 
@@ -359,17 +359,38 @@ class ActualWork():
         self.ui.buttonBox.rejected.connect(self.closeActualWork)
 
     def submitform(self):
-        self.values=self.getallvalues()
-        a=sw_string.generateList(**self.values)
-        #a=["RegDate","1","RegNo","2","C","3","D","4","E","5"]
-        #b=['RegNo','123-32','detailsofmarriage', "('Social Tradition', ('2000-01-01', '2056/09/17'))", 'locationofmarriage', "('Kavre', 'Namobudda', '04', 'Timal Road', 'Methinkot', '45', '')", 'detailsofspouse', "{'detailsofbride': ('Tandon', 'Rabina', '2057/01/05', 'Kami', '+2', 'Actress', 'Divorcee', ('Rampur', 'Narayanghat', '5', 'Ghandi Street', 'Hariharpur', '78', 'India'), ('India', '27-12398721', '2071/06/09', 'Rampur', '87289398', 'India', 'New Delhi'), ('Fariha Tandon', 'Kanod Tandon', 'Kajol Tandon')), 'detailsofbridegroom': ('Ghimere', 'Tilak', '2051/03/21', 'Brahmin', 'B.Sc.', 'Astrologer', 'Single', ('Solukhumbu', 'Namche Bazar', '9', 'Manila Street', 'Vaisepati', '567', 'Nepal'), ('Nepal', '983-3468', '2067/03/05', 'Solukhumbu', '', '', ''), ('Goshnath Ghimere', 'Farilal Ghimere', 'Nabina Ghimere'))}"]
-        #a=['RegDate',,b[0],b[1],b[2],b[3].replace("'","__"),b[4],b[5].replace("'","__"),b[6],b[7].replace("'","__")]
-        #print("a=",a)
-        self.db.createFormTable(table)
-        self.db.addColumns(table,a[4],a[6],a[8],a[10],a[12],a[14])
-        self.db.insertValues(table,a)
-        self.getCertificate()
+        if (self.checkEmpty()):
+            QMessageBox.warning(self.ui,"Death Registration","All * field should be filled.")
+        else:
+            self.values=self.getallvalues()
+            a=sw_string.generateList(**self.values)
+            #a=["RegDate","1","RegNo","2","C","3","D","4","E","5"]
+            #b=['RegNo','123-32','detailsofmarriage', "('Social Tradition', ('2000-01-01', '2056/09/17'))", 'locationofmarriage', "('Kavre', 'Namobudda', '04', 'Timal Road', 'Methinkot', '45', '')", 'detailsofspouse', "{'detailsofbride': ('Tandon', 'Rabina', '2057/01/05', 'Kami', '+2', 'Actress', 'Divorcee', ('Rampur', 'Narayanghat', '5', 'Ghandi Street', 'Hariharpur', '78', 'India'), ('India', '27-12398721', '2071/06/09', 'Rampur', '87289398', 'India', 'New Delhi'), ('Fariha Tandon', 'Kanod Tandon', 'Kajol Tandon')), 'detailsofbridegroom': ('Ghimere', 'Tilak', '2051/03/21', 'Brahmin', 'B.Sc.', 'Astrologer', 'Single', ('Solukhumbu', 'Namche Bazar', '9', 'Manila Street', 'Vaisepati', '567', 'Nepal'), ('Nepal', '983-3468', '2067/03/05', 'Solukhumbu', '', '', ''), ('Goshnath Ghimere', 'Farilal Ghimere', 'Nabina Ghimere'))}"]
+            #a=['RegDate',,b[0],b[1],b[2],b[3].replace("'","__"),b[4],b[5].replace("'","__"),b[6],b[7].replace("'","__")]
+            #print("a=",a)
+            self.db.createFormTable(table)
+            self.db.addColumns(table,a[4],a[6],a[8],a[10],a[12],a[14])
+            if(self.db.insertValues(table,a)):
+                self.getCertificate()
+            else:
+                QMessageBox.warning(self.ui,"Death Registration","Registration Number is repeted.")
 
+    def checkEmpty(self):
+        tup = (
+           self.ui.registrationNoLineEdit.text(),self.ui.familyRecordFormNoLineEdit.text(),self.ui.nameLineEdit_2.text(),
+            self.ui.nameLineEdit.text(),self.ui.ageLineEdit.text(),self.ui.fatherLineEdit.text(),
+            self.ui.grandFatherLineEdit.text(),self.ui.spouseLineEdit.text(),self.ui.wardNoLineEdit_2.text(),
+            self.ui.municipalityLineEdit.text(),self.ui.districtLineEdit_2.text(),
+            self.ui.citizenshipNoLineEdit.text(),self.ui.districtLineEdit.text()
+        )
+        for t in tup:
+            if t=='':
+                return True
+        return False
+
+
+
+        
     def getallvalues(self):
         #print('i love you')
         self.RegNo=self.ui.registrationNoLineEdit.text()
