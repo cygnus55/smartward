@@ -27,3 +27,9 @@ python3 main.py
 ![](screenshots/signinwindow.jpg)
 ![](screenshots/statwindow.jpg)
 ![](screenshots/ward_profile_update.jpg)
+
+## Developers
+- [Shrawak Bhattarai](https://github.com/Shrawak)
+- [Ramraj Chimouriya](https://github.com/RamrajCh)
+- [Deependra Kumar Gupta](https://github.com/Deependra12)
+- [Shreyam Pokharel](https://github.com/pshreyam)
